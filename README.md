@@ -10,6 +10,8 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 - **SEO Ready**: Proper meta tags and semantic HTML structure
 - **Interactive**: Smooth scrolling, hover effects, and micro-interactions
 - **Accessible**: Built with accessibility best practices
+- **Dark Mode**: Toggleable theme with local preference
+- **Testimonials Carousel**: Showcase feedback from peers
 
 ## 🛠️ Tech Stack
 
@@ -58,20 +60,28 @@ src/
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/AshishBytes/portfolio.git
    cd portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
+
+## 🧑‍💻 Development
+
+- `npm run lint` - run ESLint
+- `npm run format` - format code with Prettier
 
 4. **Build for production**
    ```bash
@@ -81,6 +91,7 @@ src/
 ## 📱 Responsive Design
 
 The website is built with a mobile-first approach and includes:
+
 - Responsive navigation with hamburger menu
 - Flexible grid layouts
 - Optimized typography for different screen sizes

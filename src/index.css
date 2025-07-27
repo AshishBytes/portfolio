@@ -1,3 +1,4 @@
+@import 'swiper/css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,14 +20,28 @@ body {
   overflow-x: hidden;
 }
 
+.dark body {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dark .gradient-bg {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 }
 
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .text-gradient {
@@ -46,8 +61,13 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .timeline-line {
