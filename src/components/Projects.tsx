@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
@@ -10,7 +9,7 @@ const Projects: React.FC = () => {
     {
       title: "DocQA Tutor",
       description: "An intelligent document question-answering system that uses advanced NLP techniques to provide accurate answers from uploaded documents. Built with T5 transformer model and semantic search capabilities.",
-      icon: <MessageSquare className="w-8 h-8 text-blue-600" />,
+      icon: <MessageSquare className="w-8 h-8 text-blue-600" aria-hidden="true" />,
       technologies: ["Python", "T5", "PyTorch", "SBERT", "FastAPI", "React"],
       achievements: [
         "Achieved 92% accuracy in document comprehension tasks",
@@ -24,7 +23,7 @@ const Projects: React.FC = () => {
     {
       title: "TripLedger",
       description: "A comprehensive expense tracking application for travelers with real-time currency conversion, group expense splitting, and detailed analytics. Features offline support and multi-platform synchronization.",
-      icon: <DollarSign className="w-8 h-8 text-green-600" />,
+      icon: <DollarSign className="w-8 h-8 text-green-600" aria-hidden="true" />,
       technologies: ["React Native", "Node.js", "MongoDB", "Express", "Socket.io"],
       achievements: [
         "Supports 150+ currencies with real-time exchange rates",
@@ -50,7 +49,9 @@ const Projects: React.FC = () => {
             <div className="relative overflow-hidden rounded-lg mb-6">
               <img
                 src={project.image}
-                alt={project.title}
+                alt={`Screenshot of ${project.title}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
