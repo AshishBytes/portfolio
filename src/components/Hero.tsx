@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const handleDownloadResume = () => {
     // Create a link to download the resume
     const link = document.createElement('a');
-    link.href = '/Ashish_Singh_Amazon.pdf';
+    link.href = '/Ashish_Singh_Resume.pdf';
     link.download = 'Ashish_Singh_Resume.pdf';
     document.body.appendChild(link);
     link.click();
