@@ -7,25 +7,25 @@ import Card from './shared/Card';
 const Skills: React.FC = () => {
   const skillCategories = [
     {
-      icon: <Code className="w-8 h-8 text-blue-600" />,
+      icon: <Code className="w-8 h-8 text-blue-600" aria-hidden="true" />,
       title: "Programming Languages",
       skills: ["C", "C++", "Python", "Java", "Go", "Perl"],
       color: "blue"
     },
     {
-      icon: <Wrench className="w-8 h-8 text-green-600" />,
+      icon: <Wrench className="w-8 h-8 text-green-600" aria-hidden="true" />,
       title: "Tools & Technologies",
       skills: ["Docker", "Azure", "GCP", "Kafka", "Terraform"],
       color: "green"
     },
     {
-      icon: <Brain className="w-8 h-8 text-purple-600" />,
+      icon: <Brain className="w-8 h-8 text-purple-600" aria-hidden="true" />,
       title: "ML/NLP",
       skills: ["T5", "PyTorch", "SBERT", "BLEU", "ROUGE"],
       color: "purple"
     },
     {
-      icon: <Users className="w-8 h-8 text-orange-600" />,
+      icon: <Users className="w-8 h-8 text-orange-600" aria-hidden="true" />,
       title: "Soft Skills",
       skills: ["Agile", "Mentorship", "Leadership", "Time Management"],
       color: "orange"

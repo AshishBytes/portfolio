@@ -10,7 +10,7 @@ const Experience: React.FC = () => {
       role: "Software Engineer",
       duration: "2023 - Present",
       location: "Remote",
-      icon: <TrendingUp className="w-6 h-6" />,
+      icon: <TrendingUp className="w-6 h-6" aria-hidden="true" />,
       achievements: [
         "Improved system latency by 40% through optimization of distributed algorithms",
         "Led a team of 5 developers in implementing microservices architecture",
@@ -23,7 +23,7 @@ const Experience: React.FC = () => {
       role: "Backend Developer",
       duration: "2022 - 2023",
       location: "Bangalore, India",
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-6 h-6" aria-hidden="true" />,
       achievements: [
         "Built scalable backend systems serving 1M+ active users",
         "Implemented real-time data processing pipelines using Kafka",
@@ -36,7 +36,7 @@ const Experience: React.FC = () => {
       role: "Technical Lead",
       duration: "2021 - 2022",
       location: "IIT Kanpur",
-      icon: <Search className="w-6 h-6" />,
+      icon: <Search className="w-6 h-6" aria-hidden="true" />,
       achievements: [
         "Developed semantic search system with 95% accuracy using NLP",
         "Mentored 20+ participants in machine learning workshops",
