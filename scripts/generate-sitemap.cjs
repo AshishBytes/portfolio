@@ -3,10 +3,10 @@ const { writeFileSync } = require('fs');
 const { Readable } = require('stream');
 
 const links = [
-  { url: '/', changefreq: 'monthly', priority: 1.0 },
-  { url: '/about', changefreq: 'monthly', priority: 0.8 },
-  { url: '/projects', changefreq: 'monthly', priority: 0.8 },
-  { url: '/contact', changefreq: 'monthly', priority: 0.5 },
+  { url: '/', changefreq: 'hourly', priority: 1.0 },
+  { url: '/about', changefreq: 'hourly', priority: 0.8 },
+  { url: '/projects', changefreq: 'hourly', priority: 0.8 },
+  { url: '/contact', changefreq: 'hourly', priority: 0.5 },
 ];
 
 const sitemap = new SitemapStream({ hostname: 'https://ashishbytes.com' });
