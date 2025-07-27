@@ -1,65 +1,76 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Globe, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
+import {
+  Mail,
+  Globe,
+  Github,
+  Linkedin,
+  Send,
+  MapPin,
+  Phone,
+} from 'lucide-react';
 import Section from './shared/Section';
 import Button from './shared/Button';
+import resume from '../data/resume.json';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // Reset form
     setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
-    
+
     // Show success message (you can implement a toast notification here)
-    alert('Message sent successfully! I\'ll get back to you soon.');
+    alert("Message sent successfully! I'll get back to you soon.");
   };
 
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
-      label: "Email",
-      value: "ashish@ashishbytes.com",
-      href: "mailto:ashish@ashishbytes.com"
+      label: 'Email',
+      value: resume.social.email,
+      href: `mailto:${resume.social.email}`,
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      label: "Website",
-      value: "www.ashishbytes.com",
-      href: "https://www.ashishbytes.com"
+      label: 'Website',
+      value: 'www.ashishbytes.com',
+      href: 'https://www.ashishbytes.com',
     },
     {
       icon: <Github className="w-6 h-6" />,
-      label: "GitHub",
-      value: "AshishBytes",
-      href: "https://github.com/AshishBytes"
+      label: 'GitHub',
+      value: resume.social.github,
+      href: `https://${resume.social.github}`,
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
-      label: "LinkedIn",
-      value: "ashishbytes",
-      href: "https://linkedin.com/in/ashishbytes"
-    }
+      label: 'LinkedIn',
+      value: resume.social.linkedin,
+      href: `https://${resume.social.linkedin}`,
+    },
   ];
 
   return (
@@ -80,9 +91,10 @@ const Contact: React.FC = () => {
           <div className="text-white">
             <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
             <p className="text-gray-200 mb-8 leading-relaxed">
-              I'm always interested in discussing new opportunities, innovative projects, 
-              and collaborations. Whether you're looking for a software engineer, want to 
-              discuss a project, or just want to connect, I'd love to hear from you.
+              I'm always interested in discussing new opportunities, innovative
+              projects, and collaborations. Whether you're looking for a
+              software engineer, want to discuss a project, or just want to
+              connect, I'd love to hear from you.
             </p>
 
             {/* Contact Information */}
@@ -92,7 +104,11 @@ const Contact: React.FC = () => {
                   key={info.label}
                   href={info.href}
                   target={info.href.startsWith('http') ? '_blank' : undefined}
-                  rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  rel={
+                    info.href.startsWith('http')
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
                   className="flex items-center p-4 glass-effect rounded-lg hover:bg-white/20 transition-all duration-300 group"
                   whileHover={{ scale: 1.02 }}
                 >
@@ -109,15 +125,17 @@ const Contact: React.FC = () => {
 
             {/* Additional Info */}
             <div className="glass-effect rounded-lg p-6">
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Facts</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                Quick Facts
+              </h4>
               <ul className="space-y-2 text-gray-200">
                 <li className="flex items-center">
                   <MapPin className="w-4 h-4 mr-2" />
-                  Based in India, Open to Remote Work
+                  {resume.location}
                 </li>
                 <li className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  Available for Full-time Opportunities
+                  {resume.languages}
                 </li>
               </ul>
             </div>
@@ -132,12 +150,17 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="bg-white rounded-xl shadow-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h3>
-            
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              Send a Message
+            </h3>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Name *
                   </label>
                   <input
@@ -151,9 +174,12 @@ const Contact: React.FC = () => {
                     placeholder="Your Name"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email *
                   </label>
                   <input
@@ -170,7 +196,10 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Subject *
                 </label>
                 <input
@@ -186,7 +215,10 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Message *
                 </label>
                 <textarea

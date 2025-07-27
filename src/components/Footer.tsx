@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Github, Linkedin, Mail } from 'lucide-react';
+import resume from '../data/resume.json';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -16,7 +17,9 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gradient mb-2">Ashish Singh</h3>
+            <h3 className="text-2xl font-bold text-gradient mb-2">
+              {resume.name}
+            </h3>
             <p className="text-gray-400">
               Building the future, one line of code at a time.
             </p>
@@ -31,19 +34,34 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#about"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 About
               </a>
-              <a href="#skills" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#skills"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Skills
               </a>
-              <a href="#experience" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#experience"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Experience
               </a>
-              <a href="#projects" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#projects"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Projects
               </a>
-              <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#contact"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Contact
               </a>
             </div>
@@ -58,7 +76,7 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <motion.a
-              href="https://github.com/AshishBytes"
+              href={`https://${resume.social.github}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
@@ -68,7 +86,7 @@ const Footer: React.FC = () => {
               <Github size={20} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/ashishbytes"
+              href={`https://${resume.social.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
@@ -78,7 +96,7 @@ const Footer: React.FC = () => {
               <Linkedin size={20} />
             </motion.a>
             <motion.a
-              href="mailto:ashish@ashishbytes.com"
+              href={`mailto:${resume.social.email}`}
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -97,7 +115,7 @@ const Footer: React.FC = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-400 flex items-center justify-center">
-            © {currentYear} Ashish Singh. Made with{' '}
+            © {currentYear} {resume.name}. Made with{' '}
             <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" />{' '}
             and lots of coffee.
           </p>

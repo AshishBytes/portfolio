@@ -1,0 +1,110 @@
+{
+  "name": "Ashish Singh",
+  "summary": "Final-year B.Tech. CS student (May 2026) with 4+ years building distributed systems and SDE tools in C, C++,\nPython. Delivered 1M+ MAU-scale apps, cut latency 35%, and led critical system optimisations. Strong in DSA, OS,\nand networking fundamentals. Eager to grow at Amazon by building scalable, fault-tolerant solutions.",
+  "core_skills": [
+    "Languages: C, C++, Python, Java, Go (basic), Perl (basic)",
+    "Distributed Systems: Kafka, Consistent Hashing, CRDTs, Load Balancing, Microservices, Event Queues",
+    "Cloud",
+    "DevOps: Azure (AKS, Functions), GCP (GKE, Cloud Run), Docker, Terraform, GitHub Actions",
+    "ML / NLP: T5, PyTorch, TensorFlow, scikit-learn, SBERT, BLEU/ROUGE Metrics",
+    "Databases: SQLite, MySQL",
+    "Systems",
+    "Foundations: OS Internals, TCP/IP, Algorithms, Data Structures, Multithreading, Secure Coding",
+    "Soft Skills: Agile, Mentorship, Communication, Leadership, Time Management"
+  ],
+  "education": "Amity University Madhya Pradesh\nB.Tech. Computer Science & Engineering \u2013 CGPA 7.37 10 (top 15%)\nRelevant coursework: Distributed Systems, Machine Learning, Computer Networks, Operating Systems,\nDatabase Systems, Compiler Design\n\nAug 2022 \u2013 Expected May 2026\nGwalior, India",
+  "experience": [
+    {
+      "company": "HackIITK Blockchain Hackathon",
+      "role": "Team Lead & Backend Engineer",
+      "date": "Feb 2025",
+      "location": "Kanpur, India",
+      "responsibilities": [
+        "Built gas-less Solidity relayer handling 5,000+ transactions \u00a1150 ms p95; autoscaled PoC on Azure Container Apps.",
+        "Integrated Slither/MythX into DevSecOps; shipped with 0 critical issues.",
+        "Ranked 2/54 teams for reliability innovation."
+      ]
+    },
+    {
+      "company": "Reef \u2014 Distributed Discord Platform",
+      "role": "Lead Software Engineer",
+      "date": "Nov 2021 \u2013 Apr 2023",
+      "location": "Remote",
+      "responsibilities": [
+        "Designed sharded micro-services (Go, Python) on Kubernetes clusters modelled after Azure AKS, serving 1,000,000",
+        "monthly users at 99.9% uptime.",
+        "Refactored TCP stack with epoll + zero-copy; cut median latency by 34 ms.",
+        "Added SBERT semantic search; intent accuracy \u2191 from 72% to 93%.",
+        "Promoted to Lead in 4 months; mentored 3 engineers rolled CI/CD via GitHub Actions + Helm."
+      ]
+    },
+    {
+      "company": "Happy \u2014 Low-Latency Music Bot",
+      "role": "Software Engineer",
+      "date": "Feb 2020 \u2013 Jul 2021",
+      "location": "Remote",
+      "responsibilities": [
+        "Engineered Python + FFmpeg audio engine processing 500,000 commands/day; jitter \u219335%.",
+        "Adaptive Opus encoding cut bandwidth 42% (USD 220/mo).",
+        "Authored 180 PyTest cases (88% coverage) halving regression defects speeding releases 50%."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "DocQA Tutor \u2014 Summarisation & QA API",
+      "date": "Feb 2025 \u2013 Apr 2025",
+      "details": [
+        "Fine-tuned T5 on 2 M samples; ROUGE-L 43.2, BLEU 27.5. Deployed on AKS GPU pools with HPA; latency \u219347%",
+        "via App Insights."
+      ]
+    },
+    {
+      "title": "TripLedger \u2014 Offline-First Expense Tracker",
+      "date": "Aug 2024 \u2013 Dec 2024",
+      "details": [
+        "Implemented CRDT ledger sync (10 K daily tx) ensuring eventual consistency o\ufb04ine; secured APIs with mock Azure",
+        "AD B2C, blocking 100% unauthorized writes."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Microsoft Learn: Azure Fundamentals (AZ-900)",
+      "date": "Sep 2025"
+    },
+    {
+      "name": "Google Cloud Digital Leader",
+      "date": "Mar 2025"
+    },
+    {
+      "name": "Google Kick Start Round B Global Rank 432 (Top 0.8%)",
+      "date": "2024"
+    },
+    {
+      "name": "HackIITK 2025",
+      "date": "Blockchain Track Runner-up"
+    },
+    {
+      "name": "Blue Prism Foundation Developer",
+      "date": "Oct 2023"
+    }
+  ],
+  "publications": [
+    {
+      "title": "IJETAE 2024 : \u201dMobile Security \u2013 Light on Security Threats\u201d",
+      "detail": "six-layer model cut Android attack surface by 38%."
+    },
+    {
+      "title": "Springer 2024 : \u201dRose Plant Disease Detection with Edge ML\u201d",
+      "detail": "94.8% F1 and 9.2\u00d7 faster than VGG16 baseline."
+    }
+  ],
+  "social": {
+    "github": "github.com/AshishBytes",
+    "linkedin": "linkedin.com/in/ashishbytes",
+    "email": "ashishlodhi5559@gmail.com"
+  },
+  "location": "Gwalior, Madhya Pradesh, India",
+  "languages": "English (\ufb02uent) \u2014 Hindi (native)"
+}
