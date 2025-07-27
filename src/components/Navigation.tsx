@@ -59,9 +59,11 @@ const Navigation: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
 

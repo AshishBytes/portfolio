@@ -11,7 +11,7 @@ const Certifications: React.FC = () => {
       issuer: "Microsoft",
       code: "AZ-900",
       date: "2023",
-      icon: <Cloud className="w-8 h-8 text-blue-600" />,
+      icon: <Cloud className="w-8 h-8 text-blue-600" aria-hidden="true" />,
       description: "Comprehensive understanding of Azure cloud services, pricing, and support models.",
       color: "blue"
     },
@@ -20,7 +20,7 @@ const Certifications: React.FC = () => {
       issuer: "Google Cloud",
       code: "GCL-2023",
       date: "2023",
-      icon: <Star className="w-8 h-8 text-green-600" />,
+      icon: <Star className="w-8 h-8 text-green-600" aria-hidden="true" />,
       description: "Recognition for leadership in cloud computing and community contributions.",
       color: "green"
     },
@@ -29,7 +29,7 @@ const Certifications: React.FC = () => {
       issuer: "Google",
       code: "KS-2024",
       date: "2024",
-      icon: <Trophy className="w-8 h-8 text-yellow-600" />,
+      icon: <Trophy className="w-8 h-8 text-yellow-600" aria-hidden="true" />,
       description: "Top performer in Google's competitive programming challenge.",
       color: "yellow"
     },
@@ -38,7 +38,7 @@ const Certifications: React.FC = () => {
       issuer: "Amazon Web Services",
       code: "SAA-C03",
       date: "2023",
-      icon: <Award className="w-8 h-8 text-orange-600" />,
+      icon: <Award className="w-8 h-8 text-orange-600" aria-hidden="true" />,
       description: "Expertise in designing distributed systems on AWS platform.",
       color: "orange"
     }

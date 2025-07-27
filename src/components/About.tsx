@@ -7,22 +7,22 @@ import Card from './shared/Card';
 const About: React.FC = () => {
   const highlights = [
     {
-      icon: <Code className="w-8 h-8 text-blue-600" />,
+      icon: <Code className="w-8 h-8 text-blue-600" aria-hidden="true" />,
       title: "Distributed Systems",
       description: "Expert in building scalable, high-performance distributed systems with focus on reliability and efficiency."
     },
     {
-      icon: <Database className="w-8 h-8 text-green-600" />,
+      icon: <Database className="w-8 h-8 text-green-600" aria-hidden="true" />,
       title: "Backend Development",
       description: "Proficient in designing robust backend architectures using modern technologies and best practices."
     },
     {
-      icon: <Cloud className="w-8 h-8 text-purple-600" />,
+      icon: <Cloud className="w-8 h-8 text-purple-600" aria-hidden="true" />,
       title: "Cloud Technologies",
       description: "Experienced with AWS, Azure, and GCP for deploying and managing cloud-native applications."
     },
     {
-      icon: <Users className="w-8 h-8 text-orange-600" />,
+      icon: <Users className="w-8 h-8 text-orange-600" aria-hidden="true" />,
       title: "Team Leadership",
       description: "Strong leadership and mentorship skills with experience in agile development methodologies."
     }
