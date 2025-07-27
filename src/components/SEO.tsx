@@ -11,7 +11,7 @@ interface SEOProps {
 const defaultMeta = {
   title: 'Ashish Singh - Full Stack Developer',
   description:
-    'Final-Year B.Tech CSE student specializing in distributed systems and backend development.',
+    'Final-year B.Tech CS student with 4+ years building distributed systems and developer tools in C/C++/Python.',
   image: 'https://ashishbytes.com/og-image.png',
   url: 'https://ashishbytes.com',
 };

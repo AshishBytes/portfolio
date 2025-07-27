@@ -6,44 +6,45 @@ import Section from './shared/Section';
 const Experience: React.FC = () => {
   const experiences = [
     {
-      company: "Happy",
+      company: "HackIITK Blockchain Hackathon",
+      role: "Team Lead & Backend Engineer",
+      duration: "Feb 2025",
+      location: "Kanpur, India",
+      icon: <Search className="w-6 h-6" />,
+      achievements: [
+        "Built gas‑less Solidity relayer handling 5k+ tx under 150ms p95 and autoscaled on Azure Container Apps",
+        "Integrated Slither/MythX in DevSecOps pipeline with zero critical issues",
+        "Ranked 2/54 teams for reliability innovation",
+      ],
+      technologies: ["Solidity", "Azure", "Docker"],
+    },
+    {
+      company: "Reef — Distributed Discord Platform",
+      role: "Lead Software Engineer",
+      duration: "Nov 2021 – Apr 2023",
+      location: "Remote",
+      icon: <Users className="w-6 h-6" />,
+      achievements: [
+        "Designed sharded microservices on Kubernetes serving 1M monthly users at 99.9% uptime",
+        "Refactored TCP stack with epoll and zero‑copy cutting median latency by 34ms",
+        "Added SBERT semantic search; intent accuracy increased from 72% to 93%",
+        "Mentored three engineers and rolled CI/CD via GitHub Actions and Helm",
+      ],
+      technologies: ["Go", "Python", "Kubernetes", "GitHub Actions"],
+    },
+    {
+      company: "Happy — Low-Latency Music Bot",
       role: "Software Engineer",
-      duration: "2023 - Present",
+      duration: "Feb 2020 – Jul 2021",
       location: "Remote",
       icon: <TrendingUp className="w-6 h-6" />,
       achievements: [
-        "Improved system latency by 40% through optimization of distributed algorithms",
-        "Led a team of 5 developers in implementing microservices architecture",
-        "Reduced deployment time by 60% using automated CI/CD pipelines"
+        "Engineered Python + FFmpeg audio engine processing 500k commands/day; jitter reduced 35%",
+        "Adaptive Opus encoding cut bandwidth 42% (USD 220/mo)",
+        "Authored 180 PyTest cases (88% coverage) halving regression defects and speeding releases 50%",
       ],
-      technologies: ["Go", "Docker", "Kubernetes", "AWS"]
+      technologies: ["Python", "FFmpeg", "PyTest"],
     },
-    {
-      company: "Reef",
-      role: "Backend Developer",
-      duration: "2022 - 2023",
-      location: "Bangalore, India",
-      icon: <Users className="w-6 h-6" />,
-      achievements: [
-        "Built scalable backend systems serving 1M+ active users",
-        "Implemented real-time data processing pipelines using Kafka",
-        "Optimized database queries resulting in 50% faster response times"
-      ],
-      technologies: ["Python", "Django", "PostgreSQL", "Redis"]
-    },
-    {
-      company: "HackIITK",
-      role: "Technical Lead",
-      duration: "2021 - 2022",
-      location: "IIT Kanpur",
-      icon: <Search className="w-6 h-6" />,
-      achievements: [
-        "Developed semantic search system with 95% accuracy using NLP",
-        "Mentored 20+ participants in machine learning workshops",
-        "Achieved 30% improvement in search relevance using SBERT"
-      ],
-      technologies: ["Python", "PyTorch", "SBERT", "Elasticsearch"]
-    }
   ];
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Globe, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
 import Section from './shared/Section';
 import Button from './shared/Button';
 
@@ -39,14 +39,8 @@ const Contact: React.FC = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       label: "Email",
-      value: "ashish@ashishbytes.com",
-      href: "mailto:ashish@ashishbytes.com"
-    },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      label: "Website",
-      value: "www.ashishbytes.com",
-      href: "https://www.ashishbytes.com"
+      value: "ashishlodhi5559@gmail.com",
+      href: "mailto:ashishlodhi5559@gmail.com",
     },
     {
       icon: <Github className="w-6 h-6" />,
@@ -113,11 +107,11 @@ const Contact: React.FC = () => {
               <ul className="space-y-2 text-gray-200">
                 <li className="flex items-center">
                   <MapPin className="w-4 h-4 mr-2" />
-                  Based in India, Open to Remote Work
+                  Gwalior, Madhya Pradesh, India
                 </li>
                 <li className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
-                  Available for Full-time Opportunities
+                  Languages: English, Hindi
                 </li>
               </ul>
             </div>

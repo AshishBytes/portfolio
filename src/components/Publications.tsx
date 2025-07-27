@@ -8,49 +8,33 @@ import Button from './shared/Button';
 const Publications: React.FC = () => {
   const publications = [
     {
-      title:
-        'Advanced Semantic Search Techniques for Document Retrieval Systems',
-      authors: 'Ashish Singh, Dr. Priya Sharma, Dr. Rajesh Kumar',
-      publisher:
-        'International Journal of Emerging Technologies and Applications in Engineering (IJETAE)',
+      title: 'Mobile Security – Light on Security Threats',
+      authors: 'Ashish Singh',
+      publisher: 'IJETAE',
       year: '2024',
       type: 'Journal Article',
       metrics: {
-        f1Score: '0.92',
-        accuracy: '94.5%',
-        citations: '12',
+        attackSurfaceReduction: '38%',
       },
       abstract:
-        'This paper presents novel approaches to semantic search in large document corpora using transformer-based models and advanced NLP techniques. We demonstrate significant improvements in search relevance and user satisfaction.',
-      keywords: [
-        'Semantic Search',
-        'NLP',
-        'Transformers',
-        'Information Retrieval',
-      ],
-      url: 'https://ijetae.com/files/Volume11Issue3/IJETAE_0324_15.pdf',
+        'Proposed a six‑layer mobile security model reducing Android attack surface by 38%.',
+      keywords: ['Mobile Security', 'Android'],
+      url: '',
     },
     {
-      title:
-        'Security Enhancement in Distributed Systems: A Machine Learning Approach',
-      authors: 'Ashish Singh, Dr. Amit Verma, Dr. Neha Gupta',
-      publisher: 'Springer Nature - Lecture Notes in Computer Science',
-      year: '2023',
+      title: 'Rose Plant Disease Detection with Edge ML',
+      authors: 'Ashish Singh',
+      publisher: 'Springer',
+      year: '2024',
       type: 'Conference Paper',
       metrics: {
-        securityImprovement: '35%',
-        falsePositiveReduction: '28%',
-        citations: '8',
+        f1: '94.8%',
+        speedup: '9.2x',
       },
       abstract:
-        'We propose a machine learning-based framework for enhancing security in distributed systems by predicting and preventing potential vulnerabilities. Our approach shows significant improvements in threat detection accuracy.',
-      keywords: [
-        'Distributed Systems',
-        'Machine Learning',
-        'Cybersecurity',
-        'Threat Detection',
-      ],
-      url: 'https://link.springer.com/chapter/10.1007/978-3-031-12345-67_89',
+        'Edge-based convolutional model achieving 94.8% F1 and 9.2× faster than VGG16 baseline.',
+      keywords: ['Computer Vision', 'Edge ML'],
+      url: '',
     },
   ];
 

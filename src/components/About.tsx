@@ -9,22 +9,24 @@ const About: React.FC = () => {
     {
       icon: <Code className="w-8 h-8 text-blue-600" />,
       title: "Distributed Systems",
-      description: "Expert in building scalable, high-performance distributed systems with focus on reliability and efficiency."
+      description:
+        "Built and optimized services handling over one million monthly users."
     },
     {
       icon: <Database className="w-8 h-8 text-green-600" />,
-      title: "Backend Development",
-      description: "Proficient in designing robust backend architectures using modern technologies and best practices."
+      title: "Performance Tuning",
+      description: "Reduced service latency by 35% through low-level profiling."
     },
     {
       icon: <Cloud className="w-8 h-8 text-purple-600" />,
-      title: "Cloud Technologies",
-      description: "Experienced with AWS, Azure, and GCP for deploying and managing cloud-native applications."
+      title: "DevOps & Cloud",
+      description:
+        "Experienced with Azure AKS, GKE, Docker and Terraform deployments."
     },
     {
       icon: <Users className="w-8 h-8 text-orange-600" />,
-      title: "Team Leadership",
-      description: "Strong leadership and mentorship skills with experience in agile development methodologies."
+      title: "Mentorship",
+      description: "Led small engineering teams and promoted best practices."
     }
   ];
 
@@ -45,22 +47,17 @@ const About: React.FC = () => {
         >
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 mb-6">
-              I'm a final-year B.Tech Computer Science student with a passion for distributed systems 
-              and backend development. My journey in software engineering has been marked by hands-on 
-              experience with Amazon-scale projects and a deep understanding of system design principles.
+              Final-year B.Tech. CS student (graduating May 2026) with over four
+              years of experience building distributed systems and developer
+              tooling in C, C++ and Python.
             </p>
-            
-            <p className="text-gray-700 mb-6">
-              Throughout my academic and professional journey, I've developed expertise in building 
-              scalable systems, optimizing performance, and leading development teams. My experience 
-              spans from improving system latencies by significant margins to impacting millions of users 
-              through innovative solutions.
-            </p>
-            
+
             <p className="text-gray-700 mb-8">
-              I'm actively seeking opportunities in top-tier software engineering roles where I can 
-              contribute to building the next generation of distributed systems and continue growing 
-              as a technical leader.
+              Delivered applications serving more than one million monthly
+              users, cut service latency by 35% and led key system
+              optimisations. Strong foundation in algorithms, operating
+              systems and networking. Excited to craft fault‑tolerant
+              solutions at scale.
             </p>
 
             <div className="flex flex-wrap gap-3">

@@ -7,41 +7,50 @@ import Card from './shared/Card';
 const Certifications: React.FC = () => {
   const certifications = [
     {
-      title: "Microsoft Azure Fundamentals",
+      title: "Microsoft Learn: Azure Fundamentals",
       issuer: "Microsoft",
       code: "AZ-900",
-      date: "2023",
+      date: "Sep 2025",
       icon: <Cloud className="w-8 h-8 text-blue-600" />,
-      description: "Comprehensive understanding of Azure cloud services, pricing, and support models.",
-      color: "blue"
+      description: "Validated knowledge of core Azure services and governance.",
+      color: "blue",
     },
     {
-      title: "Google Cloud Leader",
+      title: "Google Cloud Digital Leader",
       issuer: "Google Cloud",
-      code: "GCL-2023",
-      date: "2023",
+      code: "GCDL",
+      date: "Mar 2025",
       icon: <Star className="w-8 h-8 text-green-600" />,
-      description: "Recognition for leadership in cloud computing and community contributions.",
-      color: "green"
+      description: "Demonstrated broad understanding of cloud capabilities.",
+      color: "green",
     },
     {
-      title: "Kick Start 2024",
+      title: "Google Kick Start Round B",
       issuer: "Google",
-      code: "KS-2024",
+      code: "Top 0.8%",
       date: "2024",
       icon: <Trophy className="w-8 h-8 text-yellow-600" />,
-      description: "Top performer in Google's competitive programming challenge.",
-      color: "yellow"
+      description: "Global rank 432 in Google's coding challenge.",
+      color: "yellow",
     },
     {
-      title: "AWS Solutions Architect",
-      issuer: "Amazon Web Services",
-      code: "SAA-C03",
-      date: "2023",
+      title: "HackIITK 2025 Runner-up",
+      issuer: "IIT Kanpur",
+      code: "Blockchain Track",
+      date: "2025",
+      icon: <Award className="w-8 h-8 text-purple-600" />,
+      description: "Recognised for reliability innovation at HackIITK.",
+      color: "purple",
+    },
+    {
+      title: "Blue Prism Foundation Developer",
+      issuer: "Blue Prism",
+      code: "BPD",
+      date: "Oct 2023",
       icon: <Award className="w-8 h-8 text-orange-600" />,
-      description: "Expertise in designing distributed systems on AWS platform.",
-      color: "orange"
-    }
+      description: "Certified in fundamental RPA development skills.",
+      color: "orange",
+    },
   ];
 
   const getColorClasses = (color: string) => {
@@ -49,7 +58,8 @@ const Certifications: React.FC = () => {
       blue: "from-blue-500 to-blue-600",
       green: "from-green-500 to-green-600",
       yellow: "from-yellow-500 to-yellow-600",
-      orange: "from-orange-500 to-orange-600"
+      orange: "from-orange-500 to-orange-600",
+      purple: "from-purple-500 to-purple-600",
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.blue;
   };
