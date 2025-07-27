@@ -36,8 +36,12 @@ const Hero: React.FC = () => {
             animate={{ scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="w-32 h-32 mx-auto rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 flex items-center justify-center">
-              <span className="text-4xl font-bold text-white">AS</span>
+            <div className="w-32 h-32 mx-auto rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 overflow-hidden">
+              <img 
+                src="/profile-image.jpeg" 
+                alt="Ashish Singh aka AshishBytes" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
 
