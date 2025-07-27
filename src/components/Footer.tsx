@@ -61,29 +61,32 @@ const Footer: React.FC = () => {
               href="https://github.com/AshishBytes"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Github size={20} />
+              <Github size={20} aria-hidden="true" />
             </motion.a>
             <motion.a
               href="https://linkedin.com/in/ashishbytes"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Linkedin size={20} />
+              <Linkedin size={20} aria-hidden="true" />
             </motion.a>
             <motion.a
               href="mailto:ashish@ashishbytes.com"
+              aria-label="Email"
               className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-all duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Mail size={20} />
+              <Mail size={20} aria-hidden="true" />
             </motion.a>
           </motion.div>
         </div>

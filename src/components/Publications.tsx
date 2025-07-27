@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, TrendingUp } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 import Button from './shared/Button';
@@ -52,7 +52,7 @@ const Publications: React.FC = () => {
               {/* Left Column - Publication Icon and Type */}
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white mb-4">
-                  <BookOpen className="w-8 h-8" />
+                  <BookOpen className="w-8 h-8" aria-hidden="true" />
                 </div>
                 <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
                   {pub.type}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
@@ -19,7 +18,7 @@ const Projects: React.FC = () => {
       ],
       githubUrl: "https://github.com/AshishBytes/docqa-tutor",
       liveUrl: "https://docqa-tutor.ashishbytes.com",
-      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800"
+      image: "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800&format=webp"
     },
     {
       title: "TripLedger",
@@ -33,7 +32,7 @@ const Projects: React.FC = () => {
       ],
       githubUrl: "https://github.com/AshishBytes/tripledger",
       liveUrl: "https://tripledger.ashishbytes.com",
-      image: "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=800"
+      image: "https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=800&format=webp"
     }
   ];
 
@@ -50,7 +49,9 @@ const Projects: React.FC = () => {
             <div className="relative overflow-hidden rounded-lg mb-6">
               <img
                 src={project.image}
-                alt={project.title}
+                alt={`Screenshot of ${project.title}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

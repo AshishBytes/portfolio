@@ -68,12 +68,15 @@ src/
    npm install
    ```
 
-3. **Start development server**
+3. **Configure Analytics (optional)**
+   Copy `.env.example` to `.env` and set `VITE_GA_ID` with your Google Analytics ID.
+
+4. **Start development server**
    ```bash
    npm run dev
    ```
 
-4. **Build for production**
+5. **Build for production**
    ```bash
    npm run build
    ```
