@@ -1,5 +1,8 @@
 # Ashish Singh - Portfolio Website
 
+[![Netlify Status](https://img.shields.io/badge/deployed-success-brightgreen)](https://ashishbytes.netlify.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS, showcasing the professional journey of Ashish Singh, a Final-Year B.Tech CSE student specializing in distributed systems and backend development.
 
 ## 🚀 Features
@@ -58,17 +61,20 @@ src/
 ## 🚀 Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/AshishBytes/portfolio.git
    cd portfolio
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -81,6 +87,7 @@ src/
 ## 📱 Responsive Design
 
 The website is built with a mobile-first approach and includes:
+
 - Responsive navigation with hamburger menu
 - Flexible grid layouts
 - Optimized typography for different screen sizes

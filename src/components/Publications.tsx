@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, TrendingUp } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 import Button from './shared/Button';
@@ -8,35 +8,50 @@ import Button from './shared/Button';
 const Publications: React.FC = () => {
   const publications = [
     {
-      title: "Advanced Semantic Search Techniques for Document Retrieval Systems",
-      authors: "Ashish Singh, Dr. Priya Sharma, Dr. Rajesh Kumar",
-      publisher: "International Journal of Emerging Technologies and Applications in Engineering (IJETAE)",
-      year: "2024",
-      type: "Journal Article",
+      title:
+        'Advanced Semantic Search Techniques for Document Retrieval Systems',
+      authors: 'Ashish Singh, Dr. Priya Sharma, Dr. Rajesh Kumar',
+      publisher:
+        'International Journal of Emerging Technologies and Applications in Engineering (IJETAE)',
+      year: '2024',
+      type: 'Journal Article',
       metrics: {
-        f1Score: "0.92",
-        accuracy: "94.5%",
-        citations: "12"
+        f1Score: '0.92',
+        accuracy: '94.5%',
+        citations: '12',
       },
-      abstract: "This paper presents novel approaches to semantic search in large document corpora using transformer-based models and advanced NLP techniques. We demonstrate significant improvements in search relevance and user satisfaction.",
-      keywords: ["Semantic Search", "NLP", "Transformers", "Information Retrieval"],
-      url: "https://ijetae.com/files/Volume11Issue3/IJETAE_0324_15.pdf"
+      abstract:
+        'This paper presents novel approaches to semantic search in large document corpora using transformer-based models and advanced NLP techniques. We demonstrate significant improvements in search relevance and user satisfaction.',
+      keywords: [
+        'Semantic Search',
+        'NLP',
+        'Transformers',
+        'Information Retrieval',
+      ],
+      url: 'https://ijetae.com/files/Volume11Issue3/IJETAE_0324_15.pdf',
     },
     {
-      title: "Security Enhancement in Distributed Systems: A Machine Learning Approach",
-      authors: "Ashish Singh, Dr. Amit Verma, Dr. Neha Gupta",
-      publisher: "Springer Nature - Lecture Notes in Computer Science",
-      year: "2023",
-      type: "Conference Paper",
+      title:
+        'Security Enhancement in Distributed Systems: A Machine Learning Approach',
+      authors: 'Ashish Singh, Dr. Amit Verma, Dr. Neha Gupta',
+      publisher: 'Springer Nature - Lecture Notes in Computer Science',
+      year: '2023',
+      type: 'Conference Paper',
       metrics: {
-        securityImprovement: "35%",
-        falsePositiveReduction: "28%",
-        citations: "8"
+        securityImprovement: '35%',
+        falsePositiveReduction: '28%',
+        citations: '8',
       },
-      abstract: "We propose a machine learning-based framework for enhancing security in distributed systems by predicting and preventing potential vulnerabilities. Our approach shows significant improvements in threat detection accuracy.",
-      keywords: ["Distributed Systems", "Machine Learning", "Cybersecurity", "Threat Detection"],
-      url: "https://link.springer.com/chapter/10.1007/978-3-031-12345-67_89"
-    }
+      abstract:
+        'We propose a machine learning-based framework for enhancing security in distributed systems by predicting and preventing potential vulnerabilities. Our approach shows significant improvements in threat detection accuracy.',
+      keywords: [
+        'Distributed Systems',
+        'Machine Learning',
+        'Cybersecurity',
+        'Threat Detection',
+      ],
+      url: 'https://link.springer.com/chapter/10.1007/978-3-031-12345-67_89',
+    },
   ];
 
   return (
@@ -89,8 +104,13 @@ const Publications: React.FC = () => {
                 {/* Metrics */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
                   {Object.entries(pub.metrics).map(([key, value]) => (
-                    <div key={key} className="text-center p-3 bg-gray-50 rounded-lg">
-                      <div className="text-lg font-bold text-blue-600">{value}</div>
+                    <div
+                      key={key}
+                      className="text-center p-3 bg-gray-50 rounded-lg"
+                    >
+                      <div className="text-lg font-bold text-blue-600">
+                        {value}
+                      </div>
                       <div className="text-sm text-gray-600 capitalize">
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </div>
