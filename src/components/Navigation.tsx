@@ -24,7 +24,9 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <motion.nav
+    <>
+      <a href="#main" className="skip-link">Skip to content</a>
+      <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
@@ -60,8 +62,10 @@ const Navigation: React.FC = () => {
           <button
             className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
 
@@ -91,7 +95,8 @@ const Navigation: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 };
 

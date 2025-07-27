@@ -37,25 +37,25 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-6 h-6" aria-hidden="true" />,
       label: "Email",
       value: "ashish@ashishbytes.com",
       href: "mailto:ashish@ashishbytes.com"
     },
     {
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Globe className="w-6 h-6" aria-hidden="true" />,
       label: "Website",
       value: "www.ashishbytes.com",
       href: "https://www.ashishbytes.com"
     },
     {
-      icon: <Github className="w-6 h-6" />,
+      icon: <Github className="w-6 h-6" aria-hidden="true" />,
       label: "GitHub",
       value: "AshishBytes",
       href: "https://github.com/AshishBytes"
     },
     {
-      icon: <Linkedin className="w-6 h-6" />,
+      icon: <Linkedin className="w-6 h-6" aria-hidden="true" />,
       label: "LinkedIn",
       value: "ashishbytes",
       href: "https://linkedin.com/in/ashishbytes"
