@@ -1,0 +1,27 @@
+name: Generate sitemap
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run generate:sitemap
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: 'public/sitemap.xml'
+          message: 'chore: update sitemap'
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          branch: sitemap-update
+          title: 'chore: update sitemap'
+          body: 'Automated update of sitemap.xml'
+          commit-message: 'chore: update sitemap'
