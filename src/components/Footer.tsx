@@ -20,6 +20,8 @@ const Footer: React.FC = () => {
             <p className="text-gray-400">
               Building the future, one line of code at a time.
             </p>
+            <p className="text-gray-500 text-sm mt-2">Gwalior, Madhya Pradesh, India</p>
+            <p className="text-gray-500 text-sm">Languages: English, Hindi</p>
           </motion.div>
 
           {/* Center - Quick Links */}

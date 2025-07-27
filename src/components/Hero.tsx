@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Final-Year B.Tech. CSE Student | Systems & Backend Enthusiast
+            Final-year CS student building distributed systems &amp; developer tools
           </motion.p>
 
           {/* CTA Buttons */}

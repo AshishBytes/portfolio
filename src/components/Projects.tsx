@@ -9,40 +9,34 @@ const Projects: React.FC = () => {
     {
       title: 'DocQA Tutor',
       description:
-        'An intelligent document question-answering system that uses advanced NLP techniques to provide accurate answers from uploaded documents. Built with T5 transformer model and semantic search capabilities.',
+        'Summarisation and question answering API built on a fine‑tuned T5 model.',
       icon: <MessageSquare className="w-8 h-8 text-blue-600" />,
-      technologies: ['Python', 'T5', 'PyTorch', 'SBERT', 'FastAPI', 'React'],
+      technologies: ['Python', 'T5', 'PyTorch', 'FastAPI'],
       achievements: [
-        'Achieved 92% accuracy in document comprehension tasks',
-        'Processed 10,000+ documents with sub-second response times',
-        'Implemented semantic search with BLEU score of 0.85',
+        'Fine‑tuned on 2M samples achieving ROUGE‑L 43.2 and BLEU 27.5',
+        'Deployed to AKS GPU pools with HPA; latency reduced 47% via App Insights',
       ],
       githubUrl: 'https://github.com/AshishBytes/docqa-tutor',
-      liveUrl: 'https://docqa-tutor.ashishbytes.com',
+      liveUrl: undefined,
       image:
         'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
+      timeframe: 'Feb 2025 – Apr 2025',
     },
     {
       title: 'TripLedger',
       description:
-        'A comprehensive expense tracking application for travelers with real-time currency conversion, group expense splitting, and detailed analytics. Features offline support and multi-platform synchronization.',
+        'Offline-first expense tracker with CRDT-based ledger sync.',
       icon: <DollarSign className="w-8 h-8 text-green-600" />,
-      technologies: [
-        'React Native',
-        'Node.js',
-        'MongoDB',
-        'Express',
-        'Socket.io',
-      ],
+      technologies: ['React Native', 'Node.js', 'Azure', 'SQLite'],
       achievements: [
-        'Supports 150+ currencies with real-time exchange rates',
-        'Handles group expenses for up to 50 participants',
-        'Offline-first architecture with 99.9% data sync reliability',
+        'Ensured eventual consistency for 10k daily transactions using CRDTs',
+        'Secured APIs with mock Azure AD B2C blocking 100% unauthorised writes',
       ],
       githubUrl: 'https://github.com/AshishBytes/tripledger',
-      liveUrl: 'https://tripledger.ashishbytes.com',
+      liveUrl: undefined,
       image:
         'https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=800',
+      timeframe: 'Aug 2024 – Dec 2024',
     },
   ];
 
@@ -66,12 +60,15 @@ const Projects: React.FC = () => {
             </div>
 
             {/* Project Content */}
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-2">
               {project.icon}
               <h3 className="text-2xl font-bold text-gray-800 ml-3">
                 {project.title}
               </h3>
             </div>
+            {project.timeframe && (
+              <p className="text-sm text-gray-500 mb-4 ml-11">{project.timeframe}</p>
+            )}
 
             <p className="text-gray-600 mb-6 leading-relaxed">
               {project.description}

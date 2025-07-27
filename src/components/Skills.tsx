@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Wrench, Brain, Users } from 'lucide-react';
+import { Code, Wrench, Brain, Cloud, Users } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 
@@ -8,28 +8,56 @@ const Skills: React.FC = () => {
   const skillCategories = [
     {
       icon: <Code className="w-8 h-8 text-blue-600" />,
-      title: "Programming Languages",
+      title: "Languages",
       skills: ["C", "C++", "Python", "Java", "Go", "Perl"],
-      color: "blue"
+      color: "blue",
     },
     {
       icon: <Wrench className="w-8 h-8 text-green-600" />,
-      title: "Tools & Technologies",
-      skills: ["Docker", "Azure", "GCP", "Kafka", "Terraform"],
-      color: "green"
+      title: "Tools",
+      skills: [
+        "Kafka",
+        "Consistent Hashing",
+        "CRDTs",
+        "Load Balancing",
+        "Microservices",
+        "Event Queues",
+        "SQLite",
+        "MySQL",
+      ],
+      color: "green",
     },
     {
       icon: <Brain className="w-8 h-8 text-purple-600" />,
-      title: "ML/NLP",
-      skills: ["T5", "PyTorch", "SBERT", "BLEU", "ROUGE"],
-      color: "purple"
+      title: "AI / ML",
+      skills: [
+        "T5",
+        "PyTorch",
+        "TensorFlow",
+        "scikit-learn",
+        "SBERT",
+        "BLEU/ROUGE",
+      ],
+      color: "purple",
+    },
+    {
+      icon: <Cloud className="w-8 h-8 text-teal-600" />,
+      title: "DevOps",
+      skills: [
+        "Azure (AKS, Functions)",
+        "GCP (GKE, Cloud Run)",
+        "Docker",
+        "Terraform",
+        "GitHub Actions",
+      ],
+      color: "teal",
     },
     {
       icon: <Users className="w-8 h-8 text-orange-600" />,
       title: "Soft Skills",
-      skills: ["Agile", "Mentorship", "Leadership", "Time Management"],
-      color: "orange"
-    }
+      skills: ["Agile", "Mentorship", "Communication", "Leadership", "Time Management"],
+      color: "orange",
+    },
   ];
 
   const getColorClasses = (color: string) => {
@@ -37,7 +65,8 @@ const Skills: React.FC = () => {
       blue: "bg-blue-50 text-blue-700 border-blue-200",
       green: "bg-green-50 text-green-700 border-green-200",
       purple: "bg-purple-50 text-purple-700 border-purple-200",
-      orange: "bg-orange-50 text-orange-700 border-orange-200"
+      orange: "bg-orange-50 text-orange-700 border-orange-200",
+      teal: "bg-teal-50 text-teal-700 border-teal-200",
     };
     return colorMap[color as keyof typeof colorMap] || colorMap.blue;
   };
