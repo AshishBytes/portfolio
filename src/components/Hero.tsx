@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
               variant="secondary"
               size="lg"
               onClick={handleDownloadResume}
-              icon={<Download size={20} />}
+              icon={<Download size={20} aria-hidden="true" />}
               className="glass-effect border-white/30 text-white hover:bg-white/20"
             >
               Download Resume
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
               variant="outline"
               size="lg"
               href="#contact"
-              icon={<Mail size={20} />}
+              icon={<Mail size={20} aria-hidden="true" />}
               className="border-white/50 text-white hover:bg-white/10"
             >
               Contact Me
@@ -99,21 +99,23 @@ const Hero: React.FC = () => {
               href="https://github.com/AshishBytes"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="text-white/80 hover:text-white transition-colors duration-300"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Github size={24} />
+              <Github size={24} aria-hidden="true" />
             </motion.a>
             <motion.a
               href="https://linkedin.com/in/ashishbytes"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="text-white/80 hover:text-white transition-colors duration-300"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Linkedin size={24} />
+              <Linkedin size={24} aria-hidden="true" />
             </motion.a>
           </motion.div>
         </motion.div>

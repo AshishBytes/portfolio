@@ -37,25 +37,25 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-6 h-6" aria-hidden="true" />,
       label: "Email",
       value: "ashish@ashishbytes.com",
       href: "mailto:ashish@ashishbytes.com"
     },
     {
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Globe className="w-6 h-6" aria-hidden="true" />,
       label: "Website",
       value: "www.ashishbytes.com",
       href: "https://www.ashishbytes.com"
     },
     {
-      icon: <Github className="w-6 h-6" />,
+      icon: <Github className="w-6 h-6" aria-hidden="true" />,
       label: "GitHub",
       value: "AshishBytes",
       href: "https://github.com/AshishBytes"
     },
     {
-      icon: <Linkedin className="w-6 h-6" />,
+      icon: <Linkedin className="w-6 h-6" aria-hidden="true" />,
       label: "LinkedIn",
       value: "ashishbytes",
       href: "https://linkedin.com/in/ashishbytes"
@@ -93,10 +93,11 @@ const Contact: React.FC = () => {
                   href={info.href}
                   target={info.href.startsWith('http') ? '_blank' : undefined}
                   rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  aria-label={info.label}
                   className="flex items-center p-4 glass-effect rounded-lg hover:bg-white/20 transition-all duration-300 group"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="text-white group-hover:text-blue-200 transition-colors duration-300">
+                  <div className="text-white group-hover:text-blue-200 transition-colors duration-300" aria-hidden="true">
                     {info.icon}
                   </div>
                   <div className="ml-4">
@@ -112,11 +113,11 @@ const Contact: React.FC = () => {
               <h4 className="text-lg font-semibold text-white mb-4">Quick Facts</h4>
               <ul className="space-y-2 text-gray-200">
                 <li className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2" />
+                  <MapPin className="w-4 h-4 mr-2" aria-hidden="true" />
                   Based in India, Open to Remote Work
                 </li>
                 <li className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2" />
+                  <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
                   Available for Full-time Opportunities
                 </li>
               </ul>
@@ -206,7 +207,7 @@ const Contact: React.FC = () => {
                 variant="primary"
                 size="lg"
                 className="w-full"
-                icon={<Send size={20} />}
+                icon={<Send size={20} aria-hidden="true" />}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
