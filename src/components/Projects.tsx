@@ -3,48 +3,19 @@ import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 import Button from './shared/Button';
+import resume from '../data/resume.json';
 
 const Projects: React.FC = () => {
-  const projects = [
-    {
-      title: 'DocQA Tutor',
-      description:
-        'An intelligent document question-answering system that uses advanced NLP techniques to provide accurate answers from uploaded documents. Built with T5 transformer model and semantic search capabilities.',
-      icon: <MessageSquare className="w-8 h-8 text-blue-600" />,
-      technologies: ['Python', 'T5', 'PyTorch', 'SBERT', 'FastAPI', 'React'],
-      achievements: [
-        'Achieved 92% accuracy in document comprehension tasks',
-        'Processed 10,000+ documents with sub-second response times',
-        'Implemented semantic search with BLEU score of 0.85',
-      ],
-      githubUrl: 'https://github.com/AshishBytes/docqa-tutor',
-      liveUrl: 'https://docqa-tutor.ashishbytes.com',
-      image:
-        'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      title: 'TripLedger',
-      description:
-        'A comprehensive expense tracking application for travelers with real-time currency conversion, group expense splitting, and detailed analytics. Features offline support and multi-platform synchronization.',
-      icon: <DollarSign className="w-8 h-8 text-green-600" />,
-      technologies: [
-        'React Native',
-        'Node.js',
-        'MongoDB',
-        'Express',
-        'Socket.io',
-      ],
-      achievements: [
-        'Supports 150+ currencies with real-time exchange rates',
-        'Handles group expenses for up to 50 participants',
-        'Offline-first architecture with 99.9% data sync reliability',
-      ],
-      githubUrl: 'https://github.com/AshishBytes/tripledger',
-      liveUrl: 'https://tripledger.ashishbytes.com',
-      image:
-        'https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-  ];
+  const projects = (resume.projects as any[]).map((p) => ({
+    title: p.title,
+    description: '',
+    icon: <MessageSquare className="w-8 h-8 text-blue-600" />,
+    technologies: [],
+    achievements: p.details,
+    githubUrl: '#',
+    liveUrl: '#',
+    image: '',
+  }));
 
   return (
     <Section

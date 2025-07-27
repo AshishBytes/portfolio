@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Github, Linkedin } from 'lucide-react';
 import Button from './shared/Button';
+import resume from '../data/resume.json';
 
 const Hero: React.FC = () => {
   const handleDownloadResume = () => {
@@ -15,11 +16,17 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden"
+    >
       {/* Background Animation */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl floating-animation"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl floating-animation" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl floating-animation"
+          style={{ animationDelay: '2s' }}
+        ></div>
       </div>
 
       <div className="container mx-auto px-4 text-center relative z-10">
@@ -37,9 +44,9 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="w-32 h-32 mx-auto rounded-full bg-white/20 backdrop-blur-sm border-4 border-white/30 overflow-hidden">
-              <img 
-                src="/profile-image.jpeg" 
-                alt="Ashish Singh aka AshishBytes" 
+              <img
+                src="/profile-image.jpeg"
+                alt={resume.name + ' aka AshishBytes'}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -52,7 +59,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Ashish Singh
+            {resume.name}
           </motion.h1>
 
           {/* Tagline */}
@@ -62,7 +69,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Final-Year B.Tech. CSE Student | Systems & Backend Enthusiast
+            {resume.summary.split('\n')[0]}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -100,7 +107,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <motion.a
-              href="https://github.com/AshishBytes"
+              href={`https://${resume.social.github}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/80 hover:text-white transition-colors duration-300"
@@ -110,7 +117,7 @@ const Hero: React.FC = () => {
               <Github size={24} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/ashishbytes"
+              href={`https://${resume.social.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/80 hover:text-white transition-colors duration-300"

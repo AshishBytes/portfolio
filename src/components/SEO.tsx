@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import resume from '../data/resume.json';
 
 interface SEOProps {
   title?: string;
@@ -9,9 +10,8 @@ interface SEOProps {
 }
 
 const defaultMeta = {
-  title: 'Ashish Singh - Full Stack Developer',
-  description:
-    'Final-Year B.Tech CSE student specializing in distributed systems and backend development.',
+  title: `${resume.name} - Full Stack Developer`,
+  description: resume.summary.split('\n')[0],
   image: 'https://ashishbytes.com/og-image.png',
   url: 'https://ashishbytes.com',
 };
@@ -34,11 +34,11 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, url }) => {
         {JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: 'Ashish Singh',
+          name: resume.name,
           url: meta.url,
           sameAs: [
-            'https://github.com/AshishBytes',
-            'https://linkedin.com/in/ashishbytes',
+            `https://${resume.social.github}`,
+            `https://${resume.social.linkedin}`,
           ],
         })}
       </script>

@@ -2,49 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, TrendingUp, Users, Search } from 'lucide-react';
 import Section from './shared/Section';
+import resume from '../data/resume.json';
 
 const Experience: React.FC = () => {
-  const experiences = [
-    {
-      company: "Happy",
-      role: "Software Engineer",
-      duration: "2023 - Present",
-      location: "Remote",
-      icon: <TrendingUp className="w-6 h-6" />,
-      achievements: [
-        "Improved system latency by 40% through optimization of distributed algorithms",
-        "Led a team of 5 developers in implementing microservices architecture",
-        "Reduced deployment time by 60% using automated CI/CD pipelines"
-      ],
-      technologies: ["Go", "Docker", "Kubernetes", "AWS"]
-    },
-    {
-      company: "Reef",
-      role: "Backend Developer",
-      duration: "2022 - 2023",
-      location: "Bangalore, India",
-      icon: <Users className="w-6 h-6" />,
-      achievements: [
-        "Built scalable backend systems serving 1M+ active users",
-        "Implemented real-time data processing pipelines using Kafka",
-        "Optimized database queries resulting in 50% faster response times"
-      ],
-      technologies: ["Python", "Django", "PostgreSQL", "Redis"]
-    },
-    {
-      company: "HackIITK",
-      role: "Technical Lead",
-      duration: "2021 - 2022",
-      location: "IIT Kanpur",
-      icon: <Search className="w-6 h-6" />,
-      achievements: [
-        "Developed semantic search system with 95% accuracy using NLP",
-        "Mentored 20+ participants in machine learning workshops",
-        "Achieved 30% improvement in search relevance using SBERT"
-      ],
-      technologies: ["Python", "PyTorch", "SBERT", "Elasticsearch"]
-    }
-  ];
+  const experiences = (resume.experience as any[]).map((exp) => ({
+    company: exp.company,
+    role: exp.role,
+    duration: exp.date,
+    location: exp.location,
+    icon: <TrendingUp className="w-6 h-6" />,
+    achievements: exp.responsibilities,
+    technologies: [],
+  }));
 
   return (
     <Section
@@ -68,9 +37,11 @@ const Experience: React.FC = () => {
               viewport={{ once: true }}
             >
               {/* Timeline Dot */}
-              <div className={`absolute top-6 ${
-                index % 2 === 0 ? 'md:-left-6' : 'md:-right-6'
-              } left-4 md:left-auto w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white z-10`}>
+              <div
+                className={`absolute top-6 ${
+                  index % 2 === 0 ? 'md:-left-6' : 'md:-right-6'
+                } left-4 md:left-auto w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white z-10`}
+              >
                 {exp.icon}
               </div>
 
@@ -78,8 +49,12 @@ const Experience: React.FC = () => {
               <div className="bg-white rounded-xl shadow-lg p-6 ml-12 md:ml-0 hover:shadow-xl transition-shadow duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-800">{exp.role}</h3>
-                    <h4 className="text-lg font-semibold text-blue-600">{exp.company}</h4>
+                    <h3 className="text-xl font-bold text-gray-800">
+                      {exp.role}
+                    </h3>
+                    <h4 className="text-lg font-semibold text-blue-600">
+                      {exp.company}
+                    </h4>
                   </div>
                   <div className="text-sm text-gray-500 mt-2 sm:mt-0">
                     <div className="flex items-center mb-1">

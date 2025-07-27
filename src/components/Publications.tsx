@@ -4,55 +4,19 @@ import { BookOpen, ExternalLink } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 import Button from './shared/Button';
+import resume from '../data/resume.json';
 
 const Publications: React.FC = () => {
-  const publications = [
-    {
-      title:
-        'Advanced Semantic Search Techniques for Document Retrieval Systems',
-      authors: 'Ashish Singh, Dr. Priya Sharma, Dr. Rajesh Kumar',
-      publisher:
-        'International Journal of Emerging Technologies and Applications in Engineering (IJETAE)',
-      year: '2024',
-      type: 'Journal Article',
-      metrics: {
-        f1Score: '0.92',
-        accuracy: '94.5%',
-        citations: '12',
-      },
-      abstract:
-        'This paper presents novel approaches to semantic search in large document corpora using transformer-based models and advanced NLP techniques. We demonstrate significant improvements in search relevance and user satisfaction.',
-      keywords: [
-        'Semantic Search',
-        'NLP',
-        'Transformers',
-        'Information Retrieval',
-      ],
-      url: 'https://ijetae.com/files/Volume11Issue3/IJETAE_0324_15.pdf',
-    },
-    {
-      title:
-        'Security Enhancement in Distributed Systems: A Machine Learning Approach',
-      authors: 'Ashish Singh, Dr. Amit Verma, Dr. Neha Gupta',
-      publisher: 'Springer Nature - Lecture Notes in Computer Science',
-      year: '2023',
-      type: 'Conference Paper',
-      metrics: {
-        securityImprovement: '35%',
-        falsePositiveReduction: '28%',
-        citations: '8',
-      },
-      abstract:
-        'We propose a machine learning-based framework for enhancing security in distributed systems by predicting and preventing potential vulnerabilities. Our approach shows significant improvements in threat detection accuracy.',
-      keywords: [
-        'Distributed Systems',
-        'Machine Learning',
-        'Cybersecurity',
-        'Threat Detection',
-      ],
-      url: 'https://link.springer.com/chapter/10.1007/978-3-031-12345-67_89',
-    },
-  ];
+  const publications = (resume.publications as any[]).map((p) => ({
+    title: p.title,
+    detail: p.detail,
+    year: '',
+    type: '',
+    metrics: {},
+    authors: '',
+    publisher: '',
+    url: '#',
+  }));
 
   return (
     <Section
