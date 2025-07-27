@@ -19,6 +19,11 @@ body {
   overflow-x: hidden;
 }
 
+html.dark body {
+  color: #f3f4f6;
+  background-color: #111827;
+}
+
 .gradient-bg {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }

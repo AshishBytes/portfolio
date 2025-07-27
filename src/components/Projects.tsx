@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';

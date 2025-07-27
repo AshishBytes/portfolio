@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './components/Navigation';
+import SEO from './components/SEO';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -13,6 +14,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="min-h-screen">
+      <SEO />
       <Navigation />
       <Hero />
       <About />

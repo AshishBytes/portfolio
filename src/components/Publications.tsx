@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, TrendingUp } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 import Section from './shared/Section';
 import Card from './shared/Card';
 import Button from './shared/Button';
