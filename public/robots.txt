@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://ashishbytes.com/sitemap.xml
+
+# Important pages
+Allow: /images/
+Allow: /Ashish_Singh_Amazon.pdf
+
+# Block unnecessary crawling
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Crawl delay
+Crawl-delay: 1

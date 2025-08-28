@@ -14,7 +14,7 @@ import SEO from './components/SEO';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-dark-950 transition-colors duration-300">
       <SEO />
       <Navigation />
       <Hero />

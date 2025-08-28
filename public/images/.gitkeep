@@ -1,0 +1,29 @@
+# Image Directory
+
+This directory contains images for the portfolio website.
+
+## Required Images:
+
+1. **portrait.jpg** (384x384 or larger)
+   - Professional headshot of Ashish Singh
+   - Should be high quality and well-lit
+   - Used in the Hero section
+
+2. **ashish-singh-og.webp** (1200x630)
+   - Open Graph image for social media sharing
+   - Should include name and title text overlay
+   - Optimized WebP format for fast loading
+
+## Image Guidelines:
+
+- Use WebP format when possible for better compression
+- Ensure images are optimized for web (compressed but high quality)
+- Include proper alt text for accessibility
+- Use responsive images with appropriate sizes
+
+## SEO Benefits:
+
+- Images help with Google Image Search visibility
+- Proper alt text improves accessibility and SEO
+- Open Graph images improve social media sharing
+- Image sitemap helps search engines index visual content
