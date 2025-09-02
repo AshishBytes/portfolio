@@ -1,19 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  onClick?: () => void;
-  href?: string;
-  className?: string;
-  icon?: React.ReactNode;
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
-}
-
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   children,
   variant = 'primary',
   size = 'md',
@@ -74,6 +63,29 @@ const Button: React.FC<ButtonProps> = ({
       {content}
     </motion.button>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outline']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  onClick: PropTypes.func,
+  href: PropTypes.string,
+  className: PropTypes.string,
+  icon: PropTypes.node,
+  disabled: PropTypes.bool,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+};
+
+Button.defaultProps = {
+  variant: 'primary',
+  size: 'md',
+  onClick: undefined,
+  href: undefined,
+  className: '',
+  icon: undefined,
+  disabled: false,
+  type: 'button',
 };
 
 export default Button;

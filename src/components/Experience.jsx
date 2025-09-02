@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, TrendingUp, Users, Search } from 'lucide-react';
-import Section from './shared/Section';
+import Section from './shared/Section.jsx';
 
-const Experience: React.FC = () => {
+const Experience = () => {
   const experiences = [
     {
       company: "Happy",

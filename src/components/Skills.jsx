@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Wrench, Brain, Users } from 'lucide-react';
-import Section from './shared/Section';
-import Card from './shared/Card';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
 
-const Skills: React.FC = () => {
+const Skills = () => {
   const skillCategories = [
     {
       icon: <Code className="w-8 h-8 text-blue-600" />,
@@ -32,14 +32,14 @@ const Skills: React.FC = () => {
     }
   ];
 
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color) => {
     const colorMap = {
       blue: "bg-blue-50 text-blue-700 border-blue-200",
       green: "bg-green-50 text-green-700 border-green-200",
       purple: "bg-purple-50 text-purple-700 border-purple-200",
       orange: "bg-orange-50 text-orange-700 border-orange-200"
     };
-    return colorMap[color as keyof typeof colorMap] || colorMap.blue;
+    return colorMap[color] || colorMap.blue;
   };
 
   return (

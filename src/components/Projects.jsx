@@ -1,10 +1,10 @@
 import React from 'react';
 import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
-import Section from './shared/Section';
-import Card from './shared/Card';
-import Button from './shared/Button';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
+import Button from './shared/Button.jsx';
 
-const Projects: React.FC = () => {
+const Projects = () => {
   const projects = [
     {
       title: 'DocQA Tutor',

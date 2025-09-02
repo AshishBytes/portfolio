@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, ExternalLink } from 'lucide-react';
-import Section from './shared/Section';
-import Card from './shared/Card';
-import Button from './shared/Button';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
+import Button from './shared/Button.jsx';
 
-const Publications: React.FC = () => {
+const Publications = () => {
   const publications = [
     {
       title:

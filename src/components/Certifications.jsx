@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Cloud, Trophy, Star } from 'lucide-react';
-import Section from './shared/Section';
-import Card from './shared/Card';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
 
-const Certifications: React.FC = () => {
+const Certifications = () => {
   const certifications = [
     {
       title: "Microsoft Azure Fundamentals",
@@ -44,14 +44,14 @@ const Certifications: React.FC = () => {
     }
   ];
 
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color) => {
     const colorMap = {
       blue: "from-blue-500 to-blue-600",
       green: "from-green-500 to-green-600",
       yellow: "from-yellow-500 to-yellow-600",
       orange: "from-orange-500 to-orange-600"
     };
-    return colorMap[color as keyof typeof colorMap] || colorMap.blue;
+    return colorMap[color] || colorMap.blue;
   };
 
   return (

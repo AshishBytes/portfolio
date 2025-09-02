@@ -1,17 +1,20 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import Section from './shared/Section';
-import Card from './shared/Card';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
+import PropTypes from 'prop-types';
 
-interface Testimonial {
-  name: string;
-  role: string;
-  image: string;
-  quote: string;
-}
+/**
+ * @typedef {Object} Testimonial
+ * @property {string} name - The person's name
+ * @property {string} role - Their professional role
+ * @property {string} image - Profile image URL
+ * @property {string} quote - Their testimonial quote
+ */
 
-const testimonials: Testimonial[] = [
+/** @type {Testimonial[]} */
+const testimonials = [
   {
     name: 'Priya Sharma',
     role: 'Engineering Manager at Happy',
@@ -38,7 +41,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const Testimonials: React.FC = () => (
+const Testimonials = () => (
   <Section
     id="testimonials"
     title="What People Say"

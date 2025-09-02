@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Cloud, Users } from 'lucide-react';
-import Section from './shared/Section';
-import Card from './shared/Card';
+import Section from './shared/Section.jsx';
+import Card from './shared/Card.jsx';
 
-const About: React.FC = () => {
+const About = () => {
   const highlights = [
     {
       icon: <Code className="w-8 h-8 text-blue-600" />,

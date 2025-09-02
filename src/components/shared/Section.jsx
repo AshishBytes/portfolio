@@ -1,16 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-interface SectionProps {
-  children: React.ReactNode;
-  id?: string;
-  className?: string;
-  title?: string;
-  subtitle?: string;
-  background?: 'white' | 'gray' | 'dark';
-}
-
-const Section: React.FC<SectionProps> = ({
+const Section = ({
   children,
   id,
   className = '',
@@ -21,7 +13,8 @@ const Section: React.FC<SectionProps> = ({
   const backgroundClasses = {
     white: 'bg-white dark:bg-dark-950',
     gray: 'bg-gray-50 dark:bg-dark-900',
-    dark: 'bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900'
+    dark: 'bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900',
+    gradient: 'bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900'
   };
 
   return (
@@ -39,13 +32,13 @@ const Section: React.FC<SectionProps> = ({
             viewport={{ once: true }}
           >
             <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${
-              background === 'dark' ? 'text-white' : 'text-gray-900 dark:text-white'
+              background === 'dark' || background === 'gradient' ? 'text-white' : 'text-gray-900 dark:text-white'
             }`}>
               {title}
             </h2>
             {subtitle && (
               <p className={`text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed ${
-                background === 'dark' ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'
+                background === 'dark' || background === 'gradient' ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'
               }`}>
                 {subtitle}
               </p>
@@ -56,6 +49,23 @@ const Section: React.FC<SectionProps> = ({
       </div>
     </section>
   );
+};
+
+Section.propTypes = {
+  children: PropTypes.node.isRequired,
+  id: PropTypes.string,
+  className: PropTypes.string,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  background: PropTypes.oneOf(['white', 'gray', 'dark', 'gradient']),
+};
+
+Section.defaultProps = {
+  id: undefined,
+  className: '',
+  title: undefined,
+  subtitle: undefined,
+  background: 'white',
 };
 
 export default Section;

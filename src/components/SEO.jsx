@@ -1,13 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-
-interface SEOProps {
-  title?: string;
-  description?: string;
-  image?: string;
-  url?: string;
-  type?: string;
-}
+import PropTypes from 'prop-types';
 
 const defaultMeta = {
   title: 'Ashish Singh - Full Stack Developer | B.Tech CSE Student',
@@ -18,7 +11,7 @@ const defaultMeta = {
   type: 'website',
 };
 
-const SEO: React.FC<SEOProps> = ({ title, description, image, url, type }) => {
+const SEO = ({ title, description, image, url, type }) => {
   const meta = { ...defaultMeta, title, description, image, url, type };
   
   return (
@@ -108,6 +101,22 @@ const SEO: React.FC<SEOProps> = ({ title, description, image, url, type }) => {
       </script>
     </Helmet>
   );
+};
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  url: PropTypes.string,
+  type: PropTypes.string,
+};
+
+SEO.defaultProps = {
+  title: undefined,
+  description: undefined,
+  image: undefined,
+  url: undefined,
+  type: undefined,
 };
 
 export default SEO;

@@ -1,18 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-interface DarkModeContextProps {
-  isDark: boolean;
-  toggle: () => void;
-}
-
-const DarkModeContext = createContext<DarkModeContextProps>({
+const DarkModeContext = createContext({
   isDark: false,
   toggle: () => {},
 });
 
-export const DarkModeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const DarkModeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(
     () => localStorage.getItem('theme') === 'dark',
   );
@@ -35,6 +29,10 @@ export const DarkModeProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </DarkModeContext.Provider>
   );
+};
+
+DarkModeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default DarkModeContext;

@@ -1,15 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
-interface CardProps {
-  children: React.ReactNode;
-  className?: string;
-  hover?: boolean;
-  delay?: number;
-  variant?: 'default' | 'glass' | 'gradient';
-}
-
-const Card: React.FC<CardProps> = ({ 
+const Card = ({ 
   children, 
   className = '', 
   hover = true,
@@ -35,6 +28,21 @@ const Card: React.FC<CardProps> = ({
       {children}
     </motion.div>
   );
+};
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  hover: PropTypes.bool,
+  delay: PropTypes.number,
+  variant: PropTypes.oneOf(['default', 'glass', 'gradient']),
+};
+
+Card.defaultProps = {
+  className: '',
+  hover: true,
+  delay: 0,
+  variant: 'default',
 };
 
 export default Card;

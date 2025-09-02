@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Mail, Github, Linkedin, ArrowRight, Eye } from 'lucide-react';
-import Button from './shared/Button';
+import Button from './shared/Button.jsx';
 
-const Hero: React.FC = () => {
+const Hero = () => {
   const handleDownloadResume = () => {
     // Create a link to download the resume
     const link = document.createElement('a');
@@ -220,4 +220,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default Navigation;

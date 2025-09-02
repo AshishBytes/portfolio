@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun, Code } from 'lucide-react';
-import DarkModeContext from '../DarkModeContext';
+import DarkModeContext from '../DarkModeContext.jsx';
 
-const Navigation: React.FC = () => {
+const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDark, toggle } = useContext(DarkModeContext);
