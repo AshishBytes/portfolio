@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Globe, Github, Linkedin, Send, MapPin, Phone } from 'lucide-react';
 import Section from './shared/Section.jsx';

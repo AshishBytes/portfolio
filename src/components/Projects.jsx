@@ -1,4 +1,3 @@
-import React from 'react';
 import { ExternalLink, Github, MessageSquare, DollarSign } from 'lucide-react';
 import Section from './shared/Section.jsx';
 import Card from './shared/Card.jsx';

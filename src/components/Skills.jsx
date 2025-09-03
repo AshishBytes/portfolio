@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Wrench, Brain, Users } from 'lucide-react';
 import Section from './shared/Section.jsx';

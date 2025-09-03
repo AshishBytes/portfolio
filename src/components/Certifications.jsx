@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Cloud, Trophy, Star } from 'lucide-react';
 import Section from './shared/Section.jsx';
