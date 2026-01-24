@@ -1,0 +1,13 @@
+{
+  "name": "ashishbytes-monorepo",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:main": "pnpm --filter main dev",
+    "build:main": "pnpm --filter main build"
+  }
+}
