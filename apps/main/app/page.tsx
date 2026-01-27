@@ -9,32 +9,42 @@ import { SelectedWorks } from "@/components/portfolio/selected-works"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 lg:py-12">
-        {/* Hero Header */}
+      <div className="mx-auto max-w-[1240px] px-4 py-8 md:px-6 lg:py-12">
+
+        {/* Hero */}
         <header className="mb-8 lg:mb-12">
           <HeroHeader />
         </header>
 
-        {/* Main Grid - Bio, Profile, Widgets */}
-        <section className="mb-8 grid gap-4 md:grid-cols-2 lg:mb-12 lg:grid-cols-4">
-          {/* Bio Card - spans 1 column on mobile, 1 on md, 1.5 equivalent on lg */}
-          <div className="md:col-span-1 lg:col-span-1">
+        {/* ===== TOP GRID (REFERENCE LAYOUT) ===== */}
+        <section
+          className="
+            mb-8
+            grid
+            gap-4
+            md:grid-cols-12
+            md:items-stretch
+            lg:mb-12
+          "
+        >
+          {/* Bio */}
+          <div className="md:col-span-3">
             <BioCard />
           </div>
 
-          {/* Profile Card */}
-          <div className="md:col-span-1 lg:col-span-2">
+          {/* Profile */}
+          <div className="md:col-span-6">
             <ProfileCard />
           </div>
 
-          {/* Right Side Widgets */}
-          <div className="flex flex-col gap-4 md:col-span-2 lg:col-span-1">
+          {/* Right Widgets */}
+          <div className="flex flex-col gap-4 md:col-span-3">
             <RecentFavorite />
             <ExperimentsCard />
           </div>
         </section>
 
-        {/* Articles Section */}
+        {/* Articles */}
         <section className="mb-8 lg:mb-12">
           <ArticlesSection />
         </section>
@@ -50,6 +60,7 @@ export default function HomePage() {
             &copy; {new Date().getFullYear()} Ashish Bytes. All rights reserved.
           </p>
         </footer>
+
       </div>
     </main>
   )
