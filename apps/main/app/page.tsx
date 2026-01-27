@@ -9,7 +9,7 @@ import { SelectedWorks } from "@/components/portfolio/selected-works"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-[1240px] px-4 py-8 md:px-6 lg:py-12">
+      <div className="mx-auto w-full max-w-[1600px] px-6 py-8 lg:px-12 lg:py-12">
 
         {/* Hero */}
         <header className="mb-8 lg:mb-12">

@@ -3,8 +3,7 @@ import Image from "next/image"
 
 export function ProfileCard() {
   return (
-    <Card className="h-full overflow-hidden border-0 shadow-sm">
-      <CardContent className="relative h-full p-0">
+    <Card className="h-full min-h-[360px] md:min-h-0 overflow-hidden border-0 shadow-sm">      <CardContent className="relative h-full p-0">
         <Image
           src="/images/profile.jpg"
           alt="Ashish"
