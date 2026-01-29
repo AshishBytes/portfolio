@@ -1,23 +1,27 @@
-import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
+import { Card, Inset, Text } from "@radix-ui/themes";
+import Image from "next/image";
 
 export function ProfileCard() {
   return (
-    <Card className="h-full min-h-[360px] md:min-h-0 overflow-hidden border-0 shadow-sm">      <CardContent className="relative h-full p-0">
-        <Image
-          src="/images/profile.jpg"
-          alt="Ashish"
-          fill
-          className="object-cover"
-          priority
-        />
+    <Card className="h-full overflow-hidden">
+      <Inset clip="padding-box" side="all">
+        <div className="relative h-full w-full">
+          <Image
+            src="/images/profile.jpg"
+            alt="Portrait Picture"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover object-top"
+          />
 
-        <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 backdrop-blur">
-          <span className="text-xs font-medium text-muted-foreground">
-            IMG.JPG
-          </span>
+          <div className="absolute bottom-4 left-4 rounded-lg bg-white/90 px-3 py-2 backdrop-blur">
+            <Text size="1" color="gray">
+              IMG.JPG
+            </Text>
+          </div>
         </div>
-      </CardContent>
+      </Inset>
     </Card>
-  )
+  );
 }
