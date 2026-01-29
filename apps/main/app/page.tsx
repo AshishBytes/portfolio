@@ -16,31 +16,30 @@ export default function HomePage() {
           <HeroHeader />
         </header>
 
-        {/* ===== TOP GRID (REFERENCE LAYOUT) ===== */}
-        <section
-          className="
-            mb-8
-            grid
-            gap-4
-            md:grid-cols-12
-            md:items-stretch
-            lg:mb-12
-          "
-        >
-          {/* Bio */}
-          <div className="md:col-span-3">
-            <BioCard />
+        {/* Main Grid - Bio, Profile, Widgets */}
+        <section className="mb-8 grid gap-4 md:grid-cols-12 md:items-stretch lg:mb-12 lg:h-[520px]">
+          {/* Left bio - spans 4/12 */}
+          <div className="md:col-span-4">
+            <div className="h-full">
+              <BioCard />
+            </div>
           </div>
 
-          {/* Profile */}
-          <div className="md:col-span-6">
-            <ProfileCard />
+          {/* Center profile - spans 4/12 */}
+          <div className="md:col-span-4">
+            <div className="h-full">
+              <ProfileCard />
+            </div>
           </div>
 
-          {/* Right Widgets */}
-          <div className="flex flex-col gap-4 md:col-span-3">
-            <RecentFavorite />
-            <ExperimentsCard />
+          {/* Right widgets - spans 4/12, two stacked halves */}
+          <div className="md:col-span-4 flex flex-col gap-4 h-full">
+            <div className="flex-1">
+              <RecentFavorite />
+            </div>
+            <div className="flex-1">
+              <ExperimentsCard />
+            </div>
           </div>
         </section>
 
