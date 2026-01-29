@@ -43,8 +43,8 @@ export function SelectedWorks() {
   return (
     <section className="space-y-4">
       <div className="flex items-center gap-2">
-        <MessageSquare className="h-4 w-4 text-primary" />
-        <h2 className="text-xs font-medium uppercase tracking-wider text-primary">
+        <MessageSquare className="h-4 w-4 text-orange-500" />
+        <h2 className="text-xs font-medium uppercase tracking-wider text-orange-500">
           Selected Works from 2024
         </h2>
       </div>
@@ -53,7 +53,7 @@ export function SelectedWorks() {
         {projects.map((project) => (
           <Card
             key={project.slug}
-            className="group overflow-hidden border-0 shadow-sm transition-shadow hover:shadow-md"
+            className="group overflow-hidden border border-black/[0.08] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
           >
             <div className={`relative aspect-[4/3] ${project.color}`}>
               <Image
@@ -64,19 +64,19 @@ export function SelectedWorks() {
               />
             </div>
             <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-foreground">
+              <h3 className="text-xl font-semibold text-[#1a1a1a]">
                 {project.title}
               </h3>
-              <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+              <p className="mt-1 text-xs uppercase tracking-wider text-[#999999]">
                 <span className="font-medium">{project.location}</span> {project.country},{" "}
                 {project.category}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-[#666666]">
                 {project.description}
               </p>
               <Link
                 href={`/work/${project.slug}`}
-                className="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm font-medium text-foreground transition-colors hover:text-primary"
+                className="mt-4 flex items-center justify-between border-t border-black/[0.08] pt-4 text-sm font-medium text-[#333333] transition-colors hover:text-orange-500"
               >
                 Open Case
                 <ChevronRight className="h-4 w-4" />

@@ -9,9 +9,9 @@ export function ProfileCard() {
         h-full
         overflow-hidden
         rounded-2xl
-        border border-black/5
+        border border-black/[0.08]
         bg-white
-        shadow-[var(--shadow-1)]
+        shadow-[0_1px_3px_rgba(0,0,0,0.05)]
       "
     >
       {/* Image must be absolute to fill card */}
@@ -23,7 +23,7 @@ export function ProfileCard() {
             h-full
             w-full
             object-cover
-            object-top
+            object-center
             select-none
           "
         />
@@ -37,16 +37,16 @@ export function ProfileCard() {
         className="
           pointer-events-none
           absolute
-          bottom-3
-          left-3
+          bottom-4
+          left-4
           flex
           items-center
           gap-1.5
-          rounded-md
-          bg-black/60
-          px-2
-          py-1
-          text-[10px]
+          rounded-lg
+          bg-black/70
+          px-2.5
+          py-1.5
+          text-[11px]
           font-medium
           text-white
           backdrop-blur-sm

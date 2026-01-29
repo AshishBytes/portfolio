@@ -5,21 +5,22 @@ import { RecentFavorite } from "@/components/portfolio/recent-favorite"
 import { ExperimentsCard } from "@/components/portfolio/experiments-card"
 import { ArticlesSection } from "@/components/portfolio/articles-section"
 import { SelectedWorks } from "@/components/portfolio/selected-works"
+import { WorldMap } from "@/components/portfolio/world-map"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-[1600px] px-6 py-8 lg:px-12 lg:py-12">
+    <main className="min-h-screen bg-[#fafafa]">
+      <div className="mx-auto w-full max-w-[1400px] px-6 py-8 lg:px-8 lg:py-10">
 
         {/* Hero */}
-        <header className="mb-8 lg:mb-12">
+        <header className="mb-6 lg:mb-8">
           <HeroHeader />
         </header>
 
         {/* Main Grid - Bio, Profile, Widgets */}
-        <section className="mb-8 grid gap-4 md:grid-cols-12 md:items-stretch lg:mb-12 lg:h-[520px]">
-          {/* Left bio - spans 4/12 */}
-          <div className="md:col-span-4">
+        <section className="mb-6 grid gap-4 md:grid-cols-12 md:items-stretch lg:mb-8 lg:h-[440px]">
+          {/* Left bio - spans 5/12 */}
+          <div className="md:col-span-5">
             <div className="h-full">
               <BioCard />
             </div>
@@ -32,8 +33,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right widgets - spans 4/12, two stacked halves */}
-          <div className="md:col-span-4 flex flex-col gap-4 h-full">
+          {/* Right widgets - spans 3/12, two stacked halves */}
+          <div className="md:col-span-3 flex flex-col gap-4 h-full">
             <div className="flex-1">
               <RecentFavorite />
             </div>
@@ -44,17 +45,20 @@ export default function HomePage() {
         </section>
 
         {/* Articles */}
-        <section className="mb-8 lg:mb-12">
+        <section className="mb-6 lg:mb-8">
           <ArticlesSection />
         </section>
 
         {/* Selected Works */}
-        <section className="mb-8 lg:mb-12">
+        <section className="mb-6 lg:mb-8">
           <SelectedWorks />
         </section>
 
+        {/* World Map */}
+        <WorldMap />
+
         {/* Footer */}
-        <footer className="border-t border-border pt-8 text-center">
+        <footer className="border-t border-border/30 pt-6 text-center">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Ashish Bytes. All rights reserved.
           </p>

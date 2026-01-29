@@ -3,16 +3,16 @@ import Image from "next/image"
 
 export function RecentFavorite() {
   return (
-    <Card className="h-full border-0 shadow-sm">
+    <Card className="h-full border border-black/[0.08] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
       <CardContent className="p-4 h-full">
-        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        <p className="mb-3 text-xs font-medium uppercase tracking-wider text-[#999999]">
           Recent Favorite
         </p>
 
         <div className="flex items-center gap-3">
           <div>
-            <p className="font-medium">m.A.A.d city</p>
-            <p className="text-sm text-muted-foreground">Kendrick Lamar</p>
+            <p className="font-medium text-[#333333]">m.A.A.d city</p>
+            <p className="text-sm text-[#666666]">Kendrick Lamar</p>
           </div>
 
           <div className="relative ml-auto h-10 w-10 overflow-hidden rounded-full">
