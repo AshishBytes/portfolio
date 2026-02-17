@@ -16,7 +16,9 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gradient mb-2">Ashish Singh</h3>
+            <h3 className="text-2xl font-bold text-gradient mb-2">
+              Ashish Singh
+            </h3>
             <p className="text-gray-400">
               Building the future, one line of code at a time.
             </p>
@@ -31,19 +33,34 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#about"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 About
               </a>
-              <a href="#skills" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#skills"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Skills
               </a>
-              <a href="#experience" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#experience"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Experience
               </a>
-              <a href="#projects" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#projects"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Projects
               </a>
-              <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a
+                href="#contact"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
                 Contact
               </a>
             </div>

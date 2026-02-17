@@ -9,17 +9,19 @@ interface CardProps {
   variant?: 'default' | 'glass' | 'gradient';
 }
 
-const Card: React.FC<CardProps> = ({ 
-  children, 
-  className = '', 
+const Card: React.FC<CardProps> = ({
+  children,
+  className = '',
   hover = true,
   delay = 0,
-  variant = 'default'
+  variant = 'default',
 }) => {
   const variantClasses = {
-    default: 'bg-white dark:bg-dark-800 border border-gray-200 dark:border-gray-700',
+    default:
+      'bg-white dark:bg-dark-800 border border-gray-200 dark:border-gray-700',
     glass: 'glass-effect border border-white/20 dark:border-white/10',
-    gradient: 'bg-gradient-to-br from-white to-gray-50 dark:from-dark-800 dark:to-dark-900 border border-gray-200 dark:border-gray-700'
+    gradient:
+      'bg-gradient-to-br from-white to-gray-50 dark:from-dark-800 dark:to-dark-900 border border-gray-200 dark:border-gray-700',
   };
 
   const hoverClass = hover ? 'card-hover' : '';

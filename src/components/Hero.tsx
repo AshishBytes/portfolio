@@ -1,6 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, Mail, Github, Linkedin, ArrowRight, Eye } from 'lucide-react';
+import {
+  Download,
+  Mail,
+  Github,
+  Linkedin,
+  ArrowRight,
+  Eye,
+} from 'lucide-react';
 import Button from './shared/Button';
 
 const Hero: React.FC = () => {
@@ -23,12 +30,21 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 dark:from-dark-950 dark:via-dark-900 dark:to-dark-800 flex items-center justify-center relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 dark:from-dark-950 dark:via-dark-900 dark:to-dark-800 flex items-center justify-center relative overflow-hidden"
+    >
       {/* Background Animation */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-500/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-primary-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-500/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '2s' }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-primary-500/5 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: '4s' }}
+        ></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -81,8 +97,9 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Passionate about building scalable distributed systems and backend solutions.
-              Experienced with Amazon-scale projects and modern tech stacks.
+              Passionate about building scalable distributed systems and backend
+              solutions. Experienced with Amazon-scale projects and modern tech
+              stacks.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -100,7 +117,10 @@ const Hero: React.FC = () => {
                 className="group"
               >
                 View Projects
-                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={16}
+                  className="ml-2 group-hover:translate-x-1 transition-transform"
+                />
               </Button>
               <Button
                 variant="outline"
@@ -210,7 +230,11 @@ const Hero: React.FC = () => {
             className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center cursor-pointer"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() =>
+              document
+                .getElementById('about')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
           >
             <div className="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
           </motion.div>

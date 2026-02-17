@@ -97,7 +97,7 @@ body {
 
 @media (max-width: 768px) {
   .timeline-line::before {
-    left: 20px;
+    left: 26px;
   }
 }
 

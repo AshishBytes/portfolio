@@ -88,7 +88,7 @@ const Navigation: React.FC = () => {
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
-            <motion.button 
+            <motion.button
               className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-all duration-300"
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}

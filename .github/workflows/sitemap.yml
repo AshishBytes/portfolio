@@ -32,7 +32,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update sitemap"
+          commit-message: 'chore: update sitemap'
           branch: update/sitemap
-          title: "Update sitemap"
-          body: "Auto-generated sitemap"
+          title: 'Update sitemap'
+          body: 'Auto-generated sitemap'
