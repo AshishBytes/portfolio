@@ -95,6 +95,25 @@ body {
   border-radius: 2px;
 }
 
+.timeline-dot-left {
+  left: 1.5rem;
+}
+
+.timeline-dot-right {
+  left: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .timeline-dot-left {
+    right: -1.5rem;
+    left: auto;
+  }
+
+  .timeline-dot-right {
+    left: -1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .timeline-line::before {
     left: 26px;

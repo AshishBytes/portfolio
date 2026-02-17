@@ -59,9 +59,8 @@ const Experience: React.FC = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.company}
-              className={`relative mb-12 ${
-                index % 2 === 0 ? 'md:ml-auto md:pl-12' : 'md:mr-auto md:pr-12'
-              } md:w-1/2`}
+              className={`relative mb-12 ${index % 2 === 0 ? 'md:ml-auto md:pl-12' : 'md:mr-auto md:pr-12'
+                } md:w-1/2`}
               initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -69,9 +68,8 @@ const Experience: React.FC = () => {
             >
               {/* Timeline Dot */}
               <div
-                className={`absolute top-6 ${
-                  index % 2 === 0 ? 'md:-left-6' : 'md:-right-6'
-                } -left-6 md:left-auto w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white z-10 shadow-lg`}
+                className={`absolute top-6 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white z-10 shadow-lg ${index % 2 === 0 ? 'timeline-dot-right' : 'timeline-dot-left'
+                  }`}
                 aria-label={`${exp.role} at ${exp.company}`}
                 role="img"
               >
