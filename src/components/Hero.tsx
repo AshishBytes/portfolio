@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const handleDownloadResume = () => {
     // Create a link to download the resume
     const link = document.createElement('a');
-    link.href = '/Ashish_Singh_Amazon.pdf';
+    link.href = '/Ashish_Singh_Resume.pdf';
     link.download = 'Ashish_Singh_Resume.pdf';
     document.body.appendChild(link);
     link.click();
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Passionate about building scalable distributed systems and backend solutions. 
+              Passionate about building scalable distributed systems and backend solutions.
               Experienced with Amazon-scale projects and modern tech stacks.
             </motion.p>
 
@@ -164,12 +164,12 @@ const Hero: React.FC = () => {
           >
             {/* Background Glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-accent-500/20 to-primary-500/20 rounded-full blur-3xl scale-110 animate-glow"></div>
-            
+
             {/* Profile Image Container */}
             <div className="relative">
               <div className="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl backdrop-blur-sm bg-white/5">
-                <img 
-                  src="/images/portrait.jpg" 
+                <img
+                  src="/profile-image.jpeg"
                   alt="Ashish Singh - Full Stack Developer and B.Tech CSE Student specializing in distributed systems and backend development"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -177,7 +177,7 @@ const Hero: React.FC = () => {
                   height="384"
                 />
               </div>
-              
+
               {/* Floating Elements */}
               <motion.div
                 className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center shadow-lg"
@@ -186,7 +186,7 @@ const Hero: React.FC = () => {
               >
                 <span className="text-white font-bold text-lg">👨‍💻</span>
               </motion.div>
-              
+
               <motion.div
                 className="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-lg"
                 animate={{ y: [0, 10, 0] }}
