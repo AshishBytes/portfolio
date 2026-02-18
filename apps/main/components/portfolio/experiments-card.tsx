@@ -2,9 +2,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Flag as Flask, Users, FileText, Search } from "lucide-react"
 
 const experiments = [
-  { title: "Agency", desc: "Frontend Templates Fast", icon: Users },
-  { title: "Contract AI", desc: "Contracts In Seconds", icon: FileText },
-  { title: "Seek", desc: "Discover Your Truth", icon: Search },
+  { title: "DocQA Tutor", desc: "Summarisation & QA API", icon: FileText },
+  { title: "TripLedger", desc: "Offline-First Expense Tracker", icon: Users },
+  { title: "Blockchain Relayer", desc: "Gas-less Transaction System", icon: Search },
 ]
 
 export function ExperimentsCard() {

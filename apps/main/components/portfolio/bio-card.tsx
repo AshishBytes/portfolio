@@ -5,7 +5,7 @@ const socials = [
   { href: "https://linkedin.com/in/ashishbytes", icon: Linkedin },
   { href: "https://twitter.com/ashishbytes", icon: Twitter },
   { href: "https://github.com/AshishBytes", icon: Github },
-  { href: "mailto:hello@ashishbytes.com", icon: Mail },
+  { href: "mailto:ashishlodhi5559@gmail.com", icon: Mail },
 ]
 
 
@@ -26,25 +26,25 @@ export function BioCard() {
           {/* Text */}
           <div className="space-y-4 text-base sm:text-[16px] font-normal leading-[1.65] text-[#666666]">
             <p>
-              I&apos;m a full-stack engineer helping digital founders build unique
-              web experiences that make their products stand out and attract more
-              investors.
+              I&apos;m a final-year B.Tech. CS student with 4+ years building distributed
+              systems and scalable applications. I&apos;ve delivered 1M+ MAU-scale platforms,
+              optimized system performance, and led critical engineering initiatives.
             </p>
-            <p>I specialize in crafting pixel-perfect frontend applications.</p>
+            <p>I specialize in distributed systems, cloud architecture, and backend engineering.</p>
             <p>
               Off the clock, I dive into{" "}
               <span className="text-orange-500 underline underline-offset-2 decoration-1">
-                photography
+                competitive programming
               </span>
-              , geek out on the latest{" "}
+              , contribute to{" "}
               <span className="text-orange-500 underline underline-offset-2 decoration-1">
-                gadgets
+                open source
               </span>
-              , and play{" "}
+              , and explore{" "}
               <span className="text-orange-500 underline underline-offset-2 decoration-1">
-                games
+                ML/NLP
               </span>{" "}
-              like a 12-year-old.
+              research.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export function BioCard() {
                 Find me at
               </p>
               <p className="text-sm font-medium text-[#666666]">
-                hello@ashishbytes.com
+                ashishlodhi5559@gmail.com
               </p>
             </div>
           </div>
