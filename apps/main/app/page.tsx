@@ -5,7 +5,6 @@ import { RecentFavorite } from "@/components/portfolio/recent-favorite"
 import { ExperimentsCard } from "@/components/portfolio/experiments-card"
 import { ArticlesSection } from "@/components/portfolio/articles-section"
 import { SelectedWorks } from "@/components/portfolio/selected-works"
-import { WorldMap } from "@/components/portfolio/world-map"
 
 export default function HomePage() {
   return (
@@ -53,9 +52,6 @@ export default function HomePage() {
         <section className="mb-6 lg:mb-8">
           <SelectedWorks />
         </section>
-
-        {/* World Map */}
-        <WorldMap />
 
         {/* Footer */}
         <footer className="border-t border-border/30 pt-6 text-center">
