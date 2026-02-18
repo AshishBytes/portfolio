@@ -3,13 +3,14 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import "@radix-ui/themes/styles.css";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Ashish Bytes | Full-Stack Engineer & Digital Creator',
-  description: 'Full-stack engineer helping digital founders build unique web experiences that make their products stand out and attract more investors.',
+  title: 'Ashish Singh | Software Engineer & Distributed Systems Specialist',
+  description: 'Final-year B.Tech. CS student with 4+ years building distributed systems and scalable applications. Delivered 1M+ MAU-scale platforms with expertise in C, C++, Python, and cloud architecture.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -30,17 +31,22 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+import { Theme } from "@radix-ui/themes";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
+      <body>
+        <Theme
+          appearance="light"
+          accentColor="orange"
+          grayColor="sand"
+          radius="large"
+          scaling="100%"
+        >
+          {children}
+        </Theme>
       </body>
     </html>
-  )
+  );
 }
