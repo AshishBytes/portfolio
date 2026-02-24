@@ -8,48 +8,58 @@ import { SelectedWorks } from "@/components/portfolio/selected-works"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 lg:py-12">
-        {/* Hero Header */}
-        <header className="mb-8 lg:mb-12">
+    <main className="min-h-screen bg-[#fafafa]">
+      <div className="mx-auto w-full max-w-[1400px] px-6 py-8 lg:px-8 lg:py-10">
+
+        {/* Hero */}
+        <header className="mb-6 lg:mb-8">
           <HeroHeader />
         </header>
 
         {/* Main Grid - Bio, Profile, Widgets */}
-        <section className="mb-8 grid gap-4 md:grid-cols-2 lg:mb-12 lg:grid-cols-4">
-          {/* Bio Card - spans 1 column on mobile, 1 on md, 1.5 equivalent on lg */}
-          <div className="md:col-span-1 lg:col-span-1">
-            <BioCard />
+        <section className="mb-6 grid gap-4 md:grid-cols-12 md:items-stretch lg:mb-8 lg:h-[440px]">
+          {/* Left bio - spans 5/12 */}
+          <div className="md:col-span-5">
+            <div className="h-full">
+              <BioCard />
+            </div>
           </div>
 
-          {/* Profile Card */}
-          <div className="md:col-span-1 lg:col-span-2">
-            <ProfileCard />
+          {/* Center profile - spans 4/12 */}
+          <div className="md:col-span-4">
+            <div className="h-full">
+              <ProfileCard />
+            </div>
           </div>
 
-          {/* Right Side Widgets */}
-          <div className="flex flex-col gap-4 md:col-span-2 lg:col-span-1">
-            <RecentFavorite />
-            <ExperimentsCard />
+          {/* Right widgets - spans 3/12, two stacked halves */}
+          <div className="md:col-span-3 flex flex-col gap-4 h-full">
+            <div className="flex-1">
+              <RecentFavorite />
+            </div>
+            <div className="flex-1">
+              <ExperimentsCard />
+            </div>
           </div>
         </section>
 
-        {/* Articles Section */}
-        <section className="mb-8 lg:mb-12">
+        {/* Articles */}
+        <section className="mb-6 lg:mb-8">
           <ArticlesSection />
         </section>
 
         {/* Selected Works */}
-        <section className="mb-8 lg:mb-12">
+        <section className="mb-6 lg:mb-8">
           <SelectedWorks />
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-border pt-8 text-center">
+        <footer className="border-t border-border/30 pt-6 text-center">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Ashish Bytes. All rights reserved.
           </p>
         </footer>
+
       </div>
     </main>
   )
