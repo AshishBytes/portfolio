@@ -1,0 +1,8 @@
+dist/
+.prerender/
+coverage/
+test-results/
+playwright-report/
+.playwright/
+*.local
+!.env.example

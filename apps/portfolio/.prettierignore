@@ -1,0 +1,12 @@
+dist/
+.prerender/
+coverage/
+test-results/
+playwright-report/
+.playwright/
+node_modules/
+*.pdf
+*.jpeg
+*.jpg
+*.png
+*.ico

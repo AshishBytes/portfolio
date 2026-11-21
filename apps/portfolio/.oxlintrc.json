@@ -1,0 +1,25 @@
+{
+  "$schema": "https://oxc.rs/schemas/oxlint.json",
+  "plugins": ["react", "jsx-a11y", "typescript", "import", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "eslint/no-unused-vars": "error",
+    "typescript/no-explicit-any": "error",
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/click-events-have-key-events": "error",
+    "jsx-a11y/no-static-element-interactions": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/react-in-jsx-scope": "off",
+    "import/no-unassigned-import": "off"
+  },
+  "ignorePatterns": [
+    "dist/**",
+    "coverage/**",
+    "playwright-report/**",
+    "test-results/**"
+  ]
+}

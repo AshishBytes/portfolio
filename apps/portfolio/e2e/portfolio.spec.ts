@@ -1,0 +1,222 @@
+import { expect, test } from "@playwright/test";
+import { AxeBuilder as PlaywrightAxeBuilder } from "@axe-core/playwright";
+
+test("public pages load prerendered content and route metadata", async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  const routes = [
+    ["/", "Ashish Singh"],
+    ["/about", "Building useful systems"],
+    ["/experience", "Selected professional experience"],
+    ["/projects", "Selected work and technical explorations"],
+    ["/projects/docqa-tutor", "DocQA Tutor"],
+    ["/projects/tripledger", "TripLedger"],
+    ["/skills", "Tools and areas of practice"],
+    ["/achievements", "Certifications and awards"],
+    ["/publications", "Research and applied work"],
+    ["/testimonials", "Professional references"],
+    ["/blog", "Article previews"],
+    ["/resume", "A concise record of experience"],
+    ["/contact", "Start a conversation"],
+  ];
+
+  for (const [path, heading] of routes) {
+    const response = await page.goto(path);
+    expect(response?.ok(), `${path} should load successfully`).toBeTruthy();
+    await expect(page.locator("h1")).toContainText(heading);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://portfolio.ashishbytes.com${path === "/" ? "/" : path}`,
+    );
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      /social-preview\.png$/,
+    );
+    await expect(page.locator("#portfolio-structured-data")).toBeAttached();
+  }
+  expect(errors).toEqual([]);
+});
+
+test("responsive navigation opens and closes after navigation", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const mobileNav = page.getByRole("navigation", { name: "Mobile navigation" });
+  await expect(mobileNav).toBeVisible();
+  await mobileNav.getByRole("link", { name: "About" }).click();
+  await expect(page).toHaveURL(/\/about$/);
+  await expect(
+    page.getByRole("heading", { name: "Building useful systems with care." }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Open navigation menu" }),
+  ).toBeVisible();
+  await expect(mobileNav).toBeHidden();
+
+  await page.setViewportSize({ width: 1280, height: 900 });
+  const aboutLink = page
+    .getByRole("navigation", { name: "Primary navigation" })
+    .getByRole("link", { name: "About" });
+  await expect(aboutLink).toHaveAttribute("aria-current", "page");
+  await page.goBack();
+  await expect(page.locator("h1")).toContainText("Ashish Singh");
+  await page.goForward();
+  await expect(page.locator("h1")).toContainText("Building useful systems");
+});
+
+test("theme toggle updates and persists the selected theme", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await expect
+    .poll(() => page.evaluate(() => localStorage.getItem("portfolio-theme")))
+    .toBe("dark");
+  await page.getByRole("button", { name: "Switch to light mode" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+});
+
+test("contact form validation and honest mailto fallback work", async ({
+  page,
+}) => {
+  await page.goto("/contact");
+  await page.getByRole("button", { name: /prepare message/i }).click();
+  await expect(page.getByText("Enter your name.")).toBeVisible();
+
+  await page.getByLabel("Name").fill("Taylor Example");
+  await page.getByRole("textbox", { name: "Email" }).fill("taylor@example.com");
+  await page.getByLabel("Subject").fill("Project discussion");
+  await page
+    .getByLabel("Message")
+    .fill("I would like to discuss a possible collaboration.");
+  await page.getByRole("button", { name: /prepare message/i }).click();
+  await expect(
+    page.getByRole("link", { name: "Open email draft" }),
+  ).toHaveAttribute("href", /^mailto:/);
+});
+
+test("mobile layouts have no horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  for (const route of ["/", "/projects", "/projects/docqa-tutor", "/contact"]) {
+    await page.goto(route);
+    const widths = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      content: document.documentElement.scrollWidth,
+    }));
+    expect(
+      widths.content,
+      `${route} should fit the viewport`,
+    ).toBeLessThanOrEqual(widths.viewport);
+  }
+});
+
+test("all public pages pass axe checks in light and dark themes", async ({
+  page,
+}) => {
+  test.setTimeout(120_000);
+  const routes = [
+    ["/", "Ashish Singh"],
+    ["/about", "Building useful systems"],
+    ["/experience", "Selected professional experience"],
+    ["/projects", "Selected work and technical explorations"],
+    ["/projects/docqa-tutor", "DocQA Tutor"],
+    ["/projects/tripledger", "TripLedger"],
+    ["/skills", "Tools and areas of practice"],
+    ["/achievements", "Certifications and awards"],
+    ["/publications", "Research and applied work"],
+    ["/testimonials", "Professional references"],
+    ["/blog", "Article previews"],
+    ["/resume", "A concise record of experience"],
+    ["/contact", "Start a conversation"],
+  ];
+  for (const [route, heading] of routes) {
+    await page.goto(route);
+    await expect(
+      page.getByRole("heading", { level: 1, name: heading }),
+    ).toBeVisible();
+    await expect(page.locator("#main-content h1")).toHaveCount(1);
+    const results = await new PlaywrightAxeBuilder({ page }).analyze();
+    expect(
+      results.violations,
+      `${route}: ${JSON.stringify(results.violations.map(({ id, help }) => ({ id, help })))}`,
+    ).toEqual([]);
+  }
+
+  await page.addInitScript(() =>
+    window.localStorage.setItem("portfolio-theme", "dark"),
+  );
+  for (const [route, heading] of routes) {
+    await page.goto(route);
+    await expect(
+      page.getByRole("heading", { level: 1, name: heading }),
+    ).toBeVisible();
+    await expect(page.locator("#main-content h1")).toHaveCount(1);
+    await expect
+      .poll(() => page.locator("html").getAttribute("data-theme"))
+      .toBe("dark");
+    const results = await new PlaywrightAxeBuilder({ page }).analyze();
+    expect(
+      results.violations,
+      `dark ${route}: ${JSON.stringify(results.violations.map(({ id, help }) => ({ id, help })))}`,
+    ).toEqual([]);
+  }
+});
+
+test("unknown routes show the site not-found state", async ({ page }) => {
+  await page.goto("/this-route-does-not-exist");
+  await expect(
+    page.getByRole("heading", { name: "This page isn’t here." }),
+  ).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    "noindex,nofollow",
+  );
+});
+
+test("internal links resolve to built routes and local assets", async ({
+  page,
+  request,
+  baseURL,
+}) => {
+  const routes = [
+    "/",
+    "/about",
+    "/experience",
+    "/projects",
+    "/projects/docqa-tutor",
+    "/projects/tripledger",
+    "/skills",
+    "/achievements",
+    "/publications",
+    "/testimonials",
+    "/blog",
+    "/resume",
+    "/contact",
+  ];
+  const destinations = new Set<string>();
+  for (const route of routes) {
+    await page.goto(route);
+    await expect(page.locator("h1")).toBeVisible();
+    const links = await page
+      .locator('a[href^="/"]')
+      .evaluateAll((anchors) =>
+        anchors
+          .map((anchor) => anchor.getAttribute("href"))
+          .filter((href): href is string => Boolean(href)),
+      );
+    for (const href of links)
+      destinations.add(new URL(href, baseURL).toString());
+  }
+  for (const destination of destinations) {
+    const response = await request.get(destination);
+    expect(
+      response.ok(),
+      `Local link should resolve: ${destination}`,
+    ).toBeTruthy();
+  }
+});

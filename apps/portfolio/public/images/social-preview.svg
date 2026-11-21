@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="64" y="64" width="1072" height="502" rx="32" fill="#fff" stroke="#e7e4dd"/>
+  <circle cx="986" cy="174" r="110" fill="#fff0e6"/>
+  <circle cx="986" cy="174" r="72" stroke="#ed6a24" stroke-opacity=".28" stroke-width="2"/>
+  <circle cx="986" cy="174" r="42" stroke="#b84b12" stroke-opacity=".24" stroke-width="2"/>
+  <text x="112" y="155" fill="#a74110" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">SOFTWARE ENGINEER · SYSTEMS &amp; BACKEND</text>
+  <text x="108" y="294" fill="#1a1a1a" font-family="Georgia, serif" font-size="98" font-weight="500" letter-spacing="-5">Ashish Singh<tspan fill="#b84b12">.</tspan></text>
+  <text x="112" y="366" fill="#66645f" font-family="Arial, sans-serif" font-size="27">Distributed systems, backend engineering, and software tools.</text>
+  <rect x="112" y="430" width="188" height="48" rx="24" fill="#b84b12"/>
+  <text x="142" y="461" fill="#fff" font-family="Arial, sans-serif" font-size="17" font-weight="700">Ashish Bytes</text>
+  <text x="1080" y="520" text-anchor="end" fill="#908c84" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">PORTFOLIO</text>
+</svg>
