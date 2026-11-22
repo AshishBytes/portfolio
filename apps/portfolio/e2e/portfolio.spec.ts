@@ -17,7 +17,7 @@ test("public pages load prerendered content and route metadata", async ({
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
     ["/testimonials", "Professional references"],
-    ["/blog", "Article previews"],
+    ["/blog", "This page isn’t here."],
     ["/resume", "A concise record of experience"],
     ["/contact", "Start a conversation"],
   ];
@@ -26,9 +26,14 @@ test("public pages load prerendered content and route metadata", async ({
     const response = await page.goto(path);
     expect(response?.ok(), `${path} should load successfully`).toBeTruthy();
     await expect(page.locator("h1")).toContainText(heading);
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveAttribute(
       "href",
-      `https://portfolio.ashishbytes.com${path === "/" ? "/" : path}`,
+      new RegExp(`${path === "/" ? "/$" : `${path}$`}`),
+    );
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+      "content",
+      (await canonical.getAttribute("href")) ?? "",
     );
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
@@ -130,7 +135,7 @@ test("all public pages pass axe checks in light and dark themes", async ({
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
     ["/testimonials", "Professional references"],
-    ["/blog", "Article previews"],
+    ["/blog", "This page isn’t here."],
     ["/resume", "A concise record of experience"],
     ["/contact", "Start a conversation"],
   ];

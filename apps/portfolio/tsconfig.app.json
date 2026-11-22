@@ -17,7 +17,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "node"],
+    "paths": {
+      "@repo/config": ["../../packages/config/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

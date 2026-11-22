@@ -36,7 +36,7 @@ pnpm --filter portfolio preview
 
 Copy `.env.example` to `.env.local` if configuring optional integrations. Vite variables are public browser configuration; never put credentials or private keys in them.
 
-- `VITE_BLOG_ORIGIN`: optional HTTPS origin for the separate blog. Article previews remain visible when this is unset.
+- `VITE_BLOG_ORIGIN`: optional HTTPS origin for the separate blog. The portfolio exposes writing only after at least two complete, non-draft articles exist; `@repo/config` `site.blogLive` mirrors that data-derived gate for the links app.
 - `VITE_CONTACT_FORM_ENDPOINT`: optional HTTPS endpoint that accepts the contact form JSON. It must enforce server-side validation, spam controls, and CORS. Until configured, the form validates input and offers an email draft; it does not report a message as sent.
 
 ## Content and assets

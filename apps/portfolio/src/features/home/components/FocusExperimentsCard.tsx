@@ -1,0 +1,101 @@
+import { useState } from "react";
+import { ArrowUpRight, FlaskConical, Network } from "lucide-react";
+import { Link } from "react-router-dom";
+import { favorite } from "../../../content/favorites";
+import { experiments } from "../../../content/experiments";
+import { Badge } from "../../../components/ui/Badge";
+import { Card } from "../../../components/ui/Card";
+
+type FocusTab = "focus" | "experiments";
+
+export function FocusExperimentsCard() {
+  const [activeTab, setActiveTab] = useState<FocusTab>("focus");
+
+  return (
+    <Card className="flex h-full flex-col">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="eyebrow">Focus &amp; experiments</p>
+        <div
+          aria-label="Focus and experiments"
+          className="inline-flex rounded-full border border-line bg-surface-soft p-1"
+          role="tablist"
+        >
+          <button
+            aria-controls="focus-panel"
+            aria-selected={activeTab === "focus"}
+            className={`min-h-9 rounded-full px-3 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${activeTab === "focus" ? "bg-surface text-ink shadow-sm" : "text-muted hover:text-ink"}`}
+            id="focus-tab"
+            onClick={() => setActiveTab("focus")}
+            role="tab"
+            type="button"
+          >
+            Current focus
+          </button>
+          <button
+            aria-controls="focus-panel"
+            aria-selected={activeTab === "experiments"}
+            className={`min-h-9 rounded-full px-3 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${activeTab === "experiments" ? "bg-surface text-ink shadow-sm" : "text-muted hover:text-ink"}`}
+            id="experiments-tab"
+            onClick={() => setActiveTab("experiments")}
+            role="tab"
+            type="button"
+          >
+            Experiments
+          </button>
+        </div>
+      </div>
+
+      <div
+        aria-labelledby={activeTab === "focus" ? "focus-tab" : "experiments-tab"}
+        className="mt-5 min-h-40 flex-1"
+        id="focus-panel"
+        role="tabpanel"
+        tabIndex={0}
+      >
+        {activeTab === "focus" ? (
+          <div className="flex h-full items-start gap-3 rounded-2xl bg-surface-soft p-4 sm:p-5">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
+              <Network aria-hidden="true" size={18} />
+            </span>
+            <div>
+              <p className="eyebrow">{favorite.label}</p>
+              <h3 className="display-heading mt-2 text-2xl leading-tight text-ink">
+                {favorite.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{favorite.detail}</p>
+            </div>
+          </div>
+        ) : (
+          <ul className="space-y-2">
+            {experiments.map((experiment) => (
+              <li
+                className="flex items-center gap-3 rounded-xl bg-surface-soft px-3 py-3"
+                key={experiment.title}
+              >
+                <FlaskConical aria-hidden="true" className="shrink-0 text-accent-dark" size={17} />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-ink">
+                    {experiment.title}
+                  </span>
+                  <span className="mt-0.5 block text-sm text-muted">
+                    {experiment.detail}
+                  </span>
+                </span>
+                <Badge className="shrink-0 px-2 py-1 text-xs text-muted">
+                  {experiment.category}
+                </Badge>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <Link
+        className="mt-4 inline-flex min-h-11 w-fit items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-accent"
+        to="/projects"
+      >
+        All projects <ArrowUpRight aria-hidden="true" size={15} />
+      </Link>
+    </Card>
+  );
+}

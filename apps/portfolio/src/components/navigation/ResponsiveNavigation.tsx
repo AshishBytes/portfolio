@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../app/providers";
 import { profile } from "../../content/profile";
 import { cn } from "../../lib/cn";
-import { ButtonLink } from "../ui/Button";
 import { Container } from "../ui/Container";
 import { NavigationLink } from "./NavigationLink";
+import { blogLive } from "../../content/articles";
 
 const primaryLinks = [
   { label: "About", to: "/about" },
   { label: "Experience", to: "/experience" },
   { label: "Projects", to: "/projects" },
-  { label: "Writing", to: "/blog" },
+  ...(blogLive ? [{ label: "Writing", to: "/blog" }] : []),
 ];
 
 function ThemeButton() {
@@ -69,13 +69,17 @@ function HeaderContents() {
 
           <div className="flex items-center gap-2">
             <ThemeButton />
-            <ButtonLink
-              className="hidden sm:inline-flex"
-              size="small"
+            <Link
+              aria-label="Available for work — contact"
+              className="hidden min-h-11 items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-semibold text-ink transition-colors hover:bg-surface-soft sm:inline-flex"
               to="/contact"
             >
-              Contact <ArrowUpRight aria-hidden="true" size={15} />
-            </ButtonLink>
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 rounded-full bg-emerald-600"
+              />
+              <span>Available for work</span>
+            </Link>
             <button
               type="button"
               aria-label={
@@ -124,7 +128,13 @@ function HeaderContents() {
               Resume
             </NavigationLink>
             <NavigationLink compact onClick={closeMenu} to="/contact">
-              Contact
+              <span className="inline-flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="h-2 w-2 rounded-full bg-emerald-600"
+                />
+                Available for work
+              </span>
             </NavigationLink>
           </nav>
         </div>

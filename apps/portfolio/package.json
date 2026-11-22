@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "pnpm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir .prerender/server && node scripts/prerender.mjs && node scripts/verify-prerender.mjs",
@@ -17,6 +20,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@repo/config": "workspace:*",
     "@hookform/resolvers": "7.0.5",
     "clsx": "2.1.1",
     "lucide-react": "1.72.0",

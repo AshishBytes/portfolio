@@ -25,7 +25,7 @@ export function ArticlesSection() {
           className="inline-flex w-fit items-center gap-2 pb-1 text-sm font-semibold text-ink hover:text-accent"
           to="/blog"
         >
-          All previews <ArrowUpRight aria-hidden="true" size={16} />
+          All writing <ArrowUpRight aria-hidden="true" size={16} />
         </Link>
       </div>
       <div className="mt-7 grid gap-4 lg:grid-cols-2">
@@ -38,7 +38,7 @@ export function ArticlesSection() {
                   className="text-accent-on-ink"
                   size={16}
                 />
-                <p className="eyebrow text-accent-on-ink">Featured preview</p>
+                <p className="eyebrow text-accent-on-ink">Featured writing</p>
               </div>
               <h3 className="display-heading mt-5 text-3xl leading-tight sm:text-4xl">
                 {featuredArticle.title}
@@ -61,9 +61,7 @@ export function ArticlesSection() {
                 >
                   Read on the blog <ArrowUpRight aria-hidden="true" size={14} />
                 </a>
-              ) : (
-                <span>Blog link pending</span>
-              )}
+              ) : null}
             </div>
           </Card>
         )}
@@ -73,7 +71,7 @@ export function ArticlesSection() {
       </div>
       {!siteConfig.blogOrigin && (
         <p className="mt-4 text-xs text-subtle">
-          These are previews; full articles are published separately.
+          Selected writing on software, product, and engineering.
         </p>
       )}
     </section>

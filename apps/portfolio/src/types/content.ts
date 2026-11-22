@@ -41,10 +41,16 @@ export interface Project {
   category: string;
   technologies: string[];
   achievements: string[];
+  metrics?: ProjectMetric[];
   featured: boolean;
   liveUrl?: string;
   githubUrl?: string;
   image?: string;
+}
+
+export interface ProjectMetric {
+  value: string;
+  label: string;
 }
 
 export interface SkillCategory {
@@ -85,6 +91,17 @@ export interface ArticlePreview {
   publishedAt: string;
   readingTime: string;
   tags: string[];
+}
+
+export interface ArticleDraft {
+  slug: string;
+  title: string;
+  status: "draft";
+}
+
+export interface Contributor {
+  name: string;
+  subtitle: string;
 }
 
 export interface Favorite {

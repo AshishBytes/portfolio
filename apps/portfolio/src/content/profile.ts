@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { site, getProfessionalProfiles } from "@repo/config";
 
 const socialLinkSchema = z.object({
   label: z.string().min(1),
@@ -19,22 +20,22 @@ const profileSchema = z.object({
 });
 
 export const profile = profileSchema.parse({
-  name: "Ashish Singh",
-  brand: "Ashish Bytes",
-  title: "Software engineer · systems & backend",
+  // ── values sourced from @repo/config ──────────────────────────────────────
+  name: site.name,
+  brand: site.brand,
+  title: site.tagline,
+  email: site.email,
+  image: site.photo, // "/images/ashish-singh.jpeg" — verified against public/
+  // ── values that stay local to apps/portfolio ───────────────────────────────
   summary:
     "I build distributed systems and software engineering tools, with experience in backend services, network performance, and applied NLP.",
   location: "Gwalior, Madhya Pradesh, India",
-  email: "ashishlodhi5559@gmail.com",
-  image: "/images/ashish-singh.jpeg",
   resume: "/documents/Ashish_Singh_Resume.pdf",
-  socials: [
-    { label: "GitHub", href: "https://github.com/AshishBytes", icon: "github" },
-    {
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/ashishbytes",
-      icon: "linkedin",
-    },
-    { label: "Email", href: "mailto:ashishlodhi5559@gmail.com", icon: "mail" },
-  ],
+  // getProfessionalProfiles() returns ProfessionalProfile[] whose icon type
+  // is "github"|"linkedin"|"mail" — exactly the enum accepted by socialLinkSchema.
+  socials: getProfessionalProfiles().map((p) => ({
+    label: p.label,
+    href: p.url,
+    icon: p.icon,
+  })),
 });

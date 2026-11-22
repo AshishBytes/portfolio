@@ -8,6 +8,7 @@ import {
   getStructuredData,
 } from "./app/metadata";
 import App from "./App";
+import { blogLive } from "./content/articles";
 
 export async function render(url: string) {
   return new Promise<string>((resolve, reject) => {
@@ -46,4 +47,4 @@ export async function render(url: string) {
   });
 }
 
-export { getCanonicalUrl, getPageMetadata, getStructuredData };
+export { blogLive, getCanonicalUrl, getPageMetadata, getStructuredData };

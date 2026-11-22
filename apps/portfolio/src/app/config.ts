@@ -1,5 +1,7 @@
+const defaultSiteOrigin = "https://portfolio.ashishbytes.com";
+
 export const siteConfig = {
-  origin: "https://portfolio.ashishbytes.com",
+  origin: normalizeSiteOrigin(import.meta.env.VITE_SITE_ORIGIN),
   name: "Ashish Bytes",
   description:
     "Ashish Singh — software engineer focused on distributed systems and backend engineering.",
@@ -8,6 +10,16 @@ export const siteConfig = {
     import.meta.env.VITE_CONTACT_FORM_ENDPOINT,
   ),
 };
+
+function normalizeSiteOrigin(value: string | undefined) {
+  if (!value?.trim()) return defaultSiteOrigin;
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "https:" ? url.origin : defaultSiteOrigin;
+  } catch {
+    return defaultSiteOrigin;
+  }
+}
 
 function normalizeBlogOrigin(value: string | undefined) {
   if (!value?.trim()) return undefined;
