@@ -4,7 +4,7 @@ The portfolio application is a React 19, Vite 8, TypeScript 7 and Tailwind CSS 4
 
 ## Local development
 
-See the root [README.md](../../README.md) for monorepo-wide prerequisites (Node 24, pnpm 8.15.0 via Corepack) and first-time setup.
+See the root [README.md](../../README.md) for monorepo-wide prerequisites (Node 26, pnpm 8.15.0 via Corepack) and first-time setup.
 
 Run commands from the monorepo root (`portfolio-website-build`):
 

@@ -8,9 +8,9 @@ The repository is a pnpm workspace. Both projects depend on `@repo/config`, so e
 
 - Portfolio `apps/portfolio/package.json` runs `pnpm run typecheck`, the client Vite build, the SSR renderer build, `scripts/prerender.mjs`, and `scripts/verify-prerender.mjs` as one `build` script. Vercel's `pnpm run build` therefore emits the complete prerendered `dist/`.
 - Links `apps/links/package.json` defines `"build": "next build"`; `pnpm run build` is the correct command and Next.js manages its `.next` output.
-- The root pins Node with `.nvmrc` (`24`), `engines.node` (`24.x`), and `packageManager` (`pnpm@8.15.0`). Both app packages also declare Node `24.x`.
+- The root pins Node with `.nvmrc` (`26`), `engines.node` (`26.x`), and `packageManager` (`pnpm@8.15.0`). Both app packages also declare Node `26.x`.
 - The lockfile is pnpm lockfile v6.0. Enable Corepack in each Vercel project so its `pnpm install --frozen-lockfile` uses the root's pinned pnpm version.
-- `@repo/config` is an explicit workspace dependency of both apps. The clean-install checks use the repository's frozen lockfile and successfully build both apps under Node 24 with Corepack enabled.
+- `@repo/config` is an explicit workspace dependency of both apps. The clean-install checks use the repository's frozen lockfile and successfully build both apps under Node 26 with Corepack enabled.
 
 ### Current build scripts
 
@@ -59,7 +59,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Build Command:** `pnpm run build`
    - **Output Directory:** `dist`
    - **Development Command:** leave the Vite detected default; it is not used for deployment builds.
-6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**. The root and app `engines` fields also pin Node 24.
+6. In **Settings → Build and Deployment → Node.js Version**, select **26.x**. The root and app `engines` fields also pin Node 26.
 7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. `VITE_SITE_ORIGIN` defaults to `https://ashishbytes.vercel.app` (set in Production only if a future custom domain is configured). Leave `VITE_BLOG_ORIGIN` and `VITE_CONTACT_FORM_ENDPOINT` unset unless their decisions in the table above change.
 8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` for both Vercel projects. Feature and review branches stay as Preview environments.
 9. Under **Settings → Domains**, both projects run on their assigned Vercel domains (`ashishbytes.vercel.app` and `ashishlinks.vercel.app`). Custom domain configuration is a future step.
@@ -76,7 +76,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Build Command:** `pnpm run build`
    - **Output Directory:** leave the framework default; do not override Next.js output.
    - **Development Command:** leave the Next.js detected default.
-6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**.
+6. In **Settings → Build and Deployment → Node.js Version**, select **26.x**.
 7. Add `ENABLE_EXPERIMENTAL_COREPACK=1` for **Preview** and **Production**. There are no links-app runtime variables to add.
 8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` (same as the Portfolio project). Check in the current Vercel dashboard that both projects track `main`; feature and review branches stay Preview-only.
 9. Under **Settings → Domains**, verify `ashishlinks.vercel.app` is assigned to the Links project. Custom domains (`links.ashishbytes.com`) are a future step.

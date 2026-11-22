@@ -40,7 +40,7 @@ export function Footer() {
             {site.email}
           </a>
           <Link
-            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-dark"
             to="/contact"
           >
             Send a message <ArrowUpRight aria-hidden="true" size={15} />
