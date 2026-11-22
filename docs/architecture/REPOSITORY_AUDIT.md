@@ -1,5 +1,12 @@
 # Repository Audit and Migration Baseline
 
+> [!NOTE]
+> **Historical Record (November 2026):** This document records the baseline audit from the initial monorepo migration. Several details have since been superseded:
+> - The production branch is `main` (the `v2` branch was a preparatory migration branch).
+> - The workspace runs on **Node 24** (pinned in `.nvmrc` and `engines`), not Node 20.
+> - `apps/links` (Next.js link-in-bio) and `packages/config` (`@repo/config` shared data) have since been implemented.
+> - For current architecture and setup, see [PORTFOLIO_ARCHITECTURE.md](PORTFOLIO_ARCHITECTURE.md) and the root [README.md](../../README.md).
+
 **Date:** 2026-11-11  
 **Target root:** `C:\Users\ashis\coding\github\portfolio-website-build`  
 **Target branch:** `v2` at `8138580`  
