@@ -30,6 +30,34 @@ describe("portfolio routes and interactions", () => {
       await screen.findByRole("heading", { name: "Articles" }),
     ).toBeInTheDocument();
     expect(await screen.findByAltText("Ashish Singh")).toBeInTheDocument();
+    expect(
+      screen.getByText("Verified Discord bot - 585K+ users - 850+ servers"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Available for work — contact" }),
+    ).toHaveAttribute("href", "/contact");
+    expect(
+      screen.getByRole("heading", {
+        name: "Mobile Security — Light on Security Threats",
+      }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /read paper/i })).toBeNull();
+    expect(
+      screen.getAllByRole("link", { name: "Open case study" })[0],
+    ).toHaveAttribute("href", "/projects/reef-platform");
+  });
+
+  it("switches the about card between focus and experiments", async () => {
+    const user = userEvent.setup();
+    renderRoute("/");
+
+    expect(screen.getByText("Kafka · microservices")).toBeInTheDocument();
+    await user.click(screen.getByRole("tab", { name: "Experiments" }));
+    expect(screen.getByText("Offline-first expense tracker")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "All projects" })).toHaveAttribute(
+      "href",
+      "/projects",
+    );
   });
 
   it("renders a project case study from its stable slug", async () => {

@@ -1,6 +1,8 @@
-import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, Download } from "lucide-react";
+import { site } from "@repo/config";
 import { profile } from "../../../content/profile";
 import { ButtonLink } from "../../../components/ui/Button";
+import { Badge } from "../../../components/ui/Badge";
 import { Container } from "../../../components/ui/Container";
 
 export function HeroHeader() {
@@ -10,8 +12,15 @@ export function HeroHeader() {
       className="pb-7 pt-9 sm:pb-9 sm:pt-12 lg:pt-16"
     >
       <Container>
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-end">
-          <div>
+        <div className="max-w-4xl">
+          {site.discordBotVerified && (
+            <p className="mb-5 inline-flex min-h-8 items-center gap-2 rounded-full border border-accent/35 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
+              <BadgeCheck aria-hidden="true" size={15} />
+              <span>
+                Verified Discord bot - {site.metrics.users} users - {site.metrics.servers} servers
+              </span>
+            </p>
+          )}
             <p className="eyebrow">{profile.title}</p>
             <h1
               id="hero-title"
@@ -20,25 +29,29 @@ export function HeroHeader() {
               {profile.name}
               <span className="text-accent">.</span>
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              {profile.summary}
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+              Backend and distributed systems for {site.metrics.users} Discord users.
             </p>
-          </div>
-          <div className="flex flex-wrap gap-3 lg:justify-end">
-            <ButtonLink to="/projects" size="small">
-              Selected work <ArrowUpRight aria-hidden="true" size={15} />
+          <ul aria-label="Areas of practice" className="mt-5 flex flex-wrap gap-2">
+            {["Backend", "AI/ML", "Distributed Systems", "Open Source"].map(
+              (label) => (
+                <li key={label}>
+                  <Badge className="border-line bg-surface-soft px-3 py-1.5 text-xs text-muted">
+                    {label}
+                  </Badge>
+                </li>
+              ),
+            )}
+          </ul>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <ButtonLink to="/projects">
+              View work <ArrowUpRight aria-hidden="true" size={16} />
             </ButtonLink>
-            <ButtonLink href={profile.resume} size="small" variant="secondary">
+            <ButtonLink href={profile.resume} variant="secondary">
               Resume <Download aria-hidden="true" size={15} />
             </ButtonLink>
           </div>
         </div>
-        <a
-          className="mt-8 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-subtle transition-colors hover:text-accent"
-          href="#intro"
-        >
-          Explore the portfolio <ArrowDown aria-hidden="true" size={14} />
-        </a>
       </Container>
     </section>
   );

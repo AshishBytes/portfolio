@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { site } from "@repo/config";
 import type { Experience } from "../types/content";
 
 const experienceSchema = z.object({
@@ -32,7 +33,7 @@ export const experience: Experience[] = experienceSchema.array().parse([
     period: "November 2021 – April 2023",
     location: "Remote",
     achievements: [
-      "Designed sharded Go and Python services on Kubernetes, serving 1 million monthly users at 99.9% uptime.",
+      `Designed sharded Go and Python services on Kubernetes, serving ${site.metrics.users} users across ${site.metrics.servers} servers at ${site.metrics.uptime} uptime.`,
       "Refactored a TCP stack with epoll and zero-copy techniques, reducing median latency by 34 ms.",
       "Added SBERT semantic search, increasing intent accuracy from 72% to 93%.",
       "Promoted to lead in four months, mentored three engineers, and rolled out CI/CD with GitHub Actions and Helm.",

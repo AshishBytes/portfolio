@@ -1,12 +1,8 @@
 /**
  * Static site-identity values shared between apps.
  *
- * NOTE (not a fix): `metrics` here overlaps with the achievement numbers
- * embedded in apps/portfolio/src/content/experience.ts and projects.ts.
- * Those files remain the source of truth for detailed per-project data;
- * the values below are headline display-only summaries for the links page
- * and future hero sections. They will need to be kept in sync manually
- * until a later stage replaces them with a derived computation.
+ * These are headline values used across the portfolio and links pages.
+ * Detailed project achievements remain in apps/portfolio/src/content.
  */
 export const site = {
   name: "Ashish Singh",
@@ -15,7 +11,7 @@ export const site = {
   /**
    * Relative path served from each app's own `public/` directory.
    * Verified against apps/portfolio/public/images/ashish-singh.jpeg.
-   * Must be copied to apps/links/public/images/ashish-singh.jpeg (Stage 1).
+   * Also present at apps/links/public/images/ashish-singh.jpeg.
    */
   photo: "/images/ashish-singh.jpeg",
   email: "ashishlodhi5559@gmail.com",
@@ -23,8 +19,10 @@ export const site = {
   origin: "https://ashishbytes.com",
   /** Production origin for apps/links. */
   linksOrigin: "https://links.ashishbytes.com",
-  /** Headline metrics for the links / hero page. */
+  discordBotVerified: true,
+  /** Headline metrics shared by the portfolio and links pages. */
   metrics: {
+    yearsBuilding: "4+",
     users: "585K+",
     servers: "850+",
     uptime: "99.97%",
