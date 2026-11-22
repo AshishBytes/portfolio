@@ -1,7 +1,10 @@
 import { ArrowUpRight, CodeXml, Mail, Network } from "lucide-react";
 import { Link } from "react-router-dom";
-import { profile } from "../../content/profile";
+import { getProfessionalProfiles, site } from "@repo/config";
+import { blogLive } from "../../content/articles";
 import { Container } from "../ui/Container";
+
+const copyrightYear = new Date().getFullYear();
 
 const footerLinks = [
   { label: "About", to: "/about" },
@@ -10,12 +13,13 @@ const footerLinks = [
   { label: "Projects", to: "/projects" },
   { label: "Publications", to: "/publications" },
   { label: "Resume", to: "/resume" },
+  ...(blogLive ? [{ label: "Writing", to: "/blog" }] : []),
 ];
 
 const socialIcons = {
-  GitHub: CodeXml,
-  LinkedIn: Network,
-  Email: Mail,
+  github: CodeXml,
+  linkedin: Network,
+  mail: Mail,
 };
 
 export function Footer() {
@@ -29,24 +33,29 @@ export function Footer() {
             </span>
             <span className="text-2xl font-semibold text-accent">.</span>
           </Link>
-          <p className="mt-3 max-w-md text-sm leading-6 text-muted">
-            Software engineering, distributed systems, and selected work by
-            Ashish Singh.
-          </p>
+          <a
+            className="mt-4 block w-fit font-display text-xl font-semibold tracking-tight text-ink transition-colors hover:text-accent sm:text-2xl"
+            href={`mailto:${site.email}`}
+          >
+            {site.email}
+          </a>
+          <Link
+            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
+            to="/contact"
+          >
+            Send a message <ArrowUpRight aria-hidden="true" size={15} />
+          </Link>
           <div className="mt-5 flex items-center gap-2">
-            {profile.socials.map((social) => {
-              const Icon =
-                socialIcons[social.label as keyof typeof socialIcons];
-              if (!Icon) return null;
-              const external = social.href.startsWith("https://");
+            {getProfessionalProfiles().map((social) => {
+              const Icon = socialIcons[social.icon];
               return (
                 <a
                   aria-label={social.label}
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-accent"
-                  href={social.href}
-                  key={social.label}
-                  rel={external ? "noreferrer noopener" : undefined}
-                  target={external ? "_blank" : undefined}
+                  href={social.url}
+                  key={social.id}
+                  rel={social.icon === "mail" ? undefined : "noreferrer noopener"}
+                  target={social.icon === "mail" ? undefined : "_blank"}
                 >
                   <Icon aria-hidden="true" size={17} />
                 </a>
@@ -74,7 +83,7 @@ export function Footer() {
         </div>
 
         <p className="border-t border-line pt-5 text-xs text-subtle md:col-span-2">
-          © Ashish Bytes
+          (c) {copyrightYear} Ashish Singh
         </p>
       </Container>
     </footer>

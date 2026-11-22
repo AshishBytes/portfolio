@@ -1,8 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const dist = resolve(process.cwd(), "dist");
+const serverEntryUrl = pathToFileURL(
+  join(process.cwd(), ".prerender", "server", "entry-server.js"),
+).href;
+const { blogLive } = await import(serverEntryUrl);
 const routes = [
   ["/", "Ashish Singh"],
   ["/about", "Building useful systems"],
@@ -16,7 +21,7 @@ const routes = [
   ["/achievements", "Certifications and awards"],
   ["/publications", "Research and applied work"],
   ["/testimonials", "Professional references"],
-  ["/blog", "Article previews"],
+  ...(blogLive ? [["/blog", "Writing and engineering notes."]] : []),
   ["/resume", "A concise record of experience"],
   ["/contact", "Start a conversation"],
 ];
@@ -65,6 +70,14 @@ assert(
 );
 assert(notFound.includes("noindex,nofollow"), "404 page should not be indexed");
 const sitemap = await readFile(join(dist, "sitemap.xml"), "utf8");
+if (blogLive) {
+  assert(sitemap.includes("/blog"), "live blog missing from sitemap");
+} else {
+  const blog = await readFile(join(dist, "blog", "index.html"), "utf8");
+  assert(blog.includes("This page isn’t here."), "hidden blog must render not-found");
+  assert(blog.includes("noindex,nofollow"), "hidden blog must not be indexed");
+  assert(!sitemap.includes("/blog"), "hidden blog must not be in the sitemap");
+}
 assert(
   sitemap.includes("https://portfolio.ashishbytes.com/projects/docqa-tutor"),
   "project URL missing from sitemap",
@@ -78,6 +91,10 @@ const robots = await readFile(join(dist, "robots.txt"), "utf8");
 assert(
   robots.includes("https://portfolio.ashishbytes.com/sitemap.xml"),
   "robots.txt is missing its sitemap location",
+);
+assert(
+  blogLive ? !robots.includes("Disallow: /blog") : robots.includes("Disallow: /blog"),
+  "robots.txt does not match the writing gate",
 );
 console.log(
   `Verified prerendered HTML for ${routes.length} routes and the 404 page.`,

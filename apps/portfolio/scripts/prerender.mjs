@@ -8,8 +8,13 @@ const template = await readFile(join(distRoot, "index.html"), "utf8");
 const serverEntryUrl = pathToFileURL(
   join(appRoot, ".prerender", "server", "entry-server.js"),
 ).href;
-const { render, getCanonicalUrl, getPageMetadata, getStructuredData } =
-  await import(serverEntryUrl);
+const {
+  blogLive,
+  render,
+  getCanonicalUrl,
+  getPageMetadata,
+  getStructuredData,
+} = await import(serverEntryUrl);
 const routes = [
   "/",
   "/about",
@@ -23,7 +28,7 @@ const routes = [
   "/achievements",
   "/publications",
   "/testimonials",
-  "/blog",
+  ...(blogLive ? ["/blog"] : []),
   "/resume",
   "/contact",
 ];
@@ -78,6 +83,10 @@ async function writeRoute(pathname) {
 
 for (const route of routes) await writeRoute(route);
 
+// Keep a direct, prerendered /blog URL that presents the styled not-found page
+// while the data-derived writing gate is closed. It is intentionally private.
+if (!blogLive) await writeRoute("/blog");
+
 const notFoundHtml = template
   .replace("<!--app-head-->", createHead("/not-found"))
   .replace("<!--app-html-->", await render("/not-found"))
@@ -87,4 +96,14 @@ await writeFile(join(distRoot, "404.html"), notFoundHtml, "utf8");
 const sitemapRoutes = routes.filter((route) => route !== "/testimonials");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes.map((route) => `  <url><loc>${getCanonicalUrl(route)}</loc></url>`).join("\n")}\n</urlset>\n`;
 await writeFile(join(distRoot, "sitemap.xml"), sitemap, "utf8");
+const robots = [
+  "User-agent: *",
+  "Allow: /",
+  "Disallow: /404.html",
+  ...(!blogLive ? ["Disallow: /blog"] : []),
+  "",
+  `Sitemap: ${getCanonicalUrl("/sitemap.xml")}`,
+  "",
+].join("\n");
+await writeFile(join(distRoot, "robots.txt"), robots, "utf8");
 console.log(`Prerendered ${routes.length} public routes and a 404 document.`);

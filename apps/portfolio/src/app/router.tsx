@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
+import { blogLive } from "../content/articles";
 import { Container } from "../components/ui/Container";
 import {
   AboutPage,
@@ -38,7 +39,10 @@ export function PortfolioRouter() {
         <Route element={<AchievementsPage />} path="/achievements" />
         <Route element={<PublicationsPage />} path="/publications" />
         <Route element={<TestimonialsPage />} path="/testimonials" />
-        <Route element={<ArticlesPage />} path="/blog" />
+        <Route
+          element={blogLive ? <ArticlesPage /> : <NotFoundPage />}
+          path="/blog"
+        />
         <Route element={<ResumePage />} path="/resume" />
         <Route element={<ContactPage />} path="/contact" />
         <Route element={<NotFoundPage />} path="*" />

@@ -7,6 +7,7 @@ import { HeroHeader } from "../features/home/components/HeroHeader";
 import { ProfileCard } from "../features/home/components/ProfileCard";
 import { SelectedWorks } from "../features/home/components/SelectedWorks";
 import { Container } from "../components/ui/Container";
+import { blogLive } from "../content/articles";
 
 export function HomePage() {
   return (
@@ -28,7 +29,7 @@ export function HomePage() {
         <SelectedWorks />
         <ContributorsStrip />
         <FeaturedPublication />
-        <ArticlesSection />
+        {blogLive && <ArticlesSection />}
       </Container>
     </>
   );

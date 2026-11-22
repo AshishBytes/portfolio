@@ -19,6 +19,8 @@ export const site = {
   origin: "https://ashishbytes.com",
   /** Production origin for apps/links. */
   linksOrigin: "https://links.ashishbytes.com",
+  /** Mirrors the portfolio's public-article threshold; update when it goes live. */
+  blogLive: false,
   discordBotVerified: true,
   /** Headline metrics shared by the portfolio and links pages. */
   metrics: {

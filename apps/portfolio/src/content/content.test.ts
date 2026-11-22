@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { achievements } from "./certifications";
-import { articles, articleDrafts } from "./articles";
+import { articles, articleDrafts, blogLive } from "./articles";
+import { site } from "@repo/config";
 import { aboutHighlights } from "./about";
 import { experience } from "./experience";
 import { projects } from "./projects";
@@ -28,8 +29,10 @@ describe("portfolio content integrity", () => {
     expect(
       skillCategories.flatMap((category) => category.skills).length,
     ).toBeGreaterThanOrEqual(20);
-    expect(articles).toHaveLength(1);
-    expect(articleDrafts).toHaveLength(4);
+    expect(articles).toHaveLength(0);
+    expect(articleDrafts).toHaveLength(5);
+    expect(blogLive).toBe(false);
+    expect(site.blogLive).toBe(blogLive);
     for (const article of articles)
       expect(Number.isNaN(Date.parse(article.publishedAt))).toBe(false);
     for (const draft of articleDrafts) expect(draft.status).toBe("draft");
@@ -97,10 +100,13 @@ describe("portfolio content integrity", () => {
   });
 
   it("keeps incomplete engineering article entries out of public previews", () => {
-    expect(articles.map((article) => article.slug)).toEqual([
-      "easing-blueprint",
-    ]);
+    expect(articles).toEqual([]);
     expect(articleDrafts.map(({ title, slug, status }) => ({ title, slug, status }))).toEqual([
+      {
+        title: "The Easing Blueprint",
+        slug: "easing-blueprint",
+        status: "draft",
+      },
       {
         title: "Rose Plant Disease Detection with Edge ML",
         slug: "rose-disease-detection",

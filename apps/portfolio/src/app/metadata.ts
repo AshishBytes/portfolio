@@ -1,6 +1,7 @@
 import { projectBySlug } from "../content/projects";
 import { profile } from "../content/profile";
 import { siteConfig } from "./config";
+import { blogLive } from "../content/articles";
 
 export interface PageMetadata {
   title: string;
@@ -67,10 +68,13 @@ const pageMetadata: Record<string, PageMetadata> = {
     index: false,
   },
   "/blog": {
-    title: "Articles — Ashish Singh",
-    description: "Article previews from the existing portfolio content.",
+    title: blogLive ? "Writing — Ashish Singh" : "Page not found — Ashish Bytes",
+    description: blogLive
+      ? "Selected writing on software, product, and engineering."
+      : "The requested page could not be found.",
     path: "/blog",
     image: defaultImage,
+    index: blogLive,
   },
   "/resume": {
     title: "Resume — Ashish Singh",

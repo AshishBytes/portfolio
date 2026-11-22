@@ -21,11 +21,7 @@ const parsedArticles = articleSchema.array().parse([
   {
     slug: "easing-blueprint",
     title: "The Easing Blueprint",
-    excerpt:
-      "A guide to creating smooth, natural animations using easing functions and timing curves.",
-    publishedAt: "2024-01-10",
-    readingTime: "5 min read",
-    tags: ["Design", "Animation"],
+    status: "draft",
   },
   {
     slug: "rose-disease-detection",
@@ -53,6 +49,9 @@ const parsedArticles = articleSchema.array().parse([
 export const articles: ArticlePreview[] = parsedArticles.filter(
   (article): article is ArticlePreview => !("status" in article),
 );
+
+/** A public writing area requires at least two complete, non-draft articles. */
+export const blogLive = articles.length >= 2;
 
 // Draft metadata stays available to content tooling and tests, not public routes.
 export const articleDrafts: ArticleDraft[] = parsedArticles.filter(

@@ -9,8 +9,8 @@ export function ArticlesPage() {
     <>
       <PageHeader
         eyebrow="Writing"
-        title="Article previews."
-        description="Selected writing previews across software, product, and engineering."
+        title="Writing and engineering notes."
+        description="Selected writing on software, product, and engineering."
       />
       <Container className="pb-12">
         <section
@@ -18,7 +18,7 @@ export function ArticlesPage() {
           className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
           <h2 className="sr-only" id="article-list-title">
-            Article preview list
+            Writing list
           </h2>
           {articles.map((article) => (
             <ArticleCard article={article} key={article.slug} />

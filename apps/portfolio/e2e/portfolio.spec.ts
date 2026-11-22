@@ -17,7 +17,7 @@ test("public pages load prerendered content and route metadata", async ({
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
     ["/testimonials", "Professional references"],
-    ["/blog", "Article previews"],
+    ["/blog", "This page isn’t here."],
     ["/resume", "A concise record of experience"],
     ["/contact", "Start a conversation"],
   ];
@@ -130,7 +130,7 @@ test("all public pages pass axe checks in light and dark themes", async ({
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
     ["/testimonials", "Professional references"],
-    ["/blog", "Article previews"],
+    ["/blog", "This page isn’t here."],
     ["/resume", "A concise record of experience"],
     ["/contact", "Start a conversation"],
   ];

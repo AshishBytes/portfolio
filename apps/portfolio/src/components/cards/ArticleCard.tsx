@@ -43,9 +43,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
           >
             Read on the blog <ArrowUpRight aria-hidden="true" size={15} />
           </a>
-        ) : (
-          <p className="m-0 text-xs text-subtle">Article preview</p>
-        )}
+        ) : null}
       </div>
     </Card>
   );

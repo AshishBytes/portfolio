@@ -6,12 +6,13 @@ import { profile } from "../../content/profile";
 import { cn } from "../../lib/cn";
 import { Container } from "../ui/Container";
 import { NavigationLink } from "./NavigationLink";
+import { blogLive } from "../../content/articles";
 
 const primaryLinks = [
   { label: "About", to: "/about" },
   { label: "Experience", to: "/experience" },
   { label: "Projects", to: "/projects" },
-  { label: "Writing", to: "/blog" },
+  ...(blogLive ? [{ label: "Writing", to: "/blog" }] : []),
 ];
 
 function ThemeButton() {

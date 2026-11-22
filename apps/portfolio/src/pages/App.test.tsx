@@ -26,9 +26,8 @@ describe("portfolio routes and interactions", () => {
         name: "Projects with a systems core",
       }),
     ).toBeInTheDocument();
-    expect(
-      await screen.findByRole("heading", { name: "Articles" }),
-    ).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Articles" })).toBeNull();
+    expect(screen.queryByRole("link", { name: "Writing" })).toBeNull();
     expect(await screen.findByAltText("Ashish Singh")).toBeInTheDocument();
     expect(
       screen.getByText("Verified Discord bot - 585K+ users - 850+ servers"),
@@ -75,6 +74,19 @@ describe("portfolio routes and interactions", () => {
     expect(
       await screen.findByRole("heading", { name: "This page isn’t here." }),
     ).toBeInTheDocument();
+  });
+
+  it("hides the gated blog route and footer writing link", async () => {
+    renderRoute("/blog");
+    expect(
+      await screen.findByRole("heading", { name: "This page isn’t here." }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Writing" })).toBeNull();
+    expect(screen.getByRole("link", { name: "Send a message" })).toHaveAttribute(
+      "href",
+      "/contact",
+    );
+    expect(screen.getByText(`(c) ${new Date().getFullYear()} Ashish Singh`)).toBeInTheDocument();
   });
 
   it("opens mobile navigation and follows a route link", async () => {

@@ -108,14 +108,16 @@ export default function LinksPage() {
               </span>
               <span className="featured-arrow"><ArrowIcon /></span>
             </a>
-            <a className="featured-tile featured-tile--blog" href={`${site.origin}/blog`} target="_blank" rel="noopener noreferrer">
-              <span className="featured-icon featured-icon--blog" aria-hidden="true">Aa</span>
-              <span className="featured-copy">
-                <span className="featured-eyebrow">Notes &amp; ideas</span>
-                <span className="featured-title">Blog</span>
-              </span>
-              <span className="featured-arrow"><ArrowIcon /></span>
-            </a>
+            {site.blogLive && (
+              <a className="featured-tile featured-tile--blog" href={`${site.origin}/blog`} target="_blank" rel="noopener noreferrer">
+                <span className="featured-icon featured-icon--blog" aria-hidden="true">Aa</span>
+                <span className="featured-copy">
+                  <span className="featured-eyebrow">Notes &amp; ideas</span>
+                  <span className="featured-title">Blog</span>
+                </span>
+                <span className="featured-arrow"><ArrowIcon /></span>
+              </a>
+            )}
           </nav>
 
           <nav className="social-links" aria-label="Social and contact links">
