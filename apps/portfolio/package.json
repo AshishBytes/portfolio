@@ -17,6 +17,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@repo/config": "workspace:*",
     "@hookform/resolvers": "7.0.5",
     "clsx": "2.1.1",
     "lucide-react": "1.72.0",
