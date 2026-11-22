@@ -59,9 +59,9 @@ export function FocusExperimentsCard() {
             </span>
             <div>
               <p className="eyebrow">{favorite.label}</p>
-              <h3 className="display-heading mt-2 text-2xl leading-tight text-ink">
+              <p className="display-heading mt-2 text-2xl leading-tight text-ink">
                 {favorite.title}
-              </h3>
+              </p>
               <p className="mt-2 text-sm leading-6 text-muted">{favorite.detail}</p>
             </div>
           </div>
