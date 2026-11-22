@@ -90,19 +90,19 @@ test("contact form validation and honest mailto fallback work", async ({
   page,
 }) => {
   await page.goto("/contact");
-  await page.getByRole("button", { name: /prepare message/i }).click();
-  await expect(page.getByText("Enter your name.")).toBeVisible();
-
-  await page.getByLabel("Name").fill("Taylor Example");
-  await page.getByRole("textbox", { name: "Email" }).fill("taylor@example.com");
-  await page.getByLabel("Subject").fill("Project discussion");
-  await page
-    .getByLabel("Message")
-    .fill("I would like to discuss a possible collaboration.");
-  await page.getByRole("button", { name: /prepare message/i }).click();
   await expect(
-    page.getByRole("link", { name: "Open email draft" }),
+    page.getByRole("link", { name: "Email Ashish Singh" }),
   ).toHaveAttribute("href", /^mailto:/);
+  const profileNav = page.getByRole("navigation", {
+    name: "Professional profiles",
+  });
+  await expect(profileNav).toBeVisible();
+  await expect(profileNav.getByRole("link", { name: "GitHub" })).toBeVisible();
+  await expect(profileNav.getByRole("link", { name: "LinkedIn" })).toBeVisible();
+  await expect(page.locator("form")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: /prepare message/i }),
+  ).toHaveCount(0);
 });
 
 test("mobile layouts have no horizontal overflow", async ({ page }) => {
