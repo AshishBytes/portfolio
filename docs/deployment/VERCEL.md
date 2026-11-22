@@ -30,12 +30,13 @@ Links:
 
 ### Portfolio app variables
 
-| Variable | Current default | Production value after the domain move |
-| --- | --- | --- |
-| `VITE_BLOG_ORIGIN` | Empty / unset (`normalizeBlogOrigin` returns `undefined`) | Leave unset. There is no separate blog deployment; `/blog` remains gated until two complete public posts exist. If a separate blog is introduced later, use its confirmed HTTPS origin. |
-| `VITE_CONTACT_FORM_ENDPOINT` | Empty / unset (`normalizeEndpoint` returns `undefined`) | Leave unset until a real HTTPS contact endpoint is selected and tested. The form then prepares an email draft. If Ashish selects a provider, set its exact public HTTPS submission URL in Production and Preview as appropriate; never put credentials in a `VITE_` variable. |
+| Variable                     | Current default                                           | Production value after the domain move                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `VITE_SITE_ORIGIN`           | `https://portfolio.ashishbytes.com`                       | Set to `https://ashishbytes.com` at cutover; keep the current host until then.                                                                                                                                                                                                                                                                          |
+| `VITE_BLOG_ORIGIN`           | Empty / unset (`normalizeBlogOrigin` returns `undefined`) | Leave unset. There is no separate blog deployment; `/blog` remains gated until two complete public posts exist. If a separate blog is introduced later, use its confirmed HTTPS origin.                                                                                                                                                                 |
+| `VITE_CONTACT_FORM_ENDPOINT` | Empty / unset (`normalizeEndpoint` returns `undefined`)   | Leave unset until a real HTTPS contact endpoint is selected and tested. While unset, `/contact` shows a direct `mailto:` option and professional profile links; it does not show a form. If Ashish selects a provider, set its exact public HTTPS submission URL in Production and Preview as appropriate; never put credentials in a `VITE_` variable. |
 
-There is **no Vite origin environment variable**. `siteConfig.origin` is currently hard-coded as `https://portfolio.ashishbytes.com` in `apps/portfolio/src/app/config.ts`; this guide does not change it. At the approved final cutover, change it to `https://ashishbytes.com`, rebuild, and verify canonical URLs, Open Graph URLs, sitemap, and robots output.
+`VITE_SITE_ORIGIN` is the single portfolio origin source at build time. Keep the default/current value until cutover; set the apex value in Production for the approved cutover. Canonical URLs, Open Graph URLs, structured data, sitemap, and robots output all derive from it.
 
 `CI` is read only by `apps/portfolio/playwright.config.ts` to decide whether Playwright reuses an existing dev server. It is not read by the deployed app or build script and needs no Vercel value.
 
@@ -45,7 +46,7 @@ The app source under `apps/links` reads no custom environment variables. Profile
 
 ### Vercel build control (not an app variable)
 
-Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and Production. This makes Vercel use the root `packageManager` pin (`pnpm@8.15.0`) instead of selecting a different pnpm from the lockfile. Do not add a Vercel `VITE_*` origin variable.
+Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and Production. This makes Vercel use the root `packageManager` pin (`pnpm@8.15.0`) instead of selecting a different pnpm from the lockfile.
 
 ## Create the Portfolio Vercel project
 
@@ -59,8 +60,8 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Output Directory:** `dist`
    - **Development Command:** leave the Vite detected default; it is not used for deployment builds.
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**. The root and app `engines` fields also pin Node 24.
-7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. Leave the two optional `VITE_*` variables unset unless the endpoint/origin decisions in the table above change.
-8. In **Settings → Environments → Production → Branch Tracking**, set the intended production branch. `v2` is the repository's existing stable branch; verify the current live Vercel project's branch in the dashboard before saving. Keep `monorepo_split_codex` as a Preview branch for review; do not make this preparation branch Production.
+7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. Set `VITE_SITE_ORIGIN` to `https://portfolio.ashishbytes.com` in Production for the current host; change it to `https://ashishbytes.com` only at cutover. Leave `VITE_BLOG_ORIGIN` and `VITE_CONTACT_FORM_ENDPOINT` unset unless their decisions in the table above change.
+8. In **Settings → Environments → Production → Branch Tracking**, decide: **`v2` or `main`**. Set the chosen production branch explicitly in both Vercel projects. Keep `monorepo_split_codex` as a Preview branch for review; do not make this preparation branch Production.
 9. Under **Settings → Domains**, verify the existing `portfolio.ashishbytes.com` assignment before changing anything. Do not assign `ashishbytes.com` or change DNS during preparation. At cutover, the apex domain belongs to this portfolio project.
 10. Save the project settings. For preparation, use a Preview deployment URL only; do not promote it or change a production domain.
 
@@ -77,7 +78,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Development Command:** leave the Next.js detected default.
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**.
 7. Add `ENABLE_EXPERIMENTAL_COREPACK=1` for **Preview** and **Production**. There are no links-app runtime variables to add.
-8. In **Settings → Environments → Production → Branch Tracking**, use the same verified stable production branch as the Portfolio project. Check the current Vercel dashboard; the repository's current task branch stays Preview-only.
+8. In **Settings → Environments → Production → Branch Tracking**, explicitly set the same chosen production branch as the Portfolio project: decide **`v2` or `main`**. Check in the current Vercel dashboard which branch is currently live; the repository's current task branch stays Preview-only.
 9. Under **Settings → Domains**, verify `links.ashishbytes.com` is assigned to the Links project. The exact DNS target/record is shown by Vercel and must be checked in the current dashboard and your DNS provider.
 10. Save the settings and use a Preview deployment URL during preparation. Do not change DNS.
 
@@ -121,7 +122,7 @@ Vercel DNS record values, whether the apex or subdomain is already attached to a
 ## What still needs a dashboard check
 
 - Current Vercel team, Git connection, Production Branch, existing domain assignments, apex/subdomain DNS instructions, domain verification, and TLS state.
-- Whether `v2` is the live site's current production branch; the repo's default branch is `main`, so confirm this instead of relying on Vercel's new-project default.
+- Production branch decision: choose `v2` or `main`, then set it explicitly in both projects. Confirm current live branch in the Vercel dashboard.
 - Exact DNS record values and whether the existing host is attached to Netlify, an older Vercel project, or another provider.
 - If Ashish wants the contact form to submit to a provider, its final HTTPS endpoint and spam/email handling.
 

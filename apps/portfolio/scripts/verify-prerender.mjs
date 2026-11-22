@@ -7,7 +7,8 @@ const dist = resolve(process.cwd(), "dist");
 const serverEntryUrl = pathToFileURL(
   join(process.cwd(), ".prerender", "server", "entry-server.js"),
 ).href;
-const { blogLive } = await import(serverEntryUrl);
+const { blogLive, getCanonicalUrl } = await import(serverEntryUrl);
+const configuredOrigin = new URL(getCanonicalUrl("/")).origin;
 const routes = [
   ["/", "Ashish Singh"],
   ["/about", "Building useful systems"],
@@ -49,6 +50,12 @@ for (const [route, heading] of routes) {
     html.includes('rel="canonical"'),
     `${route} is missing canonical metadata`,
   );
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
+  assert(canonical, `${route} has no canonical URL`);
+  assert(
+    canonical[1].startsWith(`${configuredOrigin}/`),
+    `${route} canonical does not start with configured origin ${configuredOrigin}`,
+  );
   assert(
     html.includes("og:image") && html.includes("social-preview.png"),
     `${route} is missing its social preview metadata`,
@@ -69,19 +76,42 @@ assert(
   "404 page content is missing",
 );
 assert(notFound.includes("noindex,nofollow"), "404 page should not be indexed");
+const notFoundCanonical = notFound.match(
+  /<link rel="canonical" href="([^"]+)"/,
+);
+assert(notFoundCanonical, "404 page has no canonical URL");
+assert(
+  notFoundCanonical[1].startsWith(`${configuredOrigin}/`),
+  `404 canonical does not start with configured origin ${configuredOrigin}`,
+);
 const sitemap = await readFile(join(dist, "sitemap.xml"), "utf8");
 if (blogLive) {
   assert(sitemap.includes("/blog"), "live blog missing from sitemap");
 } else {
   const blog = await readFile(join(dist, "blog", "index.html"), "utf8");
-  assert(blog.includes("This page isn’t here."), "hidden blog must render not-found");
+  const blogCanonical = blog.match(/<link rel="canonical" href="([^"]+)"/);
+  assert(blogCanonical, "hidden blog has no canonical URL");
+  assert(
+    blogCanonical[1].startsWith(`${configuredOrigin}/`),
+    `Hidden blog canonical does not start with configured origin ${configuredOrigin}`,
+  );
+  assert(
+    blog.includes("This page isn’t here."),
+    "hidden blog must render not-found",
+  );
   assert(blog.includes("noindex,nofollow"), "hidden blog must not be indexed");
   assert(!sitemap.includes("/blog"), "hidden blog must not be in the sitemap");
 }
 assert(
-  sitemap.includes("https://portfolio.ashishbytes.com/projects/docqa-tutor"),
+  sitemap.includes(`${configuredOrigin}/projects/docqa-tutor`),
   "project URL missing from sitemap",
 );
+for (const [, href] of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+  assert(
+    href.startsWith(`${configuredOrigin}/`),
+    `Sitemap URL ${href} does not start with configured origin ${configuredOrigin}`,
+  );
+}
 assert(
   !sitemap.includes("/testimonials"),
   "noindex testimonial page should not be in the sitemap",
@@ -89,11 +119,13 @@ assert(
 assert(sitemap.includes("<urlset"), "sitemap XML is missing the urlset root");
 const robots = await readFile(join(dist, "robots.txt"), "utf8");
 assert(
-  robots.includes("https://portfolio.ashishbytes.com/sitemap.xml"),
+  robots.includes(`${configuredOrigin}/sitemap.xml`),
   "robots.txt is missing its sitemap location",
 );
 assert(
-  blogLive ? !robots.includes("Disallow: /blog") : robots.includes("Disallow: /blog"),
+  blogLive
+    ? !robots.includes("Disallow: /blog")
+    : robots.includes("Disallow: /blog"),
   "robots.txt does not match the writing gate",
 );
 console.log(

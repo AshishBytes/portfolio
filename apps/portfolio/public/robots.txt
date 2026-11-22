@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /404.html
-Disallow: /blog
-
-Sitemap: https://portfolio.ashishbytes.com/sitemap.xml

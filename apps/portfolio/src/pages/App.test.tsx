@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
@@ -52,7 +52,9 @@ describe("portfolio routes and interactions", () => {
 
     expect(screen.getByText("Kafka · microservices")).toBeInTheDocument();
     await user.click(screen.getByRole("tab", { name: "Experiments" }));
-    expect(screen.getByText("Offline-first expense tracker")).toBeInTheDocument();
+    expect(
+      screen.getByText("Offline-first expense tracker"),
+    ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "All projects" })).toHaveAttribute(
       "href",
       "/projects",
@@ -82,11 +84,12 @@ describe("portfolio routes and interactions", () => {
       await screen.findByRole("heading", { name: "This page isn’t here." }),
     ).toBeInTheDocument();
     expect(screen.queryByRole("link", { name: "Writing" })).toBeNull();
-    expect(screen.getByRole("link", { name: "Send a message" })).toHaveAttribute(
-      "href",
-      "/contact",
-    );
-    expect(screen.getByText(`(c) ${new Date().getFullYear()} Ashish Singh`)).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Send a message" }),
+    ).toHaveAttribute("href", "/contact");
+    expect(
+      screen.getByText(`(c) ${new Date().getFullYear()} Ashish Singh`),
+    ).toBeInTheDocument();
   });
 
   it("opens mobile navigation and follows a route link", async () => {
@@ -113,15 +116,30 @@ describe("portfolio routes and interactions", () => {
     );
   });
 
-  it("validates required contact fields before preparing a message", async () => {
-    const user = userEvent.setup();
+  it("shows direct email and professional profiles when no form endpoint is configured", async () => {
     renderRoute("/contact");
-    await user.click(
-      await screen.findByRole("button", { name: /prepare message/i }),
-    );
-    expect(await screen.findByText("Enter your name.")).toBeInTheDocument();
     expect(
-      screen.getByText("Enter a valid email address."),
+      await screen.findByRole("heading", { name: "Start a conversation." }),
     ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("textbox", { name: "Name" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Email Ashish Singh" }),
+    ).toHaveAttribute("href", "mailto:ashishlodhi5559@gmail.com");
+    expect(
+      screen.getByRole("navigation", { name: "Professional profiles" }),
+    ).toBeInTheDocument();
+    const profiles = within(
+      screen.getByRole("navigation", { name: "Professional profiles" }),
+    );
+    expect(profiles.getByRole("link", { name: "GitHub" })).toHaveAttribute(
+      "target",
+      "_blank",
+    );
+    expect(profiles.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
+      "target",
+      "_blank",
+    );
   });
 });
