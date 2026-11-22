@@ -15,6 +15,8 @@ const routes = [
   "/about",
   "/experience",
   "/projects",
+  "/projects/reef-platform",
+  "/projects/hackiitk-blockchain",
   "/projects/docqa-tutor",
   "/projects/tripledger",
   "/skills",

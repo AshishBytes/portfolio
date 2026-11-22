@@ -8,6 +8,8 @@ const routes = [
   ["/about", "Building useful systems"],
   ["/experience", "Selected professional experience"],
   ["/projects", "Selected work and technical explorations"],
+  ["/projects/reef-platform", "Reef Bot"],
+  ["/projects/hackiitk-blockchain", "HackIITK Blockchain"],
   ["/projects/docqa-tutor", "DocQA Tutor"],
   ["/projects/tripledger", "TripLedger"],
   ["/skills", "Tools and areas of practice"],

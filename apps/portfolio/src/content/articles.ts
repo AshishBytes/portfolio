@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { ArticlePreview } from "../types/content";
+import type { ArticleDraft, ArticlePreview } from "../types/content";
 
 const articlePreviewSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -10,17 +10,14 @@ const articlePreviewSchema = z.object({
   tags: z.array(z.string().min(1)),
 });
 
-export const articles: ArticlePreview[] = articlePreviewSchema.array().parse([
-  {
-    slug: "programming-is-easy",
-    title:
-      "Programming is Easy, Software Development is Hard & Maintaining Code is the Hardest",
-    excerpt:
-      "When you are a programmer, you need to be able to do what you can do, and when you are a software developer, you need to be able to do what you can't do.",
-    publishedAt: "2024-01-15",
-    readingTime: "8 min read",
-    tags: ["Engineering", "Career"],
-  },
+const articleDraftSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+  title: z.string().min(1),
+  status: z.literal("draft"),
+});
+
+const articleSchema = z.union([articlePreviewSchema, articleDraftSchema]);
+const parsedArticles = articleSchema.array().parse([
   {
     slug: "easing-blueprint",
     title: "The Easing Blueprint",
@@ -31,31 +28,33 @@ export const articles: ArticlePreview[] = articlePreviewSchema.array().parse([
     tags: ["Design", "Animation"],
   },
   {
-    slug: "product-vs-distribution",
-    title:
-      "Startup Founders, Would You Rather Have A 10x Better Product Or 10x Better Distribution?",
-    excerpt:
-      "The age-old debate between product quality and market reach. What matters more for your startup's success?",
-    publishedAt: "2024-01-05",
-    readingTime: "6 min read",
-    tags: ["Startup", "Business"],
+    slug: "rose-disease-detection",
+    title: "Rose Plant Disease Detection with Edge ML",
+    status: "draft",
   },
   {
-    slug: "life-changing-lessons",
-    title: "Life-Changing Lessons I've Learnt As An Entrepreneur",
-    excerpt:
-      "Reflecting on years of building products and companies, here are the most valuable lessons I've learned.",
-    publishedAt: "2023-12-28",
-    readingTime: "10 min read",
-    tags: ["Entrepreneurship", "Personal"],
+    slug: "distributed-systems-scale",
+    title: "Building Distributed Systems at Scale",
+    status: "draft",
   },
   {
-    slug: "stop-validating",
-    title: "Stop Validating Your Business Ideas",
-    excerpt:
-      "Why endless validation is killing your startup before it even begins, and what to do instead.",
-    publishedAt: "2023-12-20",
-    readingTime: "7 min read",
-    tags: ["Startup", "Strategy"],
+    slug: "microservices-kafka",
+    title: "Optimizing Microservices with Kafka",
+    status: "draft",
+  },
+  {
+    slug: "zero-copy-tcp",
+    title: "Zero-Copy TCP Stack Implementation",
+    status: "draft",
   },
 ]);
+
+// Only complete previews are consumed by public page components.
+export const articles: ArticlePreview[] = parsedArticles.filter(
+  (article): article is ArticlePreview => !("status" in article),
+);
+
+// Draft metadata stays available to content tooling and tests, not public routes.
+export const articleDrafts: ArticleDraft[] = parsedArticles.filter(
+  (article): article is ArticleDraft => "status" in article,
+);
