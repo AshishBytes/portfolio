@@ -1,0 +1,3 @@
+[build]
+  command = "pnpm --filter main run build"
+  publish = "apps/main/.next"

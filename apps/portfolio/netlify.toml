@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm --filter portfolio run build"
+  publish = "apps/portfolio/dist"
+
+[build.environment]
+  # Prevent a stale site-level Next.js plugin from running on this Vite app.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
