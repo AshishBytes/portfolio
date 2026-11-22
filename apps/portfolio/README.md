@@ -39,7 +39,7 @@ pnpm --filter portfolio preview
 
 Copy `.env.example` to `.env.local` if configuring optional integrations. Vite variables are public browser configuration read at build time; never put credentials or private keys in them.
 
-- `VITE_SITE_ORIGIN`: public HTTPS origin used for canonical URLs, Open Graph metadata, sitemap, and robots directives. Defaults to `https://portfolio.ashishbytes.com` until the domain cutover to `https://ashishbytes.com`.
+- `VITE_SITE_ORIGIN`: public HTTPS origin used for canonical URLs, Open Graph metadata, sitemap, and robots directives. Defaults to `https://ashishbytes.vercel.app`. Custom domain cutover is a future step.
 - `VITE_BLOG_ORIGIN`: optional HTTPS origin for the separate blog. The portfolio exposes writing only after at least two complete, non-draft articles exist; `@repo/config` `site.blogLive` mirrors that data-derived gate for the links app.
 - `VITE_CONTACT_FORM_ENDPOINT`: optional HTTPS endpoint that accepts the contact form JSON. It must enforce server-side validation, spam controls, and CORS. Until configured, the form validates input and offers an email draft; it does not report a message as sent.
 

@@ -9,7 +9,7 @@ Operational rules for AI assistants working in this repository:
 5. **Portfolio source of truth**: `apps/portfolio/src/content/*.ts` is the single source of truth for portfolio content (projects, experience, skills, publications, articles). Only `profile.ts` imports from `@repo/config`.
 6. **Blog gate**: The writing section and `/blog` route only activate when at least 2 non-draft articles exist in `apps/portfolio/src/content/articles.ts`. `@repo/config` `site.blogLive` mirrors this gate.
 7. **No unapproved deployment or DNS changes**: Do not activate Vercel redirects, change DNS, edit `vercel.json` or `netlify.toml`, or switch origins without explicit approval.
-8. **Origin defaults**: Portfolio origin defaults to `https://portfolio.ashishbytes.com` until domain cutover. Controlled by `VITE_SITE_ORIGIN`. Retain `apps/portfolio/netlify.toml` until Vercel deployment is verified.
+8. **Origin defaults**: Live origins are `https://ashishbytes.vercel.app` (portfolio) and `https://ashishlinks.vercel.app` (links). Origins change in one place (`packages/config/src/site.ts` plus the `VITE_SITE_ORIGIN` default in `apps/portfolio/src/app/config.ts`). Custom domains are a future step. Retain `apps/portfolio/netlify.toml` until Vercel deployment is verified.
 9. **Git discipline**: Production branch is `main`. Never force-push, rebase, reset, delete branches, or use `git worktree remove`. Work on task branches and commit clean diffs.
 10. **Fact verification**: Never invent facts, metrics, versions, or endpoints. Verify all scripts, commands, and exports against code before documenting.
 11. **Work in stages and report**: Make changes in verifiable steps. Test commands locally before completing tasks.
