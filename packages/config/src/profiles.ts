@@ -96,6 +96,9 @@ export const profiles = [
 // always see  icon: "github" | "linkedin" | "mail"  without a cast.
 // ---------------------------------------------------------------------------
 
-export function getProfessionalProfiles(): ProfessionalProfile[] {
-  return profiles.filter((p): p is ProfessionalProfile => p.professional === true);
+export function getProfessionalProfiles(): Extract<(typeof profiles)[number], { professional: true }>[] {
+  return profiles.filter(
+    (p): p is Extract<(typeof profiles)[number], { professional: true }> =>
+      p.professional === true,
+  );
 }
