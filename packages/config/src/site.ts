@@ -15,10 +15,10 @@ export const site = {
    */
   photo: "/images/ashish-singh.jpeg",
   email: "ashishlodhi5559@gmail.com",
-  /** Production origin for apps/main (future ashishbytes.com). */
-  origin: "https://ashishbytes.com",
+  /** Production origin for apps/portfolio. */
+  origin: "https://ashishbytes.vercel.app",
   /** Production origin for apps/links. */
-  linksOrigin: "https://links.ashishbytes.com",
+  linksOrigin: "https://ashishlinks.vercel.app",
   /** Mirrors the portfolio's public-article threshold; update when it goes live. */
   blogLive: false,
   discordBotVerified: true,

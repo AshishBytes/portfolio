@@ -30,13 +30,13 @@ Links:
 
 ### Portfolio app variables
 
-| Variable                     | Current default                                           | Production value after the domain move                                                                                                                                                                                                                                                                                                                  |
+| Variable                     | Current default                                           | Production value after a future domain move                                                                                                                                                                                                                                                                                                             |
 | ---------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `VITE_SITE_ORIGIN`           | `https://portfolio.ashishbytes.com`                       | Set to `https://ashishbytes.com` at cutover; keep the current host until then.                                                                                                                                                                                                                                                                          |
+| `VITE_SITE_ORIGIN`           | `https://ashishbytes.vercel.app`                          | Set to a custom domain (e.g. `https://ashishbytes.com`) only if a future domain cutover is performed.                                                                                                                                                                                                                                                  |
 | `VITE_BLOG_ORIGIN`           | Empty / unset (`normalizeBlogOrigin` returns `undefined`) | Leave unset. There is no separate blog deployment; `/blog` remains gated until two complete public posts exist. If a separate blog is introduced later, use its confirmed HTTPS origin.                                                                                                                                                                 |
 | `VITE_CONTACT_FORM_ENDPOINT` | Empty / unset (`normalizeEndpoint` returns `undefined`)   | Leave unset until a real HTTPS contact endpoint is selected and tested. While unset, `/contact` shows a direct `mailto:` option and professional profile links; it does not show a form. If Ashish selects a provider, set its exact public HTTPS submission URL in Production and Preview as appropriate; never put credentials in a `VITE_` variable. |
 
-`VITE_SITE_ORIGIN` is the single portfolio origin source at build time. Keep the default/current value until cutover; set the apex value in Production for the approved cutover. Canonical URLs, Open Graph URLs, structured data, sitemap, and robots output all derive from it.
+Live addresses are `https://ashishbytes.vercel.app` (portfolio) and `https://ashishlinks.vercel.app` (links). Origins change in ONE place: `packages/config/src/site.ts` (`site.origin` and `site.linksOrigin`) plus the `defaultSiteOrigin` in `apps/portfolio/src/app/config.ts`. Custom domains are a future step. Canonical URLs, Open Graph URLs, structured data, sitemap, and robots output all derive from the configured origin.
 
 `CI` is read only by `apps/portfolio/playwright.config.ts` to decide whether Playwright reuses an existing dev server. It is not read by the deployed app or build script and needs no Vercel value.
 
@@ -60,9 +60,9 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Output Directory:** `dist`
    - **Development Command:** leave the Vite detected default; it is not used for deployment builds.
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**. The root and app `engines` fields also pin Node 24.
-7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. Set `VITE_SITE_ORIGIN` to `https://portfolio.ashishbytes.com` in Production for the current host; change it to `https://ashishbytes.com` only at cutover. Leave `VITE_BLOG_ORIGIN` and `VITE_CONTACT_FORM_ENDPOINT` unset unless their decisions in the table above change.
+7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. `VITE_SITE_ORIGIN` defaults to `https://ashishbytes.vercel.app` (set in Production only if a future custom domain is configured). Leave `VITE_BLOG_ORIGIN` and `VITE_CONTACT_FORM_ENDPOINT` unset unless their decisions in the table above change.
 8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` for both Vercel projects. Feature and review branches stay as Preview environments.
-9. Under **Settings → Domains**, verify the existing `portfolio.ashishbytes.com` assignment before changing anything. Do not assign `ashishbytes.com` or change DNS during preparation. At cutover, the apex domain belongs to this portfolio project.
+9. Under **Settings → Domains**, both projects run on their assigned Vercel domains (`ashishbytes.vercel.app` and `ashishlinks.vercel.app`). Custom domain configuration is a future step.
 10. Save the project settings. For preparation, use a Preview deployment URL only; do not promote it or change a production domain.
 
 ## Create the Links Vercel project
@@ -79,7 +79,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**.
 7. Add `ENABLE_EXPERIMENTAL_COREPACK=1` for **Preview** and **Production**. There are no links-app runtime variables to add.
 8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` (same as the Portfolio project). Check in the current Vercel dashboard that both projects track `main`; feature and review branches stay Preview-only.
-9. Under **Settings → Domains**, verify `links.ashishbytes.com` is assigned to the Links project. The exact DNS target/record is shown by Vercel and must be checked in the current dashboard and your DNS provider.
+9. Under **Settings → Domains**, verify `ashishlinks.vercel.app` is assigned to the Links project. Custom domains (`links.ashishbytes.com`) are a future step.
 10. Save the settings and use a Preview deployment URL during preparation. Do not change DNS.
 
 No `apps/links/vercel.json` is needed: Next.js is detected and its build/output routing is automatic. Keep the current `apps/portfolio/vercel.json` values (`cleanUrls: true`, `trailingSlash: false`).
@@ -90,15 +90,17 @@ The Portfolio is a prerendered multi-page Vite build, not a single-file SPA fall
 
 With `cleanUrls: true` and `trailingSlash: false`, extensionless route URLs remain the canonical form, and Vercel normalizes a trailing slash to the no-slash route. No catch-all rewrite to `/index.html` is needed: known routes have prerendered files, and an unknown path should reach the custom `404.html` with HTTP 404. A catch-all SPA rewrite would shadow the static 404 and can turn unknown paths into soft 404 responses. Verify direct refreshes and a missing path on the Vercel Preview URL before launch. [Vercel custom 404 behavior](https://vercel.com/docs/routing/custom-404-pages) and [clean URL routing](https://vercel.com/docs/project-configuration/vercel-json).
 
-## Domain cutover order (later; not part of preparation)
+## Future domain cutover order (optional; not part of current setup)
 
-1. Confirm both Preview deployments build and test the correct branch. Confirm `portfolio.ashishbytes.com` and `links.ashishbytes.com` remain on their current targets.
-2. Merge/release the approved monorepo changes to the verified production branch. This stage does not perform that merge.
-3. At the approved cutover, set `VITE_SITE_ORIGIN=https://ashishbytes.com` in the Portfolio project's Production environment variables and deploy the Portfolio app. Verify the apex deployment through its Vercel Preview URL before changing DNS.
+Live addresses are `https://ashishbytes.vercel.app` and `https://ashishlinks.vercel.app`. The steps below outline a future custom domain cutover. Do NOT activate `docs/deployment/cutover-redirect.json`; it only applies if `portfolio.ashishbytes.com` is ever used again.
+
+1. Confirm both Preview deployments build and test the correct branch. Confirm the vercel.app domains function cleanly.
+2. Merge/release approved monorepo changes to `main`.
+3. At the approved cutover, set `VITE_SITE_ORIGIN=https://ashishbytes.com` in the Portfolio project's Production environment variables (or update `packages/config/src/site.ts` and `apps/portfolio/src/app/config.ts`) and deploy. Verify the apex deployment through its Vercel Preview URL before changing DNS.
 4. In the Portfolio project's **Settings → Domains**, add `ashishbytes.com`. Check in the current Vercel dashboard for any ownership-verification record and the exact apex DNS record Vercel requires. At the DNS provider, add/change only the records Vercel requests; do not guess an A/ALIAS value and do not replace nameservers unless that migration is separately planned.
-5. Wait for Vercel to show the domain as configured and TLS as valid. Verify `https://ashishbytes.com` and route refreshes while `portfolio.ashishbytes.com` still serves the previous site if the existing assignment permits this.
-6. Only after the apex is serving the new Portfolio deployment, activate the redirect by merging the rule from [`docs/deployment/cutover-redirect.json`](./cutover-redirect.json) into `apps/portfolio/vercel.json` (preserving `cleanUrls` and `trailingSlash`) and deploy. It is a **301**, host-matched only to `portfolio.ashishbytes.com`, and preserves the requested path. The JSON in `docs/` is inert and is not loaded by Vercel.
-7. Keep `links.ashishbytes.com` attached to the Links project. Confirm the links page's Portfolio tile now lands on the apex.
+5. Wait for Vercel to show the domain as configured and TLS as valid.
+6. If migrating from the legacy `portfolio.ashishbytes.com` subdomain in the future, activate the redirect by merging the rule from [`docs/deployment/cutover-redirect.json`](./cutover-redirect.json) into `apps/portfolio/vercel.json` (preserving `cleanUrls` and `trailingSlash`) and deploy. It is a **301**, host-matched only to `portfolio.ashishbytes.com`, and preserves the requested path. Do NOT activate it now; it is inert and only applies if `portfolio.ashishbytes.com` is ever used again.
+7. Keep `ashishlinks.vercel.app` (or attach `links.ashishbytes.com`) to the Links project. Confirm the links page's Portfolio tile lands on the portfolio origin.
 
 Vercel DNS record values, whether the apex or subdomain is already attached to another project, domain ownership status, and TLS status must be checked in the current Vercel dashboard. Use the exact record Vercel shows for this project and verify it with the DNS provider. [Vercel custom domains](https://vercel.com/docs/domains/set-up-custom-domain).
 

@@ -1,4 +1,4 @@
-const defaultSiteOrigin = "https://portfolio.ashishbytes.com";
+const defaultSiteOrigin = "https://ashishbytes.vercel.app";
 
 export const siteConfig = {
   origin: normalizeSiteOrigin(import.meta.env.VITE_SITE_ORIGIN),
