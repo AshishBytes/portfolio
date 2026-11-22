@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm --filter portfolio... run build"
+  publish = "apps/portfolio/dist"
+
+[build.environment]
+  # This Vite site does not need the Next.js plugin installed in the site settings.
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
