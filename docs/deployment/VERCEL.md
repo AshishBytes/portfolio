@@ -1,6 +1,6 @@
 # Vercel handoff: two independent projects
 
-This guide prepares Vercel projects for the monorepo. It does not create projects, change DNS, deploy to production, change the portfolio origin, activate the redirect, or remove `apps/portfolio/netlify.toml`.
+This guide prepares Vercel projects for the monorepo. It does not create projects, change DNS, deploy to production, change the portfolio origin, activate the redirect, or remove `apps/portfolio/netlify.toml` (which is retained until the Vercel deployment is verified).
 
 The repository is a pnpm workspace. Both projects depend on `@repo/config`, so each project must include source files outside its app root during the Vercel build.
 
@@ -61,7 +61,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Development Command:** leave the Vite detected default; it is not used for deployment builds.
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**. The root and app `engines` fields also pin Node 24.
 7. In **Settings → Environment Variables**, add `ENABLE_EXPERIMENTAL_COREPACK` with value `1` for **Preview** and **Production**. Set `VITE_SITE_ORIGIN` to `https://portfolio.ashishbytes.com` in Production for the current host; change it to `https://ashishbytes.com` only at cutover. Leave `VITE_BLOG_ORIGIN` and `VITE_CONTACT_FORM_ENDPOINT` unset unless their decisions in the table above change.
-8. In **Settings → Environments → Production → Branch Tracking**, decide: **`v2` or `main`**. Set the chosen production branch explicitly in both Vercel projects. Keep `monorepo_split_codex` as a Preview branch for review; do not make this preparation branch Production.
+8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` for both Vercel projects. Feature and review branches stay as Preview environments.
 9. Under **Settings → Domains**, verify the existing `portfolio.ashishbytes.com` assignment before changing anything. Do not assign `ashishbytes.com` or change DNS during preparation. At cutover, the apex domain belongs to this portfolio project.
 10. Save the project settings. For preparation, use a Preview deployment URL only; do not promote it or change a production domain.
 
@@ -78,7 +78,7 @@ Add `ENABLE_EXPERIMENTAL_COREPACK=1` to **both Vercel projects**, in Preview and
    - **Development Command:** leave the Next.js detected default.
 6. In **Settings → Build and Deployment → Node.js Version**, select **24.x**.
 7. Add `ENABLE_EXPERIMENTAL_COREPACK=1` for **Preview** and **Production**. There are no links-app runtime variables to add.
-8. In **Settings → Environments → Production → Branch Tracking**, explicitly set the same chosen production branch as the Portfolio project: decide **`v2` or `main`**. Check in the current Vercel dashboard which branch is currently live; the repository's current task branch stays Preview-only.
+8. In **Settings → Environments → Production → Branch Tracking**, set the Production branch to `main` (same as the Portfolio project). Check in the current Vercel dashboard that both projects track `main`; feature and review branches stay Preview-only.
 9. Under **Settings → Domains**, verify `links.ashishbytes.com` is assigned to the Links project. The exact DNS target/record is shown by Vercel and must be checked in the current dashboard and your DNS provider.
 10. Save the settings and use a Preview deployment URL during preparation. Do not change DNS.
 
@@ -94,10 +94,10 @@ With `cleanUrls: true` and `trailingSlash: false`, extensionless route URLs rema
 
 1. Confirm both Preview deployments build and test the correct branch. Confirm `portfolio.ashishbytes.com` and `links.ashishbytes.com` remain on their current targets.
 2. Merge/release the approved monorepo changes to the verified production branch. This stage does not perform that merge.
-3. At the approved cutover, update `siteConfig.origin` to `https://ashishbytes.com` and deploy the Portfolio app. Verify the apex deployment through its Vercel Preview URL before changing DNS.
+3. At the approved cutover, set `VITE_SITE_ORIGIN=https://ashishbytes.com` in the Portfolio project's Production environment variables and deploy the Portfolio app. Verify the apex deployment through its Vercel Preview URL before changing DNS.
 4. In the Portfolio project's **Settings → Domains**, add `ashishbytes.com`. Check in the current Vercel dashboard for any ownership-verification record and the exact apex DNS record Vercel requires. At the DNS provider, add/change only the records Vercel requests; do not guess an A/ALIAS value and do not replace nameservers unless that migration is separately planned.
 5. Wait for Vercel to show the domain as configured and TLS as valid. Verify `https://ashishbytes.com` and route refreshes while `portfolio.ashishbytes.com` still serves the previous site if the existing assignment permits this.
-6. Only after the apex is serving the new Portfolio deployment, activate the redirect by merging the rule from `docs/deployment/cutover-redirect.json` into `apps/portfolio/vercel.json` (preserving `cleanUrls` and `trailingSlash`) and deploy. It is a **301**, host-matched only to `portfolio.ashishbytes.com`, and preserves the requested path. The JSON in `docs/` is inert and is not loaded by Vercel.
+6. Only after the apex is serving the new Portfolio deployment, activate the redirect by merging the rule from [`docs/deployment/cutover-redirect.json`](./cutover-redirect.json) into `apps/portfolio/vercel.json` (preserving `cleanUrls` and `trailingSlash`) and deploy. It is a **301**, host-matched only to `portfolio.ashishbytes.com`, and preserves the requested path. The JSON in `docs/` is inert and is not loaded by Vercel.
 7. Keep `links.ashishbytes.com` attached to the Links project. Confirm the links page's Portfolio tile now lands on the apex.
 
 Vercel DNS record values, whether the apex or subdomain is already attached to another project, domain ownership status, and TLS status must be checked in the current Vercel dashboard. Use the exact record Vercel shows for this project and verify it with the DNS provider. [Vercel custom domains](https://vercel.com/docs/domains/set-up-custom-domain).
@@ -106,7 +106,7 @@ Vercel DNS record values, whether the apex or subdomain is already attached to a
 
 - Record the current DNS records and existing project/domain assignments before the cutover. Leave the previous production deployment available.
 - If the apex deployment fails, remove the newly activated redirect rule (if activated), redeploy the last known-good config, and restore the recorded DNS target for `ashishbytes.com` at the DNS provider. If a custom domain was reassigned between Vercel projects, restore its previous project assignment in the dashboard.
-- Keep `portfolio.ashishbytes.com` and its old deployment available until the apex has passed the post-launch checks. Do not delete the old Netlify configuration or project during this handoff.
+- Keep `portfolio.ashishbytes.com` and its old deployment available until the apex has passed the post-launch checks. Do not delete the old Netlify configuration or project during this handoff; `apps/portfolio/netlify.toml` is retained until the Vercel deploy is verified.
 - A 301 can be cached by browsers. Validate rollback with a clean browser profile and direct HTTP requests; allow DNS caches to expire after restoring records.
 
 ## Post-launch checklist
@@ -121,8 +121,8 @@ Vercel DNS record values, whether the apex or subdomain is already attached to a
 
 ## What still needs a dashboard check
 
-- Current Vercel team, Git connection, Production Branch, existing domain assignments, apex/subdomain DNS instructions, domain verification, and TLS state.
-- Production branch decision: choose `v2` or `main`, then set it explicitly in both projects. Confirm current live branch in the Vercel dashboard.
+- Current Vercel team, Git connection, Production Branch (`main`), existing domain assignments, apex/subdomain DNS instructions, domain verification, and TLS state.
+- Production branch confirmation: confirm both projects track `main` in the Vercel dashboard.
 - Exact DNS record values and whether the existing host is attached to Netlify, an older Vercel project, or another provider.
 - If Ashish wants the contact form to submit to a provider, its final HTTPS endpoint and spam/email handling.
 

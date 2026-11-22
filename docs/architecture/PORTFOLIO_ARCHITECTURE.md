@@ -20,7 +20,7 @@
 | jsdom                      |        26.1.0 |
 | Playwright                 |        1.65.0 |
 
-Vitest 5.1.0 and jsdom 31.0.0 were rejected after registry/engine inspection showed their resolved Undici requires Node 22.19+. The monorepo is on Node 20.19.4. Vitest 4.1.0 supports that Node version and Vite 8; jsdom 26.1.0 supports Node 18 and later.
+Vitest 5.1.0 and jsdom 31.0.0 were rejected after registry/engine inspection showed their resolved Undici requires Node 22.19+ while preserving broad LTS compatibility. The monorepo targets Node 24 (`.nvmrc`, `engines`). Vitest 4.1.0 and jsdom 26.1.0 remain pinned to provide stable test runs across local environments and CI.
 
 ESLint 10 validates JavaScript configuration files. Oxlint validates TS/TSX, React, import, and JSX accessibility rules. The TypeScript compiler performs full source type checking; this avoids overriding the unsupported TypeScript 7 peer range of the current typescript-eslint parser.
 
@@ -30,11 +30,11 @@ ESLint 10 validates JavaScript configuration files. Oxlint validates TS/TSX, Rea
 - The existing profile photo, resume PDF, and ICO favicon are copied into the new app. The editorial hero, biography, favorite, experiments, articles, and selected works are rebuilt using the structure of the existing monorepo homepage as visual reference.
 - No project repository or live destination is shown until verified. Legacy testimonial records remain isolated as source material and are not rendered without attribution and publication permission.
 - Article previews can link to a separate HTTPS blog origin through `VITE_BLOG_ORIGIN`; the portfolio does not host a duplicate blog.
-- Missing author data, publication permalinks, project screenshots, and testimonial consent are tracked in `REPOSITORY_AUDIT.md`.
+- Missing author data, publication permalinks, project screenshots, and testimonial consent are tracked in [REPOSITORY_AUDIT.md](REPOSITORY_AUDIT.md).
 
 ## Rendering and routing
 
-The browser uses React Router with route-level lazy imports. Vite builds a separate SSR entry that renders each public route through React Router's `StaticRouter`; React streams the resolved Suspense content into the route HTML before the browser hydrates it. The build writes 13 route documents, a static `404.html`, and an XML sitemap, then verifies titles, headings, canonical metadata, JSON-LD, and page content from the output.
+The browser uses React Router with route-level lazy imports. Vite builds a separate SSR entry that renders each public route through React Router's `StaticRouter`; React streams the resolved Suspense content into the route HTML before the browser hydrates it. The build writes 14 public route documents (plus a private `/blog` fallback when gated), a static `404.html`, `robots.txt`, and an XML sitemap, then verifies titles, headings, canonical metadata, JSON-LD, and page content from the output.
 
 The Vercel project uses clean URLs and serves the generated route directories. Unknown paths use the generated 404 document. React Router handles client navigation and browser history; a scroll-restoration hook resets on pushed routes and restores saved positions on browser back/forward.
 

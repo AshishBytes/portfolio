@@ -1,5 +1,11 @@
 # Portfolio Source Migration
 
+> [!NOTE]
+> **Historical Record (November 2026):** This document describes the initial migration of the portfolio into the monorepo. Several details have since been superseded:
+> - The monorepo has standardized on `main` as the production branch (the `v2` preparation branch was merged).
+> - `apps/links` (Next.js link-in-bio) and `packages/config` (`@repo/config` shared data) have since been implemented.
+> - For current architecture, deployment, and setup, see [PORTFOLIO_ARCHITECTURE.md](../architecture/PORTFOLIO_ARCHITECTURE.md), [VERCEL.md](../deployment/VERCEL.md), and the root [README.md](../../README.md).
+
 ## Repository relationship
 
 The original checkout `C:\Users\ashis\coding\portfolio` is a standalone Vite source application on `main`. The target `C:\Users\ashis\coding\github\portfolio-website-build` is the intended pnpm workspace on branch `v2`; both Git remotes identify `AshishBytes/portfolio`. The source checkout contains the original app and an untracked `changes.patch`. That patch remains untouched because its hunks do not apply cleanly to the source branch.
