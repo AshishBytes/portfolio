@@ -1,88 +1,184 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { MessageSquare, ChevronRight } from "lucide-react"
-import Image from "next/image"
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react"
 import Link from "next/link"
 
+// ─── Tech stack badge icons (text-based, no external deps) ──────────────────
+function StackBadge({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center rounded-md border border-[var(--border)] bg-[var(--ds-elevated)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-[var(--ds-fg-lo)]">
+      {label}
+    </span>
+  )
+}
+
+// ─── Metric highlight ────────────────────────────────────────────────────────
+function MetricBadge({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-2xl font-bold leading-none tracking-tight text-[var(--ds-fg-hi)]">
+        {value}
+      </span>
+      <span className="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-[var(--ds-fg-lo)]">
+        {label}
+      </span>
+    </div>
+  )
+}
+
+// ─── Project data ─────────────────────────────────────────────────────────────
 const projects = [
   {
-    title: "Reef Platform",
-    location: "Remote",
-    country: "Global",
-    category: "distributed systems",
+    title:        "Reef Bot",
+    architecture: "Microservices · Kubernetes",
+    category:     "Discord Platform",
     description:
-      "Sharded microservices platform on Kubernetes serving 1M+ monthly users at 99.9% uptime. Built with Go, Python, and advanced networking optimizations.",
-    image: "/images/project-1.jpg",
-    slug: "reef-platform",
-    color: "bg-gradient-to-b from-blue-100 to-blue-50",
+      "Co-developed a Discord-verified bot platform from 0 to global scale. Engineered the sharding system, rate-limit handling, and real-time event pipeline.",
+    metrics: [
+      { value: "585K+", label: "Users" },
+      { value: "850+",  label: "Servers" },
+      { value: "99.97%", label: "Uptime" },
+    ],
+    stack:   ["Node.js", "Discord.js", "Redis", "PostgreSQL", "K8s"],
+    slug:    "reef-platform",
+    github:  "https://github.com/AshishBytes",
+    live:    null,
+    accent:  "from-indigo-500/10 to-violet-500/5",
   },
   {
-    title: "HackIITK Blockchain",
-    location: "Kanpur",
-    country: "India",
-    category: "blockchain",
+    title:        "HackIITK Blockchain",
+    architecture: "Gas-less Relayer · Solidity",
+    category:     "Web3 / Hackathon",
     description:
-      "Gas-less Solidity relayer handling 5,000+ transactions <150ms p95. Ranked #2/54 teams for reliability & innovation with zero critical issues.",
-    image: "/images/project-2.jpg",
-    slug: "hackiitk-blockchain",
-    color: "bg-gradient-to-b from-purple-100 to-purple-50",
+      "Built a gas-less meta-transaction relayer for a Solidity voting system. Ranked #2 of 54 teams. Zero critical issues under 5,000+ concurrent transactions.",
+    metrics: [
+      { value: "5K+",   label: "Transactions" },
+      { value: "<150ms", label: "p95 Latency" },
+      { value: "#2/54",  label: "Rank" },
+    ],
+    stack:   ["Solidity", "Ethers.js", "Node.js", "Hardhat"],
+    slug:    "hackiitk-blockchain",
+    github:  "https://github.com/AshishBytes",
+    live:    null,
+    accent:  "from-purple-500/10 to-pink-500/5",
   },
   {
-    title: "DocQA Tutor",
-    location: "Remote",
-    country: "India",
-    category: "ML/NLP",
+    title:        "DocQA Tutor",
+    architecture: "Fine-tuned T5 · AKS GPU",
+    category:     "ML / NLP",
     description:
-      "Fine-tuned T5 model on 2M samples achieving ROUGE-L 43.2, BLEU 27.5. Deployed on AKS GPU pools with 47% latency reduction.",
-    image: "/images/project-3.jpg",
-    slug: "docqa-tutor",
-    color: "bg-gradient-to-b from-green-100 to-green-50",
+      "Fine-tuned a T5 model on 2M samples for document summarization and QA. Deployed on Azure Kubernetes GPU pools with custom inference optimization.",
+    metrics: [
+      { value: "43.2",  label: "ROUGE-L" },
+      { value: "27.5",  label: "BLEU" },
+      { value: "−47%",  label: "Latency" },
+    ],
+    stack:   ["Python", "PyTorch", "T5", "AKS", "FastAPI"],
+    slug:    "docqa-tutor",
+    github:  "https://github.com/AshishBytes",
+    live:    null,
+    accent:  "from-emerald-500/10 to-teal-500/5",
   },
 ]
 
+// ─── Component ───────────────────────────────────────────────────────────────
 export function SelectedWorks() {
   return (
-    <section className="space-y-4">
-      <div className="flex items-center gap-2">
-        <MessageSquare className="h-4 w-4 text-orange-500" />
-        <h2 className="text-xs font-medium uppercase tracking-wider text-orange-500">
-          Selected Projects from 2021-2025
-        </h2>
+    <section id="selected-works" className="space-y-5">
+      {/* Section header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--ds-accent)]" />
+          <h2 className="text-[10px] font-semibold uppercase tracking-widest text-[var(--ds-fg-lo)]">
+            Selected Works · 2021–2025
+          </h2>
+        </div>
+        <Link
+          href="/work"
+          className="inline-flex items-center gap-1 text-xs font-medium text-[var(--ds-fg-lo)] transition-colors hover:text-[var(--ds-accent)]"
+        >
+          All projects <ArrowUpRight className="h-3 w-3" />
+        </Link>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <Card
+          <article
             key={project.slug}
-            className="group overflow-hidden border border-black/[0.08] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-shadow hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
+            className="card-glow group flex flex-col overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--ds-surface)]"
           >
-            <div className={`relative aspect-[4/3] ${project.color}`}>
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                fill
-                className="object-cover p-4"
-              />
+            {/* Gradient header */}
+            <div className={`relative bg-gradient-to-br ${project.accent} border-b border-[var(--border)] px-5 pt-5 pb-4`}>
+              {/* Category + architecture */}
+              <div className="mb-3 flex items-start justify-between gap-2">
+                <span className="rounded-md border border-[var(--border)] bg-[var(--ds-surface)]/60 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--ds-fg-mid)] backdrop-blur-sm">
+                  {project.category}
+                </span>
+                <div className="flex gap-2">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} on GitHub`}
+                      className="rounded-md border border-[var(--border)] bg-[var(--ds-surface)]/60 p-1.5 text-[var(--ds-fg-lo)] backdrop-blur-sm transition-colors hover:text-[var(--ds-fg-hi)]"
+                    >
+                      <Github className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} live demo`}
+                      className="rounded-md border border-[var(--border)] bg-[var(--ds-surface)]/60 p-1.5 text-[var(--ds-fg-lo)] backdrop-blur-sm transition-colors hover:text-[var(--ds-fg-hi)]"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Metrics */}
+              <div className="flex gap-5">
+                {project.metrics.map((m) => (
+                  <MetricBadge key={m.label} value={m.value} label={m.label} />
+                ))}
+              </div>
             </div>
-            <CardContent className="p-6">
-              <h3 className="text-xl font-semibold text-[#1a1a1a]">
+
+            {/* Body */}
+            <div className="flex flex-1 flex-col p-5">
+              <h3
+                className="font-semibold text-[var(--ds-fg-hi)]"
+                style={{ fontSize: "var(--text-lg)" }}
+              >
                 {project.title}
               </h3>
-              <p className="mt-1 text-xs uppercase tracking-wider text-[#999999]">
-                <span className="font-medium">{project.location}</span> {project.country},{" "}
-                {project.category}
+              <p className="mt-0.5 text-[10px] font-medium uppercase tracking-wider text-[var(--ds-fg-lo)]">
+                {project.architecture}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#666666]">
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--ds-fg-mid)]">
                 {project.description}
               </p>
+
+              {/* Stack */}
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {project.stack.map((s) => (
+                  <StackBadge key={s} label={s} />
+                ))}
+              </div>
+
+              {/* CTA */}
               <Link
                 href={`/work/${project.slug}`}
-                className="mt-4 flex items-center justify-between border-t border-black/[0.08] pt-4 text-sm font-medium text-[#333333] transition-colors hover:text-orange-500"
+                className="mt-4 flex items-center justify-between border-t border-[var(--border)] pt-4 text-sm font-medium text-[var(--ds-fg-mid)] transition-colors hover:text-[var(--ds-accent)]"
               >
-                Open Case
-                <ChevronRight className="h-4 w-4" />
+                Open Case Study
+                <ArrowUpRight className="h-4 w-4" />
               </Link>
-            </CardContent>
-          </Card>
+            </div>
+          </article>
         ))}
       </div>
     </section>

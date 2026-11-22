@@ -1,66 +1,69 @@
-import { HeroHeader } from "@/components/portfolio/hero-header"
-import { BioCard } from "@/components/portfolio/bio-card"
-import { ProfileCard } from "@/components/portfolio/profile-card"
-import { RecentFavorite } from "@/components/portfolio/recent-favorite"
+import { NavBar }          from "@/components/portfolio/nav-bar"
+import { HeroHeader }      from "@/components/portfolio/hero-header"
+import { BioCard }         from "@/components/portfolio/bio-card"
+import { ProfileCard }     from "@/components/portfolio/profile-card"
+import { RecentFavorite }  from "@/components/portfolio/recent-favorite"
 import { ExperimentsCard } from "@/components/portfolio/experiments-card"
 import { ArticlesSection } from "@/components/portfolio/articles-section"
-import { SelectedWorks } from "@/components/portfolio/selected-works"
+import { SelectedWorks }   from "@/components/portfolio/selected-works"
+import { Footer }          from "@/components/portfolio/footer"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#fafafa]">
-      <div className="mx-auto w-full max-w-[1400px] px-6 py-8 lg:px-8 lg:py-10">
+    <>
+      {/* Sticky navigation */}
+      <NavBar />
 
-        {/* Hero */}
-        <header className="mb-6 lg:mb-8">
-          <HeroHeader />
-        </header>
+      <main className="min-h-screen bg-background pt-14">
+        <div className="mx-auto w-full max-w-[1400px] px-6 py-10 lg:px-8 lg:py-14">
 
-        {/* Main Grid - Bio, Profile, Widgets */}
-        <section className="mb-6 grid gap-4 md:grid-cols-12 md:items-stretch lg:mb-8 lg:h-[440px]">
-          {/* Left bio - spans 5/12 */}
-          <div className="md:col-span-5">
-            <div className="h-full">
+          {/* ── Hero ──────────────────────────────────────────────────────── */}
+          <header className="mb-10 lg:mb-14" id="hero">
+            <HeroHeader />
+          </header>
+
+          {/* ── Bento grid: Bio · Profile · Widgets ───────────────────────── */}
+          <section
+            id="bio"
+            aria-label="About Ashish"
+            className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-12 lg:mb-14"
+          >
+            {/* Bio — 5 cols */}
+            <div className="md:col-span-5">
               <BioCard />
             </div>
-          </div>
 
-          {/* Center profile - spans 4/12 */}
-          <div className="md:col-span-4">
-            <div className="h-full">
+            {/* Profile photo — 4 cols */}
+            <div className="min-h-[320px] md:col-span-4 md:min-h-0">
               <ProfileCard />
             </div>
-          </div>
 
-          {/* Right widgets - spans 3/12, two stacked halves */}
-          <div className="md:col-span-3 flex flex-col gap-4 h-full">
-            <div className="flex-1">
-              <RecentFavorite />
+            {/* Right widgets — 3 cols, stacked */}
+            <div className="flex flex-col gap-4 md:col-span-3">
+              <div className="flex-1">
+                <RecentFavorite />
+              </div>
+              <div className="flex-1">
+                <ExperimentsCard />
+              </div>
             </div>
-            <div className="flex-1">
-              <ExperimentsCard />
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Articles */}
-        <section className="mb-6 lg:mb-8">
-          <ArticlesSection />
-        </section>
+          {/* ── Publications & Research ────────────────────────────────────── */}
+          <section className="mb-10 lg:mb-14" aria-label="Publications and research">
+            <ArticlesSection />
+          </section>
 
-        {/* Selected Works */}
-        <section className="mb-6 lg:mb-8">
-          <SelectedWorks />
-        </section>
+          {/* ── Selected Works ─────────────────────────────────────────────── */}
+          <section className="mb-10 lg:mb-14" aria-label="Selected projects">
+            <SelectedWorks />
+          </section>
 
-        {/* Footer */}
-        <footer className="border-t border-border/30 pt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Ashish Bytes. All rights reserved.
-          </p>
-        </footer>
+        </div>
+      </main>
 
-      </div>
-    </main>
+      {/* Footer */}
+      <Footer />
+    </>
   )
 }
