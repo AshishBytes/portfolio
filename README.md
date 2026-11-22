@@ -22,7 +22,7 @@ Source for Ashish Singh's sites. One repo, several independent apps that share o
 
 | Tool | Version | Notes |
 |---|---|---|
-| Node.js | **24.x (LTS)** | Pinned in `.nvmrc` and `engines`. Other versions cause engine warnings and odd test behavior. |
+| Node.js | **26.x** | Pinned in `.nvmrc` and `engines`. Other versions cause engine warnings and odd test behavior. |
 | pnpm | **8.15.0** | Pinned via `packageManager`. Use Corepack so the right version is picked automatically. |
 | Git | any recent | |
 
@@ -30,17 +30,17 @@ Source for Ashish Singh's sites. One repo, several independent apps that share o
 
 ```bash
 # macOS / Linux (nvm)
-nvm install 24 && nvm use 24
+nvm install 26 && nvm use 26
 
-# Windows: install nvm-windows or Node 24 from nodejs.org, then
-nvm install 24
-nvm use 24
+# Windows: install nvm-windows or Node 26 from nodejs.org, then
+nvm install 26
+nvm use 26
 ```
 
 Check it:
 
 ```bash
-node -v      # v24.x.x
+node -v      # v26.x.x
 ```
 
 ### Enable pnpm through Corepack
@@ -285,13 +285,13 @@ Notes:
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| Engine warning about Node | Not on Node 24 | `nvm use 24`, reopen the terminal |
+| Engine warning about Node | Not on Node 26 | `nvm use 26`, reopen the terminal |
 | Wrong pnpm version | Corepack not enabled | `corepack enable` then `corepack prepare pnpm@8.15.0 --activate` |
 | "frozen-lockfile" error | `pnpm-lock.yaml` out of date | `pnpm install`, commit the lockfile |
 | "Cannot find module @repo/config" | Install not run at root, or stale install | At the repo root: `pnpm install` |
 | Missing native/optional binary (Windows) | Standalone pnpm skipped an optional dependency | Use Corepack, delete `node_modules`, reinstall |
 | `EADDRINUSE` / port already in use | Two dev servers on one port | Use the explicit ports in section 3, or stop the other process |
-| `localStorage is not a function` in tests | Newer Node with experimental web storage | Use Node 24. As a stopgap: `NODE_OPTIONS=--no-experimental-webstorage` |
+| `localStorage is not a function` in tests | Newer Node with experimental web storage | Use Node 26. As a stopgap: `NODE_OPTIONS=--no-experimental-webstorage` |
 
 Clean reinstall:
 
@@ -342,7 +342,7 @@ Check in this order:
 
 1. Root Directory is `apps/portfolio` or `apps/links`.
 2. "Include files outside of the Root Directory in the Build Step" is **on**.
-3. Node.js version is 24.x.
+3. Node.js version is 26.x.
 4. `ENABLE_EXPERIMENTAL_COREPACK=1` is set (Production and Preview).
 5. Install command is `pnpm install --frozen-lockfile`.
 6. The same build passes locally with the commands in section 4.
@@ -367,7 +367,7 @@ Each app is its own Vercel project, both connected to this repo.
 | portfolio | `apps/portfolio` | Vite | `pnpm run build` | `dist` |
 | links | `apps/links` | Next.js | `pnpm run build` | `.next` (auto) |
 
-Common settings for both: Node 24.x, install `pnpm install --frozen-lockfile`, "Include files outside of the Root Directory" on, production branch `main`, `ENABLE_EXPERIMENTAL_COREPACK=1`.
+Common settings for both: Node 26.x, install `pnpm install --frozen-lockfile`, "Include files outside of the Root Directory" on, production branch `main`, `ENABLE_EXPERIMENTAL_COREPACK=1`.
 
 Live addresses are the two Vercel domains:
 - Portfolio: `https://ashishbytes.vercel.app`
