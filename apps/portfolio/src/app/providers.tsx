@@ -11,16 +11,12 @@ type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
-  toggleTheme: (origin?: { x: number; y: number }) => void;
+  toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const themeEvent = "portfolio-theme-change";
-const themePageColors: Record<Theme, string> = {
-  light: "#faf9f6",
-  dark: "#151412",
-};
 const getThemeSnapshot = (): Theme => {
   if (typeof window === "undefined") return "light";
   return window.localStorage.getItem("portfolio-theme") === "dark"
@@ -50,32 +46,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const value = {
     theme,
-    toggleTheme: (origin?: { x: number; y: number }) => {
-      const root = document.documentElement;
-      const currentTheme: Theme = root.dataset.theme === "dark" ? "dark" : "light";
-      const nextTheme = currentTheme === "light" ? "dark" : "light";
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-
-      window.localStorage.setItem("portfolio-theme", nextTheme);
-
-      if (origin && !prefersReducedMotion) {
-        root.style.setProperty("--theme-reveal-color", themePageColors[nextTheme]);
-        root.style.setProperty("--theme-origin-x", `${origin.x}px`);
-        root.style.setProperty("--theme-origin-y", `${origin.y}px`);
-        root.classList.remove("theme-reveal");
-        void root.offsetWidth;
-        root.classList.add("theme-reveal");
-        window.setTimeout(() => {
-          root.dataset.theme = nextTheme;
-          root.classList.remove("theme-reveal");
-          window.dispatchEvent(new Event(themeEvent));
-        }, 700);
-        return;
-      }
-
-      root.dataset.theme = nextTheme;
+    toggleTheme: () => {
+      window.localStorage.setItem(
+        "portfolio-theme",
+        theme === "light" ? "dark" : "light",
+      );
       window.dispatchEvent(new Event(themeEvent));
     },
   };

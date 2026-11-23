@@ -1,4 +1,4 @@
-import { useState, type MouseEvent } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../app/providers";
@@ -19,18 +19,10 @@ function ThemeButton() {
   const { theme, toggleTheme } = useTheme();
   const Icon = theme === "light" ? Moon : Sun;
 
-  const handleThemeToggle = (event: MouseEvent<HTMLButtonElement>) => {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    toggleTheme({
-      x: bounds.left + bounds.width / 2,
-      y: bounds.top + bounds.height / 2,
-    });
-  };
-
   return (
     <button
       type="button"
-      onClick={handleThemeToggle}
+      onClick={toggleTheme}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-ink"
     >
