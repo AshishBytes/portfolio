@@ -152,30 +152,35 @@ export const projects: Project[] = projectSchema.array().parse([
     "githubUrl": "https://github.com/AshishBytes/Gasless-Forwarder"
   },
   {
-    slug: "docqa-tutor",
-    title: "DocQA Tutor",
-    subtitle: "Summarisation & question-answering API",
-    description:
-      "A document question-answering system built around a fine-tuned T5 model and semantic search.",
-    period: "February – April 2025",
-    category: "Machine learning / NLP",
-    technologies: ["Python", "T5", "PyTorch", "SBERT", "FastAPI", "React"],
-    achievements: [
-      "Fine-tuned T5 on 2 million samples; reported ROUGE-L 43.2 and BLEU 27.5.",
-      "Deployed on AKS GPU pools with horizontal pod autoscaling.",
-      "Reduced latency by 47%, measured with Application Insights.",
+    "slug": "docqa-tutor",
+    "title": "Custom Tutor AI (DocQA)",
+    "subtitle": "Offline Custom-Trained Transformer · Streamlit",
+    "description": "An offline academic tutor and document QA system trained from scratch on consumer GPU hardware (RTX 3050). Supports concept explanations, PDF chunk summarization, and MCQ quiz generation inside a local Streamlit interface.",
+    "period": "February – April 2025",
+    "category": "Machine Learning / NLP",
+    "technologies": [
+      "Python",
+      "PyTorch",
+      "Transformers",
+      "T5 / GPT-2",
+      "HuggingFace Datasets",
+      "Streamlit"
     ],
-    metrics: [
-      { value: "43.2", label: "ROUGE-L" },
-      { value: "27.5", label: "BLEU" },
-      { value: "−47%", label: "Latency" },
+    "achievements": [
+      "Built an end-to-end custom training pipeline from scratch (tokenization, dataset normalization, FP16 mixed precision, and gradient checkpointing) optimized for 4–6 GB VRAM.",
+      "Normalized four academic and summarization datasets (CNN/DailyMail, SciTLDR, SciQ, and SQuAD) into unified prompt-response formats for QA, TL;DRs, and MCQ generation.",
+      "Integrated local PyTorch inference and PDF text-chunk extraction into a fully offline Streamlit tutor UI with session-state chat memory."
     ],
-    image: undefined,
-    featured: false,
-    experiment: false,
-    pinned: false,
-    liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes",
+    "metrics": [
+      { "value": "Offline", "label": "Local GPU Inference" },
+      { "value": "4 Datasets", "label": "QA, Quiz & TL;DR" },
+      { "value": "FP16", "label": "RTX 3050 Trained" }
+    ],
+    "image": "/images/projects/docqa-tutor.svg",
+    "featured": false,
+    "experiment": true,
+    "pinned": false,
+    "githubUrl": "https://github.com/AshishBytes/AI_Tutor"
   },
   {
     slug: "tripledger",
