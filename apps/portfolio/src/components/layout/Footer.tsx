@@ -83,7 +83,16 @@ export function Footer() {
         </div>
 
         <p className="border-t border-line pt-5 text-xs text-subtle md:col-span-2">
-          © {copyrightYear} Ashish Singh · Last updated: {site.lastUpdated}
+          © {copyrightYear} Ashish Singh (
+          <a
+            href="https://github.com/AshishBytes"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted transition-colors hover:text-accent"
+          >
+            AshishBytes
+          </a>
+          ) · Last updated: {site.lastUpdated}
         </p>
       </Container>
     </footer>
