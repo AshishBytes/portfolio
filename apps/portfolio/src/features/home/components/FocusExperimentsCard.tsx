@@ -67,44 +67,41 @@ export function FocusExperimentsCard() {
             </div>
           </div>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-1.5">
             {experimentProjects.map((project) => (
               <li key={project.slug}>
                 <Link
                   to={`/projects/${project.slug}`}
-                  className="group flex items-center gap-3 rounded-xl bg-surface-soft px-3 py-3 transition-colors hover:bg-surface"
+                  className="group flex items-start gap-2 rounded-lg bg-surface-soft px-2.5 py-2 transition-colors hover:bg-surface"
                 >
-                  <div className="relative shrink-0">
+                  <div className="relative shrink-0 mt-0.5">
                     <FlaskConical
                       aria-hidden="true"
                       className="shrink-0 text-accent-dark"
-                      size={17}
+                      size={14}
                     />
-                    {project.experiment && (
-                      <span
-                        className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-amber-500"
-                        title="Work in progress"
-                        aria-label="Work in progress"
-                      />
-                    )}
+                    <span
+                      className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-amber-500"
+                      title="Work in progress"
+                      aria-label="Work in progress"
+                    />
                   </div>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-sm font-semibold text-ink group-hover:text-accent transition-colors">
+                    <span className="block text-xs font-semibold text-ink group-hover:text-accent transition-colors leading-snug">
                       {project.title}
                     </span>
-                    <span className="mt-0.5 block text-sm text-muted">
+                    <span className="mt-0.5 block text-[11px] leading-snug text-muted line-clamp-1">
                       {project.subtitle}
                     </span>
                   </span>
-                  <div className="flex shrink-0 items-center gap-2">
+                  <div className="flex shrink-0 items-center gap-1.5 mt-0.5">
                     {project.pinned && (
-                      <Badge className="shrink-0 bg-accent-soft px-2 py-1 text-xs text-accent-dark">
-                        Pinned
-                      </Badge>
+                      <span
+                        className="inline-flex h-1.5 w-1.5 rounded-full bg-accent"
+                        title="Pinned"
+                        aria-label="Pinned project"
+                      />
                     )}
-                    <Badge className="shrink-0 px-2 py-1 text-xs text-muted">
-                      {project.category}
-                    </Badge>
                   </div>
                 </Link>
               </li>

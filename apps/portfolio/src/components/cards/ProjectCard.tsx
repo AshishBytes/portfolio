@@ -16,6 +16,16 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
       <ProjectArtwork project={project} />
       <div className="p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-2">
+          {project.pinned && (
+            <Badge tone="accent" className="bg-accent text-on-accent">
+              Pinned
+            </Badge>
+          )}
+          {project.experiment && (
+            <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400">
+              Experiment
+            </Badge>
+          )}
           <Badge tone="accent">{project.category}</Badge>
           <span className="text-xs text-subtle">{project.period}</span>
         </div>

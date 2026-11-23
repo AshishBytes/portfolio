@@ -78,6 +78,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: true,
     experiment: true,
     pinned: true,
+    githubUrl: "https://github.com/AshishBytes",
   },
   {
     slug: "streamsync-capture-studio",
@@ -101,6 +102,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: true,
     experiment: true,
     pinned: false,
+    githubUrl: "https://github.com/AshishBytes",
   },
   {
     slug: "hackiitk-blockchain",
@@ -124,6 +126,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: false,
     experiment: true,
     pinned: false,
+    githubUrl: "https://github.com/AshishBytes",
   },
   {
     slug: "docqa-tutor",
@@ -147,6 +150,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: false,
     experiment: true,
     pinned: false,
+    githubUrl: "https://github.com/AshishBytes",
   },
   {
     slug: "tripledger",
@@ -170,6 +174,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: false,
     experiment: true,
     pinned: false,
+    githubUrl: "https://github.com/AshishBytes",
   },
   {
     slug: "travelquest",
