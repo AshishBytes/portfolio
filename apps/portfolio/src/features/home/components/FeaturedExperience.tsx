@@ -4,8 +4,8 @@ import { experience } from "../../../content/experience";
 import { ExperienceCard } from "../../../components/cards/ExperienceCard";
 import { SectionHeading } from "../../../components/ui/SectionHeading";
 
-// Show the most recent experience (first item in the array)
-const featuredExperience = experience.slice(0, 1);
+// Show pinned experience on home page
+const featuredExperience = experience.filter((exp) => exp.pinned);
 
 export function FeaturedExperience() {
   if (featuredExperience.length === 0) return null;

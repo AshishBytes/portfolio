@@ -10,6 +10,8 @@ const experienceSchema = z.object({
   location: z.string().min(1),
   achievements: z.array(z.string().min(1)).min(1),
   technologies: z.array(z.string().min(1)),
+  pinned: z.boolean().optional(),
+  projectSlug: z.string().optional(),
 });
 
 export const experience: Experience[] = experienceSchema.array().parse([
@@ -25,6 +27,8 @@ export const experience: Experience[] = experienceSchema.array().parse([
       "Ranked 2nd among 54 teams for reliability and innovation.",
     ],
     technologies: ["Solidity", "Azure Container Apps", "Slither", "MythX"],
+    pinned: false,
+    projectSlug: "hackiitk-blockchain",
   },
   {
     id: "reef-distributed-discord-platform",
@@ -46,6 +50,8 @@ export const experience: Experience[] = experienceSchema.array().parse([
       "MongoDB",
       "WebSockets",
     ],
+    pinned: true,
+    projectSlug: "reef-platform",
   },
   {
     id: "happy-low-latency-music-bot",
@@ -59,5 +65,7 @@ export const experience: Experience[] = experienceSchema.array().parse([
       "Iterated across 963 commits with MongoDB persistence and cloud/VPS deployment before archiving the project in February 2023.",
     ],
     technologies: ["JavaScript", "Node.js", "Discord.js", "MongoDB", "Heroku"],
+    pinned: true,
+    projectSlug: "happy-bot",
   },
 ]);

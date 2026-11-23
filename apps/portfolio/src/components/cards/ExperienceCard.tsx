@@ -1,4 +1,5 @@
-import { MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Experience } from "../../types/content";
 import { Badge } from "../ui/Badge";
 import { Card } from "../ui/Card";
@@ -37,6 +38,16 @@ export function ExperienceCard({ experience }: { experience: Experience }) {
           <Badge key={technology}>{technology}</Badge>
         ))}
       </div>
+      {experience.projectSlug && (
+        <div className="mt-5 border-t border-line pt-4">
+          <Link
+            className="inline-flex items-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-accent"
+            to={`/projects/${experience.projectSlug}`}
+          >
+            View project case study <ArrowUpRight aria-hidden="true" size={16} />
+          </Link>
+        </div>
+      )}
     </Card>
   );
 }
