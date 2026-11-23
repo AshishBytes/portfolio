@@ -1,6 +1,7 @@
 import { ArticlesSection } from "../features/home/components/ArticlesSection";
 import { BioCard } from "../features/home/components/BioCard";
 import { ContributorsStrip } from "../features/home/components/ContributorsStrip";
+import { FeaturedExperience } from "../features/home/components/FeaturedExperience";
 import { FeaturedPublication } from "../features/home/components/FeaturedPublication";
 import { FocusExperimentsCard } from "../features/home/components/FocusExperimentsCard";
 import { HeroHeader } from "../features/home/components/HeroHeader";
@@ -26,6 +27,7 @@ export function HomePage() {
             <ProfileCard />
           </div>
         </section>
+        <FeaturedExperience />
         <SelectedWorks />
         <ContributorsStrip />
         <FeaturedPublication />
