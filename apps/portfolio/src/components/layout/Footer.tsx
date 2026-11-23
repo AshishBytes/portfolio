@@ -1,6 +1,6 @@
-import { ArrowUpRight, CodeXml, Mail, Network } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { getProfessionalProfiles, site } from "@repo/config";
+import { site } from "@repo/config";
 import { blogLive } from "../../content/articles";
 import { Container } from "../ui/Container";
 
@@ -16,18 +16,12 @@ const footerLinks = [
   ...(blogLive ? [{ label: "Writing", to: "/blog" }] : []),
 ];
 
-const socialIcons = {
-  github: CodeXml,
-  linkedin: Network,
-  mail: Mail,
-};
-
 export function Footer() {
   return (
     <footer className="mt-20 border-t border-line bg-surface/50">
       <Container className="py-8 space-y-8">
         <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             <Link className="inline-flex items-baseline gap-1 w-fit" to="/">
               <span className="font-display text-xl font-semibold tracking-tight">
                 ashish
@@ -40,23 +34,12 @@ export function Footer() {
             >
               {site.email}
             </a>
-            <div className="flex items-center gap-2">
-              {getProfessionalProfiles().map((social) => {
-                const Icon = socialIcons[social.icon];
-                return (
-                  <a
-                    aria-label={social.label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-accent"
-                    href={social.url}
-                    key={social.id}
-                    rel={social.icon === "mail" ? undefined : "noreferrer noopener"}
-                    target={social.icon === "mail" ? undefined : "_blank"}
-                  >
-                    <Icon aria-hidden="true" size={16} />
-                  </a>
-                );
-              })}
-            </div>
+            <Link
+              className="mt-1 inline-flex w-fit min-h-10 items-center gap-2 rounded-full bg-accent px-4 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-dark"
+              to="/contact"
+            >
+              Send a message <ArrowUpRight aria-hidden="true" size={14} />
+            </Link>
           </div>
 
           <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
@@ -69,12 +52,6 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              className="inline-flex items-center gap-1 text-sm font-medium text-ink transition-colors hover:text-accent"
-              to="/contact"
-            >
-              Contact <ArrowUpRight aria-hidden="true" size={13} />
-            </Link>
           </div>
         </div>
 
