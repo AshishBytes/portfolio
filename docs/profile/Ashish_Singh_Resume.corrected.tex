@@ -1,0 +1,183 @@
+% -----------------------------------------------------------------
+% Résumé in LaTeX (Matty template) – content aligned with portfolio data
+% Author: Ashish Singh
+% -----------------------------------------------------------------
+\documentclass[letterpaper,11pt]{article}
+
+% ---------- Packages ----------
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{needspace}
+
+\hypersetup{
+  pdftitle={Ashish Singh | Software Developer Resume},
+  pdfauthor={Ashish Singh},
+  pdfsubject={Software developer focused on backend systems, automation, and API integrations},
+  pdfkeywords={Ashish Singh, software developer, backend systems, automation, API integrations, Python, JavaScript, distributed services}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- Margins ----------
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% ---------- Section formatting ----------
+\titleformat{\section}{\vspace{-5pt}\scshape\raggedright\large}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+\titleformat{\subsection}{\vspace{-4pt}\scshape\raggedright\normalsize}{\hspace{-.15in}}{0em}{}[\color{black}\vspace{-8pt}]
+
+% ---------- Custom commands ----------
+\newcommand{\resumeItem}[1]{\item\small{#1\vspace{-2pt}}}
+\newcommand{\resumeSubheading}[4]{\vspace{-1pt}\item\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2 \\\textit{\small #3} & \textit{\small #4} \\\end{tabular*}\vspace{-4pt}}
+\newcommand{\resumeProjectHeading}[2]{\Needspace{9\baselineskip}\vspace{-1pt}\item\begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}\textbf{#1} & #2 \\\end{tabular*}\vspace{-4pt}}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-1pt}}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in,label={}]
+\setlength\itemsep{0pt}}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+
+% ==================== START DOCUMENT ====================
+\begin{document}
+
+% ---------- Header ----------
+\begin{center}
+  {\Huge\scshape Ashish Singh}\\
+  \small
+  \faIcon{map-marker-alt}\ Gwalior, Madhya Pradesh, India \;|\;
+  \faIcon{envelope}\ \href{mailto:official.ashishbytes@gmail.com}{official.ashishbytes@gmail.com} \\
+  \faIcon{github}\ \href{https://github.com/AshishBytes}{github.com/AshishBytes} \;|\;
+  \faIcon{linkedin}\ \href{https://linkedin.com/in/ashishbytes}{linkedin.com/in/ashishbytes} \;|\;
+  \faIcon{globe}\ \href{https://ashishbytes.vercel.app}{Portfolio}
+\end{center}
+
+% ---------- Summary ----------
+\section{Summary}
+\small
+I build backend systems and software tools, with experience in distributed services, automation, and API integrations.
+
+% ---------- Skills ----------
+\section{Core Skills}
+\resumeSubHeadingListStart
+  \item\small{
+    \textbf{Distributed Systems:} Kafka, Consistent hashing, CRDTs, Load balancing, Microservices, Event queues, FastAPI, Node.js, API integrations, YouTube Data API, Google Maps API, OpenWeather API, Eventbrite API, Google OAuth, WebRTC, CLI automation\\
+    \textbf{Databases:} SQLite, MySQL, MongoDB, PostgreSQL\\
+    \textbf{Systems Foundations:} OS internals, TCP/IP, Algorithms, Data structures, Multithreading, Secure coding, Manifest V3, MediaRecorder, WebCodecs, captureStream, chrome.tabCapture, FFmpeg, Remotion, PyCaps\\
+    \textbf{Languages:} C, C++, Python, Java, JavaScript, HTML\\
+    \textbf{Cloud \& DevOps:} Azure (AKS, Functions), GCP (GKE, Cloud Run), Docker, Terraform, GitHub Actions\\
+    \textbf{ML / NLP:} T5, PyTorch, TensorFlow, scikit-learn, SBERT, BLEU / ROUGE\\
+    \textbf{Ways of Working:} Agile, Mentorship, Communication, Leadership, Time management
+  }
+\resumeSubHeadingListEnd
+
+% ---------- Education ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading{Amity University Madhya Pradesh}{2022 -- 2026}{B.Tech. Computer Science \& Engineering}{Gwalior, India}
+\resumeSubHeadingListEnd
+
+% ---------- Experience ----------
+\section{Experience}
+\resumeSubHeadingListStart
+  \resumeSubheading{HackIITK Blockchain Hackathon \href{https://github.com/AshishBytes/Gasless-Forwarder}{[GitHub]}}{February 2025}{Team Lead \& Backend Engineer}{Kanpur, India}
+  \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+    \resumeSubItem{Earned selection among \textbf{54 Grand Finale teams} from 7,000+ registrations in HACK IITK 2025's Web3 Security Solution Track.}
+    \resumeSubItem{Engineered an \textbf{EIP-712 relayer} and gasless forwarder for ERC-20 and ERC-721 transfers.}
+    \resumeSubItem{Hardened the forwarder with incrementing-nonce \textbf{replay protection}, OpenZeppelin ReentrancyGuard, and Solidity Shield audits.}
+  \end{itemize}
+
+  \resumeSubheading{Reef -- Discord Platform \href{https://github.com/AshishBytes/Reef-Bot}{[GitHub]}}{November 2021 -- April 2023}{Lead Software Engineer}{Remote}
+  \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+    \resumeSubItem{Co-led a Discord-verified bot serving \textbf{585K+ users across 850+ servers}, delivering moderation, spam prevention, voice controls, and slash commands.}
+    \resumeSubItem{Organized \textbf{Node.js and Discord.js} command and event handlers for real-time moderation, spam filtering, and audio streaming.}
+    \resumeSubItem{Built \textbf{MongoDB persistence} and query caching to keep lookup latency low during peak server traffic.}
+    \resumeSubItem{Completed \textbf{Discord verification} with rate-limit handling and privacy compliance, then coordinated the leadership handover.}
+  \end{itemize}
+
+  \resumeSubheading{HAPPY -- Discord Music Bot \href{https://github.com/AshishBytes/HAPPY-bot}{[GitHub]}}{November 2021 -- April 2023}{Software Engineer}{Remote}
+  \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+    \resumeSubItem{Developed a Discord music and radio bot in \textbf{Node.js and Discord.js} with modular command, event, and voice-streaming handlers.}
+    \resumeSubItem{Earned Discord's official \textbf{Verified Bot badge} by meeting platform security, rate-limit, and verification standards.}
+    \resumeSubItem{Contributed across \textbf{963 commits}; the project was archived in February 2023.}
+  \end{itemize}
+\resumeSubHeadingListEnd
+
+% ---------- Projects ----------
+\Needspace{18\baselineskip}
+\section{Projects}
+\resumeSubHeadingListStart
+  \resumeProjectHeading{AI Video Studio -- Python CLI and Local Web Workspace \href{https://github.com/AshishBytes/ai-video-studio}{[GitHub]}}{2026}
+    \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+      \resumeSubItem{Engineered a deterministic \textbf{Python CLI} and project manifest to validate and organize scripts, scene plans, audio, clips, subtitles, renders, and quality reports.}
+      \resumeSubItem{Built a local \textbf{React/FastAPI workspace} for script versioning, narration, scene plans, PyCaps captions, timeline edits, and FFmpeg/Remotion rendering.}
+    \end{itemize}
+
+  \resumeProjectHeading{StreamSync Capture Studio -- Browser Recording Workspace \href{https://github.com/AshishBytes/streamsync-recorder}{[GitHub]}}{2026}
+    \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+      \resumeSubItem{Implemented authorized browser playback recording with Python, FastAPI, \textbf{Playwright and MediaRecorder}.}
+      \resumeSubItem{Persisted \textbf{five-second chunks} with SHA-256 journals and SQLite segment records; added startup recovery and stream-state monitoring.}
+    \end{itemize}
+
+  \resumeProjectHeading{DocQA Tutor -- Offline Document Question Answering \href{https://github.com/AshishBytes/AI_Tutor}{[GitHub]}}{February -- April 2025}
+    \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+      \resumeSubItem{Developed an offline Streamlit tutor using \textbf{local PyTorch inference} for concept explanations, PDF summarization, and MCQ generation.}
+      \resumeSubItem{Built a custom training pipeline with tokenization, dataset normalization, \textbf{FP16 mixed precision}, and gradient checkpointing for 4--6 GB VRAM.}
+      \resumeSubItem{Prepared \textbf{four datasets} in unified prompt-response formats for QA, summaries, and quizzes: CNN/DailyMail, SciTLDR, SciQ, and SQuAD.}
+    \end{itemize}
+
+  \resumeProjectHeading{TripLedger -- Group Trip Expense Tracker \href{https://github.com/AshishBytes/trip-expense-tracker}{[GitHub]}}{August -- December 2024}
+    \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+      \resumeSubItem{Developed a React and TypeScript group expense tracker with \textbf{Appwrite authentication}, shared-expense splits, activity feeds, and debt simplification.}
+    \end{itemize}
+
+  \resumeProjectHeading{TravelQuest -- Travel Planner \href{https://github.com/AshishBytes/TravelQuest}{[GitHub]}}{February -- May 2025}
+    \begin{itemize}[leftmargin=0.15in,label=\textbullet]\setlength\itemsep{2pt}
+      \resumeSubItem{Co-developed a travel planner combining personalized itineraries with \textbf{three API integrations} (Google Maps, OpenWeather, and Eventbrite) and an AI travel assistant.}
+    \end{itemize}
+\resumeSubHeadingListEnd
+
+% ---------- Certifications & Awards ----------
+\section{Certifications \& Awards}
+\resumeSubHeadingListStart
+  \resumeSubItem{Microsoft Learn -- Azure Fundamentals (AZ-900), September 2025}
+  \resumeSubItem{Google Cloud -- Cloud Digital Leader, March 2025}
+  \resumeSubItem{Google Kick Start -- Round B, Global Rank 432 (top 0.8\%), 2024}
+  \resumeSubItem{HACK IITK 2025 -- Blockchain Track runner-up}
+  \resumeSubItem{Blue Prism -- Foundation Developer, October 2023}
+\resumeSubHeadingListEnd
+
+% ---------- Publications ----------
+\section{Publications}
+\resumeSubHeadingListStart
+  \resumeSubItem{\textit{IJETAE, 2024}: ``Mobile Security -- Light on Security Threats.'' Literature review of mobile malware, attack vectors, app vulnerabilities, and signature-based and machine-learning detection methods. \href{https://doi.org/10.46338/ijetae0224_04}{DOI}}
+  \resumeSubItem{\textit{Springer Nature, 2024}: ``Rose Plant Disease Detection Using Image Processing and Machine Learning.'' Review of seven common rose plant diseases, treatments, and image-processing and machine-learning approaches. \href{https://link.springer.com/chapter/10.1007/978-3-031-58953-9_6}{Paper}}
+\resumeSubHeadingListEnd
+
+% ---------- Leadership & Community ----------
+\section{Leadership \& Community}
+\resumeSubHeadingListStart
+  \resumeSubItem{Led the HackIITK Blockchain Hackathon project team as Team Lead \& Backend Engineer.}
+  \resumeSubItem{Contributed to Reef, HAPPY Bot, HackIITK, and Blockchain Voting projects.}
+\resumeSubHeadingListEnd
+
+% ===================== END DOCUMENT =====================
+\end{document}
