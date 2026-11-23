@@ -1,4 +1,5 @@
 import type { AboutHighlight } from "../types/content";
+import { generateAboutHighlights } from "./skills-extractor";
 
 export const about = {
   introduction:
@@ -11,29 +12,8 @@ export const about = {
   },
 };
 
-export const aboutHighlights: AboutHighlight[] = [
-  {
-    title: "Backend engineering",
-    description:
-      "Backend services, APIs, and data persistence across Node.js and Python.",
-    skills: ["Node.js", "Python", "FastAPI", "Express", "MongoDB", "SQLite"],
-  },
-  {
-    title: "Distributed systems",
-    description:
-      "Event-driven platforms, real-time messaging, and scalable bot architectures.",
-    skills: ["Discord.js", "WebSockets", "Event handlers", "Query caching"],
-  },
-  {
-    title: "Applied ML & NLP",
-    description:
-      "Document question answering, custom model training, and local GPU inference.",
-    skills: ["PyTorch", "Transformers", "T5 / GPT-2", "HuggingFace"],
-  },
-  {
-    title: "Web3 & Smart Contracts",
-    description:
-      "Gas-less meta-transactions, EIP-712 signatures, and Solidity contract development.",
-    skills: ["Solidity", "Hardhat", "Ethers.js", "OpenZeppelin", "EIP-712"],
-  },
-];
+/**
+ * About highlights are now dynamically generated from actual project
+ * technologies and experience. This ensures they stay in sync with work.
+ */
+export const aboutHighlights: AboutHighlight[] = generateAboutHighlights();

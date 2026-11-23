@@ -81,6 +81,11 @@ export function FocusExperimentsCard() {
                   <span className="mt-0.5 block text-[11px] leading-snug text-muted">
                     {favorite.detail}
                   </span>
+                  {favorite.description && (
+                    <span className="mt-1.5 block text-[11px] leading-snug text-muted">
+                      {favorite.description}
+                    </span>
+                  )}
                 </span>
               </div>
             </li>

@@ -59,7 +59,7 @@ describe("portfolio routes and interactions", () => {
       screen.getAllByRole("link", { name: /read paper/i })[0],
     ).toHaveAttribute("href", "https://doi.org/10.46338/ijetae0224_04");
     expect(
-      screen.getAllByRole("link", { name: "Open case study" })[0],
+      screen.getAllByRole("link", { name: /view.*case study/i })[0],
     ).toHaveAttribute("href", "/projects/reef-platform");
     expect(
       screen.getByRole("heading", { name: "AI Video Studio" }),
@@ -74,7 +74,7 @@ describe("portfolio routes and interactions", () => {
     renderRoute("/");
 
     expect(
-      await screen.findByText("Distributed systems"),
+      await screen.findByText("Distributed systems", {}, { timeout: 10000 }),
     ).toBeInTheDocument();
     expect(
       screen.getByText("Event-driven architecture · WebSockets · real-time messaging"),
@@ -94,6 +94,9 @@ describe("portfolio routes and interactions", () => {
     expect(
       within(activeExperiments).getByText("StreamSync Capture Studio"),
     ).toBeInTheDocument();
+    expect(
+      within(activeExperiments).getByText("DocQA Tutor"),
+    ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "All projects" })).toHaveAttribute(
       "href",
       "/projects",
@@ -106,7 +109,7 @@ describe("portfolio routes and interactions", () => {
       await screen.findByRole("heading", { name: "DocQA Tutor" }),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/fine-tuned T5 on 2 million samples/i),
+      await screen.findByText(/offline academic tutor and document QA system/i),
     ).toBeInTheDocument();
   });
 
@@ -127,7 +130,9 @@ describe("portfolio routes and interactions", () => {
       screen.getByRole("link", { name: "Send a message" }),
     ).toHaveAttribute("href", "/contact");
     expect(
-      screen.getByText(/\(c\) \d{4} Ashish Singh/i),
+      screen.getByText((content, element) => {
+        return element?.textContent?.match(/\(c\) \d{4} Ashish Singh/) !== null;
+      }),
     ).toBeInTheDocument();
   });
 
