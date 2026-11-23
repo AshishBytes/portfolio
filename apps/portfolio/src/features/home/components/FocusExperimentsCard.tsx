@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowUpRight, FlaskConical, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import { favorite } from "../../../content/favorites";
-import { experiments } from "../../../content/experiments";
+import { getExperimentProjects } from "../../../content/projects";
 import { Badge } from "../../../components/ui/Badge";
 import { Card } from "../../../components/ui/Card";
 
@@ -10,6 +10,7 @@ type FocusTab = "focus" | "experiments";
 
 export function FocusExperimentsCard() {
   const [activeTab, setActiveTab] = useState<FocusTab>("focus");
+  const experimentProjects = getExperimentProjects(3);
 
   return (
     <Card className="flex h-full flex-col">
@@ -67,23 +68,45 @@ export function FocusExperimentsCard() {
           </div>
         ) : (
           <ul className="space-y-2">
-            {experiments.map((experiment) => (
-              <li
-                className="flex items-center gap-3 rounded-xl bg-surface-soft px-3 py-3"
-                key={experiment.title}
-              >
-                <FlaskConical aria-hidden="true" className="shrink-0 text-accent-dark" size={17} />
-                <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold text-ink">
-                    {experiment.title}
+            {experimentProjects.map((project) => (
+              <li key={project.slug}>
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="group flex items-center gap-3 rounded-xl bg-surface-soft px-3 py-3 transition-colors hover:bg-surface"
+                >
+                  <div className="relative shrink-0">
+                    <FlaskConical
+                      aria-hidden="true"
+                      className="shrink-0 text-accent-dark"
+                      size={17}
+                    />
+                    {project.experiment && (
+                      <span
+                        className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-amber-500"
+                        title="Work in progress"
+                        aria-label="Work in progress"
+                      />
+                    )}
+                  </div>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm font-semibold text-ink group-hover:text-accent transition-colors">
+                      {project.title}
+                    </span>
+                    <span className="mt-0.5 block text-sm text-muted">
+                      {project.subtitle}
+                    </span>
                   </span>
-                  <span className="mt-0.5 block text-sm text-muted">
-                    {experiment.detail}
-                  </span>
-                </span>
-                <Badge className="shrink-0 px-2 py-1 text-xs text-muted">
-                  {experiment.category}
-                </Badge>
+                  <div className="flex shrink-0 items-center gap-2">
+                    {project.pinned && (
+                      <Badge className="shrink-0 bg-accent-soft px-2 py-1 text-xs text-accent-dark">
+                        Pinned
+                      </Badge>
+                    )}
+                    <Badge className="shrink-0 px-2 py-1 text-xs text-muted">
+                      {project.category}
+                    </Badge>
+                  </div>
+                </Link>
               </li>
             ))}
           </ul>

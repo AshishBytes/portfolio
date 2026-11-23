@@ -43,6 +43,8 @@ export interface Project {
   achievements: string[];
   metrics?: ProjectMetric[];
   featured: boolean;
+  experiment?: boolean;
+  pinned?: boolean;
   liveUrl?: string;
   githubUrl?: string;
   image?: string;

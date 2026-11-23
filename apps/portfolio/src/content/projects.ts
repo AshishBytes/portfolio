@@ -17,6 +17,8 @@ const projectSchema = z.object({
   achievements: z.array(z.string().min(1)).min(1),
   metrics: z.array(projectMetricSchema).min(1).optional(),
   featured: z.boolean(),
+  experiment: z.boolean().optional(),
+  pinned: z.boolean().optional(),
   liveUrl: z.url().optional(),
   githubUrl: z.url().optional(),
   image: z.string().startsWith("/").optional(),
@@ -74,6 +76,8 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "FastAPI + React", label: "Workspace" },
     ],
     featured: true,
+    experiment: true,
+    pinned: true,
   },
   {
     slug: "streamsync-capture-studio",
@@ -95,6 +99,8 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "MP4 / WebM", label: "Recording formats" },
     ],
     featured: true,
+    experiment: true,
+    pinned: false,
   },
   {
     slug: "hackiitk-blockchain",
@@ -116,6 +122,8 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "<150ms", label: "p95 latency" },
     ],
     featured: false,
+    experiment: true,
+    pinned: false,
   },
   {
     slug: "docqa-tutor",
@@ -137,6 +145,8 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "−47%", label: "Latency" },
     ],
     featured: false,
+    experiment: true,
+    pinned: false,
   },
   {
     slug: "tripledger",
@@ -158,6 +168,8 @@ export const projects: Project[] = projectSchema.array().parse([
       "Used a mock Azure AD B2C integration to block unauthorized writes.",
     ],
     featured: false,
+    experiment: true,
+    pinned: false,
   },
   {
     slug: "travelquest",
@@ -179,3 +191,28 @@ export const projects: Project[] = projectSchema.array().parse([
 export const projectBySlug = new Map(
   projects.map((project) => [project.slug, project]),
 );
+
+export function getExperimentProjects(limit?: number): Project[] {
+  const experimentProjects = projects.filter((project) => project.experiment === true);
+
+  // Sort by: pinned first, then by year (extract from period)
+  const sorted = experimentProjects.sort((a, b) => {
+    // Pinned projects come first
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+
+    // Extract year from period (handles formats like "2026", "February 2025", "November 2021 – April 2023")
+    const extractYear = (period: string): number => {
+      const match = period.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    const yearA = extractYear(a.period);
+    const yearB = extractYear(b.period);
+
+    // Sort by year descending (newest first)
+    return yearB - yearA;
+  });
+
+  return limit ? sorted.slice(0, limit) : sorted;
+}
