@@ -30,7 +30,7 @@ export interface Experience {
   location: string;
   achievements: string[];
   technologies: string[];
-  pinned?: boolean;
+  featured?: boolean;
   projectSlug?: string;
 }
 

@@ -10,7 +10,7 @@ const experienceSchema = z.object({
   location: z.string().min(1),
   achievements: z.array(z.string().min(1)).min(1),
   technologies: z.array(z.string().min(1)),
-  pinned: z.boolean().optional(),
+  featured: z.boolean().optional(),
   projectSlug: z.string().optional(),
 });
 
@@ -22,19 +22,19 @@ export const experience: Experience[] = experienceSchema.array().parse([
     period: "February 2025",
     location: "Kanpur, India",
     achievements: [
-      "Built a gas-less Solidity relayer handling 5,000+ transactions with under 150 ms p95 latency; autoscaled the proof of concept on Azure Container Apps.",
-      "Integrated Slither and MythX into DevSecOps; shipped with zero critical issues.",
-      "Ranked 2nd among 54 teams for reliability and innovation.",
+      "Selected among 54 Grand Finale teams (from 7,000+ registrations) in the HACK IITK 2025 Solution Track (Web3 Security).",
+      "Engineered a GaslessForwarder smart contract and off-chain relayer enabling gas-free ERC-20 and ERC-721 transfers via EIP-712 typed data signatures.",
+      "Hardened contract security with incrementing nonce replay protection, OpenZeppelin ReentrancyGuard, and Solidity Shield static audits.",
     ],
-    technologies: ["Solidity", "Azure Container Apps", "Slither", "MythX"],
-    pinned: false,
+    technologies: ["Solidity", "Hardhat", "Ethers.js", "OpenZeppelin", "Node.js", "EIP-712"],
+    featured: true,
     projectSlug: "hackiitk-blockchain",
   },
   {
     id: "reef-distributed-discord-platform",
-    organization: "Reef — Discord Platform",
+    organization: "Reef - Discord Platform",
     role: "Lead Software Engineer",
-    period: "November 2021 – April 2023",
+    period: "November 2021 - April 2023",
     location: "Remote",
     achievements: [
       `Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands serving ${site.metrics.users} users across ${site.metrics.servers} servers at ${site.metrics.uptime} uptime.`,
@@ -50,14 +50,14 @@ export const experience: Experience[] = experienceSchema.array().parse([
       "MongoDB",
       "WebSockets",
     ],
-    pinned: true,
+    featured: true,
     projectSlug: "reef-platform",
   },
   {
     id: "happy-low-latency-music-bot",
-    organization: "HAPPY — Discord Music Bot",
+    organization: "HAPPY - Discord Music Bot",
     role: "Software Engineer",
-    period: "November 2021 – April 2023",
+    period: "November 2021 - April 2023",
     location: "Remote",
     achievements: [
       "Built a full-featured Discord music and radio bot from scratch using modular command, event, and voice-streaming handlers in Node.js and Discord.js.",
@@ -65,7 +65,7 @@ export const experience: Experience[] = experienceSchema.array().parse([
       "Iterated across 963 commits with MongoDB persistence and cloud/VPS deployment before archiving the project in February 2023.",
     ],
     technologies: ["JavaScript", "Node.js", "Discord.js", "MongoDB", "Heroku"],
-    pinned: true,
+    featured: false,
     projectSlug: "happy-bot",
   },
 ]);

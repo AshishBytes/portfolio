@@ -4,8 +4,8 @@ import { experience } from "../../../content/experience";
 import { ExperienceCard } from "../../../components/cards/ExperienceCard";
 import { SectionHeading } from "../../../components/ui/SectionHeading";
 
-// Show pinned experience on home page
-const featuredExperience = experience.filter((exp) => exp.pinned);
+// Show featured experience on home page
+const featuredExperience = experience.filter((exp) => exp.featured);
 
 export function FeaturedExperience() {
   if (featuredExperience.length === 0) return null;
