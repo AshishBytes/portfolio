@@ -17,7 +17,7 @@ export function FeaturedPublication() {
       <SectionHeading
         eyebrow="Publication"
         title="Mobile security research"
-        description="A 2024 IJETAE paper on reducing Android attack surface."
+        description="A 2024 IJETAE review on mobile threats and malware detection."
       />
       <Card className="mt-7 grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <div>

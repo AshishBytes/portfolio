@@ -10,7 +10,7 @@ export function PublicationsPage() {
       <PageHeader
         eyebrow="Publications"
         title="Research and applied work."
-        description="Research summaries across mobile security and edge machine learning."
+        description="Research summaries across mobile security and applied machine learning."
       />
       <Container className="grid gap-5 pb-12 md:grid-cols-2">
         {publications.map((publication) => (
