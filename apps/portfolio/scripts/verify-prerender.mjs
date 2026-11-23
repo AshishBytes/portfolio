@@ -17,7 +17,7 @@ const routes = [
   ["/projects/reef-platform", "Reef Bot"],
   ["/projects/ai-video-studio", "AI Video Studio"],
   ["/projects/streamsync-capture-studio", "StreamSync Capture Studio"],
-  ["/projects/hackiitk-blockchain", "HackIITK Blockchain"],
+  ["/projects/hackiitk-blockchain", "Gasless Forwarder (HackIITK)"],
   ["/projects/docqa-tutor", "DocQA Tutor"],
   ["/projects/tripledger", "TripLedger"],
   ["/projects/travelquest", "TravelQuest"],
