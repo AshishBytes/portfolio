@@ -17,6 +17,10 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const themeEvent = "portfolio-theme-change";
+const themePageColors: Record<Theme, string> = {
+  light: "#faf9f6",
+  dark: "#151412",
+};
 const getThemeSnapshot = (): Theme => {
   if (typeof window === "undefined") return "light";
   return window.localStorage.getItem("portfolio-theme") === "dark"
@@ -47,29 +51,31 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const value = {
     theme,
     toggleTheme: (origin?: { x: number; y: number }) => {
-      const nextTheme = theme === "light" ? "dark" : "light";
       const root = document.documentElement;
-      const previousPageColor = theme === "light" ? "#faf9f6" : "#151412";
+      const currentTheme: Theme = root.dataset.theme === "dark" ? "dark" : "light";
+      const nextTheme = currentTheme === "light" ? "dark" : "light";
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
       window.localStorage.setItem("portfolio-theme", nextTheme);
-      root.dataset.theme = nextTheme;
 
-      if (
-        origin &&
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ) {
-        root.style.setProperty("--theme-reveal-color", previousPageColor);
+      if (origin && !prefersReducedMotion) {
+        root.style.setProperty("--theme-reveal-color", themePageColors[nextTheme]);
         root.style.setProperty("--theme-origin-x", `${origin.x}px`);
         root.style.setProperty("--theme-origin-y", `${origin.y}px`);
         root.classList.remove("theme-reveal");
-        // Restart the reveal when the same control is clicked repeatedly.
         void root.offsetWidth;
         root.classList.add("theme-reveal");
         window.setTimeout(() => {
+          root.dataset.theme = nextTheme;
           root.classList.remove("theme-reveal");
+          window.dispatchEvent(new Event(themeEvent));
         }, 700);
+        return;
       }
 
+      root.dataset.theme = nextTheme;
       window.dispatchEvent(new Event(themeEvent));
     },
   };
