@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "dev:main": "pnpm --filter main dev",
-    "build:main": "pnpm --filter main build"
+    "build:main": "pnpm --filter main build",
+    "resume:sync": "node scripts/sync-resume.mjs"
   }
 }
