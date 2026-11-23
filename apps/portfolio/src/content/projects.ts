@@ -30,7 +30,7 @@ export const projects: Project[] = projectSchema.array().parse([
     title: "Reef Bot",
     subtitle: "Node.js · Event-Driven Architecture",
     description: "Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
-    period: "November 2021 – April 2023",
+    period: "November 2021 - April 2023",
     category: "Discord Platform",
     technologies: [
       "JavaScript",
@@ -56,6 +56,37 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: true,
     experiment: false,
     pinned: true,
+  },
+  {
+    "slug": "happy-bot",
+    "title": "HAPPY Bot",
+    "subtitle": "Discord-Verified Music & 24/7 Radio Bot",
+    "description": "A Discord-verified music and live radio streaming bot built from scratch with Node.js and Discord.js. Features modular command and event handlers, voice channel audio streaming, custom message extensions, and MongoDB persistence.",
+    "period": "Nov 2021 - Apr 2023 ",
+    "category": "Discord Platform",
+    "technologies": [
+      "JavaScript",
+      "Node.js",
+      "Discord.js",
+      "Discord API",
+      "MongoDB",
+      "Heroku / VPS"
+    ],
+    "achievements": [
+      "Built a full-featured Discord music and radio bot from scratch using modular command, event, and voice-streaming handlers.",
+      "Earned Discord's official Verified Bot badge by meeting platform security, rate-limit, and verification standards.",
+      "Iterated across 963 commits with MongoDB persistence and cloud/VPS deployment before archiving the project in February 2023."
+    ],
+    "metrics": [
+      { "value": "Verified", "label": "Official Discord Bot" },
+      { "value": "963", "label": "Git Commits" },
+      { "value": "Music + Radio", "label": "Voice Streaming" }
+    ],
+    "image": "/images/projects/happy-bot.svg",
+    "featured": false,
+    "experiment": false,
+    "pinned": false,
+    "githubUrl": "https://github.com/AshishBytes/HAPPY-bot"
   },
   {
     slug: "ai-video-studio",
@@ -158,7 +189,7 @@ export const projects: Project[] = projectSchema.array().parse([
     title: "DocQA Tutor",
     subtitle: "Offline Custom-Trained Transformer · Streamlit",
     description: "An offline academic tutor and document QA system trained from scratch on consumer GPU hardware (RTX 3050). Supports concept explanations, PDF chunk summarization, and MCQ quiz generation inside a local Streamlit interface.",
-    period: "February – April 2025",
+    period: "February - April 2025",
     category: "Machine Learning / NLP",
     technologies: [
       "Python",
@@ -169,7 +200,7 @@ export const projects: Project[] = projectSchema.array().parse([
       "Streamlit"
     ],
     achievements: [
-      "Built an end-to-end custom training pipeline from scratch (tokenization, dataset normalization, FP16 mixed precision, and gradient checkpointing) optimized for 4–6 GB VRAM.",
+      "Built an end-to-end custom training pipeline from scratch (tokenization, dataset normalization, FP16 mixed precision, and gradient checkpointing) optimized for 4-6 GB VRAM.",
       "Normalized four academic and summarization datasets (CNN/DailyMail, SciTLDR, SciQ, and SQuAD) into unified prompt-response formats for QA, TL;DRs, and MCQ generation.",
       "Integrated local PyTorch inference and PDF text-chunk extraction into a fully offline Streamlit tutor UI with session-state chat memory."
     ],
@@ -190,7 +221,7 @@ export const projects: Project[] = projectSchema.array().parse([
     title: "TripLedger",
     subtitle: "Group Trip Expense Tracker & Debt Simplifier",
     description: "A full-stack group travel expense tracker built with React, TypeScript, and Appwrite. Enables travelers to create trip groups, log shared expenses with flexible splits, track activity feeds, and simplify multi-member debt settlements.",
-    period: "August – December 2024",
+    period: "August - December 2024",
     category: "Full-Stack Web",
     technologies: [
       "React",
@@ -266,7 +297,7 @@ export function getExperimentProjects(limit?: number): Project[] {
     if (a.pinned && !b.pinned) return -1;
     if (!a.pinned && b.pinned) return 1;
 
-    // Extract year from period (handles formats like "2026", "February 2025", "November 2021 – April 2023")
+    // Extract year from period (handles formats like "2026", "February 2025", "November 2021 - April 2023")
     const extractYear = (period: string): number => {
       const match = period.match(/\d{4}/);
       return match ? parseInt(match[0], 10) : 0;
