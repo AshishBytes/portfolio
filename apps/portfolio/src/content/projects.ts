@@ -49,7 +49,9 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "850+", label: "Servers" },
       { value: "Verified", label: "Discord Bot" },
     ],
-    githubUrl: "https://github.com",
+    liveUrl: "https://discord.com/oauth2/authorize?client_id=970954920964534304&permissions=274878286913&scope=bot",
+    githubUrl: "https://github.com/AshishBytes/Reef-Bot",
+    image: "/images/projects/reef-bot.svg",
     featured: true,
   },
   {

@@ -1,0 +1,92 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="#5865F2"/>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5865F2"/>
+      <stop offset="100%" stop-color="#4752C4"/>
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Decorative circles -->
+  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.03)"/>
+  <circle cx="1050" cy="480" r="150" fill="rgba(255,255,255,0.03)"/>
+  <circle cx="900" cy="100" r="80" fill="rgba(255,255,255,0.05)"/>
+  
+  <!-- Discord logo inspired icon (simplified) -->
+  <g transform="translate(150, 180)">
+    <rect x="0" y="0" width="200" height="200" rx="40" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="65" cy="80" r="18" fill="white"/>
+    <circle cx="135" cy="80" r="18" fill="white"/>
+    <path d="M 50 130 Q 100 160 150 130" stroke="white" stroke-width="16" stroke-linecap="round" fill="none"/>
+  </g>
+  
+  <!-- Main content -->
+  <g transform="translate(420, 180)">
+    <!-- Title -->
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1">
+      Reef Bot
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Discord-Verified Moderation Platform
+    </text>
+    
+    <!-- Metrics -->
+    <g transform="translate(0, 120)">
+      <!-- Badge 1 -->
+      <g>
+        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          585K+ Users
+        </text>
+      </g>
+      
+      <!-- Badge 2 -->
+      <g transform="translate(160, 0)">
+        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          850+ Servers
+        </text>
+      </g>
+      
+      <!-- Badge 3 - Verified -->
+      <g transform="translate(320, 0)">
+        <rect x="0" y="0" width="180" height="50" rx="25" fill="rgba(87, 242, 135, 0.25)"/>
+        <text x="30" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#57F287">
+          ✓ Verified Bot
+        </text>
+      </g>
+    </g>
+    
+    <!-- Tech stack -->
+    <g transform="translate(0, 210)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.7)">
+        Node.js • Discord.js • MongoDB • Express.js • WebSockets
+      </text>
+    </g>
+  </g>
+  
+  <!-- Decorative code-like elements -->
+  <g transform="translate(80, 500)" opacity="0.3">
+    <rect x="0" y="0" width="120" height="8" rx="4" fill="white"/>
+    <rect x="0" y="20" width="80" height="8" rx="4" fill="white"/>
+    <rect x="0" y="40" width="100" height="8" rx="4" fill="white"/>
+  </g>
+  
+  <g transform="translate(950, 520)" opacity="0.3">
+    <rect x="0" y="0" width="140" height="8" rx="4" fill="white"/>
+    <rect x="0" y="20" width="90" height="8" rx="4" fill="white"/>
+  </g>
+</svg>

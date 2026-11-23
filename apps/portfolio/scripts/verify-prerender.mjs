@@ -59,10 +59,17 @@ for (const [route, heading] of routes) {
     canonical[1].startsWith(`${configuredOrigin}/`),
     `${route} canonical does not start with configured origin ${configuredOrigin}`,
   );
+  // Project pages may have custom images; all others use social-preview.png
   assert(
-    html.includes("og:image") && html.includes("social-preview.png"),
+    html.includes("og:image"),
     `${route} is missing its social preview metadata`,
   );
+  if (!route.startsWith("/projects/")) {
+    assert(
+      html.includes("social-preview.png"),
+      `${route} should use the default social preview image`,
+    );
+  }
   assert(
     html.includes("application/ld+json"),
     `${route} is missing structured data`,
