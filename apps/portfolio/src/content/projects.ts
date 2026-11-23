@@ -58,13 +58,13 @@ export const projects: Project[] = projectSchema.array().parse([
     pinned: true,
   },
   {
-    "slug": "ai-video-studio",
-    "title": "AI Video Studio",
-    "subtitle": "Python CLI + React/FastAPI Short-Form Video Workspace",
-    "description": "A CLI-first Python workspace and local React/FastAPI browser studio for producing vertical short-form videos—managing versioned scripts, VoiceStudio narration, scene plans, PyCaps captions, timeline cuts/fades, and FFmpeg + Remotion rendering under a deterministic project manifest.",
-    "period": "2026",
-    "category": "Video Production Tools",
-    "technologies": [
+    slug: "ai-video-studio",
+    title: "AI Video Studio",
+    subtitle: "Python CLI + React/FastAPI Short-Form Video Workspace",
+    description: "A CLI-first Python workspace and local React/FastAPI browser studio for producing vertical short-form videos—managing versioned scripts, VoiceStudio narration, scene plans, PyCaps captions, timeline cuts/fades, and FFmpeg + Remotion rendering under a deterministic project manifest.",
+    period: "2026",
+    category: "Video Production Tools",
+    technologies: [
       "Python",
       "FastAPI",
       "React",
@@ -72,30 +72,31 @@ export const projects: Project[] = projectSchema.array().parse([
       "FFmpeg",
       "Remotion"
     ],
-    "achievements": [
+    achievements: [
       "Engineered a deterministic Python CLI and manifest system that validates and tracks scripts, scene plans, audio, clips, subtitles, and MP4 quality reports.",
       "Built a local React/FastAPI studio integrating VoiceStudio TTS, manual Google Flow prompt workflows, PyCaps captions, and timeline cuts/fades.",
       "Implemented a dual FFmpeg/FFprobe and Remotion rendering pipeline with automated media inspection and validation checks."
     ],
-    "metrics": [
-      { "value": "CLI + Web", "label": "Dual Interface" },
-      { "value": "FFmpeg + Remotion", "label": "Render Pipeline" },
-      { "value": "Python 3.11+", "label": "Core Engine" }
+    metrics: [
+      { value: "CLI + Web", "label": "Dual Interface" },
+      { value: "FFmpeg + Remotion", "label": "Render Pipeline" },
+      { value: "Python 3.11+", "label": "Core Engine" }
     ],
-    "image": "/images/projects/ai-video-studio.svg",
-    "featured": false,
-    "experiment": true,
-    "pinned": false,
-    "githubUrl": "https://github.com/AshishBytes/ai-video-studio"
+    image: "/images/projects/ai-video-studio.svg",
+    featured: false,
+    experiment: true,
+    pinned: false,
+    liveUrl: undefined,
+    githubUrl: "https://github.com/AshishBytes/ai-video-studio"
   },
   {
-    "slug": "streamsync-recorder",
-    "title": "StreamSync Recorder",
-    "subtitle": "Playwright + FastAPI · Crash-Safe Stream Recording",
-    "description": "A Codespaces- and Windows-ready Python service for authorized browser playback recording. Uses Playwright, Chromium captureStream(), and MediaRecorder to capture WebM streams with 5-second chunked persistence, SHA-256 checksum journaling, SQLite metadata tracking, and automated stream-state recovery.",
-    "period": "2026",
-    "category": "Media & Automation Systems",
-    "technologies": [
+    slug: "streamsync-capture-studio",
+    title: "StreamSync Capture Studio",
+    subtitle: "Playwright + FastAPI · Crash-Safe Stream Recording",
+    description: "A Codespaces- and Windows-ready Python service for authorized browser playback recording. Uses Playwright, Chromium captureStream(), and MediaRecorder to capture WebM streams with 5-second chunked persistence, SHA-256 checksum journaling, SQLite metadata tracking, and automated stream-state recovery.",
+    period: "2026",
+    category: "Media & Automation Systems",
+    technologies: [
       "Python",
       "FastAPI",
       "Playwright",
@@ -103,31 +104,31 @@ export const projects: Project[] = projectSchema.array().parse([
       "SQLite",
       "MediaRecorder API"
     ],
-    "achievements": [
+    achievements: [
       "Built a crash-resilient chunk pipeline that fsyncs 5-second WebM media chunks alongside SHA-256 checksum JSONL journals and SQLite segment records before acknowledgment.",
       "Implemented startup manifest scanning and idempotent crash recovery that surfaces torn journal lines or checksum mismatches as RECOVERED, PARTIAL, or NEEDS_REPAIR.",
       "Engineered a thread-safe Manager lifecycle with stream-state monitoring, grace periods, auto-resume segmentation, and cooldown-locked 480p-to-960p quality recovery."
     ],
-    "metrics": [
-      { "value": "5s Chunks", "label": "SHA-256 Journaled" },
-      { "value": "fsync", "label": "Crash Recovery" },
-      { "value": "Playwright", "label": "FastAPI + SQLite" }
+    metrics: [
+      { value: "5s Chunks", "label": "SHA-256 Journaled" },
+      { value: "fsync", "label": "Crash Recovery" },
+      { value: "Playwright", "label": "FastAPI + SQLite" }
     ],
-    "image": "/images/projects/streamsync-recorder.svg",
-    "featured": false,
-    "experiment": true,
-    "pinned": false,
+    image: "/images/projects/streamsync-recorder.svg",
+    featured: false,
+    experiment: true,
+    pinned: false,
     liveUrl: undefined,
-    "githubUrl": "https://github.com/AshishBytes/streamsync-recorder"
+    githubUrl: "https://github.com/AshishBytes/streamsync-recorder"
   },
   {
-    "slug": "hackiitk-blockchain",
-    "title": "Gasless Forwarder (HackIITK)",
-    "subtitle": "Web3 Security Track · EIP-712 Meta-Transaction Relayer",
-    "description": "Built a gas-less meta-transaction forwarder and relayer for ERC-20 and ERC-721 transfers in the Web3 Security Solution Track at HACK IITK 2025—selected among 54 Grand Finale teams from 7,000+ registrations.",
-    "period": "February 2025",
-    "category": "Web3 Security / Hackathon",
-    "technologies": [
+    slug: "hackiitk-blockchain",
+    title: "HackIITK Blockchain",
+    subtitle: "Web3 Security Track · EIP-712 Meta-Transaction Relayer",
+    description: "Built a gas-less meta-transaction forwarder and relayer for ERC-20 and ERC-721 transfers in the Web3 Security Solution Track at HACK IITK 2025—selected among 54 Grand Finale teams from 7,000+ registrations.",
+    period: "February 2025",
+    category: "Web3 Security / Hackathon",
+    technologies: [
       "Solidity",
       "Hardhat",
       "Ethers.js",
@@ -135,30 +136,31 @@ export const projects: Project[] = projectSchema.array().parse([
       "Node.js",
       "EIP-712"
     ],
-    "achievements": [
+    achievements: [
       "Selected among 54 Grand Finale teams (from 7,000+ registrations) in the HACK IITK 2025 Solution Track (Web3 Security).",
       "Engineered a GaslessForwarder smart contract and off-chain relayer enabling gas-free ERC-20 and ERC-721 transfers via EIP-712 typed data signatures.",
       "Hardened contract security with incrementing nonce replay protection, OpenZeppelin ReentrancyGuard, and Solidity Shield static audits."
     ],
-    "metrics": [
-      { "value": "Top 54", "label": "From 7K+ Signups" },
-      { "value": "Web3 Track", "label": "HACK IITK '25" },
-      { "value": "EIP-712", "label": "ERC-20 & 721" }
+    metrics: [
+      { value: "Top 54", "label": "From 7K+ Signups" },
+      { value: "Web3 Track", "label": "HACK IITK '25" },
+      { value: "EIP-712", "label": "ERC-20 & 721" }
     ],
-    "image": "/images/projects/hackiitk-blockchain.svg",
-    "featured": true,
-    "experiment": false,
-    "pinned": false,
-    "githubUrl": "https://github.com/AshishBytes/Gasless-Forwarder"
+    image: "/images/projects/hackiitk-blockchain.svg",
+    featured: true,
+    experiment: false,
+    pinned: false,
+    liveUrl: undefined,
+    githubUrl: "https://github.com/AshishBytes/Gasless-Forwarder"
   },
   {
-    "slug": "docqa-tutor",
-    "title": "Custom Tutor AI (DocQA)",
-    "subtitle": "Offline Custom-Trained Transformer · Streamlit",
-    "description": "An offline academic tutor and document QA system trained from scratch on consumer GPU hardware (RTX 3050). Supports concept explanations, PDF chunk summarization, and MCQ quiz generation inside a local Streamlit interface.",
-    "period": "February – April 2025",
-    "category": "Machine Learning / NLP",
-    "technologies": [
+    slug: "docqa-tutor",
+    title: "DocQA Tutor",
+    subtitle: "Offline Custom-Trained Transformer · Streamlit",
+    description: "An offline academic tutor and document QA system trained from scratch on consumer GPU hardware (RTX 3050). Supports concept explanations, PDF chunk summarization, and MCQ quiz generation inside a local Streamlit interface.",
+    period: "February – April 2025",
+    category: "Machine Learning / NLP",
+    technologies: [
       "Python",
       "PyTorch",
       "Transformers",
@@ -166,30 +168,31 @@ export const projects: Project[] = projectSchema.array().parse([
       "HuggingFace Datasets",
       "Streamlit"
     ],
-    "achievements": [
+    achievements: [
       "Built an end-to-end custom training pipeline from scratch (tokenization, dataset normalization, FP16 mixed precision, and gradient checkpointing) optimized for 4–6 GB VRAM.",
       "Normalized four academic and summarization datasets (CNN/DailyMail, SciTLDR, SciQ, and SQuAD) into unified prompt-response formats for QA, TL;DRs, and MCQ generation.",
       "Integrated local PyTorch inference and PDF text-chunk extraction into a fully offline Streamlit tutor UI with session-state chat memory."
     ],
-    "metrics": [
-      { "value": "Offline", "label": "Local GPU Inference" },
-      { "value": "4 Datasets", "label": "QA, Quiz & TL;DR" },
-      { "value": "FP16", "label": "RTX 3050 Trained" }
+    metrics: [
+      { value: "Offline", "label": "Local GPU Inference" },
+      { value: "4 Datasets", "label": "QA, Quiz & TL;DR" },
+      { value: "FP16", "label": "RTX 3050 Trained" }
     ],
-    "image": "/images/projects/docqa-tutor.svg",
-    "featured": false,
-    "experiment": true,
-    "pinned": false,
-    "githubUrl": "https://github.com/AshishBytes/AI_Tutor"
+    image: "/images/projects/docqa-tutor.svg",
+    featured: false,
+    experiment: false,
+    pinned: false,
+    liveUrl: undefined,
+    githubUrl: "https://github.com/AshishBytes/AI_Tutor"
   },
   {
-    "slug": "tripledger",
-    "title": "TripLedger",
-    "subtitle": "Group Trip Expense Tracker & Debt Simplifier",
-    "description": "A full-stack group travel expense tracker built with React, TypeScript, and Appwrite. Enables travelers to create trip groups, log shared expenses with flexible splits, track activity feeds, and simplify multi-member debt settlements.",
-    "period": "August – December 2024",
-    "category": "Full-Stack Web",
-    "technologies": [
+    slug: "tripledger",
+    title: "TripLedger",
+    subtitle: "Group Trip Expense Tracker & Debt Simplifier",
+    description: "A full-stack group travel expense tracker built with React, TypeScript, and Appwrite. Enables travelers to create trip groups, log shared expenses with flexible splits, track activity feeds, and simplify multi-member debt settlements.",
+    period: "August – December 2024",
+    category: "Full-Stack Web",
+    technologies: [
       "React",
       "TypeScript",
       "Vite",
@@ -197,30 +200,31 @@ export const projects: Project[] = projectSchema.array().parse([
       "Appwrite",
       "React Query"
     ],
-    "achievements": [
+    achievements: [
       "Built a group expense management and debt-simplification engine that calculates net balances and minimizes transactions needed to settle up.",
       "Implemented user authentication, trip group permissions, and persistent expense storage using Appwrite's backend-as-a-service.",
       "Integrated TanStack React Query for client-side caching and synchronized group/global activity feeds across a responsive Tailwind CSS UI."
     ],
-    "metrics": [
-      { "value": "Debt Split", "label": "Balance Simplifier" },
-      { "value": "Appwrite", "label": "Auth & Database" },
-      { "value": "React Query", "label": "Cached Sync" }
+    metrics: [
+      { value: "Debt Split", "label": "Balance Simplifier" },
+      { value: "Appwrite", "label": "Auth & Database" },
+      { value: "React Query", "label": "Cached Sync" }
     ],
-    "image": "/images/projects/tripledger.svg",
-    "featured": true,
-    "experiment": false,
-    "pinned": false,
-    "githubUrl": "https://github.com/AshishBytes/trip-expense-tracker"
+    image: "/images/projects/tripledger.svg",
+    featured: true,
+    experiment: false,
+    pinned: false,
+    liveUrl: undefined,
+    githubUrl: "https://github.com/AshishBytes/trip-expense-tracker"
   },
   {
-    "slug": "travelquest",
-    "title": "TravelQuest",
-    "subtitle": "Full-Stack Travel Planner · Multi-API & AI Chatbot",
-    "description": "A full-stack travel planning web application that generates personalized itineraries by budget, trip duration, and destination preferences—combining real-time Google Maps routing, OpenWeather forecasts, Eventbrite local events, and an AI travel assistant.",
-    "period": "2025",
-    "category": "Full-Stack Web",
-    "technologies": [
+    slug: "travelquest",
+    title: "TravelQuest",
+    subtitle: "Full-Stack Travel Planner · Multi-API & AI Chatbot",
+    description: "A full-stack travel planning web application that generates personalized itineraries by budget, trip duration, and destination preferences—combining real-time Google Maps routing, OpenWeather forecasts, Eventbrite local events, and an AI travel assistant.",
+    period: "2025",
+    category: "Full-Stack Web",
+    technologies: [
       "HTML5",
       "CSS3",
       "JavaScript",
@@ -230,22 +234,22 @@ export const projects: Project[] = projectSchema.array().parse([
       "OpenWeather API",
       "Eventbrite API"
     ],
-    "achievements": [
+    achievements: [
       "Co-developed a multi-page travel planning platform with an Express backend and interactive destination, itinerary, and booking flows.",
       "Integrated Google Maps, OpenWeather, and Eventbrite APIs to surface real-time route options, weather forecasts, and local events.",
       "Built an AI-powered travel assistant to recommend routes, accommodations, and sightseeing plans tailored to user budgets and trip lengths."
     ],
-    "metrics": [
-      { "value": "3 Live APIs", "label": "Maps, Weather, Events" },
-      { "value": "AI Chatbot", "label": "Route & Trip Assistant" },
-      { "value": "Full-Stack", "label": "Node.js + Express" }
+    metrics: [
+      { value: "3 Live APIs", "label": "Maps, Weather, Events" },
+      { value: "AI Chatbot", "label": "Route & Trip Assistant" },
+      { value: "Full-Stack", "label": "Node.js + Express" }
     ],
-    "image": "/images/projects/travelquest.svg",
-    "featured": true,
-    "experiment": false,
-    "pinned": false,
-    "liveUrl": "https://github.io",
-    "githubUrl": "https://github.com/AshishBytes/TravelQuest"
+    image: "/images/projects/travelquest.svg",
+    featured: true,
+    experiment: false,
+    pinned: false,
+    liveUrl: "https://ashishbytes.github.io/TravelQuest/",
+    githubUrl: "https://github.com/AshishBytes/TravelQuest"
   },
 ]);
 
