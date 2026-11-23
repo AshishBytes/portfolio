@@ -58,56 +58,67 @@ export const projects: Project[] = projectSchema.array().parse([
     pinned: true,
   },
   {
-    slug: "ai-video-studio",
-    title: "AI Video Studio",
-    subtitle: "CLI + local browser workspace for short-form video production",
-    description:
-      "A Python CLI workspace for organizing short-form video projects and deterministic file operations, plus a local React/FastAPI browser workspace for script versioning, narration, scene plans, captions, timeline cuts and fades, and Remotion rendering and export.",
-    period: "2026",
-    category: "Video production tools",
-    technologies: ["Python", "React", "FastAPI", "Node.js", "FFmpeg", "Remotion"],
-    achievements: [
-      "Organizes project files, research, versioned narration, scene plans, clips, audio, renders, subtitles, and quality reports under a project manifest.",
-      "The CLI validates and orchestrates deterministic file operations.",
-      "The local browser workspace supports captioning, timeline cuts and fades, and Remotion rendering and export.",
+    "slug": "ai-video-studio",
+    "title": "AI Video Studio",
+    "subtitle": "Python CLI + React/FastAPI Short-Form Video Workspace",
+    "description": "A CLI-first Python workspace and local React/FastAPI browser studio for producing vertical short-form videos—managing versioned scripts, VoiceStudio narration, scene plans, PyCaps captions, timeline cuts/fades, and FFmpeg + Remotion rendering under a deterministic project manifest.",
+    "period": "2026",
+    "category": "Video Production Tools",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "React",
+      "Node.js",
+      "FFmpeg",
+      "Remotion"
     ],
-    metrics: [
-      { value: "CLI + Web", label: "Interfaces" },
-      { value: "FFmpeg + Remotion", label: "Rendering" },
-      { value: "FastAPI + React", label: "Workspace" },
+    "achievements": [
+      "Engineered a deterministic Python CLI and manifest system that validates and tracks scripts, scene plans, audio, clips, subtitles, and MP4 quality reports.",
+      "Built a local React/FastAPI studio integrating VoiceStudio TTS, manual Google Flow prompt workflows, PyCaps captions, and timeline cuts/fades.",
+      "Implemented a dual FFmpeg/FFprobe and Remotion rendering pipeline with automated media inspection and validation checks."
     ],
-    image: "/images/projects/ai-video-studio.svg",
-    featured: false,
-    experiment: true,
-    pinned: false,
-    liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes/ai-video-studio",
+    "metrics": [
+      { "value": "CLI + Web", "label": "Dual Interface" },
+      { "value": "FFmpeg + Remotion", "label": "Render Pipeline" },
+      { "value": "Python 3.11+", "label": "Core Engine" }
+    ],
+    "image": "/images/projects/ai-video-studio.svg",
+    "featured": false,
+    "experiment": true,
+    "pinned": false,
+    "githubUrl": "https://github.com/AshishBytes/ai-video-studio"
   },
   {
-    slug: "streamsync-capture-studio",
-    title: "StreamSync Capture Studio",
-    subtitle: "Browser capture · local recording",
-    description:
-      "Browser capture project for accessible HTML5 video sources across Chrome/Brave and Firefox Android targets. It supports capture of individual sources or an entire tab, local preview and recording, and optional publishing through configured WebRTC signaling. Use only on pages the user is authorized to record.",
-    period: "2026",
-    category: "Browser capture",
-    technologies: ["JavaScript", "Manifest V3", "MediaRecorder", "WebRTC", "WebCodecs"],
-    achievements: [
-      "Supports separate Chrome/Brave Manifest V3 and Firefox Android release targets.",
-      "Uses captureStream or chrome.tabCapture with an offscreen document and MediaRecorder.",
-      "MP4 output depends on H.264/AAC WebCodecs support; otherwise, the project labels a WebM fallback.",
+    "slug": "streamsync-recorder",
+    "title": "StreamSync Recorder",
+    "subtitle": "Playwright + FastAPI · Crash-Safe Stream Recording",
+    "description": "A Codespaces- and Windows-ready Python service for authorized browser playback recording. Uses Playwright, Chromium captureStream(), and MediaRecorder to capture WebM streams with 5-second chunked persistence, SHA-256 checksum journaling, SQLite metadata tracking, and automated stream-state recovery.",
+    "period": "2026",
+    "category": "Media & Automation Systems",
+    "technologies": [
+      "Python",
+      "FastAPI",
+      "Playwright",
+      "Chromium",
+      "SQLite",
+      "MediaRecorder API"
     ],
-    metrics: [
-      { value: "Chrome / Brave", label: "Manifest V3 targets" },
-      { value: "Firefox Android", label: "Direct recorder target" },
-      { value: "MP4 / WebM", label: "Recording formats" },
+    "achievements": [
+      "Built a crash-resilient chunk pipeline that fsyncs 5-second WebM media chunks alongside SHA-256 checksum JSONL journals and SQLite segment records before acknowledgment.",
+      "Implemented startup manifest scanning and idempotent crash recovery that surfaces torn journal lines or checksum mismatches as RECOVERED, PARTIAL, or NEEDS_REPAIR.",
+      "Engineered a thread-safe Manager lifecycle with stream-state monitoring, grace periods, auto-resume segmentation, and cooldown-locked 480p-to-960p quality recovery."
     ],
-    image: "/images/projects/streamsync-capture-studio.svg",
-    featured: false,
-    experiment: true,
-    pinned: false,
+    "metrics": [
+      { "value": "5s Chunks", "label": "SHA-256 Journaled" },
+      { "value": "fsync", "label": "Crash Recovery" },
+      { "value": "Playwright", "label": "FastAPI + SQLite" }
+    ],
+    "image": "/images/projects/streamsync-recorder.svg",
+    "featured": false,
+    "experiment": true,
+    "pinned": false,
     liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes",
+    "githubUrl": "https://github.com/AshishBytes"
   },
   {
     slug: "hackiitk-blockchain",
