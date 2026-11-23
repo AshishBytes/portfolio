@@ -18,9 +18,4 @@ export const experiments: Experiment[] = experimentSchema.array().parse([
     detail: "Offline-first expense tracker",
     category: "Distributed data",
   },
-  {
-    title: "Blockchain relayer",
-    detail: "Gas-less transaction system",
-    category: "Web3",
-  },
 ]);

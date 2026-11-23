@@ -71,10 +71,26 @@ describe("portfolio routes and interactions", () => {
     const user = userEvent.setup();
     renderRoute("/");
 
-    expect(screen.getByText("Kafka · microservices")).toBeInTheDocument();
-    await user.click(screen.getByRole("tab", { name: "Experiments" }));
     expect(
-      screen.getByText("Offline-first expense tracker"),
+      await screen.findByText("Backend systems & automation"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("APIs · Python · Distributed services"),
+    ).toBeInTheDocument();
+    const sideProjects = screen.getByRole("list", { name: "Side projects" });
+    expect(within(sideProjects).getByText("DocQA Tutor")).toBeInTheDocument();
+    expect(within(sideProjects).getByText("TripLedger")).toBeInTheDocument();
+    expect(within(sideProjects).queryByText("Blockchain relayer")).toBeNull();
+
+    await user.click(screen.getByRole("tab", { name: "Experiments" }));
+    const activeExperiments = screen.getByRole("list", {
+      name: "Active experiments",
+    });
+    expect(
+      within(activeExperiments).getByText("AI Video Studio"),
+    ).toBeInTheDocument();
+    expect(
+      within(activeExperiments).getByText("StreamSync Capture Studio"),
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "All projects" })).toHaveAttribute(
       "href",
