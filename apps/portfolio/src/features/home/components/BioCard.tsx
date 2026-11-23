@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { site } from "@repo/config";
 import { about } from "../../../content/about";
 import { profile } from "../../../content/profile";
+import { publications } from "../../../content/publications";
 import { Card } from "../../../components/ui/Card";
 import { SocialLinks } from "../../../components/navigation/SocialLinks";
 
 const stats = [
   { value: site.metrics.yearsBuilding, label: "Years building" },
   { value: site.metrics.users, label: "Users served" },
-  { value: site.metrics.uptime, label: "Uptime" },
+  { value: `${publications.length}`, label: "Publications" },
 ];
 
 export function BioCard() {

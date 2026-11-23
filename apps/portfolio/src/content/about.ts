@@ -2,7 +2,7 @@ import type { AboutHighlight } from "../types/content";
 
 export const about = {
   introduction:
-    "My work has centered on distributed systems, backend engineering, and software tools. I have contributed to services used at million-user scale, network performance improvements, and applied NLP projects.",
+    "My work has centered on backend systems, distributed services, and software tools. I have contributed to Discord-verified platforms serving 585K+ users, automation pipelines, and machine learning projects.",
   education: {
     institution: "Amity University Madhya Pradesh",
     program: "B.Tech. Computer Science & Engineering",

@@ -29,7 +29,7 @@ export const site = {
     yearsBuilding: "4+",
     users: "585K+",
     servers: "850+",
-    uptime: "99.97%",
+    uptime: "Verified",
   },
 } as const;
 
