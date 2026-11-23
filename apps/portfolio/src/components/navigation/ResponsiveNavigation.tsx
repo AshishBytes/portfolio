@@ -34,9 +34,9 @@ function ThemeButton() {
       type="button"
       onClick={handleThemeToggle}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-ink"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-all duration-300 hover:text-ink hover:scale-110"
     >
-      <Icon aria-hidden="true" size={17} />
+      <Icon aria-hidden="true" size={17} className="transition-transform duration-300" />
     </button>
   );
 }

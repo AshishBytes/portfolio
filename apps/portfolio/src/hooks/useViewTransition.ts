@@ -29,6 +29,12 @@ export function useViewTransition() {
         "startViewTransition" in document &&
         typeof (document as any).startViewTransition === "function";
 
+      console.log("View transition debug:", {
+        prefersReducedMotion,
+        supportsViewTransitions,
+        options,
+      });
+
       // If reduced motion or no support, just run the callback immediately
       if (prefersReducedMotion || !supportsViewTransitions) {
         await callback();
@@ -45,6 +51,8 @@ export function useViewTransition() {
           Math.max(x, window.innerWidth - x),
           Math.max(y, window.innerHeight - y),
         );
+
+        console.log("Setting up circular reveal:", { x, y, endRadius });
 
         // Set CSS custom properties for the animation
         document.documentElement.style.setProperty("--x", `${x}px`);
