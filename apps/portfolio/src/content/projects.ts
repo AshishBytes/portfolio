@@ -55,6 +55,8 @@ export const projects: Project[] = projectSchema.array().parse([
     githubUrl: "https://github.com/AshishBytes/Reef-Bot",
     image: "/images/projects/reef-bot.svg",
     featured: true,
+    experiment: false,
+    pinned: false,
   },
   {
     slug: "ai-video-studio",
@@ -190,6 +192,8 @@ export const projects: Project[] = projectSchema.array().parse([
       "Integrates Google Maps, OpenWeather, and Eventbrite APIs and includes an AI chatbot.",
     ],
     featured: false,
+    experiment: false,
+    pinned: false,
     githubUrl: "https://github.com/AshishBytes",
   },
 ]);

@@ -23,7 +23,7 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
           )}
           {project.experiment && (
             <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-400">
-              Experiment
+              Currently Working
             </Badge>
           )}
           <Badge tone="accent">{project.category}</Badge>
