@@ -83,7 +83,7 @@ export function Footer() {
         </div>
 
         <p className="border-t border-line pt-5 text-xs text-subtle md:col-span-2">
-          (c) {copyrightYear} Ashish Singh
+          © {copyrightYear} Ashish Singh
         </p>
       </Container>
     </footer>
