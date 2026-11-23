@@ -118,33 +118,38 @@ export const projects: Project[] = projectSchema.array().parse([
     "experiment": true,
     "pinned": false,
     liveUrl: undefined,
-    "githubUrl": "https://github.com/AshishBytes"
+    "githubUrl": "https://github.com/AshishBytes/streamsync-recorder"
   },
   {
-    slug: "hackiitk-blockchain",
-    title: "HackIITK Blockchain",
-    subtitle: "Gas-less Relayer · Solidity",
-    description:
-      "Built a gas-less meta-transaction relayer for a Solidity voting system. Ranked #2 of 54 teams, with zero critical issues under 5,000+ concurrent transactions.",
-    period: "February 2025",
-    category: "Web3 / Hackathon",
-    technologies: ["Solidity", "Ethers.js", "Node.js", "Hardhat"],
-    achievements: [
-      "Built a gas-less Solidity relayer handling 5,000+ transactions with under 150 ms p95 latency.",
-      "Integrated Slither and MythX into DevSecOps; shipped with zero critical issues.",
-      "Ranked 2nd among 54 teams for reliability and innovation.",
+    "slug": "hackiitk-blockchain",
+    "title": "Gasless Forwarder (HackIITK)",
+    "subtitle": "Web3 Security Track · EIP-712 Meta-Transaction Relayer",
+    "description": "Built a gas-less meta-transaction forwarder and relayer for ERC-20 and ERC-721 transfers in the Web3 Security Solution Track at HACK IITK 2025—selected among 54 Grand Finale teams from 7,000+ registrations.",
+    "period": "February 2025",
+    "category": "Web3 Security / Hackathon",
+    "technologies": [
+      "Solidity",
+      "Hardhat",
+      "Ethers.js",
+      "OpenZeppelin",
+      "Node.js",
+      "EIP-712"
     ],
-    metrics: [
-      { value: "#2/54", label: "Rank" },
-      { value: "5K+", label: "Transactions" },
-      { value: "<150ms", label: "p95 latency" },
+    "achievements": [
+      "Selected among 54 Grand Finale teams (from 7,000+ registrations) in the HACK IITK 2025 Solution Track (Web3 Security).",
+      "Engineered a GaslessForwarder smart contract and off-chain relayer enabling gas-free ERC-20 and ERC-721 transfers via EIP-712 typed data signatures.",
+      "Hardened contract security with incrementing nonce replay protection, OpenZeppelin ReentrancyGuard, and Solidity Shield static audits."
     ],
-    image: "/images/projects/hackiitk-blockchain.svg",
-    featured: true,
-    experiment: false,
-    pinned: false,
-    liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes",
+    "metrics": [
+      { "value": "Top 54", "label": "From 7K+ Signups" },
+      { "value": "Web3 Track", "label": "HACK IITK '25" },
+      { "value": "EIP-712", "label": "ERC-20 & 721" }
+    ],
+    "image": "/images/projects/hackiitk-blockchain.svg",
+    "featured": true,
+    "experiment": false,
+    "pinned": false,
+    "githubUrl": "https://github.com/AshishBytes/Gasless-Forwarder"
   },
   {
     slug: "docqa-tutor",
