@@ -64,18 +64,27 @@ export function FocusExperimentsCard() {
         tabIndex={0}
       >
         {activeTab === "focus" ? (
-          <div className="flex h-full items-start gap-2.5 rounded-lg bg-surface-soft px-2.5 py-2">
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
-              <Network aria-hidden="true" size={16} />
-            </span>
-            <div>
-              <p className="eyebrow">{favorite.label}</p>
-              <p className="display-heading mt-1.5 text-lg leading-tight text-ink">
-                {favorite.title}
-              </p>
-              <p className="mt-1.5 text-xs leading-5 text-muted">{favorite.detail}</p>
-            </div>
-          </div>
+          <ul aria-label="Current focus" className="space-y-1.5">
+            <li>
+              <div className="group flex items-start gap-2 rounded-lg bg-surface-soft px-2.5 py-2">
+                <div className="relative shrink-0 mt-0.5">
+                  <Network
+                    aria-hidden="true"
+                    className="shrink-0 text-accent-dark"
+                    size={14}
+                  />
+                </div>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-semibold text-ink leading-snug">
+                    {favorite.title}
+                  </span>
+                  <span className="mt-0.5 block text-[11px] leading-snug text-muted">
+                    {favorite.detail}
+                  </span>
+                </span>
+              </div>
+            </li>
+          </ul>
         ) : (
           <ul aria-label="Active experiments" className="space-y-1.5">
             {experimentProjects.map((project) => (
