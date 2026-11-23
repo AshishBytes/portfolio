@@ -26,13 +26,13 @@ const projectSchema = z.object({
 
 export const projects: Project[] = projectSchema.array().parse([
   {
-    "slug": "reef-platform",
-    "title": "Reef Bot",
-    "subtitle": "Node.js · Event-Driven Architecture",
-    "description": "Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
-    "period": "November 2021 – April 2023",
-    "category": "Discord Platform",
-    "technologies": [
+    slug: "reef-platform",
+    title: "Reef Bot",
+    subtitle: "Node.js · Event-Driven Architecture",
+    description: "Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
+    period: "November 2021 – April 2023",
+    category: "Discord Platform",
+    technologies: [
       "JavaScript",
       "Node.js",
       "Discord.js",
@@ -40,15 +40,15 @@ export const projects: Project[] = projectSchema.array().parse([
       "MongoDB",
       "WebSockets"
     ],
-    "achievements": [
+    achievements: [
       "Structured modular command, slash-command, and event handlers in Node.js and Discord.js to support real-time moderation, spam filtering, and audio streaming.",
       "Built a MongoDB persistence layer paired with query optimization and caching to keep lookup latency low during peak server traffic.",
       "Completed Discord's official bot verification process with rate-limit handling and privacy compliance, and coordinated the leadership handover at 585K+ users."
     ],
-    "metrics": [
-      { "value": "585K+", "label": "Users" },
-      { "value": "850+", "label": "Servers" },
-      { "value": "Verified", "label": "Discord Bot" }
+    metrics: [
+      { value: "585K+", label: "Users" },
+      { value: "850+", label: "Servers" },
+      { value: "Verified", label: "Discord Bot" }
     ],
     liveUrl: "https://discord.com/oauth2/authorize?client_id=970954920964534304&permissions=8&scope=bot",
     githubUrl: "https://github.com/AshishBytes/Reef-Bot",
@@ -80,7 +80,8 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: false,
     experiment: true,
     pinned: false,
-    githubUrl: "https://github.com/AshishBytes",
+    liveUrl: undefined,
+    githubUrl: "https://github.com/AshishBytes/ai-video-studio",
   },
   {
     slug: "streamsync-capture-studio",
@@ -105,6 +106,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: false,
     experiment: true,
     pinned: false,
+    liveUrl: undefined,
     githubUrl: "https://github.com/AshishBytes",
   },
   {
@@ -130,6 +132,7 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: true,
     experiment: false,
     pinned: false,
+    liveUrl: undefined,
     githubUrl: "https://github.com/AshishBytes",
   },
   {
@@ -151,9 +154,11 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "27.5", label: "BLEU" },
       { value: "−47%", label: "Latency" },
     ],
+    image: undefined,
     featured: false,
     experiment: false,
     pinned: false,
+    liveUrl: undefined,
     githubUrl: "https://github.com/AshishBytes",
   },
   {
@@ -175,9 +180,12 @@ export const projects: Project[] = projectSchema.array().parse([
       "Implemented CRDT ledger sync for 10,000 daily transactions with eventual consistency while offline.",
       "Used a mock Azure AD B2C integration to block unauthorized writes.",
     ],
+    metrics: undefined,
+    image: undefined,
     featured: true,
     experiment: false,
     pinned: false,
+    liveUrl: undefined,
     githubUrl: "https://github.com/AshishBytes",
   },
   {
@@ -193,9 +201,12 @@ export const projects: Project[] = projectSchema.array().parse([
       "Offers personalized travel itineraries based on user preferences.",
       "Integrates Google Maps, OpenWeather, and Eventbrite APIs and includes an AI chatbot.",
     ],
+    metrics: undefined,
+    image: undefined,
     featured: true,
     experiment: false,
     pinned: false,
+    liveUrl: undefined,
     githubUrl: "https://github.com/AshishBytes",
   },
 ]);
