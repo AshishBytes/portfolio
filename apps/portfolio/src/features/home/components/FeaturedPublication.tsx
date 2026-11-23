@@ -20,7 +20,7 @@ function PublicationCard({ publication }: { publication: Publication }) {
           </span>
           <div className="min-w-0">
             <p className="eyebrow text-sm leading-5">
-              {publication.venue.split("(")[0].trim()} · {publication.year}
+              {publication.venue} · {publication.year}
             </p>
             <h3 className="display-heading mt-2 text-2xl leading-tight tracking-tight text-ink sm:text-3xl">
               {publication.title}
