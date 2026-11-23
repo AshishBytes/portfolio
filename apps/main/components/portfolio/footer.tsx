@@ -2,16 +2,16 @@ import { Github, Twitter, Linkedin, Mail, ArrowUpRight } from "lucide-react"
 
 const socials = [
   { href: "https://linkedin.com/in/ashishbytes", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://twitter.com/ashishbytes",     icon: Twitter,  label: "Twitter"  },
-  { href: "https://github.com/AshishBytes",      icon: Github,   label: "GitHub"   },
-  { href: "mailto:ashishlodhi5559@gmail.com",    icon: Mail,     label: "Email"    },
+  { href: "https://twitter.com/ashishbytes", icon: Twitter, label: "Twitter" },
+  { href: "https://github.com/AshishBytes", icon: Github, label: "GitHub" },
+  { href: "mailto:official.ashishbytes@gmail.com", icon: Mail, label: "Email" },
 ]
 
 const quickLinks = [
-  { label: "Work",         href: "#selected-works" },
-  { label: "Writing",      href: "/blog" },
-  { label: "Resume",       href: "/resume.pdf"     },
-  { label: "GitHub",       href: "https://github.com/AshishBytes" },
+  { label: "Work", href: "#selected-works" },
+  { label: "Writing", href: "/blog" },
+  { label: "Resume", href: "/resume.pdf" },
+  { label: "GitHub", href: "https://github.com/AshishBytes" },
 ]
 
 export function Footer() {
@@ -78,9 +78,9 @@ export function Footer() {
             <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--ds-fg-lo)]">
               Get in touch
             </p>
-            <p className="text-sm text-[var(--ds-fg-mid)]">ashishlodhi5559@gmail.com</p>
+            <p className="text-sm text-[var(--ds-fg-mid)]">official.ashishbytes@gmail.com</p>
             <a
-              href="mailto:ashishlodhi5559@gmail.com"
+              href="mailto:official.ashishbytes@gmail.com"
               className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border-hi)] px-4 py-2 text-sm font-semibold text-[var(--ds-fg-hi)] transition-all hover:border-[var(--ds-accent)] hover:text-[var(--ds-accent)]"
             >
               Send a message <ArrowUpRight className="h-3.5 w-3.5" />

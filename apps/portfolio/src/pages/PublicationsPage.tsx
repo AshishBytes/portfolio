@@ -10,19 +10,21 @@ export function PublicationsPage() {
       <PageHeader
         eyebrow="Publications"
         title="Research and applied work."
-        description="Research summaries across mobile security and edge machine learning."
+        description="Research summaries across mobile security and applied machine learning."
       />
-      <Container className="grid gap-5 pb-12 md:grid-cols-2">
+      <Container className="grid gap-5 pb-12 md:grid-cols-2 md:items-start">
         {publications.map((publication) => (
           <Card className="flex flex-col" key={publication.id}>
-            <BookOpenText
-              aria-hidden="true"
-              className="text-accent"
-              size={20}
-            />
-            <p className="eyebrow mt-4">
-              {publication.venue} · {publication.year}
-            </p>
+            <div className="flex items-start gap-3">
+              <BookOpenText
+                aria-hidden="true"
+                className="shrink-0 text-accent"
+                size={20}
+              />
+              <p className="eyebrow">
+                {publication.venue} · {publication.date}
+              </p>
+            </div>
             <h2 className="mt-3 text-xl font-semibold leading-snug tracking-tight">
               {publication.title}
             </h2>

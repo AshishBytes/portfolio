@@ -2,29 +2,29 @@ import { Github, Twitter, Linkedin, Mail } from "lucide-react"
 
 const socials = [
   {
-    href:  "https://linkedin.com/in/ashishbytes",
-    icon:  Linkedin,
+    href: "https://linkedin.com/in/ashishbytes",
+    icon: Linkedin,
     label: "LinkedIn",
   },
   {
-    href:  "https://twitter.com/ashishbytes",
-    icon:  Twitter,
+    href: "https://twitter.com/ashishbytes",
+    icon: Twitter,
     label: "Twitter / X",
   },
   {
-    href:  "https://github.com/AshishBytes",
-    icon:  Github,
+    href: "https://github.com/AshishBytes",
+    icon: Github,
     label: "GitHub",
   },
   {
-    href:  "mailto:ashishlodhi5559@gmail.com",
-    icon:  Mail,
+    href: "mailto:official.ashishbytes@gmail.com",
+    icon: Mail,
     label: "Email",
   },
 ]
 
 const metrics = [
-  { value: "4+",   label: "Years building" },
+  { value: "4+", label: "Years building" },
   { value: "585K+", label: "Users served" },
   { value: "99.9%", label: "Uptime SLA" },
 ]
@@ -103,7 +103,7 @@ export function BioCard() {
             Find me at
           </p>
           <p className="mt-0.5 text-sm font-medium text-[var(--ds-fg-mid)]">
-            ashishlodhi5559@gmail.com
+            official.ashishbytes@gmail.com
           </p>
         </div>
       </div>

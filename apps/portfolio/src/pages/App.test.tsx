@@ -22,6 +22,21 @@ describe("portfolio routes and interactions", () => {
       "Ashish Singh",
     );
     expect(
+      screen.getByText(
+        "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByRole("list", { name: "Areas of practice" }))
+        .getAllByRole("listitem")
+        .map((item) => item.textContent),
+    ).toEqual([
+      "Backend Systems",
+      "Distributed Services",
+      "Machine Learning",
+      "Web3",
+    ]);
+    expect(
       await screen.findByRole("heading", {
         name: "Projects with a systems core",
       }),
@@ -37,23 +52,50 @@ describe("portfolio routes and interactions", () => {
     ).toHaveAttribute("href", "/contact");
     expect(
       screen.getByRole("heading", {
-        name: "Mobile Security — Light on Security Threats",
+        name: "Mobile Security – Light on Security Threats",
       }),
     ).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /read paper/i })).toBeNull();
     expect(
-      screen.getAllByRole("link", { name: "Open case study" })[0],
+      screen.getAllByRole("link", { name: /read paper/i })[0],
+    ).toHaveAttribute("href", "https://doi.org/10.46338/ijetae0224_04");
+    expect(
+      screen.getAllByRole("link", { name: /view.*case study/i })[0],
     ).toHaveAttribute("href", "/projects/reef-platform");
+    expect(
+      screen.getByRole("heading", { name: "AI Video Studio" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "StreamSync Capture Studio" }),
+    ).toBeInTheDocument();
   });
 
   it("switches the about card between focus and experiments", async () => {
     const user = userEvent.setup();
     renderRoute("/");
 
-    expect(screen.getByText("Kafka · microservices")).toBeInTheDocument();
-    await user.click(screen.getByRole("tab", { name: "Experiments" }));
     expect(
-      screen.getByText("Offline-first expense tracker"),
+      await screen.findByText("Backend systems & automation", {}, { timeout: 10000 }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("APIs · Python · Distributed services"),
+    ).toBeInTheDocument();
+    const sideProjects = screen.getByRole("list", { name: "Side projects" });
+    expect(within(sideProjects).getByText("DocQA Tutor")).toBeInTheDocument();
+    expect(within(sideProjects).getByText("TripLedger")).toBeInTheDocument();
+    expect(within(sideProjects).queryByText("Blockchain relayer")).toBeNull();
+
+    await user.click(screen.getByRole("tab", { name: "Experiments" }));
+    const activeExperiments = screen.getByRole("list", {
+      name: "Active experiments",
+    });
+    expect(
+      within(activeExperiments).getByText("AI Video Studio"),
+    ).toBeInTheDocument();
+    expect(
+      within(activeExperiments).getByText("StreamSync Capture Studio"),
+    ).toBeInTheDocument();
+    expect(
+      within(activeExperiments).getByText("DocQA Tutor"),
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "All projects" })).toHaveAttribute(
       "href",
@@ -67,7 +109,7 @@ describe("portfolio routes and interactions", () => {
       await screen.findByRole("heading", { name: "DocQA Tutor" }),
     ).toBeInTheDocument();
     expect(
-      await screen.findByText(/fine-tuned T5 on 2 million samples/i),
+      await screen.findByText(/offline academic tutor and document QA system/i),
     ).toBeInTheDocument();
   });
 
@@ -88,7 +130,9 @@ describe("portfolio routes and interactions", () => {
       screen.getByRole("link", { name: "Send a message" }),
     ).toHaveAttribute("href", "/contact");
     expect(
-      screen.getByText(`(c) ${new Date().getFullYear()} Ashish Singh`),
+      screen.getByText((_content, element) => {
+        return element?.textContent?.match(/\(c\) \d{4} Ashish Singh/) !== null;
+      }),
     ).toBeInTheDocument();
   });
 
@@ -126,7 +170,7 @@ describe("portfolio routes and interactions", () => {
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Email Ashish Singh" }),
-    ).toHaveAttribute("href", "mailto:ashishlodhi5559@gmail.com");
+    ).toHaveAttribute("href", "mailto:official.ashishbytes@gmail.com");
     expect(
       screen.getByRole("navigation", { name: "Professional profiles" }),
     ).toBeInTheDocument();

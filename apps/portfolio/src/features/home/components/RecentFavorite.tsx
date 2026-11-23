@@ -1,6 +1,6 @@
 import { ArrowUpRight, Network } from "lucide-react";
 import { Link } from "react-router-dom";
-import { favorite } from "../../../content/favorites";
+import { favorite } from "../../../content/current-focus";
 import { Card } from "../../../components/ui/Card";
 
 export function RecentFavorite() {

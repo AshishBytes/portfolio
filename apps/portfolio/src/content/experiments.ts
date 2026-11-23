@@ -10,17 +10,12 @@ const experimentSchema = z.object({
 export const experiments: Experiment[] = experimentSchema.array().parse([
   {
     title: "DocQA Tutor",
-    detail: "Summarisation & question-answering API",
+    detail: "Offline tutor with PDF summarization & MCQ quiz generation",
     category: "ML / NLP",
   },
   {
     title: "TripLedger",
-    detail: "Offline-first expense tracker",
-    category: "Distributed data",
-  },
-  {
-    title: "Blockchain relayer",
-    detail: "Gas-less transaction system",
-    category: "Web3",
+    detail: "Group expense tracker with debt simplification",
+    category: "Full-Stack Web",
   },
 ]);

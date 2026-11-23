@@ -8,14 +8,36 @@ import { projects } from "./projects";
 import { publications } from "./publications";
 import { skillCategories } from "./skills";
 import { profile } from "./profile";
+import { getPageMetadata } from "../app/metadata";
 
 describe("portfolio content integrity", () => {
+  it("uses the approved positioning in the hero and project metadata", () => {
+    const positioning =
+      "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.";
+    expect(profile.summary).toBe(positioning);
+    expect(getPageMetadata("/").description).toBe(positioning);
+    expect(getPageMetadata("/projects").description).not.toContain(
+      "applied NLP",
+    );
+  });
+
   it("contains the available record counts without duplicate identifiers or slugs", () => {
     expect(experience).toHaveLength(3);
-    expect(projects).toHaveLength(4);
+    expect(projects).toHaveLength(8);
+    expect(projects.map((project) => project.slug)).toEqual([
+      "reef-platform",
+      "happy-bot",
+      "ai-video-studio",
+      "streamsync-capture-studio",
+      "hackiitk-blockchain",
+      "docqa-tutor",
+      "tripledger",
+      "travelquest",
+    ]);
     expect(achievements).toHaveLength(5);
     expect(publications).toHaveLength(2);
-    expect(aboutHighlights).toHaveLength(4);
+    expect(aboutHighlights.length).toBeGreaterThanOrEqual(4);
+    expect(aboutHighlights.length).toBeLessThanOrEqual(6);
     expect(new Set(projects.map((project) => project.slug)).size).toBe(
       projects.length,
     );
@@ -58,8 +80,14 @@ describe("portfolio content integrity", () => {
     }
   });
 
-  it("keeps metrics on the three featured projects and preserves TripLedger", () => {
+  it("keeps project metrics and the approved featured set", () => {
     const reef = projects.find((project) => project.slug === "reef-platform");
+    const aiVideo = projects.find(
+      (project) => project.slug === "ai-video-studio",
+    );
+    const streamSync = projects.find(
+      (project) => project.slug === "streamsync-capture-studio",
+    );
     const hackiitk = projects.find(
       (project) => project.slug === "hackiitk-blockchain",
     );
@@ -68,35 +96,51 @@ describe("portfolio content integrity", () => {
     expect(reef?.metrics).toEqual([
       { value: "585K+", label: "Users" },
       { value: "850+", label: "Servers" },
-      { value: "99.97%", label: "Uptime" },
+      { value: "Verified", label: "Discord Bot" },
     ]);
     expect(hackiitk?.metrics).toEqual([
-      { value: "#2/54", label: "Rank" },
-      { value: "5K+", label: "Transactions" },
-      { value: "<150ms", label: "p95 latency" },
+      { value: "Top 54", label: "From 7K+ Signups" },
+      { value: "Web3 Track", label: "HACK IITK '25" },
+      { value: "EIP-712", label: "ERC-20 & 721" },
     ]);
     expect(docqa?.metrics).toEqual([
-      { value: "43.2", label: "ROUGE-L" },
-      { value: "27.5", label: "BLEU" },
-      { value: "−47%", label: "Latency" },
+      { value: "Offline", label: "Local GPU Inference" },
+      { value: "4 Datasets", label: "QA, Quiz & TL;DR" },
+      { value: "FP16", label: "RTX 3050 Trained" },
+    ]);
+    expect(aiVideo?.metrics).toEqual([
+      { value: "CLI + Web", label: "Dual Interface" },
+      { value: "FFmpeg + Remotion", label: "Render Pipeline" },
+      { value: "Python 3.11+", label: "Core Engine" },
+    ]);
+    expect(streamSync?.metrics).toEqual([
+      { value: "5s Chunks", label: "SHA-256 Journaled" },
+      { value: "fsync", label: "Crash Recovery" },
+      { value: "Playwright", label: "FastAPI + SQLite" },
+    ]);
+    expect(projects.filter((project) => project.featured).map(({ slug }) => slug)).toEqual([
+      "reef-platform",
+      "hackiitk-blockchain",
+      "tripledger",
+      "travelquest",
     ]);
     expect(projects.map((project) => project.slug)).toContain("tripledger");
   });
 
-  it("keeps the IJETAE paper and leaves its unavailable URL unset", () => {
+  it("keeps the IJETAE paper with its available DOI URL", () => {
     const paper = publications.find(
       (publication) => publication.id === "mobile-security-threats",
     );
 
     expect(paper).toMatchObject({
-      title: "Mobile Security — Light on Security Threats",
+      title: "Mobile Security – Light on Security Threats",
       venue:
-        "International Journal of Emerging Technologies and Applications in Engineering (IJETAE)",
+        "International Journal of Emerging Technology and Advanced Engineering (IJETAE)",
       year: "2024",
       summary:
-        "A six-layer model for mobile security, reported to reduce the Android attack surface by 38%.",
+        "A literature review of mobile malware types, common cyberattack vectors (social engineering, phishing, MITM), mobile app vulnerabilities, and existing signature-based and machine learning detection methods.",
     });
-    expect(paper?.url).toBeUndefined();
+    expect(paper?.url).toBe("https://doi.org/10.46338/ijetae0224_04");
   });
 
   it("keeps incomplete engineering article entries out of public previews", () => {

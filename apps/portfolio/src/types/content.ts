@@ -30,6 +30,8 @@ export interface Experience {
   location: string;
   achievements: string[];
   technologies: string[];
+  featured?: boolean;
+  projectSlug?: string;
 }
 
 export interface Project {
@@ -43,6 +45,8 @@ export interface Project {
   achievements: string[];
   metrics?: ProjectMetric[];
   featured: boolean;
+  experiment?: boolean;
+  pinned?: boolean;
   liveUrl?: string;
   githubUrl?: string;
   image?: string;
@@ -72,8 +76,10 @@ export interface Publication {
   title: string;
   venue: string;
   year: string;
+  date: string;
   summary: string;
   metrics: string[];
+  featured: boolean;
   url?: string;
 }
 
@@ -108,6 +114,7 @@ export interface Favorite {
   label: string;
   title: string;
   detail: string;
+  description?: string;
 }
 
 export interface Experiment {

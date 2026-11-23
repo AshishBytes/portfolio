@@ -1,0 +1,84 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#271406"/>
+      <stop offset="55%" stop-color="#92400E"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Base & Subtle Engineering Grid -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="1040" cy="120" r="220" fill="#F59E0B" opacity="0.22"/>
+  <circle cx="180" cy="540" r="180" fill="#FDE68A" opacity="0.08"/>
+
+  <!-- Left Icon Card: Document Chunk + Neural Spark -->
+  <g transform="translate(120, 195)">
+    <rect width="220" height="220" rx="44" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <!-- Document Outline -->
+    <rect x="54" y="38" width="96" height="126" rx="14" fill="rgba(25,14,5,0.55)" stroke="white" stroke-width="5"/>
+    <!-- Text Lines -->
+    <line x1="74" y1="68" x2="130" y2="68" stroke="white" stroke-width="5" stroke-linecap="round"/>
+    <line x1="74" y1="90" x2="122" y2="90" stroke="rgba(255,255,255,0.75)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="74" y1="112" x2="110" y2="112" stroke="rgba(255,255,255,0.55)" stroke-width="5" stroke-linecap="round"/>
+    <!-- AI Inference Badge -->
+    <circle cx="148" cy="148" r="30" fill="#F59E0B" stroke="white" stroke-width="4"/>
+    <path d="M148 134 L152 144 L162 148 L152 152 L148 162 L144 152 L134 148 L144 144 Z" fill="white"/>
+  </g>
+
+  <!-- Right Main Content -->
+  <g transform="translate(390, 215)">
+    <!-- Category Eyebrow -->
+    <text x="0" y="-32" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#FDE68A" letter-spacing="2">
+      NLP &amp; CUSTOM TRANSFORMERS · OFFLINE AI
+    </text>
+
+    <!-- Title -->
+    <text x="0" y="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="68" font-weight="800" fill="white" letter-spacing="-1.5">
+      Custom Tutor AI
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="80" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Offline PDF Summarization, Academic QA &amp; Quiz Generation
+    </text>
+
+    <!-- Metric Badges -->
+    <g transform="translate(0, 122)">
+      <!-- Badge 1 -->
+      <rect x="0" y="0" width="180" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="90" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        100% Offline
+      </text>
+
+      <!-- Badge 2 -->
+      <rect x="196" y="0" width="185" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="288.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        4 NLP Datasets
+      </text>
+
+      <!-- Badge 3 -->
+      <rect x="397" y="0" width="205" height="48" rx="24" fill="rgba(253, 224, 71, 0.2)" stroke="rgba(253, 230, 138, 0.45)" stroke-width="1"/>
+      <text x="499.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#FEF3C7" text-anchor="middle">
+        FP16 RTX Trained
+      </text>
+    </g>
+
+    <!-- Tech Stack Footer -->
+    <text x="0" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="600" fill="rgba(255,255,255,0.75)">
+      Python  •  PyTorch  •  Transformers  •  T5  •  Datasets  •  Streamlit
+    </text>
+  </g>
+</svg>

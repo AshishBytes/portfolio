@@ -10,6 +10,8 @@ const experienceSchema = z.object({
   location: z.string().min(1),
   achievements: z.array(z.string().min(1)).min(1),
   technologies: z.array(z.string().min(1)),
+  featured: z.boolean().optional(),
+  projectSlug: z.string().optional(),
 });
 
 export const experience: Experience[] = experienceSchema.array().parse([
@@ -20,44 +22,89 @@ export const experience: Experience[] = experienceSchema.array().parse([
     period: "February 2025",
     location: "Kanpur, India",
     achievements: [
-      "Built a gas-less Solidity relayer handling 5,000+ transactions with under 150 ms p95 latency; autoscaled the proof of concept on Azure Container Apps.",
-      "Integrated Slither and MythX into DevSecOps; shipped with zero critical issues.",
-      "Ranked 2nd among 54 teams for reliability and innovation.",
+      "Selected among 54 Grand Finale teams (from 7,000+ registrations) in the HACK IITK 2025 Solution Track (Web3 Security).",
+      "Engineered a GaslessForwarder smart contract and off-chain relayer enabling gas-free ERC-20 and ERC-721 transfers via EIP-712 typed data signatures.",
+      "Hardened contract security with incrementing nonce replay protection, OpenZeppelin ReentrancyGuard, and Solidity Shield static audits.",
     ],
-    technologies: ["Solidity", "Azure Container Apps", "Slither", "MythX"],
+    technologies: ["Solidity", "Hardhat", "Ethers.js", "OpenZeppelin", "Node.js", "EIP-712"],
+    featured: true,
+    projectSlug: "hackiitk-blockchain",
   },
   {
     id: "reef-distributed-discord-platform",
-    organization: "Reef — Distributed Discord Platform",
+    organization: "Reef - Discord Platform",
     role: "Lead Software Engineer",
-    period: "November 2021 – April 2023",
+    period: "November 2021 - April 2023",
     location: "Remote",
     achievements: [
-      `Designed sharded Go and Python services on Kubernetes, serving ${site.metrics.users} users across ${site.metrics.servers} servers at ${site.metrics.uptime} uptime.`,
-      "Refactored a TCP stack with epoll and zero-copy techniques, reducing median latency by 34 ms.",
-      "Added SBERT semantic search, increasing intent accuracy from 72% to 93%.",
-      "Promoted to lead in four months, mentored three engineers, and rolled out CI/CD with GitHub Actions and Helm.",
+      `Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands serving ${site.metrics.users} users across ${site.metrics.servers} servers.`,
+      "Structured modular command, slash-command, and event handlers in Node.js and Discord.js to support real-time moderation, spam filtering, and audio streaming.",
+      "Built a MongoDB persistence layer paired with query optimization and caching to keep lookup latency low during peak server traffic.",
+      "Completed Discord's official bot verification process with rate-limit handling and privacy compliance, and coordinated the leadership handover.",
     ],
     technologies: [
-      "Go",
-      "Python",
-      "Kubernetes",
-      "SBERT",
-      "GitHub Actions",
-      "Helm",
+      "JavaScript",
+      "Node.js",
+      "Discord.js",
+      "Express.js",
+      "MongoDB",
+      "WebSockets",
     ],
+    featured: true,
+    projectSlug: "reef-platform",
   },
   {
     id: "happy-low-latency-music-bot",
-    organization: "Happy — Low-Latency Music Bot",
+    organization: "HAPPY - Discord Music Bot",
     role: "Software Engineer",
-    period: "February 2020 – July 2021",
+    period: "November 2021 - April 2023",
     location: "Remote",
     achievements: [
-      "Engineered a Python and FFmpeg audio engine processing 500,000 commands per day; reduced jitter by 35%.",
-      "Adaptive Opus encoding reduced bandwidth by 42% (USD 220 per month).",
-      "Authored 180 PyTest cases at 88% coverage, halving regression defects and speeding releases by 50%.",
+      "Built a full-featured Discord music and radio bot from scratch using modular command, event, and voice-streaming handlers in Node.js and Discord.js.",
+      "Earned Discord's official Verified Bot badge by meeting platform security, rate-limit, and verification standards.",
+      "Iterated across 963 commits with MongoDB persistence and cloud/VPS deployment before archiving the project in February 2023.",
     ],
-    technologies: ["Python", "FFmpeg", "Opus", "PyTest"],
+    technologies: ["JavaScript", "Node.js", "Discord.js", "MongoDB", "Heroku"],
+    featured: false,
+    projectSlug: "happy-bot",
   },
 ]);
+
+export function getFeaturedExperience(limit?: number): Experience[] {
+  const featuredExperience = experience.filter((exp) => exp.featured === true);
+
+  // Sort by year (extract from period)
+  const sorted = featuredExperience.sort((a, b) => {
+    // Extract year from period (handles formats like "2026", "February 2025", "November 2021 - April 2023")
+    const extractYear = (period: string): number => {
+      const match = period.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    const yearA = extractYear(a.period);
+    const yearB = extractYear(b.period);
+
+    // Sort by year descending (newest first)
+    return yearB - yearA;
+  });
+
+  return limit ? sorted.slice(0, limit) : sorted;
+}
+
+export function getAllExperience(limit?: number): Experience[] {
+  // Sort all experience by year descending (newest first)
+  const sorted = [...experience].sort((a, b) => {
+    const extractYear = (period: string): number => {
+      const match = period.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    const yearA = extractYear(a.period);
+    const yearB = extractYear(b.period);
+
+    return yearB - yearA;
+  });
+
+  return limit ? sorted.slice(0, limit) : sorted;
+}
+

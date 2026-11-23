@@ -144,9 +144,20 @@ export default function LinksPage() {
         </section>
 
         <footer className="page-footer">
-          <span>{site.name}</span>
+          <span>
+            <a
+              href="https://github.com/AshishBytes"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              AshishBytes
+            </a>
+          </span>
           <span className="footer-dot" aria-hidden="true" />
           <span>Links</span>
+          <span className="footer-dot" aria-hidden="true" />
+          <span style={{ fontSize: "0.8em", opacity: 0.7 }}>Updated {site.lastUpdated}</span>
         </footer>
       </div>
     </main>

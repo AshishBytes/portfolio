@@ -1,0 +1,84 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#17112E"/>
+      <stop offset="55%" stop-color="#4C1D95"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Base & Subtle Engineering Grid -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="1040" cy="120" r="220" fill="#8B5CF6" opacity="0.25"/>
+  <circle cx="180" cy="540" r="180" fill="#FACC15" opacity="0.08"/>
+
+  <!-- Left Icon Card: Signed Payload -> Relayer -> Chain -->
+  <g transform="translate(120, 195)">
+    <rect width="220" height="220" rx="44" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <!-- Top User Node -->
+    <rect x="44" y="42" width="52" height="52" rx="14" fill="rgba(15,10,30,0.55)" stroke="white" stroke-width="5"/>
+    <!-- Top Target Node -->
+    <rect x="124" y="42" width="52" height="52" rx="14" fill="rgba(15,10,30,0.55)" stroke="#DDD6FE" stroke-width="5"/>
+    <!-- Bottom Relayer Forwarder Hub -->
+    <rect x="78" y="128" width="64" height="52" rx="14" fill="#FACC15" fill-opacity="0.2" stroke="#FEF08A" stroke-width="5"/>
+    <!-- Relay Connectors -->
+    <line x1="70" y1="94" x2="96" y2="128" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    <line x1="150" y1="94" x2="124" y2="128" stroke="#FEF08A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Main Content -->
+  <g transform="translate(390, 215)">
+    <!-- Category Eyebrow -->
+    <text x="0" y="-32" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#DDD6FE" letter-spacing="2">
+      HACK IITK '25 · WEB3 SECURITY TRACK
+    </text>
+
+    <!-- Title -->
+    <text x="0" y="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="68" font-weight="800" fill="white" letter-spacing="-1.5">
+      Gasless Forwarder
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="80" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="500" fill="rgba(255,255,255,0.85)">
+      EIP-712 Meta-Transaction Relayer for ERC-20 &amp; ERC-721
+    </text>
+
+    <!-- Metric Badges -->
+    <g transform="translate(0, 122)">
+      <!-- Badge 1: Finalist Pool -->
+      <rect x="0" y="0" width="195" height="48" rx="24" fill="rgba(234, 179, 8, 0.22)" stroke="rgba(254, 240, 138, 0.5)" stroke-width="1"/>
+      <text x="97.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#FEF08A" text-anchor="middle">
+        54 / 7K+ Finalist
+      </text>
+
+      <!-- Badge 2: Standard -->
+      <rect x="211" y="0" width="180" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="301" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        EIP-712 Signed
+      </text>
+
+      <!-- Badge 3: Tokens -->
+      <rect x="407" y="0" width="200" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="507" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        ERC-20 &amp; ERC-721
+      </text>
+    </g>
+
+    <!-- Tech Stack Footer -->
+    <text x="0" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="600" fill="rgba(255,255,255,0.75)">
+      Solidity  •  Hardhat  •  Ethers.js  •  OpenZeppelin  •  Node.js
+    </text>
+  </g>
+</svg>

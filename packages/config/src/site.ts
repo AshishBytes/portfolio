@@ -14,7 +14,7 @@ export const site = {
    * Also present at apps/links/public/images/ashish-singh.jpeg.
    */
   photo: "/images/ashish-singh.jpeg",
-  email: "ashishlodhi5559@gmail.com",
+  email: "official.ashishbytes@gmail.com",
   /** Production origin for apps/portfolio. */
   origin: "https://ashishbytes.vercel.app",
   /** Production origin for apps/links. */
@@ -22,12 +22,14 @@ export const site = {
   /** Mirrors the portfolio's public-article threshold; update when it goes live. */
   blogLive: false,
   discordBotVerified: true,
+  /** Last content update date for professional information */
+  lastUpdated: "23 November 2026",
   /** Headline metrics shared by the portfolio and links pages. */
   metrics: {
     yearsBuilding: "4+",
     users: "585K+",
     servers: "850+",
-    uptime: "99.97%",
+    uptime: "Verified",
   },
 } as const;
 

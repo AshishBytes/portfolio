@@ -1,17 +1,92 @@
 import { FileSearch, Network } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { Project } from "../../types/content";
 
-export function ProjectArtwork({ project }: { project: Project }) {
+export function ProjectArtwork({ project, context = "card" }: { project: Project; context?: "card" | "detail" }) {
   if (project.image) {
-    return (
+    const imageElement = (
       <img
         alt={`${project.title} project preview`}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover transition-transform duration-300 ease-out"
         height={480}
         loading="lazy"
         src={project.image}
         width={720}
       />
+    );
+
+    // On detail page with GitHub URL, show "View Source Code"
+    if (context === "detail" && project.githubUrl) {
+      return (
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block overflow-hidden rounded-t-[inherit]"
+          aria-label={`View ${project.title} source code on GitHub`}
+        >
+          <div className="relative overflow-hidden rounded-t-[inherit]">
+            {imageElement}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-2 py-6 text-white transition-transform duration-300 group-hover:translate-y-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m18 13 6 6-6 6" />
+                <path d="m6 5-6 6 6 6" />
+                <path d="m14.5 4-5 16" />
+              </svg>
+              <span className="font-semibold">View Source Code</span>
+            </div>
+          </div>
+        </a>
+      );
+    }
+
+    // On detail page without GitHub, just show image
+    if (context === "detail") {
+      return imageElement;
+    }
+
+    // On card, link to project detail page
+    return (
+      <Link
+        to={`/projects/${project.slug}`}
+        className="group relative block overflow-hidden rounded-t-[inherit]"
+        aria-label={`View ${project.title} project details`}
+      >
+        <div className="relative overflow-hidden rounded-t-[inherit]">
+          {imageElement}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-2 py-6 text-white transition-transform duration-300 group-hover:translate-y-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span className="font-semibold">View Project</span>
+          </div>
+        </div>
+      </Link>
     );
   }
 
@@ -43,6 +118,247 @@ export function ProjectArtwork({ project }: { project: Project }) {
     );
   }
 
+  if (project.slug === "reef-platform") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#e7ecf3] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#b8c5d9]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#b8c5d9]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#d4dce8] bg-[#fafcfd] p-4 shadow-[0_10px_28px_rgba(49,61,82,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#4f5d73]">
+              Gateway shard sync
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#5f7391]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff3f8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7a91b3]" />
+              <span className="h-2 flex-1 rounded-full bg-[#d1dbe8]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1dbe8]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff3f8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7a91b3]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#d1dbe8]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1dbe8]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#4f5d73]">
+          DISCORD VERIFIED
+        </span>
+      </div>
+    );
+  }
+
+  if (project.slug === "ai-video-studio") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#f3e7ec] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#d9b8c5]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#d9b8c5]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#e8d4dc] bg-[#fdfafc] p-4 shadow-[0_10px_28px_rgba(82,49,61,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#734f5d]">
+              Render pipeline
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#915f73]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#f8eff3] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#b37a91]" />
+              <span className="h-2 flex-1 rounded-full bg-[#e8d1db]" />
+              <span className="h-2 w-8 rounded-full bg-[#e8d1db]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#f8eff3] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#b37a91]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#e8d1db]" />
+              <span className="h-2 w-8 rounded-full bg-[#e8d1db]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#734f5d]">
+          CLI + WEB
+        </span>
+      </div>
+    );
+  }
+
+  if (project.slug === "streamsync-capture-studio") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#ede7f3] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#c5b8d9]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#c5b8d9]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#dcd4e8] bg-[#fcfafd] p-4 shadow-[0_10px_28px_rgba(61,49,82,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#5d4f73]">
+              Stream capture
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#735f91]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#f3eff8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#917ab3]" />
+              <span className="h-2 flex-1 rounded-full bg-[#dbd1e8]" />
+              <span className="h-2 w-8 rounded-full bg-[#dbd1e8]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#f3eff8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#917ab3]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#dbd1e8]" />
+              <span className="h-2 w-8 rounded-full bg-[#dbd1e8]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#5d4f73]">
+          BROWSER CAPTURE
+        </span>
+      </div>
+    );
+  }
+
+  if (project.slug === "hackiitk-blockchain") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#f3ede7] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#d9c5b8]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#d9c5b8]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#e8dcd4] bg-[#fdfcfa] p-4 shadow-[0_10px_28px_rgba(82,61,49,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#735d4f]">
+              Meta-tx relayer
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#91735f]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#f8f3ef] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#b3917a]" />
+              <span className="h-2 flex-1 rounded-full bg-[#e8dbd1]" />
+              <span className="h-2 w-8 rounded-full bg-[#e8dbd1]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#f8f3ef] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#b3917a]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#e8dbd1]" />
+              <span className="h-2 w-8 rounded-full bg-[#e8dbd1]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#735d4f]">
+          WEB3
+        </span>
+      </div>
+    );
+  }
+
+  if (project.slug === "tripledger") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#e9ece7] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#bfc8bb]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#bfc8bb]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#d9dfd4] bg-[#fcfdfa] p-4 shadow-[0_10px_28px_rgba(54,66,49,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#53644f]">
+              Ledger sync
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#657b5f]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#f2f5ef] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#8ea183]" />
+              <span className="h-2 flex-1 rounded-full bg-[#d7dfd1]" />
+              <span className="h-2 w-8 rounded-full bg-[#d7dfd1]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#f2f5ef] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#8ea183]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#d7dfd1]" />
+              <span className="h-2 w-8 rounded-full bg-[#d7dfd1]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#53644f]">
+          OFFLINE FIRST
+        </span>
+      </div>
+    );
+  }
+
+  if (project.slug === "travelquest") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#e7f3ed] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#b8d9c5]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#b8d9c5]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#d4e8dc] bg-[#fafdfc] p-4 shadow-[0_10px_28px_rgba(49,82,61,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#4f735d]">
+              Itinerary builder
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#5f9173]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff8f3] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7ab391]" />
+              <span className="h-2 flex-1 rounded-full bg-[#d1e8db]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1e8db]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff8f3] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7ab391]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#d1e8db]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1e8db]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#4f735d]">
+          TRAVEL PLANNER
+        </span>
+      </div>
+    );
+  }
+
+  // Default fallback - should not be reached if all projects have custom artwork
   return (
     <div
       aria-hidden="true"
@@ -53,7 +369,7 @@ export function ProjectArtwork({ project }: { project: Project }) {
       <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#d9dfd4] bg-[#fcfdfa] p-4 shadow-[0_10px_28px_rgba(54,66,49,0.10)] sm:p-5">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#53644f]">
-            Ledger sync
+            System sync
           </span>
           <Network
             aria-hidden="true"
@@ -76,7 +392,7 @@ export function ProjectArtwork({ project }: { project: Project }) {
         </div>
       </div>
       <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#53644f]">
-        OFFLINE FIRST
+        PROJECT
       </span>
     </div>
   );

@@ -84,8 +84,8 @@ export const profiles = [
   {
     id: "email",
     label: "Email",
-    url: "mailto:ashishlodhi5559@gmail.com",
-    handle: "ashishlodhi5559@gmail.com",
+    url: "mailto:official.ashishbytes@gmail.com",
+    handle: "official.ashishbytes@gmail.com",
     icon: "mail",
     professional: true,
   },

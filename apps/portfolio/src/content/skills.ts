@@ -11,11 +11,6 @@ export const skillCategories: SkillCategory[] = skillCategorySchema
   .array()
   .parse([
     {
-      id: "languages",
-      title: "Languages",
-      skills: ["C", "C++", "Python", "Java", "Go (basic)", "Perl (basic)"],
-    },
-    {
       id: "distributed-systems",
       title: "Distributed systems",
       skills: [
@@ -25,6 +20,55 @@ export const skillCategories: SkillCategory[] = skillCategorySchema
         "Load balancing",
         "Microservices",
         "Event queues",
+        "FastAPI",
+        "Node.js",
+        "API integrations",
+        "YouTube Data API",
+        "Google Maps API",
+        "OpenWeather API",
+        "Eventbrite API",
+        "Google OAuth",
+        "WebRTC",
+        "CLI automation",
+      ],
+    },
+    {
+      id: "databases",
+      title: "Databases",
+      skills: ["SQLite", "MySQL", "MongoDB", "PostgreSQL"],
+    },
+    {
+      id: "systems",
+      title: "Systems foundations",
+      skills: [
+        "OS internals",
+        "TCP/IP",
+        "Algorithms",
+        "Data structures",
+        "Multithreading",
+        "Secure coding",
+        "Manifest V3",
+        "MediaRecorder",
+        "WebCodecs",
+        "captureStream",
+        "chrome.tabCapture",
+        "FFmpeg",
+        "Remotion",
+        "PyCaps",
+      ],
+    },
+    {
+      id: "languages",
+      title: "Languages",
+      skills: [
+        "C",
+        "C++",
+        "Python",
+        "Java",
+        "Go (basic)",
+        "Perl (basic)",
+        "JavaScript",
+        "HTML",
       ],
     },
     {
@@ -48,23 +92,6 @@ export const skillCategories: SkillCategory[] = skillCategorySchema
         "scikit-learn",
         "SBERT",
         "BLEU / ROUGE",
-      ],
-    },
-    {
-      id: "databases",
-      title: "Databases",
-      skills: ["SQLite", "MySQL"],
-    },
-    {
-      id: "systems",
-      title: "Systems foundations",
-      skills: [
-        "OS internals",
-        "TCP/IP",
-        "Algorithms",
-        "Data structures",
-        "Multithreading",
-        "Secure coding",
       ],
     },
     {
