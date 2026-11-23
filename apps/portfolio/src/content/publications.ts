@@ -8,6 +8,7 @@ const publicationSchema = z.object({
   year: z.string().min(4),
   summary: z.string().min(1),
   metrics: z.array(z.string().min(1)),
+  featured: z.boolean(),
   url: z.url().optional(),
 });
 
@@ -23,6 +24,7 @@ export const publications: Publication[] = publicationSchema.array().parse([
       "Cited benchmarks: 97.82% accuracy (LimonDroid)",
       "Cited benchmarks: 99.94% detection rate (Feizollah et al., KNN)"
     ],
+    "featured": true,
     "url": "https://doi.org/10.46338/ijetae0224_04",
   }
   ,
@@ -37,6 +39,7 @@ export const publications: Publication[] = publicationSchema.array().parse([
       "Cited benchmarks: 95.74% accuracy (Naik & Mohan, Hybrid NN)",
       "Cited benchmarks: 95.71% accuracy (Shinde & Borate, SVM)"
     ],
+    "featured": true,
     url: "https://link.springer.com/chapter/10.1007/978-3-031-58953-9_6",
   },
 ]);
