@@ -74,6 +74,7 @@ export interface Publication {
   title: string;
   venue: string;
   year: string;
+  date: string;
   summary: string;
   metrics: string[];
   featured: boolean;

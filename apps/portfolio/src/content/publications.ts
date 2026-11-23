@@ -6,6 +6,7 @@ const publicationSchema = z.object({
   title: z.string().min(1),
   venue: z.string().min(1),
   year: z.string().min(4),
+  date: z.string().min(1),
   summary: z.string().min(1),
   metrics: z.array(z.string().min(1)),
   featured: z.boolean(),
@@ -18,6 +19,7 @@ export const publications: Publication[] = publicationSchema.array().parse([
     title: "Mobile Security – Light on Security Threats",
     venue: "International Journal of Emerging Technology and Advanced Engineering (IJETAE)",
     year: "2024",
+    date: "Jun 2, 2024",
     summary: "A literature review of mobile malware types, common cyberattack vectors (social engineering, phishing, MITM), mobile app vulnerabilities, and existing signature-based and machine learning detection methods.",
     metrics: [
       "No novel metrics (survey paper)",
@@ -33,6 +35,7 @@ export const publications: Publication[] = publicationSchema.array().parse([
     title: "Rose Plant Disease Detection Using Image Processing and Machine Learning",
     venue: "Springer Nature (CCIS, Vol. 2050 — ICAT 2023)",
     year: "2024",
+    date: "Nov 22, 2023",
     summary: "A literature review of seven common rose plant diseases, their chemical treatments, and standard image-processing and machine-learning pipelines (segmentation, feature extraction, and classification) for automated leaf disease detection.",
     metrics: [
       "No novel metrics (review paper)",
