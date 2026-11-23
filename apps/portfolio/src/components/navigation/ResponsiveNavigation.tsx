@@ -60,6 +60,9 @@ function HeaderContents() {
             aria-label="Primary navigation"
             className="hidden items-center gap-1 lg:flex"
           >
+            <NavigationLink end to="/">
+              Home
+            </NavigationLink>
             {primaryLinks.map((item) => (
               <NavigationLink key={item.to} end={false} to={item.to}>
                 {item.label}
