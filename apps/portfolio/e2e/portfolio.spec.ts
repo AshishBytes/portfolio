@@ -131,6 +131,43 @@ test("mobile layouts have no horizontal overflow", async ({ page }) => {
   }
 });
 
+test("home and AI Video Studio fit target widths in both themes", async ({
+  page,
+}) => {
+  for (const theme of ["light", "dark"] as const) {
+    await page.goto("/");
+    const switchTo =
+      theme === "dark" ? "Switch to dark mode" : "Switch to light mode";
+    const themeButton = page.getByRole("button", { name: switchTo });
+    if (await themeButton.isVisible()) await themeButton.click();
+
+    for (const width of [375, 768, 1280]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const [route, heading] of [
+        ["/", "Ashish Singh"],
+        ["/projects/ai-video-studio", "AI Video Studio"],
+      ]) {
+        await page.goto(route);
+        await expect(
+          page.getByRole("heading", { level: 1, name: heading }),
+        ).toBeVisible();
+        await expect(page.locator("html")).toHaveAttribute(
+          "data-theme",
+          theme,
+        );
+        const widths = await page.evaluate(() => ({
+          viewport: document.documentElement.clientWidth,
+          content: document.documentElement.scrollWidth,
+        }));
+        expect(
+          widths.content,
+          `${theme} ${route} at ${width}px should not overflow horizontally`,
+        ).toBeLessThanOrEqual(widths.viewport);
+      }
+    }
+  }
+});
+
 test("all public pages pass axe checks in light and dark themes", async ({
   page,
 }) => {
