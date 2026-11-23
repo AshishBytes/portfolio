@@ -1,0 +1,60 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="#06B6D4"/>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Decorative circles -->
+  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.03)"/>
+  <circle cx="1050" cy="480" r="150" fill="rgba(255,255,255,0.03)"/>
+  
+  <!-- Map/Location icon -->
+  <g transform="translate(150, 180)">
+    <rect x="0" y="0" width="200" height="200" rx="40" fill="rgba(255,255,255,0.1)"/>
+    <path d="M 100 60 C 100 60 60 90 60 115 C 60 135 77 150 100 150 C 123 150 140 135 140 115 C 140 90 100 60 100 60 Z" fill="white"/>
+    <circle cx="100" cy="110" r="15" fill="#06B6D4"/>
+  </g>
+  
+  <!-- Main content -->
+  <g transform="translate(420, 180)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1">
+      TravelQuest
+    </text>
+    <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Personalized Travel Itineraries
+    </text>
+    
+    <g transform="translate(0, 120)">
+      <g>
+        <rect x="0" y="0" width="160" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="80" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          Google Maps
+        </text>
+      </g>
+      <g transform="translate(180, 0)">
+        <rect x="0" y="0" width="160" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="80" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          OpenWeather
+        </text>
+      </g>
+      <g transform="translate(360, 0)">
+        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          AI Chatbot
+        </text>
+      </g>
+    </g>
+    
+    <g transform="translate(0, 210)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.7)">
+        HTML • Google Maps API • OpenWeather • Eventbrite
+      </text>
+    </g>
+  </g>
+</svg>

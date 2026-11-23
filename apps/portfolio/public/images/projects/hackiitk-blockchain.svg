@@ -1,0 +1,63 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <rect width="1200" height="630" fill="#8B5CF6"/>
+  <rect width="1200" height="630" fill="url(#gradient)"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Decorative circles -->
+  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.03)"/>
+  <circle cx="1050" cy="480" r="150" fill="rgba(255,255,255,0.03)"/>
+  
+  <!-- Blockchain icon -->
+  <g transform="translate(150, 180)">
+    <rect x="0" y="0" width="200" height="200" rx="40" fill="rgba(255,255,255,0.1)"/>
+    <rect x="30" y="30" width="50" height="50" rx="8" fill="white"/>
+    <rect x="120" y="30" width="50" height="50" rx="8" fill="white"/>
+    <rect x="75" y="120" width="50" height="50" rx="8" fill="white"/>
+    <line x1="55" y1="80" x2="95" y2="120" stroke="white" stroke-width="3"/>
+    <line x1="145" y1="80" x2="105" y2="120" stroke="white" stroke-width="3"/>
+  </g>
+  
+  <!-- Main content -->
+  <g transform="translate(420, 180)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="white" letter-spacing="-1">
+      HackIITK Blockchain
+    </text>
+    <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Gas-less Meta-Transaction Relayer
+    </text>
+    
+    <g transform="translate(0, 120)">
+      <g>
+        <rect x="0" y="0" width="120" height="50" rx="25" fill="rgba(234, 179, 8, 0.3)"/>
+        <text x="60" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#FEF08A" text-anchor="middle">
+          #2/54
+        </text>
+      </g>
+      <g transform="translate(140, 0)">
+        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          5K+ TXs
+        </text>
+      </g>
+      <g transform="translate(300, 0)">
+        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
+        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
+          &lt;150ms
+        </text>
+      </g>
+    </g>
+    
+    <g transform="translate(0, 210)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.7)">
+        Solidity • Ethers.js • Node.js • Hardhat
+      </text>
+    </g>
+  </g>
+</svg>
