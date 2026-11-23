@@ -15,7 +15,7 @@ const stats = [
 
 export function BioCard() {
   return (
-    <Card className="flex h-full flex-col" id="intro">
+    <Card className="flex min-w-0 h-full flex-col" id="intro">
       <div>
         <p className="eyebrow">A little about me</p>
         <p className="prose-copy mt-4 text-[0.95rem] leading-7 text-muted">
@@ -43,8 +43,8 @@ export function BioCard() {
       </ul>
 
       <div className="mt-6 border-t border-line pt-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <span className="inline-flex items-center gap-1.5 text-sm text-muted">
+        <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+          <span className="inline-flex min-w-0 items-center gap-1.5 text-sm text-muted">
             <MapPin aria-hidden="true" size={15} /> {profile.location}
           </span>
           <Link
@@ -54,10 +54,10 @@ export function BioCard() {
             More about me <ArrowUpRight aria-hidden="true" size={15} />
           </Link>
         </div>
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-4 flex min-w-0 flex-wrap items-center justify-between gap-4">
           <SocialLinks compact />
           <a
-            className="text-sm font-medium text-muted underline decoration-line underline-offset-4 hover:text-accent"
+            className="min-w-0 max-w-full break-all text-sm font-medium text-muted underline decoration-line underline-offset-4 hover:text-accent"
             href={`mailto:${profile.email}`}
           >
             {profile.email}

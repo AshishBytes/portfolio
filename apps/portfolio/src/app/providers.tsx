@@ -49,6 +49,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     toggleTheme: (origin?: { x: number; y: number }) => {
       const nextTheme = theme === "light" ? "dark" : "light";
       const root = document.documentElement;
+      const previousPageColor = theme === "light" ? "#faf9f6" : "#151412";
 
       window.localStorage.setItem("portfolio-theme", nextTheme);
       root.dataset.theme = nextTheme;
@@ -57,6 +58,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         origin &&
         !window.matchMedia("(prefers-reduced-motion: reduce)").matches
       ) {
+        root.style.setProperty("--theme-reveal-color", previousPageColor);
         root.style.setProperty("--theme-origin-x", `${origin.x}px`);
         root.style.setProperty("--theme-origin-y", `${origin.y}px`);
         root.classList.remove("theme-reveal");

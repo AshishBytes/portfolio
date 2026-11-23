@@ -17,13 +17,13 @@ export function HomePage() {
       <Container>
         <section
           aria-label="Profile and current work"
-          className="grid gap-5 pb-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(18rem,0.88fr)]"
+          className="grid min-w-0 grid-cols-1 gap-5 pb-10 lg:grid-cols-[minmax(0,1.12fr)_minmax(18rem,0.88fr)]"
         >
-          <div className="grid gap-5 sm:grid-cols-[minmax(0,1fr)_minmax(13rem,0.78fr)]">
+          <div className="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-[minmax(0,1fr)_minmax(13rem,0.78fr)]">
             <BioCard />
             <FocusExperimentsCard />
           </div>
-          <div className="min-h-[26rem] lg:min-h-0">
+          <div className="min-w-0 min-h-[26rem] lg:min-h-0">
             <ProfileCard />
           </div>
         </section>
