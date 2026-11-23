@@ -147,6 +147,8 @@ export default function LinksPage() {
           <span>{site.name}</span>
           <span className="footer-dot" aria-hidden="true" />
           <span>Links</span>
+          <span className="footer-dot" aria-hidden="true" />
+          <span style={{ fontSize: "0.8em", opacity: 0.7 }}>Updated {site.lastUpdated}</span>
         </footer>
       </div>
     </main>

@@ -22,6 +22,8 @@ export const site = {
   /** Mirrors the portfolio's public-article threshold; update when it goes live. */
   blogLive: false,
   discordBotVerified: true,
+  /** Last content update date for professional information */
+  lastUpdated: "23 November 2026",
   /** Headline metrics shared by the portfolio and links pages. */
   metrics: {
     yearsBuilding: "4+",
