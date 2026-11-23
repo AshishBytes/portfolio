@@ -5,7 +5,7 @@ import { profile } from "../../../content/profile";
 export function ProfileCard() {
   return (
     <motion.figure
-      className="relative m-0 h-full min-h-[22rem] overflow-hidden rounded-card border border-line bg-surface shadow-card sm:min-h-[28rem] lg:min-h-0"
+      className="relative m-0 aspect-square h-auto min-h-0 overflow-hidden rounded-card border border-line bg-surface shadow-card lg:aspect-auto lg:h-full lg:min-h-0"
       initial={false}
       whileHover={{ scale: 1.005 }}
       transition={{ duration: 0.2 }}
