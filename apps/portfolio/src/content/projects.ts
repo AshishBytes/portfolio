@@ -63,7 +63,6 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "FastAPI + React", label: "Workspace" },
     ],
     featured: true,
-    githubUrl: "https://github.com/AshishBytes/ai-video-studio",
   },
   {
     slug: "streamsync-capture-studio",
@@ -85,7 +84,6 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "MP4 / WebM", label: "Recording formats" },
     ],
     featured: true,
-    githubUrl: "https://github.com/AshishBytes/streamsync-extension",
   },
   {
     slug: "hackiitk-blockchain",
