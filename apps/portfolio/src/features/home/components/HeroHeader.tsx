@@ -35,9 +35,9 @@ export function HeroHeader() {
           <ul aria-label="Areas of practice" className="mt-5 flex flex-wrap gap-2">
             {[
               "Backend Systems",
-              "Automation",
-              "API Integrations",
               "Distributed Services",
+              "Machine Learning",
+              "Web3",
             ].map(
               (label) => (
                 <li key={label}>

@@ -114,6 +114,7 @@ export interface Favorite {
   label: string;
   title: string;
   detail: string;
+  description?: string;
 }
 
 export interface Experiment {

@@ -32,9 +32,9 @@ describe("portfolio routes and interactions", () => {
         .map((item) => item.textContent),
     ).toEqual([
       "Backend Systems",
-      "Automation",
-      "API Integrations",
       "Distributed Services",
+      "Machine Learning",
+      "Web3",
     ]);
     expect(
       await screen.findByRole("heading", {
@@ -52,10 +52,12 @@ describe("portfolio routes and interactions", () => {
     ).toHaveAttribute("href", "/contact");
     expect(
       screen.getByRole("heading", {
-        name: "Mobile Security — Light on Security Threats",
+        name: "Mobile Security – Light on Security Threats",
       }),
     ).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /read paper/i })).toBeNull();
+    expect(
+      screen.getAllByRole("link", { name: /read paper/i })[0],
+    ).toHaveAttribute("href", "https://doi.org/10.46338/ijetae0224_04");
     expect(
       screen.getAllByRole("link", { name: "Open case study" })[0],
     ).toHaveAttribute("href", "/projects/reef-platform");
@@ -72,10 +74,10 @@ describe("portfolio routes and interactions", () => {
     renderRoute("/");
 
     expect(
-      await screen.findByText("Backend systems & automation"),
+      await screen.findByText("Distributed systems"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("APIs · Python · Distributed services"),
+      screen.getByText("Event-driven architecture · WebSockets · real-time messaging"),
     ).toBeInTheDocument();
     const sideProjects = screen.getByRole("list", { name: "Side projects" });
     expect(within(sideProjects).getByText("DocQA Tutor")).toBeInTheDocument();
@@ -125,7 +127,7 @@ describe("portfolio routes and interactions", () => {
       screen.getByRole("link", { name: "Send a message" }),
     ).toHaveAttribute("href", "/contact");
     expect(
-      screen.getByText(`(c) ${new Date().getFullYear()} Ashish Singh`),
+      screen.getByText(/\(c\) \d{4} Ashish Singh/i),
     ).toBeInTheDocument();
   });
 

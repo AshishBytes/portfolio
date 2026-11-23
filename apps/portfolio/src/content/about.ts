@@ -13,27 +13,27 @@ export const about = {
 
 export const aboutHighlights: AboutHighlight[] = [
   {
-    title: "Distributed systems",
-    description:
-      "Experience with sharded services, event queues, and resilient platforms.",
-    skills: ["Kafka", "Consistent hashing", "CRDTs", "Microservices"],
-  },
-  {
     title: "Backend engineering",
     description:
-      "Backend services, developer tools, and performance work across Go and Python.",
-    skills: ["Go", "Python", "TCP/IP", "Load balancing"],
+      "Backend services, APIs, and data persistence across Node.js and Python.",
+    skills: ["Node.js", "Python", "FastAPI", "Express", "MongoDB", "SQLite"],
   },
   {
-    title: "Cloud & DevOps",
+    title: "Distributed systems",
     description:
-      "Cloud deployments and delivery automation across Azure and Google Cloud.",
-    skills: ["Azure", "GCP", "Docker", "Terraform"],
+      "Event-driven platforms, real-time messaging, and scalable bot architectures.",
+    skills: ["Discord.js", "WebSockets", "Event handlers", "Query caching"],
   },
   {
     title: "Applied ML & NLP",
     description:
-      "Document question answering, semantic search, and model evaluation.",
-    skills: ["T5", "PyTorch", "SBERT", "BLEU / ROUGE"],
+      "Document question answering, custom model training, and local GPU inference.",
+    skills: ["PyTorch", "Transformers", "T5 / GPT-2", "HuggingFace"],
+  },
+  {
+    title: "Web3 & Smart Contracts",
+    description:
+      "Gas-less meta-transactions, EIP-712 signatures, and Solidity contract development.",
+    skills: ["Solidity", "Hardhat", "Ethers.js", "OpenZeppelin", "EIP-712"],
   },
 ];
