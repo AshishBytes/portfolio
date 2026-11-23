@@ -5,14 +5,14 @@ import { profile } from "../../../content/profile";
 export function ProfileCard() {
   return (
     <motion.figure
-      className="relative m-0 h-full overflow-hidden rounded-card border border-line bg-surface shadow-card"
+      className="relative m-0 aspect-square h-auto min-h-0 overflow-hidden rounded-card border border-line bg-surface shadow-card lg:aspect-auto lg:h-full lg:min-h-0"
       initial={false}
       whileHover={{ scale: 1.005 }}
       transition={{ duration: 0.2 }}
     >
       <img
         alt={profile.name}
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
         decoding="async"
         fetchPriority="high"
         height={400}
