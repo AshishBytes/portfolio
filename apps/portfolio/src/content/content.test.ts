@@ -94,7 +94,7 @@ describe("portfolio content integrity", () => {
     expect(reef?.metrics).toEqual([
       { value: "585K+", label: "Users" },
       { value: "850+", label: "Servers" },
-      { value: "99.97%", label: "Uptime" },
+      { value: "Verified", label: "Discord Bot" },
     ]);
     expect(hackiitk?.metrics).toEqual([
       { value: "#2/54", label: "Rank" },
@@ -130,12 +130,12 @@ describe("portfolio content integrity", () => {
     );
 
     expect(paper).toMatchObject({
-      title: "Mobile Security — Light on Security Threats",
+      title: "Mobile Security – Light on Security Threats",
       venue:
-        "International Journal of Emerging Technologies and Applications in Engineering (IJETAE)",
+        "International Journal of Emerging Technology and Advanced Engineering (IJETAE)",
       year: "2024",
       summary:
-        "A six-layer model for mobile security, reported to reduce the Android attack surface by 38%.",
+        "A literature review of mobile malware types, common cyberattack vectors (social engineering, phishing, MITM), mobile app vulnerabilities, and existing signature-based and machine learning detection methods.",
     });
     expect(paper?.url).toBeUndefined();
   });
