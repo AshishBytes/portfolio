@@ -1,62 +1,87 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background gradient -->
-  <rect width="1200" height="630" fill="#10B981"/>
-  <rect width="1200" height="630" fill="url(#gradient)"/>
-  
   <defs>
-    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#10B981"/>
-      <stop offset="100%" stop-color="#059669"/>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#052E22"/>
+      <stop offset="55%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#10B981"/>
     </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
   </defs>
-  
-  <!-- Decorative circles -->
-  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.03)"/>
-  <circle cx="1050" cy="480" r="150" fill="rgba(255,255,255,0.03)"/>
-  
-  <!-- Sync icon -->
-  <g transform="translate(150, 180)">
-    <rect x="0" y="0" width="200" height="200" rx="40" fill="rgba(255,255,255,0.1)"/>
-    <circle cx="70" cy="100" r="30" stroke="white" stroke-width="6" fill="none"/>
-    <circle cx="130" cy="100" r="30" stroke="white" stroke-width="6" fill="none"/>
-    <line x1="70" y1="130" x2="130" y2="130" stroke="white" stroke-width="4"/>
-    <path d="M 85 65 L 100 50 L 115 65" stroke="white" stroke-width="4" fill="none"/>
+
+  <!-- Base & Subtle Engineering Grid -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="1040" cy="120" r="220" fill="#34D399" opacity="0.22"/>
+  <circle cx="180" cy="540" r="180" fill="#A7F3D0" opacity="0.08"/>
+
+  <!-- Left Icon Card: Group Split & Debt Settlement Nodes -->
+  <g transform="translate(120, 195)">
+    <rect width="220" height="220" rx="44" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <!-- Ledger Receipt Frame -->
+    <rect x="52" y="38" width="116" height="144" rx="18" fill="rgba(5,46,34,0.55)" stroke="white" stroke-width="5"/>
+    <!-- Split Rows -->
+    <circle cx="80" cy="74" r="9" fill="#6EE7B7"/>
+    <line x1="100" y1="74" x2="146" y2="74" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+    <circle cx="80" cy="108" r="9" fill="#A7F3D0"/>
+    <line x1="100" y1="108" x2="146" y2="108" stroke="rgba(255,255,255,0.8)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Settlement Check Row -->
+    <path d="M74 144 L80 150 L92 138" stroke="#6EE7B7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="100" y1="144" x2="146" y2="144" stroke="#6EE7B7" stroke-width="5" stroke-linecap="round"/>
   </g>
-  
-  <!-- Main content -->
-  <g transform="translate(420, 180)">
-    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1">
+
+  <!-- Right Main Content -->
+  <g transform="translate(390, 215)">
+    <!-- Category Eyebrow -->
+    <text x="0" y="-32" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#A7F3D0" letter-spacing="2">
+      FULL-STACK WEB · GROUP EXPENSE SPLITTING
+    </text>
+
+    <!-- Title -->
+    <text x="0" y="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1.5">
       TripLedger
     </text>
-    <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.85)">
-      Offline-First Expense Tracker
+
+    <!-- Subtitle -->
+    <text x="0" y="80" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="25" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Shared Trip Expense Tracking &amp; Simplified Debt Settlement
     </text>
-    
-    <g transform="translate(0, 120)">
-      <g>
-        <rect x="0" y="0" width="160" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
-        <text x="80" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
-          CRDT Sync
-        </text>
-      </g>
-      <g transform="translate(180, 0)">
-        <rect x="0" y="0" width="160" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
-        <text x="80" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
-          10K Daily TXs
-        </text>
-      </g>
-      <g transform="translate(360, 0)">
-        <rect x="0" y="0" width="160" height="50" rx="25" fill="rgba(16, 185, 129, 0.3)"/>
-        <text x="80" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#D1FAE5">
-          Offline First
-        </text>
-      </g>
-    </g>
-    
-    <g transform="translate(0, 210)">
-      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.7)">
-        React Native • Node.js • MongoDB • Express • Socket.io
+
+    <!-- Metric Badges (Centered text & proper widths) -->
+    <g transform="translate(0, 122)">
+      <!-- Badge 1 -->
+      <rect x="0" y="0" width="185" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="92.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        Debt Simplifier
+      </text>
+
+      <!-- Badge 2 -->
+      <rect x="201" y="0" width="185" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="293.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="white" text-anchor="middle">
+        Appwrite BaaS
+      </text>
+
+      <!-- Badge 3 -->
+      <rect x="402" y="0" width="185" height="48" rx="24" fill="rgba(110, 231, 183, 0.2)" stroke="rgba(167, 243, 208, 0.45)" stroke-width="1"/>
+      <text x="494.5" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#D1FAE5" text-anchor="middle">
+        React Query
       </text>
     </g>
+
+    <!-- Tech Stack Footer -->
+    <text x="0" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="600" fill="rgba(255,255,255,0.75)">
+      React  •  TypeScript  •  Vite  •  Tailwind CSS  •  Appwrite  •  React Query
+    </text>
   </g>
 </svg>

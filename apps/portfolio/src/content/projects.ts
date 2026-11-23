@@ -183,31 +183,35 @@ export const projects: Project[] = projectSchema.array().parse([
     "githubUrl": "https://github.com/AshishBytes/AI_Tutor"
   },
   {
-    slug: "tripledger",
-    title: "TripLedger",
-    subtitle: "Offline-first expense tracker",
-    description:
-      "An offline-first travel expense tracker using a CRDT ledger to reconcile changes across devices.",
-    period: "August – December 2024",
-    category: "Backend / mobile",
-    technologies: [
-      "React Native",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Socket.io",
+    "slug": "tripledger",
+    "title": "TripLedger",
+    "subtitle": "Group Trip Expense Tracker & Debt Simplifier",
+    "description": "A full-stack group travel expense tracker built with React, TypeScript, and Appwrite. Enables travelers to create trip groups, log shared expenses with flexible splits, track activity feeds, and simplify multi-member debt settlements.",
+    "period": "August – December 2024",
+    "category": "Full-Stack Web",
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Appwrite",
+      "React Query"
     ],
-    achievements: [
-      "Implemented CRDT ledger sync for 10,000 daily transactions with eventual consistency while offline.",
-      "Used a mock Azure AD B2C integration to block unauthorized writes.",
+    "achievements": [
+      "Built a group expense management and debt-simplification engine that calculates net balances and minimizes transactions needed to settle up.",
+      "Implemented user authentication, trip group permissions, and persistent expense storage using Appwrite's backend-as-a-service.",
+      "Integrated TanStack React Query for client-side caching and synchronized group/global activity feeds across a responsive Tailwind CSS UI."
     ],
-    metrics: undefined,
-    image: undefined,
-    featured: true,
-    experiment: false,
-    pinned: false,
-    liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes",
+    "metrics": [
+      { "value": "Debt Split", "label": "Balance Simplifier" },
+      { "value": "Appwrite", "label": "Auth & Database" },
+      { "value": "React Query", "label": "Cached Sync" }
+    ],
+    "image": "/images/projects/tripledger.svg",
+    "featured": true,
+    "experiment": false,
+    "pinned": false,
+    "githubUrl": "https://github.com/AshishBytes/trip-expense-tracker"
   },
   {
     slug: "travelquest",
