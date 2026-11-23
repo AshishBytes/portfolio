@@ -7,6 +7,7 @@ import { cn } from "../../lib/cn";
 import { Container } from "../ui/Container";
 import { NavigationLink } from "./NavigationLink";
 import { blogLive } from "../../content/articles";
+import { useViewTransition } from "../../hooks/useViewTransition";
 
 const primaryLinks = [
   { label: "About", to: "/about" },
@@ -17,12 +18,21 @@ const primaryLinks = [
 
 function ThemeButton() {
   const { theme, toggleTheme } = useTheme();
+  const { startTransition } = useViewTransition();
   const Icon = theme === "light" ? Moon : Sun;
+
+  const handleThemeToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const { clientX, clientY } = event;
+
+    startTransition(() => {
+      toggleTheme();
+    }, { x: clientX, y: clientY });
+  };
 
   return (
     <button
       type="button"
-      onClick={toggleTheme}
+      onClick={handleThemeToggle}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-ink"
     >

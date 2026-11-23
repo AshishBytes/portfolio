@@ -111,5 +111,37 @@ textarea:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
 }
+
+/* View Transitions API - Circular Reveal for Theme Toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 999;
+  animation: reveal 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes reveal {
+  from {
+    clip-path: circle(0 at var(--x, 50%) var(--y, 50%));
+  }
+  to {
+    clip-path: circle(var(--end-radius, 100vmax) at var(--x, 50%) var(--y, 50%));
+  }
+}
+
+/* Disable animation if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
