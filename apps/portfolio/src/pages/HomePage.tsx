@@ -23,7 +23,7 @@ export function HomePage() {
             <BioCard />
             <FocusExperimentsCard />
           </div>
-          <div className="min-w-0 lg:min-h-0">
+          <div className="min-w-0 min-h-[320px] lg:min-h-0">
             <ProfileCard />
           </div>
         </section>
