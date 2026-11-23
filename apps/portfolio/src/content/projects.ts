@@ -214,25 +214,38 @@ export const projects: Project[] = projectSchema.array().parse([
     "githubUrl": "https://github.com/AshishBytes/trip-expense-tracker"
   },
   {
-    slug: "travelquest",
-    title: "TravelQuest",
-    subtitle: "Personalized itineraries · travel APIs",
-    description:
-      "A smart travel planner offering personalized itineraries based on user preferences. It integrates Google Maps, OpenWeather, and Eventbrite data, with an AI chatbot for travel assistance.",
-    period: "2025",
-    category: "Travel planning",
-    technologies: ["HTML", "Google Maps API", "OpenWeather API", "Eventbrite API"],
-    achievements: [
-      "Offers personalized travel itineraries based on user preferences.",
-      "Integrates Google Maps, OpenWeather, and Eventbrite APIs and includes an AI chatbot.",
+    "slug": "travelquest",
+    "title": "TravelQuest",
+    "subtitle": "Full-Stack Travel Planner · Multi-API & AI Chatbot",
+    "description": "A full-stack travel planning web application that generates personalized itineraries by budget, trip duration, and destination preferences—combining real-time Google Maps routing, OpenWeather forecasts, Eventbrite local events, and an AI travel assistant.",
+    "period": "2025",
+    "category": "Full-Stack Web",
+    "technologies": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "Google Maps API",
+      "OpenWeather API",
+      "Eventbrite API"
     ],
-    metrics: undefined,
-    image: undefined,
-    featured: true,
-    experiment: false,
-    pinned: false,
-    liveUrl: undefined,
-    githubUrl: "https://github.com/AshishBytes",
+    "achievements": [
+      "Co-developed a multi-page travel planning platform with an Express backend and interactive destination, itinerary, and booking flows.",
+      "Integrated Google Maps, OpenWeather, and Eventbrite APIs to surface real-time route options, weather forecasts, and local events.",
+      "Built an AI-powered travel assistant to recommend routes, accommodations, and sightseeing plans tailored to user budgets and trip lengths."
+    ],
+    "metrics": [
+      { "value": "3 Live APIs", "label": "Maps, Weather, Events" },
+      { "value": "AI Chatbot", "label": "Route & Trip Assistant" },
+      { "value": "Full-Stack", "label": "Node.js + Express" }
+    ],
+    "image": "/images/projects/travelquest.svg",
+    "featured": true,
+    "experiment": false,
+    "pinned": false,
+    "liveUrl": "https://github.io",
+    "githubUrl": "https://github.com/AshishBytes/TravelQuest"
   },
 ]);
 
