@@ -1,4 +1,5 @@
 import { ArrowUpRight, BookOpenText } from "lucide-react";
+import { Link } from "react-router-dom";
 import { publications } from "../../../content/publications";
 import type { Publication } from "../../../types/content";
 import { Badge } from "../../../components/ui/Badge";
@@ -58,11 +59,19 @@ export function FeaturedPublication() {
 
   return (
     <section aria-labelledby="featured-publication-title" className="py-12 sm:py-16">
-      <SectionHeading
-        eyebrow="Publications"
-        title="Research & academic work"
-        description="Published papers on mobile security and machine learning applications."
-      />
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="Publications"
+          title="Research & academic work"
+          description="Published papers on mobile security and machine learning applications."
+        />
+        <Link
+          className="inline-flex min-h-11 w-fit items-center gap-2 pb-1 text-sm font-semibold text-ink hover:text-accent"
+          to="/publications"
+        >
+          Publications directory <ArrowUpRight aria-hidden="true" size={16} />
+        </Link>
+      </div>
       <div className="mt-7 grid gap-5">
         {featuredPublications.map((publication) => (
           <PublicationCard key={publication.id} publication={publication} />
