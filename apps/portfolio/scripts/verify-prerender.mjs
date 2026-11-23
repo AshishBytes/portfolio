@@ -15,9 +15,12 @@ const routes = [
   ["/experience", "Selected professional experience"],
   ["/projects", "Selected work and technical explorations"],
   ["/projects/reef-platform", "Reef Bot"],
+  ["/projects/ai-video-studio", "AI Video Studio"],
+  ["/projects/streamsync-capture-studio", "StreamSync Capture Studio"],
   ["/projects/hackiitk-blockchain", "HackIITK Blockchain"],
   ["/projects/docqa-tutor", "DocQA Tutor"],
   ["/projects/tripledger", "TripLedger"],
+  ["/projects/travelquest", "TravelQuest"],
   ["/skills", "Tools and areas of practice"],
   ["/achievements", "Certifications and awards"],
   ["/publications", "Research and applied work"],
@@ -102,10 +105,20 @@ if (blogLive) {
   assert(blog.includes("noindex,nofollow"), "hidden blog must not be indexed");
   assert(!sitemap.includes("/blog"), "hidden blog must not be in the sitemap");
 }
-assert(
-  sitemap.includes(`${configuredOrigin}/projects/docqa-tutor`),
-  "project URL missing from sitemap",
-);
+for (const slug of [
+  "reef-platform",
+  "ai-video-studio",
+  "streamsync-capture-studio",
+  "hackiitk-blockchain",
+  "docqa-tutor",
+  "tripledger",
+  "travelquest",
+]) {
+  assert(
+    sitemap.includes(`${configuredOrigin}/projects/${slug}`),
+    `Project URL for ${slug} missing from sitemap`,
+  );
+}
 for (const [, href] of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   assert(
     href.startsWith(`${configuredOrigin}/`),

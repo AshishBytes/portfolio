@@ -23,7 +23,16 @@ describe("portfolio content integrity", () => {
 
   it("contains the available record counts without duplicate identifiers or slugs", () => {
     expect(experience).toHaveLength(3);
-    expect(projects).toHaveLength(4);
+    expect(projects).toHaveLength(7);
+    expect(projects.map((project) => project.slug)).toEqual([
+      "reef-platform",
+      "ai-video-studio",
+      "streamsync-capture-studio",
+      "hackiitk-blockchain",
+      "docqa-tutor",
+      "tripledger",
+      "travelquest",
+    ]);
     expect(achievements).toHaveLength(5);
     expect(publications).toHaveLength(2);
     expect(aboutHighlights).toHaveLength(4);
@@ -69,8 +78,14 @@ describe("portfolio content integrity", () => {
     }
   });
 
-  it("keeps metrics on the three featured projects and preserves TripLedger", () => {
+  it("keeps project metrics and the approved featured set", () => {
     const reef = projects.find((project) => project.slug === "reef-platform");
+    const aiVideo = projects.find(
+      (project) => project.slug === "ai-video-studio",
+    );
+    const streamSync = projects.find(
+      (project) => project.slug === "streamsync-capture-studio",
+    );
     const hackiitk = projects.find(
       (project) => project.slug === "hackiitk-blockchain",
     );
@@ -90,6 +105,21 @@ describe("portfolio content integrity", () => {
       { value: "43.2", label: "ROUGE-L" },
       { value: "27.5", label: "BLEU" },
       { value: "−47%", label: "Latency" },
+    ]);
+    expect(aiVideo?.metrics).toEqual([
+      { value: "CLI + Web", label: "Interfaces" },
+      { value: "FFmpeg + Remotion", label: "Rendering" },
+      { value: "FastAPI + React", label: "Workspace" },
+    ]);
+    expect(streamSync?.metrics).toEqual([
+      { value: "Chrome / Brave", label: "Manifest V3 targets" },
+      { value: "Firefox Android", label: "Direct recorder target" },
+      { value: "MP4 / WebM", label: "Recording formats" },
+    ]);
+    expect(projects.filter((project) => project.featured).map(({ slug }) => slug)).toEqual([
+      "reef-platform",
+      "ai-video-studio",
+      "streamsync-capture-studio",
     ]);
     expect(projects.map((project) => project.slug)).toContain("tripledger");
   });

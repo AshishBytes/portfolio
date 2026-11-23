@@ -44,6 +44,50 @@ export const projects: Project[] = projectSchema.array().parse([
     featured: true,
   },
   {
+    slug: "ai-video-studio",
+    title: "AI Video Studio",
+    subtitle: "CLI + local browser workspace for short-form video production",
+    description:
+      "A Python CLI workspace for organizing short-form video projects and deterministic file operations, plus a local React/FastAPI browser workspace for script versioning, narration, scene plans, captions, timeline cuts and fades, and Remotion rendering and export.",
+    period: "2026",
+    category: "Video production tools",
+    technologies: ["Python", "React", "FastAPI", "Node.js", "FFmpeg", "Remotion"],
+    achievements: [
+      "Organizes project files, research, versioned narration, scene plans, clips, audio, renders, subtitles, and quality reports under a project manifest.",
+      "The CLI validates and orchestrates deterministic file operations.",
+      "The local browser workspace supports captioning, timeline cuts and fades, and Remotion rendering and export.",
+    ],
+    metrics: [
+      { value: "CLI + Web", label: "Interfaces" },
+      { value: "FFmpeg + Remotion", label: "Rendering" },
+      { value: "FastAPI + React", label: "Workspace" },
+    ],
+    featured: true,
+    githubUrl: "https://github.com/AshishBytes/ai-video-studio",
+  },
+  {
+    slug: "streamsync-capture-studio",
+    title: "StreamSync Capture Studio",
+    subtitle: "Browser capture · local recording",
+    description:
+      "Browser capture project for accessible HTML5 video sources across Chrome/Brave and Firefox Android targets. It supports capture of individual sources or an entire tab, local preview and recording, and optional publishing through configured WebRTC signaling. Use only on pages the user is authorized to record.",
+    period: "2026",
+    category: "Browser capture",
+    technologies: ["JavaScript", "Manifest V3", "MediaRecorder", "WebRTC", "WebCodecs"],
+    achievements: [
+      "Supports separate Chrome/Brave Manifest V3 and Firefox Android release targets.",
+      "Uses captureStream or chrome.tabCapture with an offscreen document and MediaRecorder.",
+      "MP4 output depends on H.264/AAC WebCodecs support; otherwise, the project labels a WebM fallback.",
+    ],
+    metrics: [
+      { value: "Chrome / Brave", label: "Manifest V3 targets" },
+      { value: "Firefox Android", label: "Direct recorder target" },
+      { value: "MP4 / WebM", label: "Recording formats" },
+    ],
+    featured: true,
+    githubUrl: "https://github.com/AshishBytes/streamsync-extension",
+  },
+  {
     slug: "hackiitk-blockchain",
     title: "HackIITK Blockchain",
     subtitle: "Gas-less Relayer · Solidity",
@@ -62,7 +106,7 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "5K+", label: "Transactions" },
       { value: "<150ms", label: "p95 latency" },
     ],
-    featured: true,
+    featured: false,
   },
   {
     slug: "docqa-tutor",
@@ -83,7 +127,7 @@ export const projects: Project[] = projectSchema.array().parse([
       { value: "27.5", label: "BLEU" },
       { value: "−47%", label: "Latency" },
     ],
-    featured: true,
+    featured: false,
   },
   {
     slug: "tripledger",
@@ -104,7 +148,22 @@ export const projects: Project[] = projectSchema.array().parse([
       "Implemented CRDT ledger sync for 10,000 daily transactions with eventual consistency while offline.",
       "Used a mock Azure AD B2C integration to block unauthorized writes.",
     ],
-    featured: true,
+    featured: false,
+  },
+  {
+    slug: "travelquest",
+    title: "TravelQuest",
+    subtitle: "Personalized itineraries · travel APIs",
+    description:
+      "A smart travel planner offering personalized itineraries based on user preferences. It integrates Google Maps, OpenWeather, and Eventbrite data, with an AI chatbot for travel assistance.",
+    period: "2025",
+    category: "Travel planning",
+    technologies: ["HTML", "Google Maps API", "OpenWeather API", "Eventbrite API"],
+    achievements: [
+      "Offers personalized travel itineraries based on user preferences.",
+      "Integrates Google Maps, OpenWeather, and Eventbrite APIs and includes an AI chatbot.",
+    ],
+    featured: false,
   },
 ]);
 

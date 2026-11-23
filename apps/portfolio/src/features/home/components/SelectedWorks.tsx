@@ -1,15 +1,12 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { projectBySlug } from "../../../content/projects";
+import { projectBySlug, projects } from "../../../content/projects";
 import type { Project } from "../../../types/content";
 import { Badge } from "../../../components/ui/Badge";
 import { Card } from "../../../components/ui/Card";
 import { SectionHeading } from "../../../components/ui/SectionHeading";
 
-const selectedOrder = ["reef-platform", "hackiitk-blockchain", "docqa-tutor"];
-const selectedProjects = selectedOrder
-  .map((slug) => projectBySlug.get(slug))
-  .filter((project): project is Project => project !== undefined);
+const selectedProjects = projects.filter((project) => project.featured);
 
 function ProjectMetrics({ project }: { project: Project }) {
   if (!project.metrics?.length) return null;

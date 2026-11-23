@@ -59,6 +59,12 @@ describe("portfolio routes and interactions", () => {
     expect(
       screen.getAllByRole("link", { name: "Open case study" })[0],
     ).toHaveAttribute("href", "/projects/reef-platform");
+    expect(
+      screen.getByRole("heading", { name: "AI Video Studio" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "StreamSync Capture Studio" }),
+    ).toBeInTheDocument();
   });
 
   it("switches the about card between focus and experiments", async () => {

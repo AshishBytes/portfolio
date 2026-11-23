@@ -11,8 +11,13 @@ test("public pages load prerendered content and route metadata", async ({
     ["/about", "Building useful systems"],
     ["/experience", "Selected professional experience"],
     ["/projects", "Selected work and technical explorations"],
+    ["/projects/reef-platform", "Reef Bot"],
+    ["/projects/ai-video-studio", "AI Video Studio"],
+    ["/projects/streamsync-capture-studio", "StreamSync Capture Studio"],
+    ["/projects/hackiitk-blockchain", "HackIITK Blockchain"],
     ["/projects/docqa-tutor", "DocQA Tutor"],
     ["/projects/tripledger", "TripLedger"],
+    ["/projects/travelquest", "TravelQuest"],
     ["/skills", "Tools and areas of practice"],
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
@@ -107,7 +112,13 @@ test("contact form validation and honest mailto fallback work", async ({
 
 test("mobile layouts have no horizontal overflow", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
-  for (const route of ["/", "/projects", "/projects/docqa-tutor", "/contact"]) {
+  for (const route of [
+    "/",
+    "/projects",
+    "/projects/ai-video-studio",
+    "/projects/streamsync-capture-studio",
+    "/contact",
+  ]) {
     await page.goto(route);
     const widths = await page.evaluate(() => ({
       viewport: document.documentElement.clientWidth,
@@ -129,8 +140,13 @@ test("all public pages pass axe checks in light and dark themes", async ({
     ["/about", "Building useful systems"],
     ["/experience", "Selected professional experience"],
     ["/projects", "Selected work and technical explorations"],
+    ["/projects/reef-platform", "Reef Bot"],
+    ["/projects/ai-video-studio", "AI Video Studio"],
+    ["/projects/streamsync-capture-studio", "StreamSync Capture Studio"],
+    ["/projects/hackiitk-blockchain", "HackIITK Blockchain"],
     ["/projects/docqa-tutor", "DocQA Tutor"],
     ["/projects/tripledger", "TripLedger"],
+    ["/projects/travelquest", "TravelQuest"],
     ["/skills", "Tools and areas of practice"],
     ["/achievements", "Certifications and awards"],
     ["/publications", "Research and applied work"],
@@ -193,8 +209,13 @@ test("internal links resolve to built routes and local assets", async ({
     "/about",
     "/experience",
     "/projects",
+    "/projects/reef-platform",
+    "/projects/ai-video-studio",
+    "/projects/streamsync-capture-studio",
+    "/projects/hackiitk-blockchain",
     "/projects/docqa-tutor",
     "/projects/tripledger",
+    "/projects/travelquest",
     "/skills",
     "/achievements",
     "/publications",
