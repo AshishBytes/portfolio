@@ -1,19 +1,11 @@
-import { experience } from "../content/experience";
+import { getAllExperience } from "../content/experience";
 import { ExperienceCard } from "../components/cards/ExperienceCard";
 import { PageHeader } from "../components/sections/PageHeader";
 import { Container } from "../components/ui/Container";
 
 export function ExperiencePage() {
-  // Extract year from period for sorting
-  const extractYear = (period: string): number => {
-    const match = period.match(/\d{4}/);
-    return match ? parseInt(match[0], 10) : 0;
-  };
-
-  // Sort all experience by year (newest first)
-  const sortedExperience = [...experience].sort(
-    (a, b) => extractYear(b.period) - extractYear(a.period)
-  );
+  // Get all experience sorted by year (newest first)
+  const sortedExperience = getAllExperience();
 
   return (
     <>

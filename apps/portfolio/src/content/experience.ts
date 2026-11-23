@@ -69,3 +69,42 @@ export const experience: Experience[] = experienceSchema.array().parse([
     projectSlug: "happy-bot",
   },
 ]);
+
+export function getFeaturedExperience(limit?: number): Experience[] {
+  const featuredExperience = experience.filter((exp) => exp.featured === true);
+
+  // Sort by year (extract from period)
+  const sorted = featuredExperience.sort((a, b) => {
+    // Extract year from period (handles formats like "2026", "February 2025", "November 2021 - April 2023")
+    const extractYear = (period: string): number => {
+      const match = period.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    const yearA = extractYear(a.period);
+    const yearB = extractYear(b.period);
+
+    // Sort by year descending (newest first)
+    return yearB - yearA;
+  });
+
+  return limit ? sorted.slice(0, limit) : sorted;
+}
+
+export function getAllExperience(limit?: number): Experience[] {
+  // Sort all experience by year descending (newest first)
+  const sorted = [...experience].sort((a, b) => {
+    const extractYear = (period: string): number => {
+      const match = period.match(/\d{4}/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+
+    const yearA = extractYear(a.period);
+    const yearB = extractYear(b.period);
+
+    return yearB - yearA;
+  });
+
+  return limit ? sorted.slice(0, limit) : sorted;
+}
+
