@@ -23,6 +23,10 @@ export function ProfileCard() {
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/5"
       />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-2 rounded-[1rem] border border-white/45 shadow-[0_2px_10px_rgba(0,0,0,0.24),inset_0_0_0_1px_rgba(255,255,255,0.12)]"
+      />
       <figcaption className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-xl border border-white/15 bg-black/40 px-3 py-2.5 text-white backdrop-blur-md sm:inset-x-5 sm:bottom-5">
         <span className="text-xs font-medium tracking-wide">
           {profile.name}
