@@ -24,6 +24,23 @@ body {
     color 180ms ease;
 }
 
+html.theme-reveal::after {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: var(--page);
+  clip-path: circle(0 at var(--theme-origin-x) var(--theme-origin-y));
+  animation: theme-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes theme-reveal {
+  to {
+    clip-path: circle(150vmax at var(--theme-origin-x) var(--theme-origin-y));
+  }
+}
+
 @layer base {
   button,
   input,
@@ -110,5 +127,10 @@ textarea:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html.theme-reveal::after {
+    animation: none;
+    clip-path: circle(150vmax at var(--theme-origin-x) var(--theme-origin-y));
   }
 }

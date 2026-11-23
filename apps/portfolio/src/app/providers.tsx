@@ -11,7 +11,7 @@ type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
-  toggleTheme: () => void;
+  toggleTheme: (origin?: { x: number; y: number }) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -46,11 +46,28 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const value = {
     theme,
-    toggleTheme: () => {
-      window.localStorage.setItem(
-        "portfolio-theme",
-        theme === "light" ? "dark" : "light",
-      );
+    toggleTheme: (origin?: { x: number; y: number }) => {
+      const nextTheme = theme === "light" ? "dark" : "light";
+      const root = document.documentElement;
+
+      window.localStorage.setItem("portfolio-theme", nextTheme);
+      root.dataset.theme = nextTheme;
+
+      if (
+        origin &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        root.style.setProperty("--theme-origin-x", `${origin.x}px`);
+        root.style.setProperty("--theme-origin-y", `${origin.y}px`);
+        root.classList.remove("theme-reveal");
+        // Restart the reveal when the same control is clicked repeatedly.
+        void root.offsetWidth;
+        root.classList.add("theme-reveal");
+        window.setTimeout(() => {
+          root.classList.remove("theme-reveal");
+        }, 700);
+      }
+
       window.dispatchEvent(new Event(themeEvent));
     },
   };

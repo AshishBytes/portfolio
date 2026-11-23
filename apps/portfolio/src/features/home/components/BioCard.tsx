@@ -23,16 +23,19 @@ export function BioCard() {
         </p>
       </div>
 
-      <ul aria-label="Career highlights" className="mt-6 grid grid-cols-3 gap-2">
+      <ul
+        aria-label="Career highlights"
+        className="mt-6 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-3"
+      >
         {stats.map((stat) => (
           <li
-            className="min-w-0 rounded-xl border border-line bg-surface-soft px-2.5 py-3 sm:px-3"
+            className="min-w-0 max-w-full overflow-hidden rounded-xl border border-line bg-surface-soft px-2.5 py-3 sm:px-3"
             key={stat.label}
           >
-            <p className="m-0 font-mono text-lg font-semibold leading-none tracking-tight text-ink sm:text-xl">
+            <p className="m-0 break-words font-mono text-lg font-semibold leading-none tracking-tight text-ink sm:text-xl">
               {stat.value}
             </p>
-            <p className="m-0 mt-2 text-xs font-medium leading-4 text-muted">
+            <p className="m-0 mt-2 break-words text-xs font-medium leading-4 text-muted">
               {stat.label}
             </p>
           </li>
