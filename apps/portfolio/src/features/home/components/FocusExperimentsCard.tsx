@@ -64,16 +64,16 @@ export function FocusExperimentsCard() {
         tabIndex={0}
       >
         {activeTab === "focus" ? (
-          <div className="flex h-full items-start gap-3 rounded-2xl bg-surface-soft p-4 sm:p-5">
-            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
-              <Network aria-hidden="true" size={18} />
+          <div className="flex h-full items-start gap-2.5 rounded-lg bg-surface-soft px-2.5 py-2">
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
+              <Network aria-hidden="true" size={16} />
             </span>
             <div>
               <p className="eyebrow">{favorite.label}</p>
-              <p className="display-heading mt-2 text-2xl leading-tight text-ink">
+              <p className="display-heading mt-1.5 text-lg leading-tight text-ink">
                 {favorite.title}
               </p>
-              <p className="mt-2 text-sm leading-6 text-muted">{favorite.detail}</p>
+              <p className="mt-1.5 text-xs leading-5 text-muted">{favorite.detail}</p>
             </div>
           </div>
         ) : (
