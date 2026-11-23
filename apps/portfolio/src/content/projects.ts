@@ -190,6 +190,7 @@ export const projects: Project[] = projectSchema.array().parse([
       "Integrates Google Maps, OpenWeather, and Eventbrite APIs and includes an AI chatbot.",
     ],
     featured: false,
+    githubUrl: "https://github.com/AshishBytes",
   },
 ]);
 
