@@ -29,14 +29,14 @@ export function useViewTransition() {
         "startViewTransition" in document &&
         typeof (document as any).startViewTransition === "function";
 
-      console.log("View transition debug:", {
-        prefersReducedMotion,
-        supportsViewTransitions,
-        options,
-      });
+      // If reduced motion, just run the callback immediately
+      if (prefersReducedMotion) {
+        await callback();
+        return;
+      }
 
-      // If reduced motion or no support, just run the callback immediately
-      if (prefersReducedMotion || !supportsViewTransitions) {
+      // If View Transitions not supported, fall back to instant switch
+      if (!supportsViewTransitions) {
         await callback();
         return;
       }
@@ -46,13 +46,11 @@ export function useViewTransition() {
         const { x, y } = options;
 
         // Calculate the radius needed to cover the entire viewport
-        // from the click point to the farthest corner
+        // We need to reach from the click point to the farthest corner
         const endRadius = Math.hypot(
           Math.max(x, window.innerWidth - x),
           Math.max(y, window.innerHeight - y),
         );
-
-        console.log("Setting up circular reveal:", { x, y, endRadius });
 
         // Set CSS custom properties for the animation
         document.documentElement.style.setProperty("--x", `${x}px`);
@@ -68,12 +66,11 @@ export function useViewTransition() {
         await callback();
       });
 
-      // Wait for the transition to complete
+      // Wait for the transition to finish
       try {
-        await transition.ready;
+        await transition.finished;
       } catch (error) {
-        // Transition was skipped, that's okay
-        console.debug("View transition skipped:", error);
+        // Transition was skipped or interrupted, that's okay
       }
     },
     [],
