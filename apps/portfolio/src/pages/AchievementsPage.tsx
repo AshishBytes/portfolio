@@ -12,7 +12,7 @@ export function AchievementsPage() {
         title="Certifications and awards."
         description="Credentials and competition results recorded in the current resume."
       />
-      <Container className="grid gap-4 pb-12 md:grid-cols-2">
+      <Container className="grid grid-cols-1 gap-4 pb-12 md:grid-cols-2">
         {achievements.map((item) => {
           const Icon = item.kind === "award" ? Award : BadgeCheck;
           return (

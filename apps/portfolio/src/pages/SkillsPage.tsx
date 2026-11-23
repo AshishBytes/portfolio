@@ -12,7 +12,7 @@ export function SkillsPage() {
         title="Tools and areas of practice."
         description="A categorized view of the technologies and foundations listed in the resume."
       />
-      <Container className="grid gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3">
+      <Container className="grid grid-cols-1 gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((category) => (
           <Card key={category.id}>
             <h2 className="text-lg font-semibold tracking-tight">

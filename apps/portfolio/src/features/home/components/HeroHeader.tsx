@@ -17,14 +17,15 @@ export function HeroHeader() {
             <p className="mb-5 inline-flex min-h-8 items-center gap-2 rounded-full border border-accent/35 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
               <BadgeCheck aria-hidden="true" size={15} />
               <span>
-                Verified Discord bot - {site.metrics.users} users - {site.metrics.servers} servers
+                Verified Discord bot - {site.metrics.users} users -{" "}
+                {site.metrics.servers} servers
               </span>
             </p>
           )}
           <p className="eyebrow">{profile.title}</p>
           <h1
             id="hero-title"
-            className="display-heading mt-3 text-[3.35rem] leading-[0.98] sm:text-7xl lg:text-[5.6rem]"
+            className="display-heading mt-3 text-[clamp(3.35rem,8vw,5.6rem)] leading-[0.98]"
           >
             {profile.name}
             <span className="text-accent">.</span>
@@ -32,21 +33,22 @@ export function HeroHeader() {
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
             {profile.summary}
           </p>
-          <ul aria-label="Areas of practice" className="mt-5 flex flex-wrap gap-2">
+          <ul
+            aria-label="Areas of practice"
+            className="mt-5 flex flex-wrap gap-2"
+          >
             {[
               "Backend Systems",
               "Distributed Services",
               "Machine Learning",
               "Web3",
-            ].map(
-              (label) => (
-                <li key={label}>
-                  <Badge className="border-line bg-surface-soft px-3 py-1.5 text-xs text-muted">
-                    {label}
-                  </Badge>
-                </li>
-              ),
-            )}
+            ].map((label) => (
+              <li key={label}>
+                <Badge className="border-line bg-surface-soft px-3 py-1.5 text-xs text-muted">
+                  {label}
+                </Badge>
+              </li>
+            ))}
           </ul>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <ButtonLink to="/projects">

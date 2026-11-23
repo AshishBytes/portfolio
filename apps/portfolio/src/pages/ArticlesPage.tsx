@@ -15,7 +15,7 @@ export function ArticlesPage() {
       <Container className="pb-12">
         <section
           aria-labelledby="article-list-title"
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
           <h2 className="sr-only" id="article-list-title">
             Writing list

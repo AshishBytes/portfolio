@@ -8,7 +8,11 @@ type CardProps = HTMLAttributes<HTMLDivElement> & {
 export function Card({ className, padded = true, ...props }: CardProps) {
   return (
     <div
-      className={cn("surface-card", padded && "p-5 sm:p-6", className)}
+      className={cn(
+        "surface-card min-w-0 w-full",
+        padded && "p-5 sm:p-6",
+        className,
+      )}
       {...props}
     />
   );

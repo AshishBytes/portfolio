@@ -12,7 +12,7 @@ export function PublicationsPage() {
         title="Research and applied work."
         description="Research summaries across mobile security and applied machine learning."
       />
-      <Container className="grid gap-5 pb-12 md:grid-cols-2 md:items-start">
+      <Container className="grid grid-cols-1 gap-5 pb-12 md:grid-cols-2 md:items-start">
         {publications.map((publication) => (
           <Card className="flex flex-col" key={publication.id}>
             <div className="flex items-start gap-3">

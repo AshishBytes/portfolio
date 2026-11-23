@@ -101,7 +101,7 @@ export function ContactPage() {
         title="Start a conversation."
         description="For engineering opportunities, project discussions, or thoughtful collaboration."
       />
-      <Container className="grid gap-5 pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)]">
+      <Container className="grid grid-cols-1 gap-5 pb-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)]">
         <Card>
           {siteConfig.contactEndpoint ? (
             <form
@@ -121,7 +121,7 @@ export function ContactPage() {
                   {...register("company")}
                 />
               </div>
-              <div className="grid gap-5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div>
                   <label className="text-sm font-medium" htmlFor="name">
                     Name

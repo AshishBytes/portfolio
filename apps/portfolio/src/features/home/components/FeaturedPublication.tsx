@@ -13,7 +13,7 @@ const featuredPublications = publications.filter(
 
 function PublicationCard({ publication }: { publication: Publication }) {
   return (
-    <Card className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+    <Card className="grid grid-cols-1 gap-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
       <div>
         <div className="flex items-start gap-3">
           <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-dark">
@@ -42,11 +42,7 @@ function PublicationCard({ publication }: { publication: Publication }) {
         </ul>
       </div>
       {publication.url && (
-        <ButtonLink
-          href={publication.url}
-          size="medium"
-          variant="secondary"
-        >
+        <ButtonLink href={publication.url} size="medium" variant="secondary">
           Read paper <ArrowUpRight aria-hidden="true" size={16} />
         </ButtonLink>
       )}
@@ -58,7 +54,10 @@ export function FeaturedPublication() {
   if (featuredPublications.length === 0) return null;
 
   return (
-    <section aria-labelledby="featured-publication-title" className="py-12 sm:py-16">
+    <section
+      aria-labelledby="featured-publication-title"
+      className="py-12 sm:py-16"
+    >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
         <SectionHeading
           eyebrow="Publications"

@@ -38,7 +38,7 @@ export function ProjectDetailPage() {
         title={project.title}
         description={project.description}
       />
-      <Container className="grid gap-5 pb-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(16rem,0.75fr)]">
+      <Container className="grid grid-cols-1 gap-5 pb-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(16rem,0.75fr)]">
         <div>
           <Card className="overflow-hidden p-0">
             <ProjectArtwork project={project} context="detail" />

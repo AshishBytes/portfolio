@@ -17,7 +17,7 @@ export function ExperiencePage() {
       <Container className="pb-12">
         <section
           aria-labelledby="experience-history-title"
-          className="grid gap-5 lg:grid-cols-2"
+          className="grid grid-cols-1 gap-5 lg:grid-cols-2"
         >
           <h2 className="sr-only" id="experience-history-title">
             Experience history

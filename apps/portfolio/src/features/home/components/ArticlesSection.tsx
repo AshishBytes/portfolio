@@ -28,7 +28,7 @@ export function ArticlesSection() {
           All writing <ArrowUpRight aria-hidden="true" size={16} />
         </Link>
       </div>
-      <div className="mt-7 grid gap-4 lg:grid-cols-2">
+      <div className="mt-7 grid grid-cols-1 gap-4 lg:grid-cols-2">
         {featuredArticle && (
           <Card className="flex flex-col justify-between bg-ink text-page lg:row-span-2">
             <div>

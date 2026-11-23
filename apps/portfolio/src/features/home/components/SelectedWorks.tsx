@@ -22,7 +22,7 @@ export function SelectedWorks() {
           Project directory <ArrowUpRight aria-hidden="true" size={16} />
         </Link>
       </div>
-      <div className="mt-7 grid gap-5 md:grid-cols-2">
+      <div className="mt-7 grid grid-cols-1 gap-5 md:grid-cols-2">
         {selectedProjects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

@@ -32,15 +32,18 @@ export function ProjectsPage() {
       />
       <Container className="pb-12">
         {pinnedProjects.length > 0 && (
-          <section
-            aria-labelledby="pinned-projects-title"
-            className="mb-10"
-          >
-            <h2 className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted" id="pinned-projects-title">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+          <section aria-labelledby="pinned-projects-title" className="mb-10">
+            <h2
+              className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted"
+              id="pinned-projects-title"
+            >
+              <span
+                className="inline-flex h-1.5 w-1.5 rounded-full bg-accent"
+                aria-hidden="true"
+              />
               Pinned Projects
             </h2>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {pinnedProjects.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
@@ -49,15 +52,18 @@ export function ProjectsPage() {
         )}
 
         {currentlyWorkingProjects.length > 0 && (
-          <section
-            aria-labelledby="currently-working-title"
-            className="mb-10"
-          >
-            <h2 className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted" id="currently-working-title">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+          <section aria-labelledby="currently-working-title" className="mb-10">
+            <h2
+              className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted"
+              id="currently-working-title"
+            >
+              <span
+                className="inline-flex h-1.5 w-1.5 rounded-full bg-amber-500"
+                aria-hidden="true"
+              />
               Currently Working
             </h2>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {currentlyWorkingProjects.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
@@ -66,14 +72,18 @@ export function ProjectsPage() {
         )}
 
         {completedProjects.length > 0 && (
-          <section
-            aria-labelledby="completed-projects-title"
-          >
-            <h2 className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted" id="completed-projects-title">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+          <section aria-labelledby="completed-projects-title">
+            <h2
+              className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted"
+              id="completed-projects-title"
+            >
+              <span
+                className="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"
+                aria-hidden="true"
+              />
               Completed Projects
             </h2>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {completedProjects.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}

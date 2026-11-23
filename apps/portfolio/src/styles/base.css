@@ -15,6 +15,7 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 0.9rem + 0.3vw, 1rem);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +26,6 @@ body {
 }
 
 @layer base {
-
   button,
   input,
   textarea {
@@ -56,7 +56,7 @@ textarea:focus-visible {
 }
 
 .page-container {
-  width: min(100% - 2rem, 76rem);
+  width: min(100% - 2rem, 87.5rem);
   margin-inline: auto;
 }
 
@@ -93,18 +93,17 @@ textarea:focus-visible {
   }
 }
 
-.prose-copy p+p {
+.prose-copy p + p {
   margin-top: 1.1rem;
 }
 
 @media (min-width: 640px) {
   .page-container {
-    width: min(100% - 3rem, 76rem);
+    width: min(100% - 3rem, 87.5rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
@@ -142,7 +141,9 @@ textarea:focus-visible {
   }
 
   to {
-    clip-path: circle(var(--end-radius, 150vmax) at var(--x, 50%) var(--y, 50%));
+    clip-path: circle(
+      var(--end-radius, 150vmax) at var(--x, 50%) var(--y, 50%)
+    );
   }
 }
 
@@ -157,7 +158,6 @@ html.dark ::view-transition-new(root) {
 
 /* Disable animation if user prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;

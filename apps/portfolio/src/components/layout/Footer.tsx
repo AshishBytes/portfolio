@@ -20,7 +20,7 @@ export function Footer() {
   return (
     <footer className="mt-20 border-t border-line bg-surface/50">
       <Container className="py-8 space-y-8">
-        <div className="grid gap-8 md:grid-cols-[auto_1fr] md:items-start">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[auto_1fr] md:items-start">
           <div className="flex flex-col gap-3">
             <Link className="inline-flex items-baseline gap-1 w-fit" to="/">
               <span className="font-display text-xl font-semibold tracking-tight">

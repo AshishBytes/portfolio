@@ -14,10 +14,10 @@ export function AboutPage() {
         title="Building useful systems with care."
         description={about.introduction}
       />
-      <Container className="grid gap-5 pb-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)]">
+      <Container className="grid grid-cols-1 gap-5 pb-12 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.6fr)]">
         <section
           aria-label="Areas of focus"
-          className="grid gap-4 sm:grid-cols-2"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2"
         >
           {aboutHighlights.map((highlight) => (
             <Card key={highlight.title}>
