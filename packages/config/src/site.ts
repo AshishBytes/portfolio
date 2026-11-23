@@ -14,7 +14,7 @@ export const site = {
    * Also present at apps/links/public/images/ashish-singh.jpeg.
    */
   photo: "/images/ashish-singh.jpeg",
-  email: "ashishlodhi5559@gmail.com",
+  email: "official.ashishbytes@gmail.com",
   /** Production origin for apps/portfolio. */
   origin: "https://ashishbytes.vercel.app",
   /** Production origin for apps/links. */

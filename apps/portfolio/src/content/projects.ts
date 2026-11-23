@@ -26,21 +26,30 @@ export const projects: Project[] = projectSchema.array().parse([
   {
     slug: "reef-platform",
     title: "Reef Bot",
-    subtitle: "Microservices · Kubernetes",
+    subtitle: "Node.js · Event-Driven Architecture",
     description:
-      "Co-developed a Discord-verified bot platform from 0 to global scale. Engineered the sharding system, rate-limit handling, and real-time event pipeline.",
+      "Co-led the development of a Discord-verified bot featuring moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
     period: "November 2021 – April 2023",
     category: "Discord Platform",
-    technologies: ["Node.js", "Discord.js", "Redis", "PostgreSQL", "Kubernetes"],
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "Discord.js",
+      "Express.js",
+      "MongoDB",
+      "WebSockets",
+    ],
     achievements: [
-      "Co-developed the Discord-verified bot platform.",
-      "Engineered its sharding system, rate-limit handling, and real-time event pipeline.",
+      "Structured modular command, slash-command, and event handlers in Node.js and Discord.js to support real-time moderation, spam filtering, and audio streaming.",
+      "Built a MongoDB persistence layer paired with query optimization and caching to keep lookup latency low during peak server traffic.",
+      "Completed Discord's official bot verification process with rate-limit handling and privacy compliance, and coordinated the leadership handover at 585K+ users.",
     ],
     metrics: [
       { value: "585K+", label: "Users" },
       { value: "850+", label: "Servers" },
-      { value: "99.97%", label: "Uptime" },
+      { value: "Verified", label: "Discord Bot" },
     ],
+    githubUrl: "https://github.com",
     featured: true,
   },
   {

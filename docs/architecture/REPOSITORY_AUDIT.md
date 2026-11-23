@@ -36,7 +36,7 @@ The root project content is not uniformly reliable. Its dates and metrics confli
 
 ## Primary content source
 
-The two-page `Ashish_Singh_Resume.pdf` was rendered and reviewed. It identifies Ashish Singh, Gwalior, Madhya Pradesh, GitHub `AshishBytes`, LinkedIn `ashishbytes`, and `ashishlodhi5559@gmail.com`. It records:
+The two-page `Ashish_Singh_Resume.pdf` was rendered and reviewed. It identifies Ashish Singh, Gwalior, Madhya Pradesh, GitHub `AshishBytes`, LinkedIn `ashishbytes`, and `official.ashishbytes@gmail.com`. It records:
 
 - Education at Amity University Madhya Pradesh, B.Tech. Computer Science & Engineering, expected May 2026.
 - Three experience records: HackIITK Blockchain Hackathon (Feb 2025), Reef (Nov 2021–Apr 2023), and Happy (Feb 2020–Jul 2021).

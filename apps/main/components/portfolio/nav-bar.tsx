@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 
 const NAV_LINKS = [
-  { label: "Work",    href: "#selected-works" },
+  { label: "Work", href: "#selected-works" },
   { label: "Writing", href: "/blog" },
-  { label: "About",   href: "#bio" },
+  { label: "About", href: "#bio" },
 ]
 
 export function NavBar() {
@@ -20,11 +20,10 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
           ? "border-b border-[var(--border)] bg-[var(--ds-bg)]/90 backdrop-blur-md"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-6 lg:px-8">
         {/* Wordmark */}
@@ -51,7 +50,7 @@ export function NavBar() {
 
         {/* CTA */}
         <a
-          href="mailto:ashishlodhi5559@gmail.com"
+          href="mailto:official.ashishbytes@gmail.com"
           className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-hi)] bg-[var(--ds-surface)] px-4 py-1.5 text-sm font-semibold text-[var(--ds-fg-hi)] transition-all hover:border-[var(--ds-accent)] hover:text-[var(--ds-accent)]"
         >
           <span className="relative flex h-1.5 w-1.5">

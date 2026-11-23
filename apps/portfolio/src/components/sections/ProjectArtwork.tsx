@@ -43,6 +43,46 @@ export function ProjectArtwork({ project }: { project: Project }) {
     );
   }
 
+  if (project.slug === "reef-platform") {
+    return (
+      <div
+        aria-hidden="true"
+        className="relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-t-[inherit] bg-[#e7ecf3] p-6"
+      >
+        <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#b8c5d9]/70" />
+        <div className="absolute -bottom-9 -left-7 h-36 w-36 rounded-full border border-[#b8c5d9]/60" />
+        <div className="relative w-full max-w-[19rem] rounded-2xl border border-[#d4dce8] bg-[#fafcfd] p-4 shadow-[0_10px_28px_rgba(49,61,82,0.10)] sm:p-5">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#4f5d73]">
+              Gateway shard sync
+            </span>
+            <Network
+              aria-hidden="true"
+              className="text-[#5f7391]"
+              size={18}
+              strokeWidth={1.7}
+            />
+          </div>
+          <div className="mt-4 space-y-2">
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff3f8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7a91b3]" />
+              <span className="h-2 flex-1 rounded-full bg-[#d1dbe8]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1dbe8]" />
+            </div>
+            <div className="flex items-center gap-3 rounded-lg bg-[#eff3f8] px-3 py-2">
+              <span className="h-2 w-2 rounded-full bg-[#7a91b3]" />
+              <span className="h-2 w-3/5 rounded-full bg-[#d1dbe8]" />
+              <span className="h-2 w-8 rounded-full bg-[#d1dbe8]" />
+            </div>
+          </div>
+        </div>
+        <span className="absolute bottom-5 right-6 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#4f5d73]">
+          DISCORD VERIFIED
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div
       aria-hidden="true"

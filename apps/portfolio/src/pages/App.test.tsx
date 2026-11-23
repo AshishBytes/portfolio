@@ -147,7 +147,7 @@ describe("portfolio routes and interactions", () => {
     ).not.toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Email Ashish Singh" }),
-    ).toHaveAttribute("href", "mailto:ashishlodhi5559@gmail.com");
+    ).toHaveAttribute("href", "mailto:official.ashishbytes@gmail.com");
     expect(
       screen.getByRole("navigation", { name: "Professional profiles" }),
     ).toBeInTheDocument();
