@@ -74,10 +74,10 @@ describe("portfolio routes and interactions", () => {
     renderRoute("/");
 
     expect(
-      await screen.findByText("Distributed systems", {}, { timeout: 10000 }),
+      await screen.findByText("Backend systems & automation", {}, { timeout: 10000 }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Event-driven architecture · WebSockets · real-time messaging"),
+      screen.getByText("APIs · Python · Distributed services"),
     ).toBeInTheDocument();
     const sideProjects = screen.getByRole("list", { name: "Side projects" });
     expect(within(sideProjects).getByText("DocQA Tutor")).toBeInTheDocument();

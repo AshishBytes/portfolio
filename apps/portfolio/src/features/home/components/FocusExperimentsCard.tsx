@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, FlaskConical, FolderKanban, Network } from "lucide-react";
 import { Link } from "react-router-dom";
-import { favorite } from "../../../content/favorites";
+import { favorite } from "../../../content/current-focus";
 import { experiments } from "../../../content/experiments";
 import { getExperimentProjects, projects } from "../../../content/projects";
 import { Badge } from "../../../components/ui/Badge";
