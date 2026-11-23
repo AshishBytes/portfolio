@@ -3,7 +3,6 @@ import { ArrowUpRight, FlaskConical, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import { favorite } from "../../../content/favorites";
 import { getExperimentProjects } from "../../../content/projects";
-import { Badge } from "../../../components/ui/Badge";
 import { Card } from "../../../components/ui/Card";
 
 type FocusTab = "focus" | "experiments";
