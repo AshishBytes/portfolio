@@ -3,16 +3,54 @@ import type { Project } from "../../types/content";
 
 export function ProjectArtwork({ project }: { project: Project }) {
   if (project.image) {
-    return (
+    const imageElement = (
       <img
         alt={`${project.title} project preview`}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover transition-transform duration-300 ease-out"
         height={480}
         loading="lazy"
         src={project.image}
         width={720}
       />
     );
+
+    if (project.githubUrl) {
+      return (
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block overflow-hidden rounded-t-[inherit]"
+          aria-label={`View ${project.title} source code on GitHub`}
+        >
+          <div className="relative overflow-hidden rounded-t-[inherit]">
+            {imageElement}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-x-0 bottom-0 flex translate-y-full items-center justify-center gap-2 py-6 text-white transition-transform duration-300 group-hover:translate-y-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m18 13 6 6-6 6" />
+                <path d="m6 5-6 6 6 6" />
+                <path d="m14.5 4-5 16" />
+              </svg>
+              <span className="font-semibold">View Source Code</span>
+            </div>
+          </div>
+        </a>
+      );
+    }
+
+    return imageElement;
   }
 
   if (project.slug === "docqa-tutor") {
