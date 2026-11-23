@@ -86,7 +86,7 @@ export function SelectedWorks() {
         <SectionHeading
           eyebrow="Selected work"
           title="Projects with a systems core"
-          description="Distributed systems, blockchain infrastructure, and applied NLP."
+          description="Backend systems, automation, API integrations, and distributed services."
         />
         <Link
           className="inline-flex min-h-11 w-fit items-center gap-2 pb-1 text-sm font-semibold text-ink hover:text-accent"

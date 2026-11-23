@@ -21,19 +21,24 @@ export function HeroHeader() {
               </span>
             </p>
           )}
-            <p className="eyebrow">{profile.title}</p>
-            <h1
-              id="hero-title"
-              className="display-heading mt-3 text-[3.35rem] leading-[0.98] sm:text-7xl lg:text-[5.6rem]"
-            >
-              {profile.name}
-              <span className="text-accent">.</span>
-            </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              Backend and distributed systems for {site.metrics.users} Discord users.
-            </p>
+          <p className="eyebrow">{profile.title}</p>
+          <h1
+            id="hero-title"
+            className="display-heading mt-3 text-[3.35rem] leading-[0.98] sm:text-7xl lg:text-[5.6rem]"
+          >
+            {profile.name}
+            <span className="text-accent">.</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+            {profile.summary}
+          </p>
           <ul aria-label="Areas of practice" className="mt-5 flex flex-wrap gap-2">
-            {["Backend", "AI/ML", "Distributed Systems", "Open Source"].map(
+            {[
+              "Backend Systems",
+              "Automation",
+              "API Integrations",
+              "Distributed Services",
+            ].map(
               (label) => (
                 <li key={label}>
                   <Badge className="border-line bg-surface-soft px-3 py-1.5 text-xs text-muted">

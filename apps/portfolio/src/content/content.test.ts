@@ -8,8 +8,19 @@ import { projects } from "./projects";
 import { publications } from "./publications";
 import { skillCategories } from "./skills";
 import { profile } from "./profile";
+import { getPageMetadata } from "../app/metadata";
 
 describe("portfolio content integrity", () => {
+  it("uses the approved positioning in the hero and project metadata", () => {
+    const positioning =
+      "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.";
+    expect(profile.summary).toBe(positioning);
+    expect(getPageMetadata("/").description).toBe(positioning);
+    expect(getPageMetadata("/projects").description).not.toContain(
+      "applied NLP",
+    );
+  });
+
   it("contains the available record counts without duplicate identifiers or slugs", () => {
     expect(experience).toHaveLength(3);
     expect(projects).toHaveLength(4);

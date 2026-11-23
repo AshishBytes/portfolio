@@ -4,7 +4,7 @@ export const siteConfig = {
   origin: normalizeSiteOrigin(import.meta.env.VITE_SITE_ORIGIN),
   name: "Ashish Bytes",
   description:
-    "Ashish Singh — software engineer focused on distributed systems and backend engineering.",
+    "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.",
   blogOrigin: normalizeBlogOrigin(import.meta.env.VITE_BLOG_ORIGIN),
   contactEndpoint: normalizeEndpoint(
     import.meta.env.VITE_CONTACT_FORM_ENDPOINT,

@@ -36,7 +36,7 @@ const pageMetadata: Record<string, PageMetadata> = {
   "/projects": {
     title: "Projects — Ashish Singh",
     description:
-      "Selected project work across applied NLP, backend systems, and offline-first applications.",
+      "Backend systems and software tools, with experience in distributed services, automation, and API integrations.",
     path: "/projects",
     image: defaultImage,
   },

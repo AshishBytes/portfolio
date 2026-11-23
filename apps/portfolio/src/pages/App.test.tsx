@@ -22,6 +22,21 @@ describe("portfolio routes and interactions", () => {
       "Ashish Singh",
     );
     expect(
+      screen.getByText(
+        "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      within(screen.getByRole("list", { name: "Areas of practice" }))
+        .getAllByRole("listitem")
+        .map((item) => item.textContent),
+    ).toEqual([
+      "Backend Systems",
+      "Automation",
+      "API Integrations",
+      "Distributed Services",
+    ]);
+    expect(
       await screen.findByRole("heading", {
         name: "Projects with a systems core",
       }),
