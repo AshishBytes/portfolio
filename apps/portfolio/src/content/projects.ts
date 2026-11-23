@@ -93,7 +93,7 @@ export const projects: Project[] = projectSchema.array().parse([
     slug: "streamsync-capture-studio",
     title: "StreamSync Capture Studio",
     subtitle: "Playwright + FastAPI · Crash-Safe Stream Recording",
-    description: "A Codespaces- and Windows-ready Python service for authorized browser playback recording. Uses Playwright, Chromium captureStream(), and MediaRecorder to capture WebM streams with 5-second chunked persistence, SHA-256 checksum journaling, SQLite metadata tracking, and automated stream-state recovery.",
+    description: "A Codespaces and Windows-ready Python service for authorized browser playback recording. Uses Playwright, Chromium captureStream(), and MediaRecorder to capture WebM streams with 5-second chunked persistence, SHA-256 checksum journaling, SQLite metadata tracking, and automated stream-state recovery.",
     period: "2026",
     category: "Media & Automation Systems",
     technologies: [
