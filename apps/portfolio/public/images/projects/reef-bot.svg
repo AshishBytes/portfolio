@@ -1,92 +1,85 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background gradient -->
-  <rect width="1200" height="630" fill="#5865F2"/>
-  <rect width="1200" height="630" fill="url(#gradient)"/>
-  
   <defs>
-    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#5865F2"/>
-      <stop offset="100%" stop-color="#4752C4"/>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E1F2E"/>
+      <stop offset="55%" stop-color="#31398A"/>
+      <stop offset="100%" stop-color="#5865F2"/>
     </linearGradient>
-    
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+    </linearGradient>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
   </defs>
-  
-  <!-- Decorative circles -->
-  <circle cx="150" cy="150" r="120" fill="rgba(255,255,255,0.03)"/>
-  <circle cx="1050" cy="480" r="150" fill="rgba(255,255,255,0.03)"/>
-  <circle cx="900" cy="100" r="80" fill="rgba(255,255,255,0.05)"/>
-  
-  <!-- Discord logo inspired icon (simplified) -->
-  <g transform="translate(150, 180)">
-    <rect x="0" y="0" width="200" height="200" rx="40" fill="rgba(255,255,255,0.1)"/>
-    <circle cx="65" cy="80" r="18" fill="white"/>
-    <circle cx="135" cy="80" r="18" fill="white"/>
-    <path d="M 50 130 Q 100 160 150 130" stroke="white" stroke-width="16" stroke-linecap="round" fill="none"/>
+
+  <!-- Base & Subtle Engineering Grid -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient Glows -->
+  <circle cx="1040" cy="120" r="220" fill="#5865F2" opacity="0.25"/>
+  <circle cx="180" cy="540" r="180" fill="#57F287" opacity="0.08"/>
+
+  <!-- Left Icon Card: Bot Gateway & Slash Command Emblem -->
+  <g transform="translate(120, 195)">
+    <rect width="220" height="220" rx="44" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <!-- Antenna -->
+    <line x1="110" y1="38" x2="110" y2="62" stroke="white" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="110" cy="34" r="8" fill="#57F287"/>
+    <!-- Bot Visor -->
+    <rect x="46" y="64" width="128" height="92" rx="26" fill="rgba(15,17,26,0.55)" stroke="white" stroke-width="7"/>
+    <!-- Eyes -->
+    <circle cx="84" cy="108" r="11" fill="#57F287"/>
+    <circle cx="136" cy="108" r="11" fill="#57F287"/>
+    <!-- Slash Command Pill -->
+    <rect x="66" y="172" width="88" height="14" rx="7" fill="rgba(255,255,255,0.35)"/>
   </g>
-  
-  <!-- Main content -->
-  <g transform="translate(420, 180)">
+
+  <!-- Right Main Content -->
+  <g transform="translate(390, 215)">
+    <!-- Category Eyebrow -->
+    <text x="0" y="-32" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="600" fill="#99AAB5" letter-spacing="2">
+      DISCORD PLATFORM · EVENT-DRIVEN BOT
+    </text>
+
     <!-- Title -->
-    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1">
+    <text x="0" y="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="72" font-weight="800" fill="white" letter-spacing="-1.5">
       Reef Bot
     </text>
-    
+
     <!-- Subtitle -->
-    <text x="0" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="rgba(255,255,255,0.85)">
-      Discord-Verified Moderation Platform
+    <text x="0" y="80" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="500" fill="rgba(255,255,255,0.85)">
+      Moderation, Spam Prevention, Voice &amp; Slash Commands
     </text>
-    
-    <!-- Metrics -->
-    <g transform="translate(0, 120)">
+
+    <!-- Metric Badges (Properly sized to prevent text clipping) -->
+    <g transform="translate(0, 122)">
       <!-- Badge 1 -->
-      <g>
-        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
-        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
-          585K+ Users
-        </text>
-      </g>
-      
+      <rect x="0" y="0" width="180" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="90" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="700" fill="white" text-anchor="middle">
+        585K+ Users
+      </text>
+
       <!-- Badge 2 -->
-      <g transform="translate(160, 0)">
-        <rect x="0" y="0" width="140" height="50" rx="25" fill="rgba(255,255,255,0.15)"/>
-        <text x="70" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="white" text-anchor="middle">
-          850+ Servers
-        </text>
-      </g>
-      
-      <!-- Badge 3 - Verified -->
-      <g transform="translate(320, 0)">
-        <rect x="0" y="0" width="180" height="50" rx="25" fill="rgba(87, 242, 135, 0.25)"/>
-        <text x="30" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#57F287">
-          ✓ Verified Bot
-        </text>
-      </g>
-    </g>
-    
-    <!-- Tech stack -->
-    <g transform="translate(0, 210)">
-      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.7)">
-        Node.js • Discord.js • MongoDB • Express.js • WebSockets
+      <rect x="196" y="0" width="190" height="48" rx="24" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <text x="291" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="700" fill="white" text-anchor="middle">
+        850+ Servers
+      </text>
+
+      <!-- Badge 3 -->
+      <rect x="402" y="0" width="205" height="48" rx="24" fill="rgba(87, 242, 135, 0.18)" stroke="rgba(87, 242, 135, 0.45)" stroke-width="1"/>
+      <text x="504" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="700" fill="#57F287" text-anchor="middle">
+        ✓ Verified Bot
       </text>
     </g>
-  </g>
-  
-  <!-- Decorative code-like elements -->
-  <g transform="translate(80, 500)" opacity="0.3">
-    <rect x="0" y="0" width="120" height="8" rx="4" fill="white"/>
-    <rect x="0" y="20" width="80" height="8" rx="4" fill="white"/>
-    <rect x="0" y="40" width="100" height="8" rx="4" fill="white"/>
-  </g>
-  
-  <g transform="translate(950, 520)" opacity="0.3">
-    <rect x="0" y="0" width="140" height="8" rx="4" fill="white"/>
-    <rect x="0" y="20" width="90" height="8" rx="4" fill="white"/>
+
+    <!-- Tech Stack Footer -->
+    <text x="0" y="218" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="600" fill="rgba(255,255,255,0.72)">
+      Node.js  •  Discord.js  •  MongoDB  •  Express.js  •  WebSockets
+    </text>
   </g>
 </svg>

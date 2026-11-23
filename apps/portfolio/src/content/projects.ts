@@ -26,32 +26,31 @@ const projectSchema = z.object({
 
 export const projects: Project[] = projectSchema.array().parse([
   {
-    slug: "reef-platform",
-    title: "Reef Bot",
-    subtitle: "Node.js · Event-Driven Architecture",
-    description:
-      "Co-led the development of a Discord-verified bot featuring moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
-    period: "November 2021 – April 2023",
-    category: "Discord Platform",
-    technologies: [
+    "slug": "reef-platform",
+    "title": "Reef Bot",
+    "subtitle": "Node.js · Event-Driven Architecture",
+    "description": "Co-led the development of a Discord-verified bot featuring automated moderation, spam prevention, voice controls, and interactive slash commands. Built the backend API, MongoDB data layer, and query caching.",
+    "period": "November 2021 – April 2023",
+    "category": "Discord Platform",
+    "technologies": [
       "JavaScript",
       "Node.js",
       "Discord.js",
       "Express.js",
       "MongoDB",
-      "WebSockets",
+      "WebSockets"
     ],
-    achievements: [
+    "achievements": [
       "Structured modular command, slash-command, and event handlers in Node.js and Discord.js to support real-time moderation, spam filtering, and audio streaming.",
       "Built a MongoDB persistence layer paired with query optimization and caching to keep lookup latency low during peak server traffic.",
-      "Completed Discord's official bot verification process with rate-limit handling and privacy compliance, and coordinated the leadership handover at 585K+ users.",
+      "Completed Discord's official bot verification process with rate-limit handling and privacy compliance, and coordinated the leadership handover at 585K+ users."
     ],
-    metrics: [
-      { value: "585K+", label: "Users" },
-      { value: "850+", label: "Servers" },
-      { value: "Verified", label: "Discord Bot" },
+    "metrics": [
+      { "value": "585K+", "label": "Users" },
+      { "value": "850+", "label": "Servers" },
+      { "value": "Verified", "label": "Discord Bot" }
     ],
-    liveUrl: "https://discord.com/oauth2/authorize?client_id=970954920964534304&permissions=274878286913&scope=bot",
+    liveUrl: "https://discord.com/oauth2/authorize?client_id=970954920964534304&permissions=8&scope=bot",
     githubUrl: "https://github.com/AshishBytes/Reef-Bot",
     image: "/images/projects/reef-bot.svg",
     featured: true,
@@ -154,7 +153,7 @@ export const projects: Project[] = projectSchema.array().parse([
     ],
     featured: false,
     experiment: false,
-    pinned: true,
+    pinned: false,
     githubUrl: "https://github.com/AshishBytes",
   },
   {
