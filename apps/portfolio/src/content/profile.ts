@@ -28,7 +28,7 @@ export const profile = profileSchema.parse({
   image: site.photo, // "/images/ashish-singh.jpeg" — verified against public/
   // ── values that stay local to apps/portfolio ───────────────────────────────
   summary:
-    "I build distributed systems and software engineering tools, with experience in backend services, network performance, and applied NLP.",
+    "I build backend systems and software tools, with experience in distributed services, automation, and API integrations.",
   location: "Gwalior, Madhya Pradesh, India",
   resume: "/documents/Ashish_Singh_Resume.pdf",
   // getProfessionalProfiles() returns ProfessionalProfile[] whose icon type
