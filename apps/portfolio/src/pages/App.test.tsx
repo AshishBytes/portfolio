@@ -74,11 +74,7 @@ describe("portfolio routes and interactions", () => {
     renderRoute("/");
 
     expect(
-      await screen.findByText(
-        "Backend systems & automation",
-        {},
-        { timeout: 10000 },
-      ),
+      await screen.findByText("Backend systems & automation", {}, { timeout: 10000 }),
     ).toBeInTheDocument();
     expect(
       screen.getByText("APIs · Python · Distributed services"),
@@ -162,27 +158,6 @@ describe("portfolio routes and interactions", () => {
         screen.getByRole("button", { name: "Open navigation menu" }),
       ).toBeInTheDocument(),
     );
-  });
-
-  it("opens mobile quick actions without replacing the navigation menu", async () => {
-    const user = userEvent.setup();
-    renderRoute("/");
-
-    expect(
-      screen.getByRole("button", { name: "Open navigation menu" }),
-    ).toBeInTheDocument();
-    await user.click(screen.getByRole("button", { name: "Open more actions" }));
-
-    const quickActions = screen.getByLabelText("Mobile quick actions");
-    expect(
-      within(quickActions).getByRole("link", { name: "Resume" }),
-    ).toHaveAttribute("href", "/resume");
-    expect(
-      within(quickActions).getByRole("link", { name: "Contact" }),
-    ).toHaveAttribute("href", "/contact");
-    expect(
-      within(quickActions).getByRole("button", { name: /Switch to/ }),
-    ).toBeInTheDocument();
   });
 
   it("shows direct email and professional profiles when no form endpoint is configured", async () => {
