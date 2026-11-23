@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, MoreHorizontal, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "../../app/providers";
 import { profile } from "../../content/profile";
 import { cn } from "../../lib/cn";
@@ -16,7 +16,7 @@ const primaryLinks = [
   ...(blogLive ? [{ label: "Writing", to: "/blog" }] : []),
 ];
 
-function ThemeButton() {
+function ThemeButton({ withLabel = false }: { withLabel?: boolean }) {
   const { theme, toggleTheme } = useTheme();
   const { startTransition } = useViewTransition();
   const Icon = theme === "light" ? Moon : Sun;
@@ -24,9 +24,12 @@ function ThemeButton() {
   const handleThemeToggle = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { clientX, clientY } = event;
 
-    startTransition(() => {
-      toggleTheme();
-    }, { x: clientX, y: clientY });
+    startTransition(
+      () => {
+        toggleTheme();
+      },
+      { x: clientX, y: clientY },
+    );
   };
 
   return (
@@ -34,16 +37,28 @@ function ThemeButton() {
       type="button"
       onClick={handleThemeToggle}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-all duration-300 hover:text-ink hover:scale-110"
+      className={cn(
+        "inline-flex h-10 items-center justify-center rounded-full border border-line bg-surface text-muted transition-all duration-300 hover:scale-110 hover:text-ink",
+        withLabel
+          ? "w-full justify-start gap-2 px-3 text-sm font-medium"
+          : "w-10",
+      )}
     >
-      <Icon aria-hidden="true" size={17} className="transition-transform duration-300" />
+      <Icon
+        aria-hidden="true"
+        size={17}
+        className="transition-transform duration-300"
+      />
+      {withLabel && <span>Theme: {theme === "light" ? "Light" : "Dark"}</span>}
     </button>
   );
 }
 
 function HeaderContents() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const closeMenu = () => setIsOpen(false);
+  const closeMoreMenu = () => setIsMoreOpen(false);
 
   return (
     <>
@@ -109,8 +124,54 @@ function HeaderContents() {
                 <Menu aria-hidden="true" size={18} />
               )}
             </button>
+            <button
+              type="button"
+              aria-label={
+                isMoreOpen ? "Close more actions" : "Open more actions"
+              }
+              aria-expanded={isMoreOpen}
+              aria-controls="mobile-more-actions"
+              onClick={() => setIsMoreOpen((open) => !open)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-ink lg:hidden"
+            >
+              <MoreHorizontal aria-hidden="true" size={18} />
+            </button>
           </div>
         </Container>
+
+        <div
+          id="mobile-more-actions"
+          className={cn(
+            "absolute right-4 top-full z-10 w-52 rounded-2xl border border-line bg-page p-2 shadow-card lg:hidden",
+            !isMoreOpen && "hidden",
+          )}
+          hidden={!isMoreOpen}
+        >
+          <div
+            aria-label="Mobile quick actions"
+            className="flex flex-col gap-1"
+          >
+            <ThemeButton withLabel />
+            <Link
+              className="inline-flex min-h-10 items-center rounded-full px-3 text-sm font-medium text-muted transition-colors hover:bg-surface-soft hover:text-ink"
+              onClick={closeMoreMenu}
+              to="/resume"
+            >
+              Resume
+            </Link>
+            <Link
+              className="inline-flex min-h-10 items-center gap-2 rounded-full px-3 text-sm font-medium text-muted transition-colors hover:bg-surface-soft hover:text-ink"
+              onClick={closeMoreMenu}
+              to="/contact"
+            >
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 rounded-full bg-emerald-600"
+              />
+              Contact
+            </Link>
+          </div>
+        </div>
 
         <div
           id="mobile-navigation"
