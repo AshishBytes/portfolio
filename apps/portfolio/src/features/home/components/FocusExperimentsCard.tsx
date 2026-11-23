@@ -20,7 +20,8 @@ export function FocusExperimentsCard() {
     .filter(
       (entry): entry is typeof entry & { project: (typeof projects)[number] } =>
         Boolean(entry.project),
-    );
+    )
+    .slice(0, 2); // Limit to max 2 side projects to prevent card height growth
 
   return (
     <Card className="flex h-full flex-col">
