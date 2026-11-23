@@ -123,7 +123,7 @@ export const projects: Project[] = projectSchema.array().parse([
   },
   {
     slug: "hackiitk-blockchain",
-    title: "HackIITK Blockchain",
+    title: "Gasless Forwarder (HackIITK)",
     subtitle: "Web3 Security Track · EIP-712 Meta-Transaction Relayer",
     description: "Built a gas-less meta-transaction forwarder and relayer for ERC-20 and ERC-721 transfers in the Web3 Security Solution Track at HACK IITK 2025—selected among 54 Grand Finale teams from 7,000+ registrations.",
     period: "February 2025",
