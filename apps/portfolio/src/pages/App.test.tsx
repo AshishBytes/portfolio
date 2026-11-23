@@ -130,7 +130,7 @@ describe("portfolio routes and interactions", () => {
       screen.getByRole("link", { name: "Send a message" }),
     ).toHaveAttribute("href", "/contact");
     expect(
-      screen.getByText((content, element) => {
+      screen.getByText((_content, element) => {
         return element?.textContent?.match(/\(c\) \d{4} Ashish Singh/) !== null;
       }),
     ).toBeInTheDocument();
