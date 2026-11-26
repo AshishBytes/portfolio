@@ -99,7 +99,23 @@ await writeFile(join(distRoot, "404.html"), notFoundHtml, "utf8");
 const sitemapRoutes = routes.filter((route) => route !== "/testimonials");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes.map((route) => `  <url><loc>${getCanonicalUrl(route)}</loc></url>`).join("\n")}\n</urlset>\n`;
 await writeFile(join(distRoot, "sitemap.xml"), sitemap, "utf8");
+const explicitlyAllowedAgents = [
+  "Googlebot",
+  "Google-Extended",
+  "OAI-SearchBot",
+  "GPTBot",
+  "ClaudeBot",
+  "Meta-ExternalAgent",
+];
 const robots = [
+  // Explicitly allow search and AI crawlers while retaining private-route rules.
+  ...explicitlyAllowedAgents.flatMap((agent) => [
+    `User-agent: ${agent}`,
+    "Allow: /",
+    "Disallow: /404.html",
+    ...(!blogLive ? ["Disallow: /blog"] : []),
+    "",
+  ]),
   "User-agent: *",
   "Allow: /",
   "Disallow: /404.html",
