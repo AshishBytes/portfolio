@@ -138,14 +138,32 @@ assert(
 );
 assert(sitemap.includes("<urlset"), "sitemap XML is missing the urlset root");
 const robots = await readFile(join(dist, "robots.txt"), "utf8");
-assert(
-  /User-agent: OAI-SearchBot\s+Allow: \/\s+/i.test(robots),
-  "robots.txt must allow the OpenAI search crawler",
-);
-assert(
-  /User-agent: GPTBot\s+Allow: \/\s+/i.test(robots),
-  "robots.txt must allow GPTBot crawling",
-);
+for (const agent of [
+  "Googlebot",
+  "Google-Extended",
+  "OAI-SearchBot",
+  "GPTBot",
+  "ClaudeBot",
+  "Meta-ExternalAgent",
+]) {
+  const escapedAgent = agent.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  assert(
+    new RegExp(
+      `User-agent: ${escapedAgent}\\s+Allow: \\/\\s+Disallow: \\/404\\.html`,
+      "i",
+    ).test(robots),
+    `robots.txt must allow ${agent} while excluding the 404 document`,
+  );
+  if (!blogLive) {
+    assert(
+      new RegExp(
+        `User-agent: ${escapedAgent}\\s+Allow: \\/\\s+Disallow: \\/404\\.html\\s+Disallow: \\/blog`,
+        "i",
+      ).test(robots),
+      `robots.txt must keep the hidden blog excluded for ${agent}`,
+    );
+  }
+}
 assert(
   /User-agent: \*\s+Allow: \/\s+/i.test(robots),
   "robots.txt must allow other crawlers by default",
