@@ -139,6 +139,18 @@ assert(
 assert(sitemap.includes("<urlset"), "sitemap XML is missing the urlset root");
 const robots = await readFile(join(dist, "robots.txt"), "utf8");
 assert(
+  /User-agent: OAI-SearchBot\s+Allow: \/\s+/i.test(robots),
+  "robots.txt must allow the OpenAI search crawler",
+);
+assert(
+  /User-agent: GPTBot\s+Allow: \/\s+/i.test(robots),
+  "robots.txt must allow GPTBot crawling",
+);
+assert(
+  /User-agent: \*\s+Allow: \/\s+/i.test(robots),
+  "robots.txt must allow other crawlers by default",
+);
+assert(
   robots.includes(`${configuredOrigin}/sitemap.xml`),
   "robots.txt is missing its sitemap location",
 );

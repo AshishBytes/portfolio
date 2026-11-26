@@ -100,6 +100,13 @@ const sitemapRoutes = routes.filter((route) => route !== "/testimonials");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapRoutes.map((route) => `  <url><loc>${getCanonicalUrl(route)}</loc></url>`).join("\n")}\n</urlset>\n`;
 await writeFile(join(distRoot, "sitemap.xml"), sitemap, "utf8");
 const robots = [
+  // Allow both ChatGPT search and GPTBot crawling.
+  "User-agent: OAI-SearchBot",
+  "Allow: /",
+  "",
+  "User-agent: GPTBot",
+  "Allow: /",
+  "",
   "User-agent: *",
   "Allow: /",
   "Disallow: /404.html",
